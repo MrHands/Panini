@@ -11,6 +11,9 @@
     <Filter Include="include\writers">
       <UniqueIdentifier>{10e346a6-8df9-41da-af92-efc24f0f5dba}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\commands">
+      <UniqueIdentifier>{fad54aaf-3aea-4fe7-846d-e42cce31ac83}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Panini.hpp">
@@ -24,6 +27,9 @@
     </ClInclude>
     <ClInclude Include="include\writers\StringWriter.hpp">
       <Filter>include\writers</Filter>
+    </ClInclude>
+    <ClInclude Include="include\commands\NextLine.hpp">
+      <Filter>include\commands</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

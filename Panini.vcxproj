@@ -76,11 +76,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="source\tests\TestsConsoleWriter.cpp" />
     <ClCompile Include="source\tests\TestsIndentation.cpp" />
     <ClCompile Include="source\tests\TestsMain.cpp" />
     <ClCompile Include="source\tests\TestsNewLine.cpp" />
     <ClCompile Include="source\tests\TestsBraces.cpp" />
-    <ClCompile Include="source\tests\TestsWriter.cpp" />
+    <ClCompile Include="source\tests\TestsStringWriter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\commands\CommandBase.hpp" />
@@ -90,6 +91,7 @@
     <ClInclude Include="include\commands\Braces.hpp" />
     <ClInclude Include="include\Config.hpp" />
     <ClInclude Include="include\Panini.hpp" />
+    <ClInclude Include="include\writers\ConsoleWriter.hpp" />
     <ClInclude Include="include\writers\StringWriter.hpp" />
     <ClInclude Include="include\writers\WriterBase.hpp" />
   </ItemGroup>

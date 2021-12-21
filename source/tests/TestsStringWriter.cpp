@@ -1,13 +1,12 @@
 #include <gtest/gtest.h>
 #include <Panini.hpp>
 
-TEST(StringWriter, Chunk)
+TEST(StringWriter, Write)
 {
 	using namespace panini;
 
-	Config c;
 	std::string t;
-	StringWriter w(t, c);
+	StringWriter w(t);
 
 	w << "What an intriguing device!";
 

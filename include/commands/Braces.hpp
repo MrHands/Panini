@@ -18,7 +18,7 @@ namespace panini
 
 		virtual void Visit(WriterBase& writer) final
 		{
-			switch (writer.GetBraces())
+			switch (writer.GetBraceStyle())
 			{
 
 			case BraceBreakingStyle::Attach:

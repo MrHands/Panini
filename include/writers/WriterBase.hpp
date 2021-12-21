@@ -76,7 +76,7 @@ namespace panini {
 			return m_state == State::NewLine;
 		}
 
-		BraceBreakingStyle GetBraces() const
+		BraceBreakingStyle GetBraceStyle() const
 		{
 			return m_config.braces;
 		}

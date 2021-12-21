@@ -80,6 +80,8 @@
     <ClCompile Include="source\tests\TestsWriter.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\commands\IndentPop.hpp" />
+    <ClInclude Include="include\commands\IndentPush.hpp" />
     <ClInclude Include="include\commands\NextLine.hpp" />
     <ClInclude Include="include\Config.hpp" />
     <ClInclude Include="include\Panini.hpp" />

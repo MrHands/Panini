@@ -1,7 +1,8 @@
 #pragma once
 
-// STL
+// C/STL
 
+#include <stdint.h>
 #include <string>
 
 namespace panini

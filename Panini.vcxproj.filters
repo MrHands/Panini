@@ -31,5 +31,11 @@
     <ClInclude Include="include\commands\NextLine.hpp">
       <Filter>include\commands</Filter>
     </ClInclude>
+    <ClInclude Include="include\commands\IndentPush.hpp">
+      <Filter>include\commands</Filter>
+    </ClInclude>
+    <ClInclude Include="include\commands\IndentPop.hpp">
+      <Filter>include\commands</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

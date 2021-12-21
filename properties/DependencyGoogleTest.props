@@ -2,15 +2,19 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros">
-    <GoogleTestDir>$(ProjectDir)dependencies\googletest-1.11.0\</GoogleTestDir>
+    <DepGoogleTestDir>$(ProjectDir)dependencies\googletest-1.11.0\</DepGoogleTestDir>
+    <DepGoogleTestIncludeDir>$(DepGoogleTestDir)googletest\include\</DepGoogleTestIncludeDir>
+    <DepGoogleTestLibDir>$(DepGoogleTestDir)lib\</DepGoogleTestLibDir>
+    <DepGoogleTestExt Condition="'$(Configuration)'=='Debug'">d</DepGoogleTestExt>
+    <DepGoogleTestExt Condition="'$(Configuration)'!='Debug'"></DepGoogleTestExt>
   </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
-      <AdditionalIncludeDirectories>$(GoogleTestDir)googletest\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(DepGoogleTestIncludeDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>$(GoogleTestDir)lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>gtest.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(DepGoogleTestLibDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>gtest$(DepGoogleTestExt).lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup />

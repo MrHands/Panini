@@ -1,4 +1,4 @@
 #pragma once
 
-#include "writers/WriterBase.hpp"
+#include "writers/StringWriter.hpp"
 #include "Config.hpp"

@@ -22,5 +22,8 @@
     <ClInclude Include="include\Config.hpp">
       <Filter>include</Filter>
     </ClInclude>
+    <ClInclude Include="include\writers\StringWriter.hpp">
+      <Filter>include\writers</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

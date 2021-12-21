@@ -82,6 +82,7 @@
   <ItemGroup>
     <ClInclude Include="include\Config.hpp" />
     <ClInclude Include="include\Panini.hpp" />
+    <ClInclude Include="include\writers\StringWriter.hpp" />
     <ClInclude Include="include\writers\WriterBase.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

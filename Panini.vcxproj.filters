@@ -3,6 +3,8 @@
   <ItemGroup>
     <ClCompile Include="source\tests\TestsMain.cpp" />
     <ClCompile Include="source\tests\TestsWriter.cpp" />
+    <ClCompile Include="source\tests\TestsNewLine.cpp" />
+    <ClCompile Include="source\tests\TestsIndentation.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="include">

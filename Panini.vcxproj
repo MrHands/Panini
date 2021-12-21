@@ -76,7 +76,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="source\tests\TestsIndentation.cpp" />
     <ClCompile Include="source\tests\TestsMain.cpp" />
+    <ClCompile Include="source\tests\TestsNewLine.cpp" />
     <ClCompile Include="source\tests\TestsWriter.cpp" />
   </ItemGroup>
   <ItemGroup>

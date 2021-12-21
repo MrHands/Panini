@@ -39,11 +39,13 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="properties\TargetAll.props" />
     <Import Project="properties\DependencyGoogleTest.props" />
+    <Import Project="properties\DependencyPanini.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="properties\TargetAll.props" />
     <Import Project="properties\DependencyGoogleTest.props" />
+    <Import Project="properties\DependencyPanini.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup />
@@ -75,6 +77,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="source\tests\TestsMain.cpp" />
+    <ClCompile Include="source\tests\TestsWriter.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\Config.hpp" />
+    <ClInclude Include="include\Panini.hpp" />
+    <ClInclude Include="include\writers\WriterBase.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

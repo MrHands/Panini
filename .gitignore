@@ -1,0 +1,19 @@
+# Visual Studio
+
+.vs/*
+intermediate/*
+ipch/*
+*_UpgradeReport_Files/*
+*.APS
+*.exp
+*.idb
+*.iobj
+*.ipdb
+*.ilk
+*.ncb
+*.opensdf
+*.sdf
+*.suo
+*.VC.db
+*.VC.opendb
+*.vcxproj.user

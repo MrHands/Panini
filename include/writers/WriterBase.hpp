@@ -1,5 +1,6 @@
 #pragma once
 
+#include "commands/CommandBase.hpp"
 #include "commands/IndentPop.hpp"
 #include "commands/IndentPush.hpp"
 #include "commands/NextLine.hpp"
@@ -59,6 +60,13 @@ namespace panini {
 
 				CacheIndentation();
 			}
+
+			return *this;
+		}
+
+		WriterBase& operator << (CommandBase&& command)
+		{
+			command.Visit(*this);
 
 			return *this;
 		}

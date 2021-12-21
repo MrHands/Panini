@@ -2,6 +2,7 @@
 
 // C/STL
 
+#include <functional>
 #include <stdint.h>
 #include <string>
 

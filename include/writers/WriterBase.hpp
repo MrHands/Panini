@@ -71,6 +71,16 @@ namespace panini {
 			return *this;
 		}
 
+		bool IsOnNewLine() const
+		{
+			return m_state == State::NewLine;
+		}
+
+		BraceBreakingStyle GetBraces() const
+		{
+			return m_config.braces;
+		}
+
 	protected:
 		virtual void Write(const std::string& chunk) = 0;
 

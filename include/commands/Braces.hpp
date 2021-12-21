@@ -18,9 +18,36 @@ namespace panini
 
 		virtual void Visit(WriterBase& writer) final
 		{
-			writer << "{" << IndentPush() << NextLine();
-			m_callback(writer);
-			writer << IndentPop() << "}";
+			switch (writer.GetBraces())
+			{
+
+			case BraceBreakingStyle::Attach:
+				{
+					writer << "{" << IndentPush() << NextLine();
+					m_callback(writer);
+					writer << IndentPop() << "}";
+
+				} break;
+
+			case BraceBreakingStyle::Allman:
+				{
+					writer << NextLine();
+					writer << "{" << IndentPush() << NextLine();
+					m_callback(writer);
+					writer << IndentPop() << "}";
+
+				} break;
+
+			case BraceBreakingStyle::Whitesmiths:
+				{
+
+				} break;
+
+			default:
+				break;
+			}
+
+			
 		}
 
 	private:

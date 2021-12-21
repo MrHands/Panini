@@ -76,6 +76,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="source\tests\TestsCompareWriter.cpp" />
     <ClCompile Include="source\tests\TestsConsoleWriter.cpp" />
     <ClCompile Include="source\tests\TestsFileWriter.cpp" />
     <ClCompile Include="source\tests\TestsIndentation.cpp" />
@@ -92,6 +93,7 @@
     <ClInclude Include="include\commands\Braces.hpp" />
     <ClInclude Include="include\Config.hpp" />
     <ClInclude Include="include\Panini.hpp" />
+    <ClInclude Include="include\writers\CompareWriter.hpp" />
     <ClInclude Include="include\writers\ConsoleWriter.hpp" />
     <ClInclude Include="include\writers\FileWriter.hpp" />
     <ClInclude Include="include\writers\StringWriter.hpp" />

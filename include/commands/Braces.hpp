@@ -40,6 +40,10 @@ namespace panini
 
 			case BraceBreakingStyle::Whitesmiths:
 				{
+					writer << NextLine();
+					writer << IndentPush() << "{" << NextLine();
+					m_callback(writer);
+					writer << "}" << IndentPop();
 
 				} break;
 

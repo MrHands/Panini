@@ -77,6 +77,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="source\tests\TestsConsoleWriter.cpp" />
+    <ClCompile Include="source\tests\TestsFileWriter.cpp" />
     <ClCompile Include="source\tests\TestsIndentation.cpp" />
     <ClCompile Include="source\tests\TestsMain.cpp" />
     <ClCompile Include="source\tests\TestsNewLine.cpp" />
@@ -92,6 +93,7 @@
     <ClInclude Include="include\Config.hpp" />
     <ClInclude Include="include\Panini.hpp" />
     <ClInclude Include="include\writers\ConsoleWriter.hpp" />
+    <ClInclude Include="include\writers\FileWriter.hpp" />
     <ClInclude Include="include\writers\StringWriter.hpp" />
     <ClInclude Include="include\writers\WriterBase.hpp" />
   </ItemGroup>

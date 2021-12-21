@@ -12,7 +12,7 @@ namespace panini {
 	{
 
 	public:
-		WriterBase(const Config& config = Config())
+		explicit WriterBase(const Config& config = Config())
 			: m_config(config)
 		{
 			m_indentCached.reserve(8 * m_config.chunkIndent.size());
@@ -24,7 +24,10 @@ namespace panini {
 		{
 			if (m_state == State::NewLine)
 			{
-				Write(m_indentCached);
+				if (!m_indentCached.empty())
+				{
+					Write(m_indentCached);
+				}
 
 				m_state = State::Chunk;
 			}

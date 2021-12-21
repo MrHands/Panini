@@ -7,6 +7,7 @@
     <ClCompile Include="source\tests\TestsBraces.cpp" />
     <ClCompile Include="source\tests\TestsStringWriter.cpp" />
     <ClCompile Include="source\tests\TestsConsoleWriter.cpp" />
+    <ClCompile Include="source\tests\TestsFileWriter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="include">
@@ -49,6 +50,9 @@
     </ClInclude>
     <ClInclude Include="include\writers\ConsoleWriter.hpp">
       <Filter>include\writers</Filter>
+    </ClInclude>
+    <ClInclude Include="include\writers\FileWriter.hpp">
+      <Filter>include\commands</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

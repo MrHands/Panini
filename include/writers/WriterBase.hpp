@@ -13,17 +13,17 @@ namespace panini {
 	public:
 		WriterBase(const Config& config = Config())
 			: m_config(config)
-		{}
+		{
+			m_indentCached.reserve(8 * m_config.chunkIndent.size());
+		}
+
 		virtual ~WriterBase() = default;
 
 		WriterBase& operator << (const std::string& chunk)
 		{
 			if (m_state == State::NewLine)
 			{
-				for (int32_t i = 0; i < m_indentCount; ++i)
-				{
-					Write(m_config.chunkIndent);
-				}
+				Write(m_indentCached);
 
 				m_state = State::Chunk;
 			}
@@ -37,12 +37,16 @@ namespace panini {
 		{
 			Write(m_config.chunkNewLine);
 
+			m_state = State::NewLine;
+
 			return *this;
 		}
 
 		WriterBase& operator << (const IndentPush& command)
 		{
 			m_indentCount++;
+
+			CacheIndentation();
 
 			return *this;
 		}
@@ -52,6 +56,8 @@ namespace panini {
 			if (m_indentCount > 0)
 			{
 				m_indentCount--;
+
+				CacheIndentation();
 			}
 
 			return *this;
@@ -60,10 +66,22 @@ namespace panini {
 	protected:
 		virtual void Write(const std::string& chunk) = 0;
 
+	private:
+		void CacheIndentation()
+		{
+			m_indentCached.clear();
+
+			for (int32_t i = 0; i < m_indentCount; ++i)
+			{
+				m_indentCached += m_config.chunkIndent;
+			}
+		}
+
 	protected:
 		Config m_config;
 
 		int32_t m_indentCount = 0;
+		std::string m_indentCached;
 
 		enum class State
 		{

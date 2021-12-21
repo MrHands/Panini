@@ -1,5 +1,5 @@
 #pragma once
 
-#include "commands/Scope.hpp"
+#include "commands/Braces.hpp"
 #include "writers/StringWriter.hpp"
 #include "Config.hpp"

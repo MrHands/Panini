@@ -79,7 +79,7 @@
     <ClCompile Include="source\tests\TestsIndentation.cpp" />
     <ClCompile Include="source\tests\TestsMain.cpp" />
     <ClCompile Include="source\tests\TestsNewLine.cpp" />
-    <ClCompile Include="source\tests\TestsScope.cpp" />
+    <ClCompile Include="source\tests\TestsBraces.cpp" />
     <ClCompile Include="source\tests\TestsWriter.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -87,7 +87,7 @@
     <ClInclude Include="include\commands\IndentPop.hpp" />
     <ClInclude Include="include\commands\IndentPush.hpp" />
     <ClInclude Include="include\commands\NextLine.hpp" />
-    <ClInclude Include="include\commands\Scope.hpp" />
+    <ClInclude Include="include\commands\Braces.hpp" />
     <ClInclude Include="include\Config.hpp" />
     <ClInclude Include="include\Panini.hpp" />
     <ClInclude Include="include\writers\StringWriter.hpp" />

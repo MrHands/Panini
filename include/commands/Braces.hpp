@@ -6,12 +6,12 @@
 namespace panini
 {
 
-	class Scope
+	class Braces
 		: public CommandBase
 	{
 
 	public:
-		Scope(std::function<void(WriterBase&)>&& callback)
+		Braces(std::function<void(WriterBase&)>&& callback)
 			: m_callback(callback)
 		{
 		}

@@ -5,7 +5,7 @@
     <ClCompile Include="source\tests\TestsWriter.cpp" />
     <ClCompile Include="source\tests\TestsNewLine.cpp" />
     <ClCompile Include="source\tests\TestsIndentation.cpp" />
-    <ClCompile Include="source\tests\TestsScope.cpp" />
+    <ClCompile Include="source\tests\TestsBraces.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="include">
@@ -43,7 +43,7 @@
     <ClInclude Include="include\commands\CommandBase.hpp">
       <Filter>include\commands</Filter>
     </ClInclude>
-    <ClInclude Include="include\commands\Scope.hpp">
+    <ClInclude Include="include\commands\Braces.hpp">
       <Filter>include\commands</Filter>
     </ClInclude>
   </ItemGroup>

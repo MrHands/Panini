@@ -9,6 +9,7 @@
     <ClCompile Include="source\tests\TestsConsoleWriter.cpp" />
     <ClCompile Include="source\tests\TestsFileWriter.cpp" />
     <ClCompile Include="source\tests\TestsCompareWriter.cpp" />
+    <ClCompile Include="source\tests\TestsCommentLine.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="include">

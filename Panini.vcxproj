@@ -76,6 +76,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="source\tests\TestsCommentLine.cpp" />
     <ClCompile Include="source\tests\TestsCompareWriter.cpp" />
     <ClCompile Include="source\tests\TestsConsoleWriter.cpp" />
     <ClCompile Include="source\tests\TestsFileWriter.cpp" />

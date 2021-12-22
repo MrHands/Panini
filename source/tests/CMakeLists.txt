@@ -1,7 +1,15 @@
 include_directories("${PANINI_SOURCE_DIR}/include")
 
-add_executable(
-	PaniniTests
+add_executable(PaniniTests
 	TestsBraces.cpp
+	TestsCommentLine.cpp
+	TestsCompareWriter.cpp
+	TestsConsoleWriter.cpp
+	TestsFileWriter.cpp
+	TestsInclude.cpp
+	TestsIndentation.cpp
 	TestsMain.cpp
+	TestsNewLine.cpp
+	TestsScope.cpp
+	TestsStringWriter.cpp
 )

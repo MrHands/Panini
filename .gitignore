@@ -1,7 +1,7 @@
 # Project
 
 build/
-*.txt
+solution/
 
 # Visual Studio
 

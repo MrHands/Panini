@@ -6,7 +6,10 @@ list(APPEND CMAKE_MODULE_PATH "${PANINI_SOURCE_DIR}/cmake")
 project(Panini)
 
 # panini requires at least C++17
+
 set(CMAKE_CXX_STANDARD 17)
+
+# google test dependency
 
 include(FetchContent)
 FetchContent_Declare(
@@ -16,5 +19,12 @@ FetchContent_Declare(
 # prevent overriding the parent project's compiler and linker settings
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
+
+# panini target
+
+add_library(Panini INTERFACE)
+target_include_directories(Panini INTERFACE include/)
+
+# tests
 
 add_subdirectory(source/tests)

@@ -1,7 +1,5 @@
 enable_testing()
 
-include_directories("${PANINI_SOURCE_DIR}/include")
-
 add_executable(
 	PaniniTests
 	TestsBraces.cpp
@@ -18,6 +16,7 @@ add_executable(
 )
 target_link_libraries(
 	PaniniTests
+	Panini
 	gtest_main
 )
 

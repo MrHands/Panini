@@ -8,6 +8,7 @@
 
 namespace panini
 {
+
 	enum class BraceBreakingStyle
 	{
 		Attach, // Open brace on the same line
@@ -17,8 +18,9 @@ namespace panini
 
 	struct Config
 	{
-		BraceBreakingStyle braces = BraceBreakingStyle::Attach;
+		BraceBreakingStyle braces = BraceBreakingStyle::Allman;
 		std::string chunkNewLine = "\n";
 		std::string chunkIndent = "\t";
 	};
-}
+
+};

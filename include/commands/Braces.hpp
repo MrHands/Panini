@@ -50,8 +50,6 @@ namespace panini
 			default:
 				break;
 			}
-
-			
 		}
 
 	private:

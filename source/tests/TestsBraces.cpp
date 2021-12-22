@@ -21,27 +21,14 @@ TEST(Braces, Regular)
 	var i = 0;
 	doSomething(i);
 
-	next->Call([](){
+	next->Call([]()
+	{
 		// result
 	});
 })", t.c_str());
 }
 
-TEST(Braces, Empty)
-{
-	using namespace panini;
-
-	std::string t;
-	StringWriter w(t);
-
-	w << Braces([](WriterBase& w) {
-	});
-
-	EXPECT_STREQ(R"({
-})", t.c_str());
-}
-
-TEST(Braces, Attach)
+TEST(Braces, AttachRegular)
 {
 	using namespace panini;
 
@@ -77,7 +64,24 @@ TEST(Braces, Attach)
 })", t.c_str());
 }
 
-TEST(Braces, Allman)
+
+TEST(Braces, AttachEmpty)
+{
+	using namespace panini;
+
+	Config c;
+	c.braces = panini::BraceBreakingStyle::Attach;
+	std::string t;
+	StringWriter w(t, c);
+
+	w << Braces([](WriterBase& w) {
+	});
+
+	EXPECT_STREQ(R"({
+})", t.c_str());
+}
+
+TEST(Braces, AllmanRegular)
 {
 	using namespace panini;
 
@@ -118,7 +122,23 @@ TEST(Braces, Allman)
 })", t.c_str());
 }
 
-TEST(Braces, Whitesmiths)
+TEST(Braces, AllmanEmpty)
+{
+	using namespace panini;
+
+	Config c;
+	c.braces = panini::BraceBreakingStyle::Allman;
+	std::string t;
+	StringWriter w(t, c);
+
+	w << Braces([](WriterBase& w) {
+	});
+
+	EXPECT_STREQ(R"({
+})", t.c_str());
+}
+
+TEST(Braces, WhitesmithsRegular)
 {
 	using namespace panini;
 
@@ -157,4 +177,20 @@ TEST(Braces, Whitesmiths)
 			}
 		}
 	})", t.c_str());
+}
+
+TEST(Braces, WhitesmithsEmpty)
+{
+	using namespace panini;
+
+	Config c;
+	c.braces = panini::BraceBreakingStyle::Whitesmiths;
+	std::string t;
+	StringWriter w(t, c);
+
+	w << Braces([](WriterBase& w) {
+	});
+
+	EXPECT_STREQ(R"({
+})", t.c_str());
 }

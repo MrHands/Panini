@@ -11,6 +11,7 @@
     <ClCompile Include="source\tests\TestsCompareWriter.cpp" />
     <ClCompile Include="source\tests\TestsCommentLine.cpp" />
     <ClCompile Include="source\tests\TestsInclude.cpp" />
+    <ClCompile Include="source\tests\TestsScope.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="include">

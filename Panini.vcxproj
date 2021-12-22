@@ -71,6 +71,7 @@
     <ClCompile Include="source\tests\TestsMain.cpp" />
     <ClCompile Include="source\tests\TestsNewLine.cpp" />
     <ClCompile Include="source\tests\TestsBraces.cpp" />
+    <ClCompile Include="source\tests\TestsScope.cpp" />
     <ClCompile Include="source\tests\TestsStringWriter.cpp" />
   </ItemGroup>
   <ItemGroup>

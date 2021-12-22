@@ -6,6 +6,7 @@
 #include "commands/IndentPop.hpp"
 #include "commands/IndentPush.hpp"
 #include "commands/NextLine.hpp"
+#include "commands/Scope.hpp"
 
 #include "writers/CompareWriter.hpp"
 #include "writers/ConsoleWriter.hpp"

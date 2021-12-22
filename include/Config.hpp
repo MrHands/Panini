@@ -16,6 +16,13 @@ namespace panini
 		Whitesmiths // New line and indent before brace open and brace close
 	};
 
+	enum class IncludeStyle
+	{
+		DoubleQuotes,
+		SingleQuotes,
+		AngularBrackets
+	};
+
 	struct Config
 	{
 		BraceBreakingStyle braces = BraceBreakingStyle::Allman;

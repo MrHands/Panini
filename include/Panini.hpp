@@ -2,6 +2,7 @@
 
 #include "commands/Braces.hpp"
 #include "commands/CommentLine.hpp"
+#include "commands/Include.hpp"
 #include "commands/IndentPop.hpp"
 #include "commands/IndentPush.hpp"
 #include "commands/NextLine.hpp"

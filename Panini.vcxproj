@@ -66,6 +66,7 @@
     <ClCompile Include="source\tests\TestsCompareWriter.cpp" />
     <ClCompile Include="source\tests\TestsConsoleWriter.cpp" />
     <ClCompile Include="source\tests\TestsFileWriter.cpp" />
+    <ClCompile Include="source\tests\TestsInclude.cpp" />
     <ClCompile Include="source\tests\TestsIndentation.cpp" />
     <ClCompile Include="source\tests\TestsMain.cpp" />
     <ClCompile Include="source\tests\TestsNewLine.cpp" />
@@ -74,6 +75,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\commands\CommandBase.hpp" />
+    <ClInclude Include="include\commands\CommentLine.hpp" />
+    <ClInclude Include="include\commands\Include.hpp" />
     <ClInclude Include="include\commands\IndentPop.hpp" />
     <ClInclude Include="include\commands\IndentPush.hpp" />
     <ClInclude Include="include\commands\NextLine.hpp" />

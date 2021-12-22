@@ -10,6 +10,7 @@
     <ClCompile Include="source\tests\TestsFileWriter.cpp" />
     <ClCompile Include="source\tests\TestsCompareWriter.cpp" />
     <ClCompile Include="source\tests\TestsCommentLine.cpp" />
+    <ClCompile Include="source\tests\TestsInclude.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="include">
@@ -58,6 +59,12 @@
     </ClInclude>
     <ClInclude Include="include\writers\FileWriter.hpp">
       <Filter>include\writers</Filter>
+    </ClInclude>
+    <ClInclude Include="include\commands\CommentLine.hpp">
+      <Filter>include\commands</Filter>
+    </ClInclude>
+    <ClInclude Include="include\commands\Include.hpp">
+      <Filter>include\commands</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -28,12 +28,54 @@ TEST(Braces, Regular)
 })", t.c_str());
 }
 
-TEST(Braces, AttachRegular)
+TEST(Braces, ConfigInheritIsNotAllowed)
 {
 	using namespace panini;
 
 	Config c;
-	c.braces = panini::BraceBreakingStyle::Attach;
+	c.braces = BraceBreakingStyle::Inherit;
+	std::string t;
+	StringWriter w(t, c);
+
+	EXPECT_EQ(BraceBreakingStyle::Allman, w.GetBraceStyle());
+}
+
+TEST(Braces, OverrideAttachRegular)
+{
+	using namespace panini;
+
+	std::string t;
+	StringWriter w(t);
+
+	w << "std::sort(cards.begin(), cards.end(), [](const Card& left, const Card& right) " << Braces([](WriterBase& w) {
+		w << "return left.face < right.face;" << NextLine();
+	}, BraceBreakingStyle::Attach) << ");";
+
+	EXPECT_STREQ(R"(std::sort(cards.begin(), cards.end(), [](const Card& left, const Card& right) {
+	return left.face < right.face;
+});)", t.c_str());
+}
+
+TEST(Braces, OverrideAttachEmpty)
+{
+	using namespace panini;
+
+	std::string t;
+	StringWriter w(t);
+
+	w << Braces([](WriterBase& w) {
+	}, BraceBreakingStyle::Attach);
+
+	EXPECT_STREQ(R"({
+})", t.c_str());
+}
+
+TEST(Braces, ConfigAttachRegular)
+{
+	using namespace panini;
+
+	Config c;
+	c.braces = BraceBreakingStyle::Attach;
 	std::string t;
 	StringWriter w(t, c);
 
@@ -64,13 +106,12 @@ TEST(Braces, AttachRegular)
 })", t.c_str());
 }
 
-
-TEST(Braces, AttachEmpty)
+TEST(Braces, ConfigAttachEmpty)
 {
 	using namespace panini;
 
 	Config c;
-	c.braces = panini::BraceBreakingStyle::Attach;
+	c.braces = BraceBreakingStyle::Attach;
 	std::string t;
 	StringWriter w(t, c);
 
@@ -81,12 +122,43 @@ TEST(Braces, AttachEmpty)
 })", t.c_str());
 }
 
-TEST(Braces, AllmanRegular)
+TEST(Braces, OverrideAllmanRegular)
+{
+	using namespace panini;
+
+	std::string t;
+	StringWriter w(t);
+
+	w << "void reportPictures(int32_t spiderManCount)" << Braces([](WriterBase& w) {
+		w << "transferMoney(spiderManCount * 1000);" << NextLine();
+	}, BraceBreakingStyle::Allman);
+
+	EXPECT_STREQ(R"(void reportPictures(int32_t spiderManCount)
+{
+	transferMoney(spiderManCount * 1000);
+})", t.c_str());
+}
+
+TEST(Braces, OverrideAllmanEmpty)
+{
+	using namespace panini;
+
+	std::string t;
+	StringWriter w(t);
+
+	w << Braces([](WriterBase& w) {
+	}, BraceBreakingStyle::Allman);
+
+	EXPECT_STREQ(R"({
+})", t.c_str());
+}
+
+TEST(Braces, ConfigAllmanRegular)
 {
 	using namespace panini;
 
 	Config c;
-	c.braces = panini::BraceBreakingStyle::Allman;
+	c.braces = BraceBreakingStyle::Allman;
 	std::string t;
 	StringWriter w(t, c);
 
@@ -122,12 +194,12 @@ TEST(Braces, AllmanRegular)
 })", t.c_str());
 }
 
-TEST(Braces, AllmanEmpty)
+TEST(Braces, ConfigAllmanEmpty)
 {
 	using namespace panini;
 
 	Config c;
-	c.braces = panini::BraceBreakingStyle::Allman;
+	c.braces = BraceBreakingStyle::Allman;
 	std::string t;
 	StringWriter w(t, c);
 
@@ -138,12 +210,48 @@ TEST(Braces, AllmanEmpty)
 })", t.c_str());
 }
 
-TEST(Braces, WhitesmithsRegular)
+TEST(Braces, OverrideWhitesmithsRegular)
+{
+	using namespace panini;
+
+	std::string t;
+	StringWriter w(t);
+
+	w << "std::vector<Movie> getMoviesToWatch()" << Braces([](WriterBase& w) {
+		w << "return std::vector<Movie>(" << Braces([](WriterBase& w) {
+			w << R"({ "John Wick" }, { "John Wick 2" }, { "John Wick 3" }, { "John Wick 4" })" << NextLine();
+		}) << ");" << NextLine();
+	}, BraceBreakingStyle::Whitesmiths);
+
+	EXPECT_STREQ(R"(std::vector<Movie> getMoviesToWatch()
+	{
+	return std::vector<Movie>(
+	{
+		{ "John Wick" }, { "John Wick 2" }, { "John Wick 3" }, { "John Wick 4" }
+	});
+	})", t.c_str());
+}
+
+TEST(Braces, OverrideWhitesmithsEmpty)
+{
+	using namespace panini;
+
+	std::string t;
+	StringWriter w(t);
+
+	w << Braces([](WriterBase& w) {
+	}, BraceBreakingStyle::Whitesmiths);
+
+	EXPECT_STREQ(R"({
+})", t.c_str());
+}
+
+TEST(Braces, ConfigWhitesmithsRegular)
 {
 	using namespace panini;
 
 	Config c;
-	c.braces = panini::BraceBreakingStyle::Whitesmiths;
+	c.braces = BraceBreakingStyle::Whitesmiths;
 	std::string t;
 	StringWriter w(t, c);
 
@@ -179,12 +287,12 @@ TEST(Braces, WhitesmithsRegular)
 	})", t.c_str());
 }
 
-TEST(Braces, WhitesmithsEmpty)
+TEST(Braces, ConfigWhitesmithsEmpty)
 {
 	using namespace panini;
 
 	Config c;
-	c.braces = panini::BraceBreakingStyle::Whitesmiths;
+	c.braces = BraceBreakingStyle::Whitesmiths;
 	std::string t;
 	StringWriter w(t, c);
 

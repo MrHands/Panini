@@ -6,7 +6,8 @@
 #include "commands/NextLine.hpp"
 #include "Config.hpp"
 
-namespace panini {
+namespace panini
+{
 
 	class WriterBase
 	{
@@ -16,6 +17,13 @@ namespace panini {
 			: m_config(config)
 		{
 			m_indentCached.reserve(8 * m_config.chunkIndent.size());
+
+			// inherit is not allowed as the brace breaking style on the config
+
+			if (m_config.braces == BraceBreakingStyle::Inherit)
+			{
+				m_config.braces = BraceBreakingStyle::Allman;
+			}
 		}
 
 		virtual ~WriterBase() = default;

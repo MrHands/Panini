@@ -11,6 +11,7 @@ namespace panini
 
 	enum class BraceBreakingStyle
 	{
+		Inherit, // Inherit setting from the config
 		Attach, // Open brace on the same line
 		Allman, // New line before brace open
 		Whitesmiths // New line and indent before brace open and brace close

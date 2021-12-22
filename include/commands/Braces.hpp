@@ -11,16 +11,22 @@ namespace panini
 	{
 
 	public:
-		Braces(std::function<void(WriterBase&)>&& callback)
+		Braces(std::function<void(WriterBase&)>&& callback, BraceBreakingStyle braceStyle = BraceBreakingStyle::Inherit)
 			: m_callback(callback)
+			, m_braceStyle(braceStyle)
 		{
 		}
 
 		virtual void Visit(WriterBase& writer) final
 		{
+			BraceBreakingStyle braceStyle =
+				m_braceStyle == BraceBreakingStyle::Inherit
+					? writer.GetBraceStyle()
+					: m_braceStyle;
+
 			const bool wasNewLine = writer.IsOnNewLine();
 
-			switch (writer.GetBraceStyle())
+			switch (braceStyle)
 			{
 
 			case BraceBreakingStyle::Attach:
@@ -69,6 +75,7 @@ namespace panini
 
 	private:
 		std::function<void(WriterBase&)> m_callback;
+		BraceBreakingStyle m_braceStyle;
 
 	};
 

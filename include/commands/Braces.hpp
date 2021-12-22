@@ -18,6 +18,8 @@ namespace panini
 
 		virtual void Visit(WriterBase& writer) final
 		{
+			const bool wasNewLine = writer.IsOnNewLine();
+
 			switch (writer.GetBraceStyle())
 			{
 
@@ -31,7 +33,11 @@ namespace panini
 
 			case BraceBreakingStyle::Allman:
 				{
-					writer << NextLine();
+					if (!wasNewLine)
+					{
+						writer << NextLine();
+					}
+
 					writer << "{" << IndentPush() << NextLine();
 					m_callback(writer);
 					writer << IndentPop() << "}";
@@ -40,10 +46,19 @@ namespace panini
 
 			case BraceBreakingStyle::Whitesmiths:
 				{
-					writer << NextLine();
-					writer << IndentPush() << "{" << NextLine();
+					if (!wasNewLine)
+					{
+						writer << NextLine() << IndentPush();
+					}
+
+					writer << "{" << NextLine();
 					m_callback(writer);
-					writer << "}" << IndentPop();
+					writer << "}";
+
+					if (!wasNewLine)
+					{
+						writer << IndentPop();
+					}
 
 				} break;
 

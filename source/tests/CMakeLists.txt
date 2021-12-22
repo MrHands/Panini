@@ -1,6 +1,9 @@
+enable_testing()
+
 include_directories("${PANINI_SOURCE_DIR}/include")
 
-add_executable(PaniniTests
+add_executable(
+	PaniniTests
 	TestsBraces.cpp
 	TestsCommentLine.cpp
 	TestsCompareWriter.cpp
@@ -13,3 +16,10 @@ add_executable(PaniniTests
 	TestsScope.cpp
 	TestsStringWriter.cpp
 )
+target_link_libraries(
+	PaniniTests
+	gtest_main
+)
+
+include(GoogleTest)
+gtest_discover_tests(PaniniTests)

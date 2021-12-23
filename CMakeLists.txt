@@ -68,12 +68,3 @@ if(PANINI_BUILD_TESTS)
 	enable_testing()
 	add_subdirectory(source/tests)
 endif()
-
-# install
-
-if(PANINI_INSTALL)
-	install(
-		DIRECTORY ${PANINI_INCLUDE_BUILD_DIR}
-		DESTINATION ${PANINI_INCLUDE_INSTALL_DIR}
-	)
-endif()

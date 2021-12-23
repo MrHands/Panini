@@ -57,6 +57,41 @@ target_include_directories(
 )
 target_compile_features(${PROJECT_NAME}	INTERFACE cxx_std_17)
 
+# reference project to show headers
+
+if(PANINI_BUILDING)
+	file(
+		GLOB
+		PANINI_INCLUDES
+		${${PROJECT_NAME}_SOURCE_DIR}/include/*.hpp
+	)
+	file(
+		GLOB
+		PANINI_INCLUDES_COMMANDS
+		${${PROJECT_NAME}_SOURCE_DIR}/include/commands/*.hpp
+	)
+	file(
+		GLOB
+		PANINI_INCLUDES_WRITERS
+		${${PROJECT_NAME}_SOURCE_DIR}/include/writers/*.hpp
+	)
+
+	add_executable(
+		HeaderOnlyLibraryProject
+		source/HeaderOnlyLibraryProject.cpp
+		${PANINI_INCLUDES}
+		${PANINI_INCLUDES_COMMANDS}
+		${PANINI_INCLUDES_WRITERS}
+	)
+	target_link_libraries(
+		HeaderOnlyLibraryProject
+		panini
+	)
+	source_group("include" FILES ${PANINI_INCLUDES})
+	source_group("include/commands" FILES ${PANINI_INCLUDES_COMMANDS})
+	source_group("include/writers" FILES ${PANINI_INCLUDES_WRITERS})
+endif()
+
 # tests
 
 if(PANINI_BUILD_TESTS)

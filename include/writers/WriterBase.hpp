@@ -8,7 +8,13 @@
 
 namespace panini
 {
+	/*!
+		\class WriterBase
+		\brief Base class for writers.
 
+		Writers take chunks and commands as input and process them to output. You can
+		configure them with a @ref Config instance.
+	*/
 	class WriterBase
 	{
 
@@ -106,7 +112,7 @@ namespace panini
 			}
 		}
 
-	protected:
+	private:
 		Config m_config;
 
 		int32_t m_indentCount = 0;

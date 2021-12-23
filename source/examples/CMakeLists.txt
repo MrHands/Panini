@@ -1,1 +1,2 @@
+add_subdirectory(GenerateXml)
 add_subdirectory(HelloWorld)

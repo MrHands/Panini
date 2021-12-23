@@ -16,7 +16,7 @@ namespace panini
 			: WriterBase(config)
 			, m_fileName(fileName)
 		{
-			std::ifstream stream(m_fileName.c_str());
+			std::ifstream stream(m_fileName.c_str(), std::ios::binary);
 			if (stream.is_open())
 			{
 				stream >> m_writtenPrevious;
@@ -41,7 +41,7 @@ namespace panini
 				return true;
 			}
 
-			std::ofstream stream(m_fileName);
+			std::ofstream stream(m_fileName, std::ios::binary);
 			if (!stream.is_open())
 			{
 				return false;

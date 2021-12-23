@@ -5,6 +5,7 @@
 #include "commands/Include.hpp"
 #include "commands/IndentPop.hpp"
 #include "commands/IndentPush.hpp"
+#include "commands/Label.hpp"
 #include "commands/NextLine.hpp"
 #include "commands/Scope.hpp"
 

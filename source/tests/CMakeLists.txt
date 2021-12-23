@@ -14,7 +14,7 @@ add_executable(
 )
 target_link_libraries(
 	PaniniTests
-	Panini
+	panini
 	gtest_main
 )
 

@@ -9,7 +9,6 @@
 namespace panini
 {
 	/*!
-		\class WriterBase
 		\brief Base class for writers.
 
 		Writers take chunks and commands as input and process them to output. You can
@@ -19,6 +18,9 @@ namespace panini
 	{
 
 	public:
+		/*!
+			Constructs a writer with an optional configuration instance.
+		*/
 		explicit WriterBase(const Config& config = Config())
 			: m_config(config)
 		{
@@ -34,6 +36,13 @@ namespace panini
 
 		virtual ~WriterBase() = default;
 
+		/*!
+			Write a chunk to the output.
+
+			Will add indentation if the writer is on a new line.
+
+			\return Reference to itself to allow for chaining.
+		*/
 		WriterBase& operator << (const std::string& chunk)
 		{
 			if (m_state == State::NewLine)
@@ -51,6 +60,13 @@ namespace panini
 			return *this;
 		}
 
+		/*!
+			Write a new line chunk to the output.
+
+			New line chunks can be configured with the @ref Config.
+
+			\return Reference to itself to allow for chaining.
+		*/
 		WriterBase& operator << (const NextLine& command)
 		{
 			Write(m_config.chunkNewLine);
@@ -60,6 +76,13 @@ namespace panini
 			return *this;
 		}
 
+		/*!
+			Increment the level of indentation.
+
+			Indentation is applied only when the writer is on a new line.
+
+			\return Reference to itself to allow for chaining.
+		*/
 		WriterBase& operator << (const IndentPush& command)
 		{
 			m_indentCount++;
@@ -69,6 +92,14 @@ namespace panini
 			return *this;
 		}
 
+		/*!
+			Decrement the level of indentation.
+
+			Indentation is applied when the writer is on a new line. The level
+			of indentation cannot go negative.
+
+			\return Reference to itself to allow for chaining.
+		*/
 		WriterBase& operator << (const IndentPop& command)
 		{
 			if (m_indentCount > 0)
@@ -81,6 +112,15 @@ namespace panini
 			return *this;
 		}
 
+		/*!
+			Apply a command.
+
+			\warning Commands are moved instead of copied!
+
+			Visit a command instance and allow it to modify the output.
+
+			\return Reference to itself to allow for chaining.
+		*/
 		WriterBase& operator << (CommandBase&& command)
 		{
 			command.Visit(*this);
@@ -88,17 +128,30 @@ namespace panini
 			return *this;
 		}
 
+		/*!
+			Check whether the writer is currently on a new line.
+
+			\return True if the writer is on a new line.
+		*/
 		bool IsOnNewLine() const
 		{
 			return m_state == State::NewLine;
 		}
 
+		/*!
+			Get the current brace breaking style.
+
+			\return Brace breaking style.
+		*/
 		BraceBreakingStyle GetBraceStyle() const
 		{
 			return m_config.braces;
 		}
 
 	protected:
+		/*!
+			Interface method for writing chunks to the output.
+		*/
 		virtual void Write(const std::string& chunk) = 0;
 
 	private:

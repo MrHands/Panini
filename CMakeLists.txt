@@ -42,6 +42,11 @@ option(
 	${PANINI_BUILDING}
 )
 option(
+	PANINI_BUILD_DOCS
+	"Build the documentation with Doxygen"
+	${PANINI_BUILDING}
+)
+option(
 	PANINI_INSTALL
 	"Install CMake targets during the install step"
 	${PANINI_BUILDING}
@@ -83,6 +88,14 @@ target_include_directories(
 		$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
 )
 target_compile_features(${PROJECT_NAME}	INTERFACE cxx_std_17)
+
+# documentation
+
+if(PANINI_BUILD_DOCS)
+	set(DOXYGEN_SKIP_DOT TRUE)
+	find_package(Doxygen)
+	add_subdirectory(source/documentation)
+endif()
 
 # tests
 

@@ -46,10 +46,12 @@ option(
 	${PANINI_BUILDING}
 )
 
-# panini target
+# target
 
 add_library(Panini INTERFACE)
-target_include_directories(Panini INTERFACE include/)
+target_include_directories(
+	Panini
+	INTERFACE include/)
 
 # tests
 
@@ -67,4 +69,10 @@ if(PANINI_BUILD_TESTS)
 
 	enable_testing()
 	add_subdirectory(source/tests)
+endif()
+
+# examples
+
+if(PANINI_BUILD_EXAMPLES)
+	add_subdirectory(source/examples)
 endif()

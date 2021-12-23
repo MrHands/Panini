@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.18)
+cmake_minimum_required(VERSION 3.19)
 
 # panini requires at least C++17
 
@@ -55,19 +55,22 @@ option(
 # target
 
 file(
-	GLOB
+	GLOB CONFIGURE_DEPENDS
 	PANINI_INCLUDES
-	${${PROJECT_NAME}_SOURCE_DIR}/include/*.hpp
+		$<BUILD_INTERFACE:${${PROJECT_NAME}_SOURCE_DIR}/include/*.hpp>
+		$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/include/*.hpp>
 )
 file(
-	GLOB
+	GLOB CONFIGURE_DEPENDS
 	PANINI_INCLUDES_COMMANDS
-	${${PROJECT_NAME}_SOURCE_DIR}/include/commands/*.hpp
+		$<BUILD_INTERFACE:${${PROJECT_NAME}_SOURCE_DIR}/include/commands/*.hpp>
+		$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/include/commands/*.hpp>
 )
 file(
-	GLOB
+	GLOB CONFIGURE_DEPENDS
 	PANINI_INCLUDES_WRITERS
-	${${PROJECT_NAME}_SOURCE_DIR}/include/writers/*.hpp
+		$<BUILD_INTERFACE:${${PROJECT_NAME}_SOURCE_DIR}/include/writers/*.hpp>
+		$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/include/writers/*.hpp>
 )
 
 add_library(
@@ -76,16 +79,17 @@ add_library(
 	${PANINI_INCLUDES_COMMANDS}
 	${PANINI_INCLUDES_WRITERS}
 )
+
 set_target_properties(${PROJECT_NAME} PROPERTIES FOLDER "Panini")
+
 source_group("include" FILES ${PANINI_INCLUDES})
 source_group("include/commands" FILES ${PANINI_INCLUDES_COMMANDS})
 source_group("include/writers" FILES ${PANINI_INCLUDES_WRITERS})
 
 target_include_directories(
-	${PROJECT_NAME}
-	INTERFACE
-		$<BUILD_INTERFACE:${${PROJECT_NAME}_SOURCE_DIR}/include>
-		$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
+	${PROJECT_NAME} INTERFACE
+		$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+		$<INSTALL_INTERFACE:include>
 )
 target_compile_features(${PROJECT_NAME}	INTERFACE cxx_std_17)
 

@@ -1,26 +1,22 @@
 file(
-	GLOB
+	GLOB_RECURSE
 	PANINI_DOXYGEN_SOURCES
-	${PANINI_SOURCE_DIR}/include/**/*.hpp
+	${${PROJECT_NAME}_SOURCE_DIR}/include/*.hpp
 )
 
 foreach(path IN LISTS PANINI_DOXYGEN_SOURCES)
 	set(
 		PANINI_DOXYGEN_INPUT
-		"${PANINI_DOXYGEN_INPUT} \\\n\"${PANINI_SOURCE_DIR}/${path}\""
+		"${PANINI_DOXYGEN_INPUT} \\\n\"${path}\""
 	)
 endforeach()
+message(INFO "${PANINI_DOXYGEN_INPUT}")
 
-configure_file(
-	Doxyfile.in
-	Doxyfile
-	@ONLY
-)
+configure_file(Doxyfile.in Doxyfile @ONLY)
 
 add_custom_target(
 	documentation
 	ALL "${DOXYGEN_EXECUTABLE}"
-	WORKING_DIRECTORY "${PANINI_SOURCE_DIR}/documentation"
 	COMMENT "Generating HTML documentation..." VERBATIM
 )
 

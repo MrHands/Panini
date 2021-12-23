@@ -10,7 +10,6 @@ foreach(path IN LISTS PANINI_DOXYGEN_SOURCES)
 		"${PANINI_DOXYGEN_INPUT} \\\n\"${path}\""
 	)
 endforeach()
-message(INFO "${PANINI_DOXYGEN_INPUT}")
 
 configure_file(Doxyfile.in Doxyfile @ONLY)
 

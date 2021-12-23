@@ -17,6 +17,7 @@ target_link_libraries(
 	panini
 	gtest_main
 )
+set_target_properties(PaniniTests PROPERTIES FOLDER "Panini/Tests")
 
 include(GoogleTest)
 gtest_discover_tests(PaniniTests)

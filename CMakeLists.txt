@@ -11,6 +11,7 @@ project(
 )
 set(CMAKE_CXX_STANDARD 17)
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
 # check if we're building the library or including it
 
@@ -70,6 +71,7 @@ add_library(
 	${PANINI_INCLUDES_COMMANDS}
 	${PANINI_INCLUDES_WRITERS}
 )
+set_target_properties(${PROJECT_NAME} PROPERTIES FOLDER "Panini")
 source_group("include" FILES ${PANINI_INCLUDES})
 source_group("include/commands" FILES ${PANINI_INCLUDES_COMMANDS})
 source_group("include/writers" FILES ${PANINI_INCLUDES_WRITERS})

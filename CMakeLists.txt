@@ -55,22 +55,19 @@ option(
 # target
 
 file(
-	GLOB CONFIGURE_DEPENDS
-	PANINI_INCLUDES
-		$<BUILD_INTERFACE:${${PROJECT_NAME}_SOURCE_DIR}/include/*.hpp>
-		$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/include/*.hpp>
+	GLOB PANINI_INCLUDES
+	CONFIGURE_DEPENDS
+	${${PROJECT_NAME}_SOURCE_DIR}/include/*.hpp
 )
 file(
-	GLOB CONFIGURE_DEPENDS
-	PANINI_INCLUDES_COMMANDS
-		$<BUILD_INTERFACE:${${PROJECT_NAME}_SOURCE_DIR}/include/commands/*.hpp>
-		$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/include/commands/*.hpp>
+	GLOB PANINI_INCLUDES_COMMANDS
+	CONFIGURE_DEPENDS
+	${${PROJECT_NAME}_SOURCE_DIR}/include/commands/*.hpp
 )
 file(
-	GLOB CONFIGURE_DEPENDS
-	PANINI_INCLUDES_WRITERS
-		$<BUILD_INTERFACE:${${PROJECT_NAME}_SOURCE_DIR}/include/writers/*.hpp>
-		$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/include/writers/*.hpp>
+	GLOB PANINI_INCLUDES_WRITERS
+	CONFIGURE_DEPENDS
+	${${PROJECT_NAME}_SOURCE_DIR}/include/writers/*.hpp
 )
 
 add_library(
@@ -98,7 +95,9 @@ target_compile_features(${PROJECT_NAME}	INTERFACE cxx_std_17)
 if(PANINI_BUILD_DOCS)
 	set(DOXYGEN_SKIP_DOT TRUE)
 	find_package(Doxygen)
-	add_subdirectory(source/documentation)
+	if(DOXYGEN_FOUND)
+		add_subdirectory(source/documentation)
+	endif()
 endif()
 
 # tests

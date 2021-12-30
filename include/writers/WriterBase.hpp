@@ -83,7 +83,6 @@ namespace panini
 
 			\return Reference to itself to allow for chaining.
 		*/
-
 		inline WriterBase& operator << (const char* chunkString)
 		{
 			return *this << std::string(chunkString);
@@ -165,13 +164,13 @@ namespace panini
 		}
 
 		/*!
-			Apply a command.
+			Visit a command.
 
 			\warning Commands are moved instead of copied!
 
-			Visit a command instance and allow it to modify the output.
+			Commands are used to output chunks and modify the writer's state.
 
-			\return Reference to itself to allow for chaining.
+			\return Reference to itself to allow for chaining
 		*/
 		inline WriterBase& operator << (CommandBase&& command)
 		{
@@ -181,9 +180,10 @@ namespace panini
 		}
 
 		/*!
-			Check whether the writer is currently on a new line.
+			Check whether the writer is on a new line and waiting for new
+			chunks.
 
-			\return True if the writer is on a new line.
+			\return True if the writer is on a new line
 		*/
 		inline bool IsOnNewLine() const
 		{
@@ -201,8 +201,8 @@ namespace panini
 		}
 
 		/*!
-			Set the writer's state to be inside a comment block, which will
-			add " * " after the indentation of a new line.
+			Set the writer to be inside a comment block, which will add " * "
+			after the indentation of a new line.
 		*/
 		inline void SetIsInCommentBlock(bool value)
 		{
@@ -214,7 +214,7 @@ namespace panini
 
 	protected:
 		/*!
-			Interface method for writing chunks to the output.
+			Interface for writing chunks to the output.
 		*/
 		virtual void Write(const std::string& chunk) = 0;
 

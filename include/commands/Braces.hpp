@@ -10,7 +10,7 @@ namespace panini
 		\brief Outputs opening and closing curly braces.
 
 		Adding opening and closing braces to the output can be frustrating
-		to do by hand because you have to take the \ref BraceBreakingStyle and
+		to do by hand because you have to take the brace breaking style and
 		indentation into account. This command handles that for you.
 
 		If you want to prefix the opening brace with a chunk, it may be

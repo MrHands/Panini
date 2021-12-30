@@ -21,7 +21,7 @@ namespace panini
 		{
 			BraceBreakingStyle braceStyle =
 				m_braceStyle == BraceBreakingStyle::Inherit
-					? writer.GetBraceStyle()
+					? writer.GetBraceBreakingStyle()
 					: m_braceStyle;
 
 			const bool wasNewLine = writer.IsOnNewLine();

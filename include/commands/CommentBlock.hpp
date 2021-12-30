@@ -21,6 +21,7 @@ namespace panini
 		\code{.cpp}
 			writer << CommentBlock([](WriterBase& writer) {
 				writer << "EXAMPLE:" << NextLine();
+				writer << NextLine();
 				writer << "Writing beautiful multi-line comments is easy" << NextLine();
 				writer << "When you use a comment block command!";
 			});
@@ -30,6 +31,7 @@ namespace panini
 
 		\code{.cpp}
 			/* EXAMPLE:
+			 *
 			 * Writing beautiful multi-line comments is easy
 			 * When you use a comment block command!
 			 *\/

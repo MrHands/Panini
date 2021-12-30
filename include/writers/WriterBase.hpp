@@ -195,7 +195,7 @@ namespace panini
 
 			\return Brace breaking style.
 		*/
-		inline BraceBreakingStyle GetBraceStyle() const
+		inline BraceBreakingStyle GetBraceBreakingStyle() const
 		{
 			return m_config.braces;
 		}

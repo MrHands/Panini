@@ -28,18 +28,6 @@ TEST(Braces, Regular)
 })", t.c_str());
 }
 
-TEST(Braces, ConfigInheritIsNotAllowed)
-{
-	using namespace panini;
-
-	Config c;
-	c.braces = BraceBreakingStyle::Inherit;
-	std::string t;
-	StringWriter w(t, c);
-
-	EXPECT_EQ(BraceBreakingStyle::Allman, w.GetBraceStyle());
-}
-
 TEST(Braces, OverrideAttachRegular)
 {
 	using namespace panini;

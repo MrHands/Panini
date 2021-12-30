@@ -12,7 +12,7 @@ namespace panini
 		\brief Base class for writers.
 
 		Writers take chunks and commands as input and process them to output. You can
-		configure them with a @ref Config instance.
+		configure them with a \ref Config instance.
 	*/
 	class WriterBase
 	{
@@ -166,6 +166,10 @@ namespace panini
 			return m_config.braces;
 		}
 
+		/*!
+			Set the writer's state to be inside a comment block, which will
+			add " * " after the indentation of a new line.
+		*/
 		void SetIsInCommentBlock(bool value)
 		{
 			m_isInCommentBlock = value;

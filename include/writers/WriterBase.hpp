@@ -71,6 +71,8 @@ namespace panini
 
 			Write(chunk);
 
+			m_lineChunkCountWritten += chunk.size();
+
 			return *this;
 		}
 
@@ -96,9 +98,19 @@ namespace panini
 		*/
 		inline WriterBase& operator << (const NextLine& command)
 		{
+			if (m_lineChunkCountWritten == 0 &&
+				m_isInCommentBlock)
+			{
+				// edge-case for empty lines within a comment block
+
+				Write(" *");
+			}
+
 			Write(m_config.chunkNewLine);
 
 			m_state = State::NewLine;
+
+			m_lineChunkCountWritten = 0;
 
 			return *this;
 		}
@@ -219,6 +231,8 @@ namespace panini
 
 	private:
 		Config m_config;
+
+		size_t m_lineChunkCountWritten = 0;
 
 		int32_t m_lineIndentCount = 0;
 		std::string m_lineIndentCached;

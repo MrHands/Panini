@@ -57,3 +57,22 @@ TEST(CommentBlock, Indentation)
 		 * 	[ ] Arm nukes
 		 */)", t.c_str());
 }
+
+TEST(CommentBlock, EmptyLines)
+{
+	using namespace panini;
+
+	std::string t;
+	StringWriter w(t);
+
+	w << CommentBlock([](WriterBase& w) {
+		w << "First:" << NextLine();
+		w << NextLine();
+		w << "Third:";
+	});
+
+	EXPECT_STREQ(R"(/* First:
+ *
+ * Third:
+ */)", t.c_str());
+}

@@ -57,7 +57,7 @@ namespace panini
 			copies the brace breaking style from the writer, otherwise it will
 			be overridden for this command only.
 		*/
-		Scope(std::string&& name, std::function<void(WriterBase&)>&& callback, BraceBreakingStyle style = BraceBreakingStyle::Inherit)
+		inline Scope(std::string&& name, std::function<void(WriterBase&)>&& callback, BraceBreakingStyle style = BraceBreakingStyle::Inherit)
 			: m_name(name)
 			, m_callback(callback)
 			, m_style(style)
@@ -75,14 +75,14 @@ namespace panini
 			copies the brace breaking style from the writer, otherwise it will
 			be overridden for this command only.
 		*/
-		Scope(const std::string& name, std::function<void(WriterBase&)>&& callback, BraceBreakingStyle braceStyle = BraceBreakingStyle::Inherit)
+		inline Scope(const std::string& name, std::function<void(WriterBase&)>&& callback, BraceBreakingStyle braceStyle = BraceBreakingStyle::Inherit)
 			: m_name(name)
 			, m_callback(callback)
 			, m_style(braceStyle)
 		{
 		}
 
-		virtual void Visit(WriterBase& writer) final
+		inline virtual void Visit(WriterBase& writer) final
 		{
 			BraceBreakingStyle braceStyle =
 				m_style == BraceBreakingStyle::Inherit

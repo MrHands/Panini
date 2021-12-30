@@ -7,13 +7,14 @@
 #include <string>
 
 /*!
-	\file
-	\defgroup Enums Global enumeration values.
+	\file Config.hpp
+	\defgroup Enums Global enumeration values
 */
 
 namespace panini
 {
 	/*!
+		\enum BraceBreakingStyle
 		\brief Brace breaking style to use when writing to output.
 		\ingroup Enums
 	*/
@@ -26,6 +27,7 @@ namespace panini
 	};
 
 	/*!
+		\enum IncludeStyle
 		\brief Include style to use when writing to output.
 		\ingroup Enums
 	*/
@@ -40,13 +42,24 @@ namespace panini
 		\brief Global configuration applied to writers.
 
 		Configuration is applied to all commands when they are processed by
-		@ref WriterBase. Some commands can override these configuration
+		\ref WriterBase. Some commands can override these configuration
 		settings.
 	*/
 	struct Config
 	{
+		/*!
+			Brace breaking style to use when outputting chunks.
+		*/
 		BraceBreakingStyle braces = BraceBreakingStyle::Allman;
+
+		/*!
+			Chunk to output on a new line.
+		*/
 		std::string chunkNewLine = "\n";
+
+		/*!
+			Chunk to output when indenting.
+		*/
 		std::string chunkIndent = "\t";
 	};
 

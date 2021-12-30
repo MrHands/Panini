@@ -60,13 +60,13 @@ namespace panini
 			copies the brace breaking style from the writer, otherwise it will
 			be overridden for this command only.
 		*/
-		Braces(std::function<void(WriterBase&)>&& callback, BraceBreakingStyle braceStyle = BraceBreakingStyle::Inherit)
+		inline Braces(std::function<void(WriterBase&)>&& callback, BraceBreakingStyle braceStyle = BraceBreakingStyle::Inherit)
 			: m_callback(callback)
 			, m_braceStyle(braceStyle)
 		{
 		}
 
-		virtual void Visit(WriterBase& writer) final
+		inline virtual void Visit(WriterBase& writer) final
 		{
 			BraceBreakingStyle braceStyle =
 				m_braceStyle == BraceBreakingStyle::Inherit

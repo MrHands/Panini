@@ -42,21 +42,20 @@ namespace panini
 	{
 
 	public:
-		CommentBlock() = delete;
-
 		/*!
-			Construct a CommentBlock with a callback.
+			Construct a CommentBlock with a callback that is moved into the
+			instance.
 
 			The callback is called when the command is visited by a
 			\ref WriterBase. Chunks output inside the callback will be prefixed
 			with the C multi-line comment syntax.
 		*/
-		explicit CommentBlock(std::function<void(WriterBase&)>&& callback)
+		inline explicit CommentBlock(std::function<void(WriterBase&)>&& callback)
 			: m_callback(callback)
 		{
 		}
 
-		virtual void Visit(WriterBase& writer) final
+		inline virtual void Visit(WriterBase& writer) final
 		{
 			writer << "/* ";
 			writer.SetIsInCommentBlock(true);

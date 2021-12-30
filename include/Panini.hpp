@@ -1,6 +1,7 @@
 #pragma once
 
 #include "commands/Braces.hpp"
+#include "commands/CommentBlock.hpp"
 #include "commands/CommentLine.hpp"
 #include "commands/Include.hpp"
 #include "commands/IndentPop.hpp"

@@ -1,6 +1,7 @@
 add_executable(
 	PaniniTests
 	TestsBraces.cpp
+	TestsCommentBlock.cpp
 	TestsCommentLine.cpp
 	TestsCompareWriter.cpp
 	TestsConsoleWriter.cpp

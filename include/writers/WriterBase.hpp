@@ -53,6 +53,11 @@ namespace panini
 				}
 
 				m_state = State::Chunk;
+
+				if (m_isInCommentBlock)
+				{
+					Write(" * ");
+				}
 			}
 
 			Write(chunk);
@@ -161,6 +166,11 @@ namespace panini
 			return m_config.braces;
 		}
 
+		void SetIsInCommentBlock(bool value)
+		{
+			m_isInCommentBlock = value;
+		}
+
 	protected:
 		/*!
 			Interface method for writing chunks to the output.
@@ -190,6 +200,8 @@ namespace panini
 			Chunk
 		};
 		State m_state = State::NewLine;
+
+		bool m_isInCommentBlock = false;
 
 	};
 

@@ -37,7 +37,7 @@ namespace panini
 		virtual ~WriterBase() = default;
 
 		/*!
-			Write a chunk to the output.
+			Write an `std::string` chunk to the output.
 
 			Will add indentation if the writer is on a new line.
 
@@ -58,6 +58,19 @@ namespace panini
 			Write(chunk);
 
 			return *this;
+		}
+
+		/*!
+			Write a C-style string chunk to the output.
+
+			Will add indentation if the writer is on a new line.
+
+			\return Reference to itself to allow for chaining.
+		*/
+
+		WriterBase& operator << (const char* chunkString)
+		{
+			return *this << std::string(chunkString);
 		}
 
 		/*!

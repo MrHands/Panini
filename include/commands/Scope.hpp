@@ -10,13 +10,13 @@ namespace panini
 	/*!
 		\brief Output a scope with braces.
 
-		Scopes have a named chunk and opening curly braces. You can override
-		the \ref BraceBreakingStyle defined in the writer when you create an
-		instance.
+		Scopes have a named chunk and use a \ref Braces command to add opening
+		and closing braces to the output.
 
-		Note that the command will *not* automatically add a space between the
-		name and the opening brace if the brace breaking style was set to
-		\ref BraceBreakingStyle::Attach.
+		Note that the command will automatically add a space between the name
+		and the opening brace if the brace breaking style was set to
+		\ref BraceBreakingStyle::Attach, either by the writer or as an override
+		for this command.
 
 		Example:
 
@@ -38,6 +38,8 @@ namespace panini
 				}
 			}
 		\endcode
+
+		\sa Braces
 	*/
 	class Scope
 		: public CommandBase

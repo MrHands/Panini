@@ -12,9 +12,9 @@ namespace panini
 
 		Commands are used to output chunks to the writer. They should be
 		designed to be chained together. Because commands cannot undo output
-		that was already written, you should be careful to not output more than
+		that was already written, you should be careful not to output more than
 		you strictly need. A good rule of thumb is that a command should never
-		end on a \ref NewLine.
+		end on a \ref NextLine command.
 
 		\sa WriterBase
 	*/
@@ -25,8 +25,7 @@ namespace panini
 		virtual ~CommandBase() = default;
 
 		/*!
-			Accepts a \ref WriterBase that is used for writing chunks to the
-			output.
+			Accepts a \ref WriterBase to write chunks to the output.
 		*/
 		virtual void Visit(WriterBase& writer) = 0;
 

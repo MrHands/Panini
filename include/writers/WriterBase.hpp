@@ -21,10 +21,14 @@ namespace panini
 		/*!
 			Constructs a writer with an optional configuration instance.
 		*/
-		explicit WriterBase(const Config& config = Config())
+		inline explicit WriterBase(const Config& config = Config())
 			: m_config(config)
 		{
-			m_indentCached.reserve(8 * m_config.chunkIndent.size());
+			// reserve cached strings
+
+			const size_t indentReserveSize = 8 * m_config.chunkIndent.size();
+			m_lineIndentCached.reserve(indentReserveSize);
+			m_commentIndentCached.reserve(indentReserveSize);
 
 			// inherit is not allowed as the brace breaking style on the config
 
@@ -43,13 +47,13 @@ namespace panini
 
 			\return Reference to itself to allow for chaining.
 		*/
-		WriterBase& operator << (const std::string& chunk)
+		inline WriterBase& operator << (const std::string& chunk)
 		{
 			if (m_state == State::NewLine)
 			{
-				if (!m_indentCached.empty())
+				if (!m_lineIndentCached.empty())
 				{
-					Write(m_indentCached);
+					Write(m_lineIndentCached);
 				}
 
 				m_state = State::Chunk;
@@ -57,6 +61,11 @@ namespace panini
 				if (m_isInCommentBlock)
 				{
 					Write(" * ");
+
+					if (!m_commentIndentCached.empty())
+					{
+						Write(m_commentIndentCached);
+					}
 				}
 			}
 
@@ -73,7 +82,7 @@ namespace panini
 			\return Reference to itself to allow for chaining.
 		*/
 
-		WriterBase& operator << (const char* chunkString)
+		inline WriterBase& operator << (const char* chunkString)
 		{
 			return *this << std::string(chunkString);
 		}
@@ -85,7 +94,7 @@ namespace panini
 
 			\return Reference to itself to allow for chaining.
 		*/
-		WriterBase& operator << (const NextLine& command)
+		inline WriterBase& operator << (const NextLine& command)
 		{
 			Write(m_config.chunkNewLine);
 
@@ -101,11 +110,16 @@ namespace panini
 
 			\return Reference to itself to allow for chaining.
 		*/
-		WriterBase& operator << (const IndentPush& command)
+		inline WriterBase& operator << (const IndentPush& command)
 		{
-			m_indentCount++;
-
-			CacheIndentation();
+			if (!m_isInCommentBlock)
+			{
+				CacheIndentation(m_lineIndentCached, ++m_lineIndentCount);
+			}
+			else
+			{
+				CacheIndentation(m_commentIndentCached, ++m_commentIndentCount);
+			}
 
 			return *this;
 		}
@@ -118,13 +132,21 @@ namespace panini
 
 			\return Reference to itself to allow for chaining.
 		*/
-		WriterBase& operator << (const IndentPop& command)
+		inline WriterBase& operator << (const IndentPop& command)
 		{
-			if (m_indentCount > 0)
+			if (!m_isInCommentBlock)
 			{
-				m_indentCount--;
-
-				CacheIndentation();
+				if (m_lineIndentCount > 0)
+				{
+					CacheIndentation(m_lineIndentCached, --m_lineIndentCount);
+				}
+			}
+			else
+			{
+				if (m_commentIndentCount > 0)
+				{
+					CacheIndentation(m_commentIndentCached, --m_commentIndentCount);
+				}
 			}
 
 			return *this;
@@ -139,7 +161,7 @@ namespace panini
 
 			\return Reference to itself to allow for chaining.
 		*/
-		WriterBase& operator << (CommandBase&& command)
+		inline WriterBase& operator << (CommandBase&& command)
 		{
 			command.Visit(*this);
 
@@ -151,7 +173,7 @@ namespace panini
 
 			\return True if the writer is on a new line.
 		*/
-		bool IsOnNewLine() const
+		inline bool IsOnNewLine() const
 		{
 			return m_state == State::NewLine;
 		}
@@ -161,7 +183,7 @@ namespace panini
 
 			\return Brace breaking style.
 		*/
-		BraceBreakingStyle GetBraceStyle() const
+		inline BraceBreakingStyle GetBraceStyle() const
 		{
 			return m_config.braces;
 		}
@@ -170,9 +192,12 @@ namespace panini
 			Set the writer's state to be inside a comment block, which will
 			add " * " after the indentation of a new line.
 		*/
-		void SetIsInCommentBlock(bool value)
+		inline void SetIsInCommentBlock(bool value)
 		{
 			m_isInCommentBlock = value;
+
+			m_commentIndentCount = 0;
+			m_commentIndentCached.clear();
 		}
 
 	protected:
@@ -182,21 +207,21 @@ namespace panini
 		virtual void Write(const std::string& chunk) = 0;
 
 	private:
-		void CacheIndentation()
+		inline void CacheIndentation(std::string& target, int32_t count)
 		{
-			m_indentCached.clear();
+			target.clear();
 
-			for (int32_t i = 0; i < m_indentCount; ++i)
+			for (int32_t i = 0; i < count; ++i)
 			{
-				m_indentCached += m_config.chunkIndent;
+				target += m_config.chunkIndent;
 			}
 		}
 
 	private:
 		Config m_config;
 
-		int32_t m_indentCount = 0;
-		std::string m_indentCached;
+		int32_t m_lineIndentCount = 0;
+		std::string m_lineIndentCached;
 
 		enum class State
 		{
@@ -206,6 +231,8 @@ namespace panini
 		State m_state = State::NewLine;
 
 		bool m_isInCommentBlock = false;
+		int32_t m_commentIndentCount = 0;
+		std::string m_commentIndentCached;
 
 	};
 

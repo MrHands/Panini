@@ -63,7 +63,7 @@ TEST(Braces, ConfigAttachRegular)
 	using namespace panini;
 
 	Config c;
-	c.braces = BraceBreakingStyle::Attach;
+	c.braceBreakingStyle = BraceBreakingStyle::Attach;
 	std::string t;
 	StringWriter w(t, c);
 
@@ -99,7 +99,7 @@ TEST(Braces, ConfigAttachEmpty)
 	using namespace panini;
 
 	Config c;
-	c.braces = BraceBreakingStyle::Attach;
+	c.braceBreakingStyle = BraceBreakingStyle::Attach;
 	std::string t;
 	StringWriter w(t, c);
 
@@ -146,7 +146,7 @@ TEST(Braces, ConfigAllmanRegular)
 	using namespace panini;
 
 	Config c;
-	c.braces = BraceBreakingStyle::Allman;
+	c.braceBreakingStyle = BraceBreakingStyle::Allman;
 	std::string t;
 	StringWriter w(t, c);
 
@@ -187,7 +187,7 @@ TEST(Braces, ConfigAllmanEmpty)
 	using namespace panini;
 
 	Config c;
-	c.braces = BraceBreakingStyle::Allman;
+	c.braceBreakingStyle = BraceBreakingStyle::Allman;
 	std::string t;
 	StringWriter w(t, c);
 
@@ -239,7 +239,7 @@ TEST(Braces, ConfigWhitesmithsRegular)
 	using namespace panini;
 
 	Config c;
-	c.braces = BraceBreakingStyle::Whitesmiths;
+	c.braceBreakingStyle = BraceBreakingStyle::Whitesmiths;
 	std::string t;
 	StringWriter w(t, c);
 
@@ -280,7 +280,7 @@ TEST(Braces, ConfigWhitesmithsEmpty)
 	using namespace panini;
 
 	Config c;
-	c.braces = BraceBreakingStyle::Whitesmiths;
+	c.braceBreakingStyle = BraceBreakingStyle::Whitesmiths;
 	std::string t;
 	StringWriter w(t, c);
 

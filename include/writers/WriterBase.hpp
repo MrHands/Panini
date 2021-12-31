@@ -32,9 +32,10 @@ namespace panini
 
 			// inherit is not allowed as the brace breaking style on the config
 
-			if (m_config.braces == BraceBreakingStyle::Inherit)
+			if (m_config.braceBreakingStyle == BraceBreakingStyle::Inherit)
 			{
-				m_config.braces = BraceBreakingStyle::Allman;
+				Config defaultConfig;
+				m_config.braceBreakingStyle = defaultConfig.braceBreakingStyle;
 			}
 		}
 
@@ -197,7 +198,7 @@ namespace panini
 		*/
 		inline BraceBreakingStyle GetBraceBreakingStyle() const
 		{
-			return m_config.braces;
+			return m_config.braceBreakingStyle;
 		}
 
 		/*!

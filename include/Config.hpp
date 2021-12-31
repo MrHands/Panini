@@ -48,9 +48,9 @@ namespace panini
 	struct Config
 	{
 		/*!
-			Brace breaking style to use when outputting chunks.
+			The default brace breaking style to use for a writer.
 		*/
-		BraceBreakingStyle braces = BraceBreakingStyle::Allman;
+		BraceBreakingStyle braceBreakingStyle = BraceBreakingStyle::Allman;
 
 		/*!
 			Chunk to output on a new line.

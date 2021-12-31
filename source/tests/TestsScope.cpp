@@ -55,7 +55,7 @@ TEST(Scope, ConfigBracesAttach)
 	using namespace panini;
 
 	Config c;
-	c.braces = BraceBreakingStyle::Attach;
+	c.braceBreakingStyle = BraceBreakingStyle::Attach;
 	std::string t;
 	StringWriter w(t, c);
 

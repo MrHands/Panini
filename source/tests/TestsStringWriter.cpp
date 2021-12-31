@@ -18,7 +18,7 @@ TEST(Braces, ConfigInheritIsNotAllowed)
 	using namespace panini;
 
 	Config c;
-	c.braces = BraceBreakingStyle::Inherit;
+	c.braceBreakingStyle = BraceBreakingStyle::Inherit;
 	std::string t;
 	StringWriter w(t, c);
 

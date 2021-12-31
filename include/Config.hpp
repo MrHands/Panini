@@ -53,7 +53,12 @@ namespace panini
 		BraceBreakingStyle braceBreakingStyle = BraceBreakingStyle::Allman;
 
 		/*!
-			Chunk to output on a new line.
+			The default include style to use for a writer.
+		*/
+		IncludeStyle includeStyle = IncludeStyle::DoubleQuotes;
+
+		/*!
+			Chunk to output to indicate the end of a line.
 		*/
 		std::string chunkNewLine = "\n";
 

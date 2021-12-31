@@ -14,11 +14,10 @@ namespace panini
 		indentation into account. This command handles that for you.
 
 		If you want to prefix the opening brace with a chunk, it may be
-		beneficial to use a \ref Scope instead.
+		beneficial to use a Scope instead.
 
-		Note that the command will *not* output a space before the opening
-		brace if the brace breaking style was set to
-		\ref BraceBreakingStyle::Attach
+		\note The command will *not* output a space before the opening brace if
+		the brace breaking style was set to BraceBreakingStyle::Attach
 
 		Example:
 

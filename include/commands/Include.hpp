@@ -11,18 +11,19 @@ namespace panini
 	{
 
 	public:
-		Include(const std::string& fileName, IncludeStyle style = IncludeStyle::DoubleQuotes)
-			: m_fileName(fileName)
-			, m_style(style)
-		{
-		}
-		Include(std::string&& fileName, IncludeStyle style = IncludeStyle::DoubleQuotes)
+		inline Include(const std::string& fileName, IncludeStyle style = IncludeStyle::DoubleQuotes)
 			: m_fileName(fileName)
 			, m_style(style)
 		{
 		}
 
-		virtual void Visit(WriterBase& writer) final
+		inline Include(std::string&& fileName, IncludeStyle style = IncludeStyle::DoubleQuotes)
+			: m_fileName(fileName)
+			, m_style(style)
+		{
+		}
+
+		inline virtual void Visit(WriterBase& writer) final
 		{
 			writer << "#include ";
 

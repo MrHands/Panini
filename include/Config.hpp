@@ -20,7 +20,7 @@ namespace panini
 	*/
 	enum class BraceBreakingStyle
 	{
-		Inherit,      //!< Inherit setting from the config, not valid on @ref WriterBase
+		Inherit,      //!< Inherit setting from the config, not valid on WriterBase
 		Attach,       //!< Open brace on the same line
 		Allman,       //!< New line before brace open
 		Whitesmiths   //!< New line and indent before brace open and brace close
@@ -33,8 +33,9 @@ namespace panini
 	*/
 	enum class IncludeStyle
 	{
+		Inherit,         //!< Inherit setting from the config, not valid on WriterBase
 		DoubleQuotes,    //!< Output double quotation marks ""
-		SingleQuotes,    //!< Output single quotation marks '' (not valid in C++)
+		SingleQuotes,    //!< Output single quotation marks '' (not valid for C++)
 		AngularBrackets  //!< Output angular brackets <>
 	};
 
@@ -43,7 +44,7 @@ namespace panini
 
 		Configuration is applied to all commands when they are processed by
 		\ref WriterBase. Some commands can override these configuration
-		settings.
+		settings in their constructor.
 	*/
 	struct Config
 	{

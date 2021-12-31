@@ -13,18 +13,6 @@ TEST(StringWriter, Write)
 	EXPECT_STREQ("What an intriguing device!", t.c_str());
 }
 
-TEST(Braces, ConfigInheritIsNotAllowed)
-{
-	using namespace panini;
-
-	Config c;
-	c.braceBreakingStyle = BraceBreakingStyle::Inherit;
-	std::string t;
-	StringWriter w(t, c);
-
-	EXPECT_EQ(BraceBreakingStyle::Allman, w.GetBraceBreakingStyle());
-}
-
 TEST(StringWriter, NewLine)
 {
 	using namespace panini;
@@ -35,4 +23,36 @@ TEST(StringWriter, NewLine)
 	w << NextLine();
 
 	EXPECT_TRUE(w.IsOnNewLine());
+}
+
+TEST(StringWriter, Config)
+{
+	using namespace panini;
+
+	Config c;
+	c.braceBreakingStyle = BraceBreakingStyle::Whitesmiths;
+	c.includeStyle = IncludeStyle::SingleQuotes;
+	c.chunkIndent = "  ";
+	c.chunkNewLine = "\r\n";
+
+	std::string t;
+	StringWriter w(t, c);
+
+	EXPECT_EQ(BraceBreakingStyle::Whitesmiths, w.GetBraceBreakingStyle());
+	EXPECT_EQ(IncludeStyle::SingleQuotes, w.GetIncludeStyle());
+}
+
+TEST(StringWriter, InheritIsNotAllowed)
+{
+	using namespace panini;
+
+	Config c;
+	c.braceBreakingStyle = BraceBreakingStyle::Inherit;
+	c.includeStyle = IncludeStyle::Inherit;
+
+	std::string t;
+	StringWriter w(t, c);
+
+	EXPECT_EQ(BraceBreakingStyle::Allman, w.GetBraceBreakingStyle());
+	EXPECT_EQ(IncludeStyle::DoubleQuotes, w.GetIncludeStyle());
 }

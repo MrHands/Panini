@@ -30,12 +30,18 @@ namespace panini
 			m_lineIndentCached.reserve(indentReserveSize);
 			m_commentIndentCached.reserve(indentReserveSize);
 
-			// inherit is not allowed as the brace breaking style on the config
+			// inherit is not allowed on the config
 
 			if (m_config.braceBreakingStyle == BraceBreakingStyle::Inherit)
 			{
 				Config defaultConfig;
 				m_config.braceBreakingStyle = defaultConfig.braceBreakingStyle;
+			}
+
+			if (m_config.includeStyle == IncludeStyle::Inherit)
+			{
+				Config defaultConfig;
+				m_config.includeStyle = defaultConfig.includeStyle;
 			}
 		}
 
@@ -192,13 +198,23 @@ namespace panini
 		}
 
 		/*!
-			Get the current brace breaking style.
+			Get the default brace breaking style.
 
 			\return Brace breaking style.
 		*/
 		inline BraceBreakingStyle GetBraceBreakingStyle() const
 		{
 			return m_config.braceBreakingStyle;
+		}
+
+		/*!
+			Get the default include style.
+
+			\return Include style.
+		*/
+		inline IncludeStyle GetIncludeStyle() const
+		{
+			return m_config.includeStyle;
 		}
 
 		/*!

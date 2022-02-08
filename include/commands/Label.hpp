@@ -26,16 +26,59 @@
 namespace panini
 {
 
+	/*!
+		\brief Outputs a label statement.
+
+		A label is a name and a ":" chunk. The command pops the indentation
+		before writing the label and restores it afterwards.
+
+		Labels are useful when you don't want to modify the current
+		indentation level, e.g. when writing an access identifier for a class
+		or a switch..case statement.
+
+		Example:
+
+		\code{.cpp}
+			writer << Scope("class Vehicle", [](WriterBase& writer) {
+				writer << Label("public") << NextLine();
+				writer << "Vehicle(const std::string& maker);" << NextLine();
+				writer << Label("private") << NextLine();
+				writer << "std::string m_maker;" << NextLine();
+			}) << ";";
+		\endcode
+
+		Output:
+
+		\code{.cpp}
+			class Vehicle
+			{
+			public:
+				Vehicle(const std::string& maker);
+			private:
+				std::string m_maker;
+			};
+		\endcode
+
+		\sa Scope
+	*/
 	class Label
 		: public CommandBase
 	{
 
 	public:
+		/*!
+			Create a Label command with a `name` that is moved into the
+			instance.
+		*/
 		Label(std::string&& name)
 			: m_name(name)
 		{
 		}
 
+		/*!
+			Create a Label command with a `name` that is copied to the
+			instance.
+		*/
 		Label(const std::string& name)
 			: m_name(name)
 		{

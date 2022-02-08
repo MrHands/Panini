@@ -45,55 +45,69 @@ namespace panini
 				return;
 			}
 
-			// build new entry
+			// add new entry to list
 
 			IncludeEntry entry;
 			entry.path = path;
 			entry.style = style;
 
-			// determine priority based on include style
-
-			entry.priority = 0;
-
-			switch (style)
-			{
-
-			case IncludeStyle::AngularBrackets:
-				entry.priority = 300;
-				break;
-
-			case IncludeStyle::DoubleQuotes:
-				entry.priority = 200;
-				break;
-
-			case IncludeStyle::SingleQuotes:
-				entry.priority = 100;
-				break;
-
-			default:
-				break;
-
-			}
-
-			// paths with folders should come before files
-
-			std::string regularPath = path.string();
-
-			size_t offset = 0;
-			size_t nextSlash = 0;
-			while ((nextSlash = regularPath.find_first_of('/', offset)) != std::string::npos)
-			{
-				entry.priority--;
-				offset = nextSlash + 1;
-			}
-
-			// add to list
-
 			m_entries.emplace_back(entry);
 		}
 
-		inline void SortEntries()
+		inline void SortEntries(IncludeStyle resolvedStyle)
 		{
+			if (resolvedStyle == IncludeStyle::Inherit)
+			{
+				return;
+			}
+
+			// resolve priority for all entries
+
+			for (IncludeEntry& entry : m_entries)
+			{
+				IncludeStyle style = (entry.style == IncludeStyle::Inherit)
+					? resolvedStyle
+					: entry.style;
+
+				// base priority on include style
+
+				entry.priority = 1000;
+
+				switch (style)
+				{
+
+				case IncludeStyle::AngularBrackets:
+					entry.priority = 0;
+					break;
+
+				case IncludeStyle::DoubleQuotes:
+					entry.priority = 100;
+					break;
+
+				case IncludeStyle::SingleQuotes:
+					entry.priority = 200;
+					break;
+
+				default:
+					break;
+
+				}
+
+				// paths with folders should come before files
+
+				std::string regularPath = entry.path.string();
+
+				size_t offset = 0;
+				size_t nextSlash = 0;
+				while ((nextSlash = regularPath.find_first_of('/', offset)) != std::string::npos)
+				{
+					entry.priority--;
+					offset = nextSlash + 1;
+				}
+			}
+
+			// sort by priority and path
+
 			std::sort(m_entries.begin(), m_entries.end(), [](IncludeEntry& left, IncludeEntry& right) {
 				if (left.priority != right.priority)
 				{

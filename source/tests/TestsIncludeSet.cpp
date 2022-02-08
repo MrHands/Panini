@@ -32,3 +32,38 @@ TEST(IncludeSet, Empty)
 
 	EXPECT_EQ(0, e.size());
 }
+
+TEST(IncludeSet, StylePriorities)
+{
+	using namespace panini;
+
+	IncludeSet s;
+	s.AddInclude("vector1.h", panini::IncludeStyle::Inherit);
+	s.AddInclude("vector2.h", panini::IncludeStyle::DoubleQuotes);
+	s.AddInclude("vector3.h", panini::IncludeStyle::AngularBrackets);
+	s.AddInclude("vector4.h", panini::IncludeStyle::SingleQuotes);
+
+	auto& e = s.GetEntries();
+
+	EXPECT_EQ(4, e.size());
+	EXPECT_STREQ("vector1.h", e[0].path.string().c_str());
+	EXPECT_EQ(0, e[0].priority);
+	EXPECT_STREQ("vector2.h", e[1].path.string().c_str());
+	EXPECT_EQ(200, e[1].priority);
+	EXPECT_STREQ("vector3.h", e[2].path.string().c_str());
+	EXPECT_EQ(300, e[2].priority);
+	EXPECT_STREQ("vector4.h", e[3].path.string().c_str());
+	EXPECT_EQ(100, e[3].priority);
+
+	s.SortEntries();
+
+	EXPECT_EQ(4, e.size());
+	EXPECT_STREQ("vector1.h", e[0].path.string().c_str());
+	EXPECT_EQ(0, e[0].priority);
+	EXPECT_STREQ("vector4.h", e[1].path.string().c_str());
+	EXPECT_EQ(100, e[1].priority);
+	EXPECT_STREQ("vector2.h", e[2].path.string().c_str());
+	EXPECT_EQ(200, e[2].priority);
+	EXPECT_STREQ("vector3.h", e[3].path.string().c_str());
+	EXPECT_EQ(300, e[3].priority);
+}

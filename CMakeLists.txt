@@ -65,6 +65,11 @@ file(
 	${${PROJECT_NAME}_SOURCE_DIR}/include/commands/*.hpp
 )
 file(
+	GLOB PANINI_INCLUDES_DATA
+	CONFIGURE_DEPENDS
+	${${PROJECT_NAME}_SOURCE_DIR}/include/data/*.hpp
+)
+file(
 	GLOB PANINI_INCLUDES_WRITERS
 	CONFIGURE_DEPENDS
 	${${PROJECT_NAME}_SOURCE_DIR}/include/writers/*.hpp
@@ -74,6 +79,7 @@ add_library(
 	${PROJECT_NAME} INTERFACE
 	${PANINI_INCLUDES}
 	${PANINI_INCLUDES_COMMANDS}
+	${PANINI_INCLUDES_DATA}
 	${PANINI_INCLUDES_WRITERS}
 )
 
@@ -81,6 +87,7 @@ set_target_properties(${PROJECT_NAME} PROPERTIES FOLDER "Panini")
 
 source_group("include" FILES ${PANINI_INCLUDES})
 source_group("include/commands" FILES ${PANINI_INCLUDES_COMMANDS})
+source_group("include/data" FILES ${PANINI_INCLUDES_DATA})
 source_group("include/writers" FILES ${PANINI_INCLUDES_WRITERS})
 
 target_include_directories(

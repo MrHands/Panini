@@ -21,20 +21,21 @@
 
 #pragma once
 
-#include "commands/Braces.hpp"
-#include "commands/CommentBlock.hpp"
-#include "commands/CommentLine.hpp"
-#include "commands/Include.hpp"
-#include "commands/IndentPop.hpp"
-#include "commands/IndentPush.hpp"
-#include "commands/Label.hpp"
-#include "commands/NextLine.hpp"
-#include "commands/Scope.hpp"
+#include "Config.hpp"
 
-#include "data/IncludeEntry.hpp"
-#include "data/IncludeSet.hpp"
+#include <filesystem>
 
-#include "writers/CompareWriter.hpp"
-#include "writers/ConsoleWriter.hpp"
-#include "writers/FileWriter.hpp"
-#include "writers/StringWriter.hpp"
+namespace panini
+{
+
+	/*!
+		\brief Data entry for IncludeCollection.
+	*/
+	struct IncludeEntry
+	{
+		std::filesystem::path path;
+		IncludeStyle style = IncludeStyle::AngularBrackets;
+		int32_t priority = 0;
+	};
+
+};

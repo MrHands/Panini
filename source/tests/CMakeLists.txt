@@ -7,6 +7,7 @@ add_executable(
 	TestsConsoleWriter.cpp
 	TestsFileWriter.cpp
 	TestsInclude.cpp
+	TestsIncludeSet.cpp
 	TestsIndentation.cpp
 	TestsMain.cpp
 	TestsNewLine.cpp

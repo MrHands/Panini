@@ -26,6 +26,7 @@
 #include <functional>
 #include <stdint.h>
 #include <string>
+#include <vector>
 
 /*!
 	\file Config.hpp

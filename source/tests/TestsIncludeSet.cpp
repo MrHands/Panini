@@ -38,32 +38,63 @@ TEST(IncludeSet, StylePriorities)
 	using namespace panini;
 
 	IncludeSet s;
-	s.AddInclude("vector1.h", panini::IncludeStyle::SingleQuotes);
-	s.AddInclude("vector2.h", panini::IncludeStyle::DoubleQuotes);
-	s.AddInclude("vector3.h", panini::IncludeStyle::AngularBrackets);
-	s.AddInclude("vector4.h", panini::IncludeStyle::Inherit);
+	s.AddInclude("vector1.h", IncludeStyle::SingleQuotes);
+	s.AddInclude("vector2.h", IncludeStyle::DoubleQuotes);
+	s.AddInclude("vector3.h", IncludeStyle::AngularBrackets);
+	s.AddInclude("vector4.h", IncludeStyle::Inherit);
 
 	auto& e = s.GetEntries();
 
-	EXPECT_EQ(4, e.size());
+	ASSERT_EQ(4, e.size());
 	EXPECT_STREQ("vector1.h", e[0].path.string().c_str());
-	EXPECT_EQ(0, e[0].priority);
 	EXPECT_STREQ("vector2.h", e[1].path.string().c_str());
-	EXPECT_EQ(0, e[1].priority);
 	EXPECT_STREQ("vector3.h", e[2].path.string().c_str());
-	EXPECT_EQ(0, e[2].priority);
 	EXPECT_STREQ("vector4.h", e[3].path.string().c_str());
-	EXPECT_EQ(0, e[3].priority);
 
 	s.SortEntries(IncludeStyle::AngularBrackets);
 
-	EXPECT_EQ(4, e.size());
 	EXPECT_STREQ("vector3.h", e[0].path.string().c_str());
-	EXPECT_EQ(0, e[0].priority);
 	EXPECT_STREQ("vector4.h", e[1].path.string().c_str());
-	EXPECT_EQ(0, e[1].priority);
 	EXPECT_STREQ("vector2.h", e[2].path.string().c_str());
-	EXPECT_EQ(100, e[2].priority);
 	EXPECT_STREQ("vector1.h", e[3].path.string().c_str());
-	EXPECT_EQ(200, e[3].priority);
+}
+
+TEST(IncludeSet, SortFoldersFirst)
+{
+	using namespace panini;
+
+	IncludeSet s;
+	s.AddInclude("Game/Design/Map.h");
+	s.AddInclude("Game/Water.h");
+	s.AddInclude("Game/Land/Impl.h");
+	s.AddInclude("Game/Water/Fish.h");
+
+	s.SortEntries(IncludeStyle::DoubleQuotes);
+
+	auto& e = s.GetEntries();
+
+	ASSERT_EQ(4, e.size());
+	EXPECT_STREQ("Game/Design/Map.h", e[0].path.string().c_str());
+	EXPECT_STREQ("Game/Land/Impl.h", e[1].path.string().c_str());
+	EXPECT_STREQ("Game/Water/Fish.h", e[2].path.string().c_str());
+	EXPECT_STREQ("Game/Water.h", e[3].path.string().c_str());
+}
+
+TEST(IncludeSet, SortWithInheritIsInvalid)
+{
+	using namespace panini;
+
+	IncludeSet s;
+	s.AddInclude("Water.h");
+	s.AddInclude("Aquarium/Reef.h");
+	s.AddInclude("Aquarium/Clownfish.h");
+
+	s.SortEntries(IncludeStyle::Inherit);
+
+	auto& e = s.GetEntries();
+
+	ASSERT_EQ(3, e.size());
+	EXPECT_STREQ("Water.h", e[0].path.string().c_str());
+	EXPECT_STREQ("Aquarium/Reef.h", e[1].path.string().c_str());
+	EXPECT_STREQ("Aquarium/Clownfish.h", e[2].path.string().c_str());
 }

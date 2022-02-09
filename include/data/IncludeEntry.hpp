@@ -47,48 +47,6 @@ namespace panini
 		{
 		}
 
-		inline IncludeEntry(const std::string& _path, IncludeStyle _style = IncludeStyle::AngularBrackets, int32_t _priority = 0)
-			: path(_path)
-			, style(_style)
-			, priority(_priority)
-		{
-		}
-
-		inline IncludeEntry(std::string&& _path, IncludeStyle _style = IncludeStyle::AngularBrackets, int32_t _priority = 0) noexcept
-			: path(_path)
-			, style(_style)
-			, priority(_priority)
-		{
-		}
-
-		inline IncludeEntry(const IncludeEntry& other)
-			: path(other.path)
-			, style(other.style)
-			, priority(other.priority)
-		{
-		}
-
-		inline IncludeEntry(IncludeEntry&& other) noexcept
-			: path(std::exchange(other.path, {}))
-			, style(std::exchange(other.style, {}))
-			, priority(std::exchange(other.priority, {}))
-		{
-		}
-
-		inline IncludeEntry& operator = (const IncludeEntry& other)
-		{
-			return *this = IncludeEntry{ other };
-		}
-
-		inline IncludeEntry& operator = (IncludeEntry&& other) noexcept
-		{
-			std::swap(path, other.path);
-			std::swap(style, other.style);
-			std::swap(priority, other.priority);
-
-			return *this;
-		}
-
 		std::filesystem::path path;
 		IncludeStyle style = IncludeStyle::AngularBrackets;
 		int32_t priority = 0;

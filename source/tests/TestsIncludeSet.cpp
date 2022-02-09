@@ -74,6 +74,59 @@ TEST(IncludeSet, AddDuplicates)
 	EXPECT_STREQ("math/vector2.h", e[1].path.string().c_str());
 }
 
+TEST(IncludeSet, ConstructEntries)
+{
+	using namespace panini;
+
+	IncludeSet s{
+		{ "Fire.h", IncludeStyle::AngularBrackets },
+		{ "Grass.h", IncludeStyle::DoubleQuotes },
+		{ "Magic.h" }
+	};
+
+	auto& e = s.GetEntries();
+
+	ASSERT_EQ(3, e.size());
+	EXPECT_STREQ("Fire.h", e[0].path.string().c_str());
+	EXPECT_STREQ("Grass.h", e[1].path.string().c_str());
+	EXPECT_STREQ("Magic.h", e[2].path.string().c_str());
+}
+
+TEST(IncludeSet, ConstructPaths)
+{
+	using namespace panini;
+
+	IncludeSet s{
+		{ "Duplicate.h", "NoYou.h", "StopIt.h" }, IncludeStyle::AngularBrackets
+	};
+
+	auto& e = s.GetEntries();
+
+	ASSERT_EQ(3, e.size());
+	EXPECT_STREQ("Duplicate.h", e[0].path.string().c_str());
+	EXPECT_STREQ("NoYou.h", e[1].path.string().c_str());
+	EXPECT_STREQ("StopIt.h", e[2].path.string().c_str());
+}
+
+TEST(IncludeSet, ConstructDuplicates)
+{
+	using namespace panini;
+
+	IncludeSet s{
+		{ "Dragon.h", IncludeStyle::DoubleQuotes },
+		{ "Dragon.h", IncludeStyle::DoubleQuotes },
+		{ "Princess.h", IncludeStyle::AngularBrackets },
+		{ "Princess.h", IncludeStyle::SingleQuotes }
+	};
+
+	auto& e = s.GetEntries();
+
+	ASSERT_EQ(3, e.size());
+	EXPECT_STREQ("Dragon.h", e[0].path.string().c_str());
+	EXPECT_STREQ("Princess.h", e[1].path.string().c_str());
+	EXPECT_STREQ("Princess.h", e[2].path.string().c_str());
+}
+
 TEST(IncludeSet, SortByStyle)
 {
 	using namespace panini;

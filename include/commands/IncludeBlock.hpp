@@ -58,20 +58,28 @@ namespace panini
 	{
 
 	public:
+		/*!
+			Construct an IncludeBlock command from an IncludeSet that is
+			copied to the instance.
+		*/
 		inline IncludeBlock(const IncludeSet& set)
 			: m_set(set)
 		{
 		}
 
-		inline IncludeBlock(IncludeSet&& set)
+		/*!
+			Construct an IncludeBlock command from an IncludeSet that is
+			moved into the instance.
+		*/
+		inline IncludeBlock(IncludeSet&& set) noexcept
 			: m_set(std::exchange(set, {}))
 		{
 		}
 
 		inline virtual void Visit(WriterBase& writer) final
 		{
-			// sort includes and resolve "inherit" include style
-			// with writer's include style
+			// sort includes and resolve "inherit" include style with the
+			// writer's include style
 
 			m_set.Sort(writer.GetIncludeStyle());
 

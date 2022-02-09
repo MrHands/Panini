@@ -41,6 +41,24 @@ namespace panini
 	{
 
 	public:
+		inline IncludeSet() = default;
+
+		inline IncludeSet(std::initializer_list<IncludeEntry> entries)
+		{
+			for (auto& entry : entries)
+			{
+				Add(entry.path, entry.style);
+			}
+		}
+
+		inline IncludeSet(std::initializer_list<std::filesystem::path> paths, IncludeStyle style)
+		{
+			for (auto& path : paths)
+			{
+				Add(path, style);
+			}
+		}
+
 		/*!
 			Get entries as an std::vector.
 		*/
@@ -53,7 +71,7 @@ namespace panini
 			STL-compatible method for getting an iterator to the start of the
 			list of entries.
 		*/
-		std::vector<IncludeEntry>::const_iterator begin() const
+		inline std::vector<IncludeEntry>::const_iterator begin() const
 		{
 			return m_entries.begin();
 		}
@@ -62,7 +80,7 @@ namespace panini
 			STL-compatible method for getting an iterator to the start of the
 			list of entries.
 		*/
-		std::vector<IncludeEntry>::iterator begin()
+		inline std::vector<IncludeEntry>::iterator begin()
 		{
 			return m_entries.begin();
 		}
@@ -71,7 +89,7 @@ namespace panini
 			STL-compatible method for getting an iterator to the end of the
 			list of entries.
 		*/
-		std::vector<IncludeEntry>::const_iterator end() const
+		inline std::vector<IncludeEntry>::const_iterator end() const
 		{
 			return m_entries.end();
 		}
@@ -80,7 +98,7 @@ namespace panini
 			STL-compatible method for getting an iterator to the end of the
 			list of entries.
 		*/
-		std::vector<IncludeEntry>::iterator end()
+		inline std::vector<IncludeEntry>::iterator end()
 		{
 			return m_entries.end();
 		}

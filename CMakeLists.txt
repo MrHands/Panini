@@ -83,7 +83,13 @@ add_library(
 	${PANINI_INCLUDES_WRITERS}
 )
 
-set_target_properties(${PROJECT_NAME} PROPERTIES FOLDER "Panini")
+set_target_properties(
+	${PROJECT_NAME} PROPERTIES
+		FOLDER "Panini"
+		CXX_STANDARD 17
+		CXX_STANDARD_REQUIRED ON
+		CXX_EXTENSIONS OFF
+)
 
 source_group("include" FILES ${PANINI_INCLUDES})
 source_group("include/commands" FILES ${PANINI_INCLUDES_COMMANDS})
@@ -95,7 +101,20 @@ target_include_directories(
 		$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
 		$<INSTALL_INTERFACE:include>
 )
-target_compile_features(${PROJECT_NAME}	INTERFACE cxx_std_17)
+
+target_compile_features(
+	${PROJECT_NAME} INTERFACE
+		cxx_std_17
+)
+
+# fix for Visual Studio 2017
+
+if (MSVC_VERSION LESS_EQUAL "1916")
+	target_compile_definitions(
+		${PROJECT_NAME} INTERFACE
+			_HAS_CXX17=1
+	)
+endif()
 
 # documentation
 

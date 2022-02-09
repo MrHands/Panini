@@ -71,8 +71,8 @@ namespace panini
 			\ref WriterBase. Chunks output inside the callback will be prefixed
 			with the C multi-line comment syntax.
 		*/
-		inline explicit CommentBlock(std::function<void(WriterBase&)>&& callback)
-			: m_callback(callback)
+		inline explicit CommentBlock(std::function<void(WriterBase&)>&& callback) noexcept
+			: m_callback(std::exchange(callback, {}))
 		{
 		}
 

@@ -27,29 +27,55 @@
 namespace panini
 {
 
+	/*!
+		\brief Output a line that starts with a comment.
+
+		Comment lines start with "// " in the output. Empty lines will be
+		output as well.
+
+		Example:
+
+		\code{.cpp}
+			writer << CommentLine("I can't believe this was generated!");
+		\endcode
+
+		Output:
+
+		\code{.cpp}
+			// I can't believe this was generated!
+		\endcode
+	*/
 	class CommentLine
 		: public CommandBase
 	{
 
 	public:
-		CommentLine() = default;
-		CommentLine(const std::string& comment)
-			: m_comment(comment)
-		{
-		}
-		CommentLine(std::string&& comment)
+		/*!
+			Construct a CommentLine with a comment that is copied to the
+			instance.
+		*/
+		inline CommentLine(const std::string& comment)
 			: m_comment(comment)
 		{
 		}
 
-		virtual void Visit(WriterBase& writer) final
+		/*!
+			Construct a CommentLine with a comment that is moved into the
+			instance.
+		*/
+		inline CommentLine(std::string&& comment) noexcept
+			: m_comment(std::exchange(comment, {}))
 		{
-			if (m_comment.empty())
+		}
+
+		inline virtual void Visit(WriterBase& writer) final
+		{
+			writer << "//";
+
+			if (!m_comment.empty())
 			{
-				return;
+				writer << " " << m_comment;
 			}
-
-			writer << "// " << m_comment;
 		}
 
 	private:

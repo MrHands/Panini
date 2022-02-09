@@ -41,9 +41,9 @@ TEST(CommentLine, Empty)
 	std::string t;
 	StringWriter w(t);
 
-	w << CommentLine();
+	w << CommentLine("");
 
-	EXPECT_STREQ(R"()", t.c_str());
+	EXPECT_STREQ(R"(//)", t.c_str());
 }
 
 TEST(CommentLine, Doubled)

@@ -33,15 +33,56 @@ TEST(IncludeSet, Empty)
 	ASSERT_EQ(0, e.size());
 }
 
-TEST(IncludeSet, StylePriorities)
+TEST(IncludeSet, AddPaths)
 {
 	using namespace panini;
 
 	IncludeSet s;
-	s.AddInclude("vector1.h", IncludeStyle::SingleQuotes);
-	s.AddInclude("vector2.h", IncludeStyle::DoubleQuotes);
-	s.AddInclude("vector3.h", IncludeStyle::AngularBrackets);
-	s.AddInclude("vector4.h", IncludeStyle::Inherit);
+	s.Add("FrogDetective.h", IncludeStyle::DoubleQuotes);
+
+	auto& e = s.GetEntries();
+
+	ASSERT_EQ(1, e.size());
+	EXPECT_STREQ("FrogDetective.h", e[0].path.string().c_str());
+
+	s.Add("BigDipper.h", IncludeStyle::DoubleQuotes);
+	s.Add("World/Pond.h", IncludeStyle::AngularBrackets);
+
+	ASSERT_EQ(3, e.size());
+	EXPECT_STREQ("FrogDetective.h", e[0].path.string().c_str());
+	EXPECT_STREQ("BigDipper.h", e[1].path.string().c_str());
+	EXPECT_STREQ("World/Pond.h", e[2].path.string().c_str());
+}
+
+TEST(IncludeSet, AddDuplicates)
+{
+	using namespace panini;
+
+	IncludeSet s;
+	s.Add("math/vector2.h", IncludeStyle::DoubleQuotes);
+	s.Add("math/vector2.h", IncludeStyle::DoubleQuotes);
+
+	auto& e = s.GetEntries();
+
+	ASSERT_EQ(1, e.size());
+	EXPECT_STREQ("math/vector2.h", e[0].path.string().c_str());
+
+	s.Add("math/vector2.h", IncludeStyle::AngularBrackets);
+
+	ASSERT_EQ(2, e.size());
+	EXPECT_STREQ("math/vector2.h", e[0].path.string().c_str());
+	EXPECT_STREQ("math/vector2.h", e[1].path.string().c_str());
+}
+
+TEST(IncludeSet, SortByStyle)
+{
+	using namespace panini;
+
+	IncludeSet s;
+	s.Add("vector1.h", IncludeStyle::SingleQuotes);
+	s.Add("vector2.h", IncludeStyle::DoubleQuotes);
+	s.Add("vector3.h", IncludeStyle::AngularBrackets);
+	s.Add("vector4.h", IncludeStyle::Inherit);
 
 	auto& e = s.GetEntries();
 
@@ -51,21 +92,21 @@ TEST(IncludeSet, StylePriorities)
 	EXPECT_STREQ("vector3.h", e[2].path.string().c_str());
 	EXPECT_STREQ("vector4.h", e[3].path.string().c_str());
 
-	s.SortEntries(IncludeStyle::AngularBrackets);
+	s.Sort(IncludeStyle::AngularBrackets);
 
 	EXPECT_STREQ("vector3.h", e[0].path.string().c_str());
 	EXPECT_STREQ("vector4.h", e[1].path.string().c_str());
 	EXPECT_STREQ("vector2.h", e[2].path.string().c_str());
 	EXPECT_STREQ("vector1.h", e[3].path.string().c_str());
 
-	s.SortEntries(IncludeStyle::DoubleQuotes);
+	s.Sort(IncludeStyle::DoubleQuotes);
 
 	EXPECT_STREQ("vector3.h", e[0].path.string().c_str());
 	EXPECT_STREQ("vector2.h", e[1].path.string().c_str());
 	EXPECT_STREQ("vector4.h", e[2].path.string().c_str());
 	EXPECT_STREQ("vector1.h", e[3].path.string().c_str());
 
-	s.SortEntries(IncludeStyle::SingleQuotes);
+	s.Sort(IncludeStyle::SingleQuotes);
 
 	EXPECT_STREQ("vector3.h", e[0].path.string().c_str());
 	EXPECT_STREQ("vector2.h", e[1].path.string().c_str());
@@ -78,12 +119,12 @@ TEST(IncludeSet, SortFoldersFirst)
 	using namespace panini;
 
 	IncludeSet s;
-	s.AddInclude("Game/Design/Map.h");
-	s.AddInclude("Game/Water.h");
-	s.AddInclude("Game/Land/Impl.h");
-	s.AddInclude("Game/Water/Fish.h");
+	s.Add("Game/Design/Map.h");
+	s.Add("Game/Water.h");
+	s.Add("Game/Land/Impl.h");
+	s.Add("Game/Water/Fish.h");
 
-	s.SortEntries(IncludeStyle::DoubleQuotes);
+	s.Sort(IncludeStyle::DoubleQuotes);
 
 	auto& e = s.GetEntries();
 
@@ -99,11 +140,11 @@ TEST(IncludeSet, SortWithInheritIsInvalid)
 	using namespace panini;
 
 	IncludeSet s;
-	s.AddInclude("Water.h");
-	s.AddInclude("Aquarium/Reef.h");
-	s.AddInclude("Aquarium/Clownfish.h");
+	s.Add("Water.h");
+	s.Add("Aquarium/Reef.h");
+	s.Add("Aquarium/Clownfish.h");
 
-	s.SortEntries(IncludeStyle::Inherit);
+	s.Sort(IncludeStyle::Inherit);
 
 	auto& e = s.GetEntries();
 

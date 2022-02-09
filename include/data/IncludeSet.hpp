@@ -27,13 +27,27 @@ namespace panini
 {
 
 	/*!
-		\brief Collection of IncludeEntry.
+		\brief Collection of unique file system paths.
+
+		Paths can be sorted by priority, which is based on their IncludeStyle
+		and how many forward slashes (/) it contains. This causes paths that
+		end in a filename to be sorted _after_ paths with folders, even when
+		the folder name is the same as the filename.
+
+		\note Duplicate paths are not allowed in the collection, unless they
+		differ in IncludeStyle.
 	*/
 	class IncludeSet
 	{
 
 	public:
-		inline void AddInclude(const std::filesystem::path& path, IncludeStyle style = IncludeStyle::Inherit)
+		/*!
+			Add a path to the set with an include style.
+
+			\note Duplicate paths will note be added, unless they differ in
+			IncludeStyle.
+		*/
+		inline void Add(const std::filesystem::path& path, IncludeStyle style = IncludeStyle::Inherit)
 		{
 			// check if the path is not already known
 
@@ -54,7 +68,24 @@ namespace panini
 			m_entries.emplace_back(entry);
 		}
 
-		inline void SortEntries(IncludeStyle resolvedStyle)
+		/*!
+			Sort the paths in the collection based on an include style.
+
+			Entries are first sorted by include style:
+
+			1. IncludeStyle::AngularBrackets
+			2. IncludeStyle::DoubleQuotes
+			3. IncludeStyle::SingleQuotes
+
+			And then by their paths.
+
+			The resolved style parameter is used to prioritize entries that
+			have an include style of IncludeStyle::Inherit.
+
+			\note You cannot sort with a resolved style set to
+			IncludeStyle::Inherit.
+		*/
+		inline void Sort(IncludeStyle resolvedStyle)
 		{
 			if (resolvedStyle == IncludeStyle::Inherit)
 			{
@@ -65,9 +96,10 @@ namespace panini
 
 			for (IncludeEntry& entry : m_entries)
 			{
-				IncludeStyle style = (entry.style == IncludeStyle::Inherit)
-					? resolvedStyle
-					: entry.style;
+				IncludeStyle style =
+					(entry.style == IncludeStyle::Inherit)
+						? resolvedStyle
+						: entry.style;
 
 				// base priority on include style
 

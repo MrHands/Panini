@@ -23,6 +23,7 @@
 
 // C/STL
 
+#include <filesystem>
 #include <functional>
 #include <stdint.h>
 #include <string>

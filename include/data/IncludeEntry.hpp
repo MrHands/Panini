@@ -23,8 +23,6 @@
 
 #include "Config.hpp"
 
-#include <filesystem>
-
 namespace panini
 {
 
@@ -33,6 +31,36 @@ namespace panini
 	*/
 	struct IncludeEntry
 	{
+		IncludeEntry() = delete;
+
+		IncludeEntry(const std::filesystem::path& _path, IncludeStyle _style = IncludeStyle::AngularBrackets, int32_t _priority = 0)
+			: path(_path)
+			, style(_style)
+			, priority(_priority)
+		{
+		}
+
+		IncludeEntry(std::filesystem::path&& _path, IncludeStyle _style = IncludeStyle::AngularBrackets, int32_t _priority = 0)
+			: path(_path)
+			, style(_style)
+			, priority(_priority)
+		{
+		}
+
+		IncludeEntry(const std::string& _path, IncludeStyle _style = IncludeStyle::AngularBrackets, int32_t _priority = 0)
+			: path(_path)
+			, style(_style)
+			, priority(_priority)
+		{
+		}
+
+		IncludeEntry(std::string&& _path, IncludeStyle _style = IncludeStyle::AngularBrackets, int32_t _priority = 0)
+			: path(_path)
+			, style(_style)
+			, priority(_priority)
+		{
+		}
+
 		std::filesystem::path path;
 		IncludeStyle style = IncludeStyle::AngularBrackets;
 		int32_t priority = 0;

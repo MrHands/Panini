@@ -22,8 +22,6 @@
 #include <gtest/gtest.h>
 #include <Panini.hpp>
 
-#include <filesystem>
-
 TEST(CompareWriter, Write)
 {
 	using namespace panini;

@@ -61,10 +61,7 @@ namespace panini
 
 			// add new entry to list
 
-			IncludeEntry entry;
-			entry.path = path;
-			entry.style = style;
-
+			IncludeEntry entry(path, style);
 			m_entries.emplace_back(entry);
 		}
 

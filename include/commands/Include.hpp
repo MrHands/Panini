@@ -22,6 +22,7 @@
 #pragma once
 
 #include "commands/CommandBase.hpp"
+#include "data/IncludeEntry.hpp"
 #include "writers/WriterBase.hpp"
 
 namespace panini
@@ -70,8 +71,7 @@ namespace panini
 			this command only.
 		*/
 		inline Include(const std::string& fileName, IncludeStyle style = IncludeStyle::Inherit)
-			: m_fileName(fileName)
-			, m_includeStyle(style)
+			: m_entry(fileName, style)
 		{
 		}
 
@@ -84,33 +84,34 @@ namespace panini
 			this command only.
 		*/
 		inline Include(std::string&& fileName, IncludeStyle style = IncludeStyle::Inherit)
-			: m_fileName(fileName)
-			, m_includeStyle(style)
+			: m_entry(fileName, style)
 		{
 		}
 
 		inline virtual void Visit(WriterBase& writer) final
 		{
 			IncludeStyle includeStyle =
-				m_includeStyle == IncludeStyle::Inherit
+				m_entry.style == IncludeStyle::Inherit
 					? writer.GetIncludeStyle()
-					: m_includeStyle;
+					: m_entry.style;
 
 			writer << "#include ";
+
+			std::string fileName = m_entry.path.string();
 
 			switch (includeStyle)
 			{
 
 			case IncludeStyle::DoubleQuotes:
-				writer << "\"" << m_fileName << "\"";
+				writer << "\"" << fileName << "\"";
 				break;
 
 			case IncludeStyle::SingleQuotes:
-				writer << "'" << m_fileName << "'";
+				writer << "'" << fileName << "'";
 				break;
 
 			case IncludeStyle::AngularBrackets:
-				writer << "<" << m_fileName << ">";
+				writer << "<" << fileName << ">";
 				break;
 			
 			default:
@@ -120,8 +121,7 @@ namespace panini
 		}
 
 	private:
-		std::string m_fileName;
-		IncludeStyle m_includeStyle;
+		IncludeEntry m_entry;
 
 	};
 

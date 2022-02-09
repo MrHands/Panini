@@ -87,8 +87,8 @@ namespace panini
 			include style from the writer, otherwise it will be overridden for
 			this command only.
 		*/
-		inline Include(const std::string& fileName, IncludeStyle style = IncludeStyle::Inherit)
-			: m_entry(fileName, style)
+		inline Include(const std::filesystem::path& path, IncludeStyle style = IncludeStyle::Inherit)
+			: m_entry(path, style)
 		{
 		}
 
@@ -99,8 +99,8 @@ namespace panini
 			include style from the writer, otherwise it will be overridden for
 			this command only.
 		*/
-		inline Include(std::string&& fileName, IncludeStyle style = IncludeStyle::Inherit) noexcept
-			: m_entry(fileName, style)
+		inline Include(std::filesystem::path&& path, IncludeStyle style = IncludeStyle::Inherit) noexcept
+			: m_entry(path, style)
 		{
 		}
 
@@ -113,21 +113,21 @@ namespace panini
 
 			writer << "#include ";
 
-			std::string fileName = m_entry.path.string();
+			std::string path = m_entry.path.string();
 
 			switch (includeStyle)
 			{
 
 			case IncludeStyle::DoubleQuotes:
-				writer << "\"" << fileName << "\"";
+				writer << "\"" << path << "\"";
 				break;
 
 			case IncludeStyle::SingleQuotes:
-				writer << "'" << fileName << "'";
+				writer << "'" << path << "'";
 				break;
 
 			case IncludeStyle::AngularBrackets:
-				writer << "<" << fileName << ">";
+				writer << "<" << path << ">";
 				break;
 			
 			default:

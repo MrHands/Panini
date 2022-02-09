@@ -27,7 +27,7 @@ namespace panini
 {
 
 	/*!
-		\brief Data entry for IncludeCollection.
+		\brief Data for includes.
 	*/
 	struct IncludeEntry
 	{
@@ -47,8 +47,19 @@ namespace panini
 		{
 		}
 
+		/*!
+			Path for the include statement.
+		*/
 		std::filesystem::path path;
+
+		/*!
+			Style to use for the include statement.
+		*/
 		IncludeStyle style = IncludeStyle::AngularBrackets;
+
+		/*!
+			Priority ranking of this entry in the set.
+		*/
 		int32_t priority = 0;
 	};
 

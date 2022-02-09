@@ -42,6 +42,50 @@ namespace panini
 
 	public:
 		/*!
+			Get entries as an std::vector.
+		*/
+		inline const std::vector<IncludeEntry>& GetEntries() const
+		{
+			return m_entries;
+		}
+
+		/*!
+			STL-compatible method for getting an iterator to the start of the
+			list of entries.
+		*/
+		std::vector<IncludeEntry>::const_iterator begin() const
+		{
+			return m_entries.begin();
+		}
+
+		/*!
+			STL-compatible method for getting an iterator to the start of the
+			list of entries.
+		*/
+		std::vector<IncludeEntry>::iterator begin()
+		{
+			return m_entries.begin();
+		}
+
+		/*!
+			STL-compatible method for getting an iterator to the end of the
+			list of entries.
+		*/
+		std::vector<IncludeEntry>::const_iterator end() const
+		{
+			return m_entries.end();
+		}
+
+		/*!
+			STL-compatible method for getting an iterator to the end of the
+			list of entries.
+		*/
+		std::vector<IncludeEntry>::iterator end()
+		{
+			return m_entries.end();
+		}
+
+		/*!
 			Add a path to the set with an include style.
 
 			\note Duplicate paths will note be added, unless they differ in
@@ -147,11 +191,6 @@ namespace panini
 					return left.path < right.path;
 				}
 			});
-		}
-
-		inline const std::vector<IncludeEntry>& GetEntries() const
-		{
-			return m_entries;
 		}
 
 	private:

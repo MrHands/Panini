@@ -63,8 +63,25 @@ namespace panini
 
 	public:
 		/*!
-			Create an Include command with a `fileName` that is copied to the
-			instance.
+			Construct an Include command from an IncludeEntry that is copied
+			to the instance.
+		*/
+		inline Include(const IncludeEntry& entry)
+			: m_entry(entry)
+		{
+		}
+
+		/*!
+			Construct an Include command from an IncludeEntry that is moved
+			into the instance.
+		*/
+		inline Include(IncludeEntry&& entry) noexcept
+			: m_entry(std::exchange(entry, {}))
+		{
+		}
+
+		/*!
+			Create an Include command with a path and an IncludeStyle.
 
 			Setting the `style` parameter to IncludeStyle::Inherit copies the
 			include style from the writer, otherwise it will be overridden for
@@ -76,14 +93,13 @@ namespace panini
 		}
 
 		/*!
-			Create an Include command with a `fileName` that is moved into the
-			instance.
+			Create an Include command with a path and an IncludeStyle.
 
 			Setting the `style` parameter to IncludeStyle::Inherit copies the
 			include style from the writer, otherwise it will be overridden for
 			this command only.
 		*/
-		inline Include(std::string&& fileName, IncludeStyle style = IncludeStyle::Inherit)
+		inline Include(std::string&& fileName, IncludeStyle style = IncludeStyle::Inherit) noexcept
 			: m_entry(fileName, style)
 		{
 		}

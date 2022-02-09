@@ -19,23 +19,40 @@
 	DEALINGS IN THE SOFTWARE.
 */
 
-#pragma once
+#include <gtest/gtest.h>
+#include <Panini.hpp>
 
-#include "commands/Braces.hpp"
-#include "commands/CommentBlock.hpp"
-#include "commands/CommentLine.hpp"
-#include "commands/Include.hpp"
-#include "commands/IncludeBlock.hpp"
-#include "commands/IndentPop.hpp"
-#include "commands/IndentPush.hpp"
-#include "commands/Label.hpp"
-#include "commands/NextLine.hpp"
-#include "commands/Scope.hpp"
+TEST(IncludeBlock, Empty)
+{
+	using namespace panini;
 
-#include "data/IncludeEntry.hpp"
-#include "data/IncludeSet.hpp"
+	IncludeSet s;
 
-#include "writers/CompareWriter.hpp"
-#include "writers/ConsoleWriter.hpp"
-#include "writers/FileWriter.hpp"
-#include "writers/StringWriter.hpp"
+	std::string t;
+	StringWriter w(t);
+
+	w << IncludeBlock(s);
+
+	EXPECT_STREQ(R"()", t.c_str());
+}
+
+TEST(IncludeBlock, Entries)
+{
+	using namespace panini;
+
+	IncludeSet s;
+	s.Add("game/systems/Audio.h");
+	s.Add("game/Physics.h");
+	s.Add("game/systems/Particles.h");
+	s.Add("stdio.h", IncludeStyle::AngularBrackets);
+
+	std::string t;
+	StringWriter w(t);
+
+	w << IncludeBlock(s);
+
+	EXPECT_STREQ(R"(#include <stdio.h>
+#include "game/systems/Audio.h"
+#include "game/systems/Particles.h"
+#include "game/Physics.h")", t.c_str());
+}

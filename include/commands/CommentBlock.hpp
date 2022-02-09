@@ -30,7 +30,7 @@ namespace panini
 	/*!
 		\brief Output comment blocks over multiple lines.
 
-		A comment block starts with "/*" and ends with \c "*\/". Chunks output
+		A comment block starts with /&zwj;* and ends with *&zwj;/. Chunks output
 		inside the callback are prefixed with " * " to produce multi-line
 		comments.
 

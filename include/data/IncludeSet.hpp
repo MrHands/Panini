@@ -43,6 +43,9 @@ namespace panini
 	public:
 		inline IncludeSet() = default;
 
+		/*!
+			Construct an IncludeSet from a list of IncludeEntry.
+		*/
 		inline IncludeSet(std::initializer_list<IncludeEntry> entries)
 		{
 			for (auto& entry : entries)
@@ -51,6 +54,9 @@ namespace panini
 			}
 		}
 
+		/*!
+			Construct an IncludeSet from a list of paths and an IncludeStyle.
+		*/
 		inline IncludeSet(std::initializer_list<std::filesystem::path> paths, IncludeStyle style)
 		{
 			for (auto& path : paths)

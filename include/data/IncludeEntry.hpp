@@ -33,6 +33,9 @@ namespace panini
 	{
 		inline IncludeEntry() = default;
 
+		/*!
+			Construct an IncludeEntry from a path, an IncludeStyle, and a priority.
+		*/
 		inline IncludeEntry(const std::filesystem::path& _path, IncludeStyle _style = IncludeStyle::AngularBrackets, int32_t _priority = 0)
 			: path(_path)
 			, style(_style)
@@ -40,6 +43,9 @@ namespace panini
 		{
 		}
 
+		/*!
+			Construct an IncludeEntry from a path, an IncludeStyle, and a priority.
+		*/
 		inline IncludeEntry(std::filesystem::path&& _path, IncludeStyle _style = IncludeStyle::AngularBrackets, int32_t _priority = 0) noexcept
 			: path(std::exchange(_path, {}))
 			, style(_style)

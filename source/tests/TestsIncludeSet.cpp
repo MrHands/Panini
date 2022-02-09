@@ -30,7 +30,7 @@ TEST(IncludeSet, Empty)
 
 	auto& e = s.GetEntries();
 
-	EXPECT_EQ(0, e.size());
+	ASSERT_EQ(0, e.size());
 }
 
 TEST(IncludeSet, StylePriorities)
@@ -57,6 +57,20 @@ TEST(IncludeSet, StylePriorities)
 	EXPECT_STREQ("vector4.h", e[1].path.string().c_str());
 	EXPECT_STREQ("vector2.h", e[2].path.string().c_str());
 	EXPECT_STREQ("vector1.h", e[3].path.string().c_str());
+
+	s.SortEntries(IncludeStyle::DoubleQuotes);
+
+	EXPECT_STREQ("vector3.h", e[0].path.string().c_str());
+	EXPECT_STREQ("vector2.h", e[1].path.string().c_str());
+	EXPECT_STREQ("vector4.h", e[2].path.string().c_str());
+	EXPECT_STREQ("vector1.h", e[3].path.string().c_str());
+
+	s.SortEntries(IncludeStyle::SingleQuotes);
+
+	EXPECT_STREQ("vector3.h", e[0].path.string().c_str());
+	EXPECT_STREQ("vector2.h", e[1].path.string().c_str());
+	EXPECT_STREQ("vector1.h", e[2].path.string().c_str());
+	EXPECT_STREQ("vector4.h", e[3].path.string().c_str());
 }
 
 TEST(IncludeSet, SortFoldersFirst)

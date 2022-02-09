@@ -21,23 +21,32 @@
 
 #pragma once
 
-#include "WriterBase.hpp"
+#include "writers/WriterBase.hpp"
 
 namespace panini
 {
+
+	/*!
+		\brief Writes output to a string.
+
+		The \ref Config instance is used to configure the output.
+	*/
 	class StringWriter
 		: public WriterBase
 	{
 
 	public:
-		StringWriter(std::string& target, const Config& config = Config())
+		/*!
+			Construct a StringWriter with a target and a configuration.
+		*/
+		inline StringWriter(std::string& target, const Config& config = Config())
 			: WriterBase(config)
 			, m_target(target)
 		{
 		}
 
 	private:
-		virtual void Write(const std::string& chunk) final
+		inline virtual void Write(const std::string& chunk) final
 		{
 			m_target += chunk;
 		}
@@ -46,4 +55,5 @@ namespace panini
 		std::string& m_target;
 
 	};
+
 };

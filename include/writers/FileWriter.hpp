@@ -21,30 +21,48 @@
 
 #pragma once
 
-#include <fstream>
-
 #include "writers/WriterBase.hpp"
 
 namespace panini
 {
 
+	/*!
+		\brief Writes output to a file.
+
+		The \ref Config instance is used to configure the output.
+	*/
 	class FileWriter
 		: public WriterBase
 	{
 
 	public:
-		FileWriter(const std::string& fileName, const Config& config = Config())
+		/*!
+			Construct a FileWriter with a path and a configuration.
+		*/
+		inline FileWriter(const std::filesystem::path& path, const Config& config = Config())
 			: WriterBase(config)
 		{
-			m_stream.open(fileName.c_str());
+			m_stream.open(path.string());
 		}
 
-		~FileWriter()
+		/*!
+			The file is closed automatically when the instance is destroyed.
+		*/
+		inline ~FileWriter()
 		{
 			Close();
 		}
 
-		virtual void Write(const std::string& chunk) final
+		/*!
+			Close the file.
+		*/
+		inline void Close()
+		{
+			m_stream.close();
+		}
+
+	private:
+		inline virtual void Write(const std::string& chunk) final
 		{
 			if (!m_stream.is_open())
 			{
@@ -52,11 +70,6 @@ namespace panini
 			}
 
 			m_stream << chunk;
-		}
-
-		void Close()
-		{
-			m_stream.close();
 		}
 
 	private:

@@ -21,48 +21,64 @@
 
 #pragma once
 
-#include <fstream>
-
 #include "writers/WriterBase.hpp"
 
 namespace panini
 {
+
+	/*!
+		\brief Writes the output to a path only when it was changed.
+
+		The CompareWriter stores the contents of the target path first. When
+		the new output differs from what was seen before, the output will be
+		committed to the path.
+
+		The \ref Config instance is used to configure the output.
+	*/
 
 	class CompareWriter
 		: public WriterBase
 	{
 
 	public:
-		CompareWriter(const std::string& fileName, const Config& config = Config())
+		/*!
+			Construct a CompareWriter with a target path and a configuration.
+		*/
+		inline CompareWriter(const std::filesystem::path& path, const Config& config = Config())
 			: WriterBase(config)
-			, m_fileName(fileName)
+			, m_path(path)
 		{
-			std::ifstream stream(m_fileName.c_str(), std::ios::binary);
+			std::ifstream stream(m_path.string(), std::ios::binary);
 			if (stream.is_open())
 			{
 				stream >> m_writtenPrevious;
 				stream.close();
 			}
+
+			m_writtenCurrent.reserve(m_writtenPrevious.size());
 		}
 
-		~CompareWriter()
+		/*!
+			The output is committed to the path automatically when the
+			instance is destroyed.
+		*/
+		inline ~CompareWriter()
 		{
 			Commit();
 		}
 
-		virtual void Write(const std::string& chunk) final
-		{
-			m_writtenCurrent += chunk;
-		}
-
-		bool Commit()
+		/*!
+			Checks if the new output differs from what was seen before and
+			writes it to the target path in that case only.
+		*/
+		inline bool Commit()
 		{
 			if (m_writtenPrevious == m_writtenCurrent)
 			{
 				return true;
 			}
 
-			std::ofstream stream(m_fileName, std::ios::binary);
+			std::ofstream stream(m_path.string(), std::ios::binary);
 			if (!stream.is_open())
 			{
 				return false;
@@ -77,7 +93,13 @@ namespace panini
 		}
 
 	private:
-		std::string m_fileName;
+		inline virtual void Write(const std::string& chunk) final
+		{
+			m_writtenCurrent += chunk;
+		}
+
+	private:
+		std::filesystem::path m_path;
 		std::string m_writtenPrevious;
 		std::string m_writtenCurrent;
 

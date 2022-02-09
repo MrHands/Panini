@@ -21,19 +21,31 @@
 
 #pragma once
 
-#include <iostream>
-
 #include "writers/WriterBase.hpp"
 
 namespace panini
 {
 
+	/*!
+		\brief Writes output to the console.
+
+		The \ref Config instance is used to configure the output.
+	*/
 	class ConsoleWriter
 		: public WriterBase
 	{
 
 	public:
-		virtual void Write(const std::string& chunk) final
+		/*!
+			Construct a ConsoleWriter with a configuration.
+		*/
+		inline ConsoleWriter(const Config& config = Config())
+			: WriterBase(config)
+		{
+		}
+
+	private:
+		inline virtual void Write(const std::string& chunk) final
 		{
 			std::cout << chunk;
 		}

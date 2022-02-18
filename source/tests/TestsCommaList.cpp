@@ -19,24 +19,21 @@
 	DEALINGS IN THE SOFTWARE.
 */
 
-#pragma once
+#include <gtest/gtest.h>
+#include <Panini.hpp>
 
-#include "commands/Braces.hpp"
-#include "commands/CommaList.hpp"
-#include "commands/CommentBlock.hpp"
-#include "commands/CommentLine.hpp"
-#include "commands/Include.hpp"
-#include "commands/IncludeBlock.hpp"
-#include "commands/IndentPop.hpp"
-#include "commands/IndentPush.hpp"
-#include "commands/Label.hpp"
-#include "commands/NextLine.hpp"
-#include "commands/Scope.hpp"
+TEST(CommaList, Strings)
+{
+	using namespace panini;
 
-#include "data/IncludeEntry.hpp"
-#include "data/IncludeSet.hpp"
+	std::string t;
+	StringWriter w(t);
 
-#include "writers/CompareWriter.hpp"
-#include "writers/ConsoleWriter.hpp"
-#include "writers/FileWriter.hpp"
-#include "writers/StringWriter.hpp"
+	std::vector<std::string> s = {
+		"supposed", "to", "be", "somewhere"
+	};
+
+	w << CommaList(s);
+
+	EXPECT_STREQ(R"(supposed, to, be, somewhere)", t.c_str());
+}

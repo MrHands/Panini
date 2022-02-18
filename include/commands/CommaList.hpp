@@ -38,7 +38,7 @@ namespace panini
 		{
 		}
 
-		inline CommaList(const std::vector<TItem>& items, std::function<std::string<const TItem&>> transform, const std::string& separator = ", ")
+		inline CommaList(const std::vector<TItem>& items, std::function<std::string(const TItem&)> transform, const std::string& separator = ", ")
 			: m_items(items)
 			, m_transform(transform)
 			, m_separator(separator)
@@ -78,7 +78,7 @@ namespace panini
 	private:
 		std::vector<TItem> m_items;
 		std::string m_separator;
-		std::function<std::string<const TItem&>> m_transform;
+		std::function<std::string(const TItem&)> m_transform;
 
 	};
 

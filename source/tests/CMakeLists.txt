@@ -1,19 +1,12 @@
+file(
+	GLOB PANINI_SOURCE_TESTS
+	CONFIGURE_DEPENDS
+	${${PROJECT_NAME}_SOURCE_DIR}/source/tests/*.cpp
+)
+
 add_executable(
 	PaniniTests
-	TestsBraces.cpp
-	TestsCommentBlock.cpp
-	TestsCommentLine.cpp
-	TestsCompareWriter.cpp
-	TestsConsoleWriter.cpp
-	TestsFileWriter.cpp
-	TestsInclude.cpp
-	TestsIncludeBlock.cpp
-	TestsIncludeSet.cpp
-	TestsIndentation.cpp
-	TestsMain.cpp
-	TestsNewLine.cpp
-	TestsScope.cpp
-	TestsStringWriter.cpp
+	${PANINI_SOURCE_TESTS}
 )
 target_link_libraries(
 	PaniniTests

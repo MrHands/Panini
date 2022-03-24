@@ -35,7 +35,7 @@ TEST(CompareWriter, WriteNewFile)
 
 	std::stringstream ss;
 
-	std::ifstream f("compare_write.txt");
+	std::ifstream f("compare_write.txt", std::ios::in | std::ios::binary);
 	EXPECT_TRUE(f.is_open());
 	ss << f.rdbuf();
 
@@ -46,7 +46,7 @@ TEST(CompareWriter, FileExistsAndOutputWasUnchanged)
 {
 	using namespace panini;
 
-	std::ofstream p("compare_exists.txt");
+	std::ofstream p("compare_exists.txt", std::ios::out | std::ios::binary);
 	p << "TRUE\nTRUE\nFALSE";
 	p.close();
 
@@ -57,7 +57,7 @@ TEST(CompareWriter, FileExistsAndOutputWasUnchanged)
 
 	std::stringstream ss;
 
-	std::ifstream f("compare_exists.txt");
+	std::ifstream f("compare_exists.txt", std::ios::in | std::ios::binary);
 	EXPECT_TRUE(f.is_open());
 	ss << f.rdbuf();
 
@@ -68,7 +68,7 @@ TEST(CompareWriter, FileExistsAndOutputWasChanged)
 {
 	using namespace panini;
 
-	std::ofstream p("compare_changed.txt");
+	std::ofstream p("compare_changed.txt", std::ios::out | std::ios::binary);
 	p << "going to { the moon }";
 	p.close();
 
@@ -79,7 +79,7 @@ TEST(CompareWriter, FileExistsAndOutputWasChanged)
 
 	std::stringstream ss;
 
-	std::ifstream f("compare_changed.txt");
+	std::ifstream f("compare_changed.txt", std::ios::in | std::ios::binary);
 	EXPECT_TRUE(f.is_open());
 	ss << f.rdbuf();
 
@@ -90,7 +90,7 @@ TEST(CompareWriter, WindowsNewLines)
 {
 	using namespace panini;
 
-	std::ofstream p("compare_windows.txt");
+	std::ofstream p("compare_windows.txt", std::ios::out | std::ios::binary);
 	p << "Actually,\r\nI *love*\r\nstrPascalCase";
 	p.close();
 
@@ -101,7 +101,7 @@ TEST(CompareWriter, WindowsNewLines)
 
 	std::stringstream ss;
 
-	std::ifstream f("compare_windows.txt");
+	std::ifstream f("compare_windows.txt", std::ios::in | std::ios::binary);
 	EXPECT_TRUE(f.is_open());
 	ss << f.rdbuf();
 

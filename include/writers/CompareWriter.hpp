@@ -48,11 +48,14 @@ namespace panini
 			: WriterBase(config)
 			, m_path(path)
 		{
-			std::ifstream stream(m_path.string(), std::ios::binary);
+			std::ifstream stream(m_path.string(), std::ios::in | std::ios::binary);
 			m_pathExists = stream.is_open();
 			if (m_pathExists)
 			{
-				stream >> m_writtenPrevious;
+				stream.seekg(0, std::ios::end);
+				m_writtenPrevious.resize(stream.tellg());
+				stream.seekg(0, std::ios::beg);
+				stream.read(&m_writtenPrevious[0], m_writtenPrevious.size());
 				stream.close();
 			}
 

@@ -22,7 +22,7 @@
 #include <gtest/gtest.h>
 #include <Panini.hpp>
 
-TEST(CompareWriter, Write)
+TEST(CompareWriter, WriteNewFile)
 {
 	using namespace panini;
 
@@ -30,6 +30,7 @@ TEST(CompareWriter, Write)
 
 	CompareWriter w("compare_write.txt");
 	w << "I'll catch you next time, Gadget!";
+	EXPECT_TRUE(w.IsChanged());
 	EXPECT_TRUE(w.Commit());
 
 	std::stringstream ss;
@@ -41,17 +42,18 @@ TEST(CompareWriter, Write)
 	EXPECT_STREQ("I'll catch you next time, Gadget!", ss.str().c_str());
 }
 
-TEST(CompareWriter, Exists)
+TEST(CompareWriter, FileExistsAndOutputWasUnchanged)
 {
 	using namespace panini;
 
 	std::ofstream p("compare_exists.txt");
-	p << "TRUE TRUE FALSE";
+	p << "TRUE\nTRUE\nFALSE";
 	p.close();
 
 	CompareWriter w("compare_exists.txt");
-	w << "TRUE TRUE FALSE";
-	EXPECT_TRUE(w.Commit());
+	w << "TRUE\nTRUE\nFALSE";
+	EXPECT_FALSE(w.IsChanged());
+	EXPECT_FALSE(w.Commit());
 
 	std::stringstream ss;
 
@@ -59,10 +61,10 @@ TEST(CompareWriter, Exists)
 	EXPECT_TRUE(f.is_open());
 	ss << f.rdbuf();
 
-	EXPECT_STREQ("TRUE TRUE FALSE", ss.str().c_str());
+	EXPECT_STREQ("TRUE\nTRUE\nFALSE", ss.str().c_str());
 }
 
-TEST(CompareWriter, Changed)
+TEST(CompareWriter, FileExistsAndOutputWasChanged)
 {
 	using namespace panini;
 
@@ -72,6 +74,7 @@ TEST(CompareWriter, Changed)
 
 	CompareWriter w("compare_changed.txt");
 	w << "going to { mars }";
+	EXPECT_TRUE(w.IsChanged());
 	EXPECT_TRUE(w.Commit());
 
 	std::stringstream ss;
@@ -81,4 +84,26 @@ TEST(CompareWriter, Changed)
 	ss << f.rdbuf();
 
 	EXPECT_STREQ("going to { mars }", ss.str().c_str());
+}
+
+TEST(CompareWriter, WindowsNewLines)
+{
+	using namespace panini;
+
+	std::ofstream p("compare_windows.txt");
+	p << "Actually,\r\nI *love*\r\nstrPascalCase";
+	p.close();
+
+	CompareWriter w("compare_windows.txt");
+	w << "Actually,\r\nI *love*\r\nstrPascalCase";
+	EXPECT_FALSE(w.IsChanged());
+	EXPECT_FALSE(w.Commit());
+
+	std::stringstream ss;
+
+	std::ifstream f("compare_windows.txt");
+	EXPECT_TRUE(f.is_open());
+	ss << f.rdbuf();
+
+	EXPECT_STREQ("Actually,\r\nI *love*\r\nstrPascalCase", ss.str().c_str());
 }

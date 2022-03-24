@@ -49,7 +49,8 @@ namespace panini
 			, m_path(path)
 		{
 			std::ifstream stream(m_path.string(), std::ios::binary);
-			if (stream.is_open())
+			m_pathExists = stream.is_open();
+			if (m_pathExists)
 			{
 				stream >> m_writtenPrevious;
 				stream.close();
@@ -59,8 +60,8 @@ namespace panini
 		}
 
 		/*!
-			The output is committed to the path automatically when the
-			instance is destroyed.
+			The output is committed to the path automatically when the instance
+			is destroyed.
 		*/
 		inline ~CompareWriter()
 		{
@@ -68,14 +69,27 @@ namespace panini
 		}
 
 		/*!
+			Check if the output was changed compared to what was read from disk
+			when the CompareWriter was created.
+		*/
+		inline bool IsChanged() const
+		{
+			return m_writtenPrevious != m_writtenCurrent;
+		}
+
+		/*!
 			Checks if the new output differs from what was seen before and
 			writes it to the target path in that case only.
+
+			/param force Force writing the file even if the output was not
+			changed.
 		*/
-		inline bool Commit()
+		inline virtual bool Commit(bool force = false)
 		{
-			if (m_writtenPrevious == m_writtenCurrent)
+			if (!IsChanged() &&
+				!force)
 			{
-				return true;
+				return false;
 			}
 
 			std::ofstream stream(m_path.string(), std::ios::binary);
@@ -93,13 +107,14 @@ namespace panini
 		}
 
 	private:
-		inline virtual void Write(const std::string& chunk) final
+		inline virtual void Write(const std::string& chunk) override
 		{
 			m_writtenCurrent += chunk;
 		}
 
-	private:
+	protected:
 		std::filesystem::path m_path;
+		bool m_pathExists = false;
 		std::string m_writtenPrevious;
 		std::string m_writtenCurrent;
 

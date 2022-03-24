@@ -25,8 +25,9 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Panini
+   <div id="projectname">Panini<span id="projectnumber">&#160;1.0.1</span>
    </div>
+   <div id="projectbrief">Header-only library for generating C++, written in C++17</div>
   </td>
  </tr>
  </tbody>
@@ -89,13 +90,13 @@ $(document).ready(function(){initNavTree('classpanini_1_1_compare_writer.html','
 <p>This is the complete list of members for <a class="el" href="classpanini_1_1_compare_writer.html">panini::CompareWriter</a>, including all inherited members.</p>
 <table class="directory">
   <tr class="even"><td class="entry"><a class="el" href="classpanini_1_1_compare_writer.html#a97f0919adb86a6b0dbeca57322f59422">Commit</a>(bool force=false)</td><td class="entry"><a class="el" href="classpanini_1_1_compare_writer.html">panini::CompareWriter</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">virtual</span></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="classpanini_1_1_compare_writer.html#ab99e0179a18e6ed2f7177834e270d5c2">CompareWriter</a>(const std::filesystem::path &amp;path, const Config &amp;config=Config())</td><td class="entry"><a class="el" href="classpanini_1_1_compare_writer.html">panini::CompareWriter</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classpanini_1_1_compare_writer.html#a71287dd41f1f8266be545f760a528156">CompareWriter</a>(const std::filesystem::path &amp;filePath, const Config &amp;config=Config())</td><td class="entry"><a class="el" href="classpanini_1_1_compare_writer.html">panini::CompareWriter</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classpanini_1_1_writer_base.html#a4dac8be36a19ee0398ca8f6a3e003950">GetBraceBreakingStyle</a>() const</td><td class="entry"><a class="el" href="classpanini_1_1_writer_base.html">panini::WriterBase</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="classpanini_1_1_writer_base.html#aa387eeb5fe9aadf2f951e4a9acc89bcc">GetIncludeStyle</a>() const</td><td class="entry"><a class="el" href="classpanini_1_1_writer_base.html">panini::WriterBase</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classpanini_1_1_compare_writer.html#abcbece4a58ddbf8d0814588db049d5aa">IsChanged</a>() const</td><td class="entry"><a class="el" href="classpanini_1_1_compare_writer.html">panini::CompareWriter</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="classpanini_1_1_writer_base.html#af7d736a22fe2b6709ec1ae1cfe4b7e2b">IsOnNewLine</a>() const</td><td class="entry"><a class="el" href="classpanini_1_1_writer_base.html">panini::WriterBase</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classpanini_1_1_compare_writer.html#a0d091cc24cca0c25318f67b67b5db537">m_path</a></td><td class="entry"><a class="el" href="classpanini_1_1_compare_writer.html">panini::CompareWriter</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="classpanini_1_1_compare_writer.html#ad2050215a00488590d06fa37eb799504">m_pathExists</a></td><td class="entry"><a class="el" href="classpanini_1_1_compare_writer.html">panini::CompareWriter</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classpanini_1_1_compare_writer.html#a1d18328ac9975eb3f5a0f6e6e2145e3e">m_fileExists</a></td><td class="entry"><a class="el" href="classpanini_1_1_compare_writer.html">panini::CompareWriter</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classpanini_1_1_compare_writer.html#ac125fd304639524cc8e349fb463412de">m_filePath</a></td><td class="entry"><a class="el" href="classpanini_1_1_compare_writer.html">panini::CompareWriter</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classpanini_1_1_compare_writer.html#abdb49e1fc5c2e6ea04ee4500c0c242f3">m_writtenCurrent</a></td><td class="entry"><a class="el" href="classpanini_1_1_compare_writer.html">panini::CompareWriter</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="classpanini_1_1_compare_writer.html#a24f4e32f73e18ee4d08130a9f671c7d6">m_writtenPrevious</a></td><td class="entry"><a class="el" href="classpanini_1_1_compare_writer.html">panini::CompareWriter</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classpanini_1_1_writer_base.html#a5d27b39b303782a99e1dfe038c9164a5">operator&lt;&lt;</a>(const std::string &amp;chunk)</td><td class="entry"><a class="el" href="classpanini_1_1_writer_base.html">panini::WriterBase</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>

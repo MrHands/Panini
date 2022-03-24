@@ -10,7 +10,7 @@ var searchData=
   ['commentline_7',['CommentLine',['../classpanini_1_1_comment_line.html#a0efb77b15af783430c6fd07e0c6b516d',1,'panini::CommentLine::CommentLine(const std::string &amp;comment)'],['../classpanini_1_1_comment_line.html#a87f884fc847f532804edb87af1cca430',1,'panini::CommentLine::CommentLine(std::string &amp;&amp;comment) noexcept'],['../classpanini_1_1_comment_line.html',1,'panini::CommentLine']]],
   ['commentline_2ehpp_8',['CommentLine.hpp',['../_comment_line_8hpp.html',1,'']]],
   ['commit_9',['Commit',['../classpanini_1_1_compare_writer.html#a97f0919adb86a6b0dbeca57322f59422',1,'panini::CompareWriter']]],
-  ['comparewriter_10',['CompareWriter',['../classpanini_1_1_compare_writer.html#ab99e0179a18e6ed2f7177834e270d5c2',1,'panini::CompareWriter::CompareWriter()'],['../classpanini_1_1_compare_writer.html',1,'panini::CompareWriter']]],
+  ['comparewriter_10',['CompareWriter',['../classpanini_1_1_compare_writer.html#a71287dd41f1f8266be545f760a528156',1,'panini::CompareWriter::CompareWriter()'],['../classpanini_1_1_compare_writer.html',1,'panini::CompareWriter']]],
   ['comparewriter_2ehpp_11',['CompareWriter.hpp',['../_compare_writer_8hpp.html',1,'']]],
   ['config_12',['Config',['../structpanini_1_1_config.html',1,'panini']]],
   ['config_2ehpp_13',['Config.hpp',['../_config_8hpp.html',1,'']]],

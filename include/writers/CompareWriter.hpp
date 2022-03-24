@@ -42,15 +42,15 @@ namespace panini
 
 	public:
 		/*!
-			Construct a CompareWriter with a target path and a configuration.
+			Construct a CompareWriter with a file path and a configuration.
 		*/
-		inline CompareWriter(const std::filesystem::path& path, const Config& config = Config())
+		inline CompareWriter(const std::filesystem::path& filePath, const Config& config = Config())
 			: WriterBase(config)
-			, m_path(path)
+			, m_filePath(filePath)
 		{
-			std::ifstream stream(m_path.string(), std::ios::in | std::ios::binary);
-			m_pathExists = stream.is_open();
-			if (m_pathExists)
+			std::ifstream stream(m_filePath.string(), std::ios::in | std::ios::binary);
+			m_fileExists = stream.is_open();
+			if (m_fileExists)
 			{
 				stream.seekg(0, std::ios::end);
 				m_writtenPrevious.resize(stream.tellg());
@@ -81,10 +81,10 @@ namespace panini
 		}
 
 		/*!
-			Checks if the new output differs from what was seen before and
-			writes it to the target path in that case only.
+			Checks if the generated output matches what was read from the file
+			path previously and only writes to disk if the output was changed.
 
-			/param force Force writing the file even if the output was not
+			@param force Force writing the file even if the output was not
 			changed.
 		*/
 		inline virtual bool Commit(bool force = false)
@@ -95,7 +95,7 @@ namespace panini
 				return false;
 			}
 
-			std::ofstream stream(m_path.string(), std::ios::binary);
+			std::ofstream stream(m_filePath.string(), std::ios::binary);
 			if (!stream.is_open())
 			{
 				return false;
@@ -116,9 +116,16 @@ namespace panini
 		}
 
 	protected:
-		std::filesystem::path m_path;
-		bool m_pathExists = false;
+		//! Path that will be compared and written to.
+		std::filesystem::path m_filePath;
+
+		//! Whether the file existed when the instance was created.
+		bool m_fileExists = false;
+
+		//! Contents of the file that was written previously.
 		std::string m_writtenPrevious;
+
+		//! Newly generated contents of the file.
 		std::string m_writtenCurrent;
 
 	};

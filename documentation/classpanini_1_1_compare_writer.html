@@ -84,6 +84,7 @@ $(document).ready(function(){initNavTree('classpanini_1_1_compare_writer.html','
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classpanini_1_1_compare_writer-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">panini::CompareWriter Class Reference</div></div>
 </div><!--header-->
@@ -109,8 +110,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ab99e0179a18e6ed2f7177834e270d5c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a02e9e8dadd26cef27a072a99885d30e0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_compare_writer.html#a02e9e8dadd26cef27a072a99885d30e0">~CompareWriter</a> ()</td></tr>
 <tr class="separator:a02e9e8dadd26cef27a072a99885d30e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aab7725e6072f10aff78d5151f81ec000"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_compare_writer.html#aab7725e6072f10aff78d5151f81ec000">Commit</a> ()</td></tr>
-<tr class="separator:aab7725e6072f10aff78d5151f81ec000"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abcbece4a58ddbf8d0814588db049d5aa"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_compare_writer.html#abcbece4a58ddbf8d0814588db049d5aa">IsChanged</a> () const</td></tr>
+<tr class="separator:abcbece4a58ddbf8d0814588db049d5aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97f0919adb86a6b0dbeca57322f59422"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_compare_writer.html#a97f0919adb86a6b0dbeca57322f59422">Commit</a> (bool force=false)</td></tr>
+<tr class="separator:a97f0919adb86a6b0dbeca57322f59422"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classpanini_1_1_writer_base"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classpanini_1_1_writer_base')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classpanini_1_1_writer_base.html">panini::WriterBase</a></td></tr>
 <tr class="memitem:a9af272e8d7a436f437c895da934969f9 inherit pub_methods_classpanini_1_1_writer_base"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_writer_base.html#a9af272e8d7a436f437c895da934969f9">WriterBase</a> (const <a class="el" href="structpanini_1_1_config.html">Config</a> &amp;config=<a class="el" href="structpanini_1_1_config.html">Config</a>())</td></tr>
 <tr class="separator:a9af272e8d7a436f437c895da934969f9 inherit pub_methods_classpanini_1_1_writer_base"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -136,6 +139,17 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aa387eeb5fe9aadf2f951e4a9acc89bcc inherit pub_methods_classpanini_1_1_writer_base"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab22063f561d004f0d56844fe66a608d9 inherit pub_methods_classpanini_1_1_writer_base"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_writer_base.html#ab22063f561d004f0d56844fe66a608d9">SetIsInCommentBlock</a> (bool value)</td></tr>
 <tr class="separator:ab22063f561d004f0d56844fe66a608d9 inherit pub_methods_classpanini_1_1_writer_base"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:a0d091cc24cca0c25318f67b67b5db537"><td class="memItemLeft" align="right" valign="top">std::filesystem::path&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_compare_writer.html#a0d091cc24cca0c25318f67b67b5db537">m_path</a></td></tr>
+<tr class="separator:a0d091cc24cca0c25318f67b67b5db537"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2050215a00488590d06fa37eb799504"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_compare_writer.html#ad2050215a00488590d06fa37eb799504">m_pathExists</a> = false</td></tr>
+<tr class="separator:ad2050215a00488590d06fa37eb799504"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24f4e32f73e18ee4d08130a9f671c7d6"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_compare_writer.html#a24f4e32f73e18ee4d08130a9f671c7d6">m_writtenPrevious</a></td></tr>
+<tr class="separator:a24f4e32f73e18ee4d08130a9f671c7d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abdb49e1fc5c2e6ea04ee4500c0c242f3"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_compare_writer.html#abdb49e1fc5c2e6ea04ee4500c0c242f3">m_writtenCurrent</a></td></tr>
+<tr class="separator:abdb49e1fc5c2e6ea04ee4500c0c242f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -209,8 +223,8 @@ Additional Inherited Members</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="aab7725e6072f10aff78d5151f81ec000" name="aab7725e6072f10aff78d5151f81ec000"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aab7725e6072f10aff78d5151f81ec000">&#9670;&nbsp;</a></span>Commit()</h2>
+<a id="a97f0919adb86a6b0dbeca57322f59422" name="a97f0919adb86a6b0dbeca57322f59422"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a97f0919adb86a6b0dbeca57322f59422">&#9670;&nbsp;</a></span>Commit()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -219,10 +233,38 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool panini::CompareWriter::Commit </td>
+          <td class="memname">virtual bool panini::CompareWriter::Commit </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>force</em> = <code>false</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Checks if the new output differs from what was seen before and writes it to the target path in that case only.</p>
+<p >/param force Force writing the file even if the output was not changed. </p>
+
+</div>
+</div>
+<a id="abcbece4a58ddbf8d0814588db049d5aa" name="abcbece4a58ddbf8d0814588db049d5aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abcbece4a58ddbf8d0814588db049d5aa">&#9670;&nbsp;</a></span>IsChanged()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool panini::CompareWriter::IsChanged </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
   </td>
@@ -231,7 +273,96 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p >Checks if the new output differs from what was seen before and writes it to the target path in that case only. </p>
+<p >Check if the output was changed compared to what was read from disk when the <a class="el" href="classpanini_1_1_compare_writer.html" title="Writes the output to a path only when it was changed.">CompareWriter</a> was created. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a0d091cc24cca0c25318f67b67b5db537" name="a0d091cc24cca0c25318f67b67b5db537"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d091cc24cca0c25318f67b67b5db537">&#9670;&nbsp;</a></span>m_path</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::filesystem::path panini::CompareWriter::m_path</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad2050215a00488590d06fa37eb799504" name="ad2050215a00488590d06fa37eb799504"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2050215a00488590d06fa37eb799504">&#9670;&nbsp;</a></span>m_pathExists</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool panini::CompareWriter::m_pathExists = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abdb49e1fc5c2e6ea04ee4500c0c242f3" name="abdb49e1fc5c2e6ea04ee4500c0c242f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abdb49e1fc5c2e6ea04ee4500c0c242f3">&#9670;&nbsp;</a></span>m_writtenCurrent</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string panini::CompareWriter::m_writtenCurrent</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a24f4e32f73e18ee4d08130a9f671c7d6" name="a24f4e32f73e18ee4d08130a9f671c7d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24f4e32f73e18ee4d08130a9f671c7d6">&#9670;&nbsp;</a></span>m_writtenPrevious</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string panini::CompareWriter::m_writtenPrevious</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>

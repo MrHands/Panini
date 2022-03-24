@@ -15,5 +15,6 @@ var searchData=
   ['indentpush_12',['IndentPush',['../structpanini_1_1_indent_push.html',1,'panini']]],
   ['indentpush_2ehpp_13',['IndentPush.hpp',['../_indent_push_8hpp.html',1,'']]],
   ['inherit_14',['Inherit',['../group___enums.html#gga0e8bf718da5e3c164599e591f6b76f5cac49484faf79e2388b580e49444d6ac11',1,'panini::Inherit()'],['../group___enums.html#gga27a306a905c9b4ceccb79f449c97a80dac49484faf79e2388b580e49444d6ac11',1,'panini::Inherit()']]],
-  ['isonnewline_15',['IsOnNewLine',['../classpanini_1_1_writer_base.html#af7d736a22fe2b6709ec1ae1cfe4b7e2b',1,'panini::WriterBase']]]
+  ['ischanged_15',['IsChanged',['../classpanini_1_1_compare_writer.html#abcbece4a58ddbf8d0814588db049d5aa',1,'panini::CompareWriter']]],
+  ['isonnewline_16',['IsOnNewLine',['../classpanini_1_1_writer_base.html#af7d736a22fe2b6709ec1ae1cfe4b7e2b',1,'panini::WriterBase']]]
 ];

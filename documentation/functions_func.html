@@ -25,7 +25,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Panini<span id="projectnumber">&#160;1.0.1</span>
+   <div id="projectname">Panini<span id="projectnumber">&#160;1.1.0</span>
    </div>
    <div id="projectbrief">Header-only library for generating C++, written in C++17</div>
   </td>
@@ -97,10 +97,9 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 
 
 <h3><a id="index_c" name="index_c"></a>- c -</h3><ul>
-<li>Close()&#160;:&#160;<a class="el" href="classpanini_1_1_file_writer.html#ab0e3599090661ab787439f3c0b0ecfe1">panini::FileWriter</a></li>
 <li>CommentBlock()&#160;:&#160;<a class="el" href="classpanini_1_1_comment_block.html#a30186e0cc4f5119c8f82076440497ef1">panini::CommentBlock</a></li>
 <li>CommentLine()&#160;:&#160;<a class="el" href="classpanini_1_1_comment_line.html#a0efb77b15af783430c6fd07e0c6b516d">panini::CommentLine</a></li>
-<li>Commit()&#160;:&#160;<a class="el" href="classpanini_1_1_compare_writer.html#a97f0919adb86a6b0dbeca57322f59422">panini::CompareWriter</a></li>
+<li>Commit()&#160;:&#160;<a class="el" href="classpanini_1_1_writer_base.html#a3e699a4af7699bca800a2fbc2032c0d6">panini::WriterBase</a></li>
 <li>CompareWriter()&#160;:&#160;<a class="el" href="classpanini_1_1_compare_writer.html#a71287dd41f1f8266be545f760a528156">panini::CompareWriter</a></li>
 <li>ConsoleWriter()&#160;:&#160;<a class="el" href="classpanini_1_1_console_writer.html#aa723a35904cf23540857e0b1bf747838">panini::ConsoleWriter</a></li>
 </ul>
@@ -128,7 +127,7 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 <li>IncludeBlock()&#160;:&#160;<a class="el" href="classpanini_1_1_include_block.html#a7d90996917b3321de882dc88a8ef1e59">panini::IncludeBlock</a></li>
 <li>IncludeEntry()&#160;:&#160;<a class="el" href="structpanini_1_1_include_entry.html#a6752c87e7df40796a15ea1f40360f3c4">panini::IncludeEntry</a></li>
 <li>IncludeSet()&#160;:&#160;<a class="el" href="classpanini_1_1_include_set.html#a8c96f8a1f17147161c72a14b6099fe69">panini::IncludeSet</a></li>
-<li>IsChanged()&#160;:&#160;<a class="el" href="classpanini_1_1_compare_writer.html#abcbece4a58ddbf8d0814588db049d5aa">panini::CompareWriter</a></li>
+<li>IsChanged()&#160;:&#160;<a class="el" href="classpanini_1_1_compare_writer.html#a0dbef621790c6792c390f53489c75f62">panini::CompareWriter</a>, <a class="el" href="classpanini_1_1_file_writer.html#a3a11000a65ad121aaa060ec571ed206e">panini::FileWriter</a>, <a class="el" href="classpanini_1_1_writer_base.html#afcb026b5a9074fa8d61acf65d208467c">panini::WriterBase</a></li>
 <li>IsOnNewLine()&#160;:&#160;<a class="el" href="classpanini_1_1_writer_base.html#af7d736a22fe2b6709ec1ae1cfe4b7e2b">panini::WriterBase</a></li>
 </ul>
 
@@ -139,6 +138,7 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 
 
 <h3><a id="index_o" name="index_o"></a>- o -</h3><ul>
+<li>OnCommit()&#160;:&#160;<a class="el" href="classpanini_1_1_compare_writer.html#ae6d427b1268ea758a0b94562e2f798a2">panini::CompareWriter</a>, <a class="el" href="classpanini_1_1_console_writer.html#addeea4eea9cdfd4c8961bb92dab6915e">panini::ConsoleWriter</a>, <a class="el" href="classpanini_1_1_file_writer.html#a222f3fabfb54ecc1c7a8ddfffa929896">panini::FileWriter</a>, <a class="el" href="classpanini_1_1_string_writer.html#aa99574b7e394bb4be6d67f2bf85ad5bd">panini::StringWriter</a>, <a class="el" href="classpanini_1_1_writer_base.html#a9c8101fb81b38adc3c2a0b875b7d6a9f">panini::WriterBase</a></li>
 <li>operator&lt;&lt;()&#160;:&#160;<a class="el" href="classpanini_1_1_writer_base.html#a5d27b39b303782a99e1dfe038c9164a5">panini::WriterBase</a></li>
 </ul>
 
@@ -157,16 +157,14 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 
 
 <h3><a id="index_w" name="index_w"></a>- w -</h3><ul>
-<li>Write()&#160;:&#160;<a class="el" href="classpanini_1_1_writer_base.html#ae17a6c92990105e48b1c5667b68be1f6">panini::WriterBase</a></li>
-<li>WriterBase()&#160;:&#160;<a class="el" href="classpanini_1_1_writer_base.html#a9af272e8d7a436f437c895da934969f9">panini::WriterBase</a></li>
+<li>Write()&#160;:&#160;<a class="el" href="classpanini_1_1_compare_writer.html#a1ecc2202028ef7c13b1e2bdc11ff4f88">panini::CompareWriter</a>, <a class="el" href="classpanini_1_1_console_writer.html#a56fa3f67acd1a30c9e719ed660a958d8">panini::ConsoleWriter</a>, <a class="el" href="classpanini_1_1_file_writer.html#a9df86745d385b8042c63e2a77bcffefb">panini::FileWriter</a>, <a class="el" href="classpanini_1_1_string_writer.html#aba99419fa3fea839789c939085d6c507">panini::StringWriter</a>, <a class="el" href="classpanini_1_1_writer_base.html#ae17a6c92990105e48b1c5667b68be1f6">panini::WriterBase</a></li>
+<li>WriterBase()&#160;:&#160;<a class="el" href="classpanini_1_1_writer_base.html#ac606f8a7d0725678113d403c5711e50f">panini::WriterBase</a></li>
 </ul>
 
 
 <h3><a id="index__7E" name="index__7E"></a>- ~ -</h3><ul>
 <li>~CommandBase()&#160;:&#160;<a class="el" href="classpanini_1_1_command_base.html#a140398d6b1c2df6c74881b8aaadfd550">panini::CommandBase</a></li>
-<li>~CompareWriter()&#160;:&#160;<a class="el" href="classpanini_1_1_compare_writer.html#a02e9e8dadd26cef27a072a99885d30e0">panini::CompareWriter</a></li>
-<li>~FileWriter()&#160;:&#160;<a class="el" href="classpanini_1_1_file_writer.html#a2637cf2a07fc38c7920530ca8736211c">panini::FileWriter</a></li>
-<li>~WriterBase()&#160;:&#160;<a class="el" href="classpanini_1_1_writer_base.html#a4e3bf78ba31f57012f2e0eddac18c597">panini::WriterBase</a></li>
+<li>~WriterBase()&#160;:&#160;<a class="el" href="classpanini_1_1_writer_base.html#aa2be58c597bb97187201ad260347417f">panini::WriterBase</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

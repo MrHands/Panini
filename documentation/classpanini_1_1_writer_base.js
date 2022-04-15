@@ -1,10 +1,13 @@
 var classpanini_1_1_writer_base =
 [
-    [ "WriterBase", "classpanini_1_1_writer_base.html#a9af272e8d7a436f437c895da934969f9", null ],
-    [ "~WriterBase", "classpanini_1_1_writer_base.html#a4e3bf78ba31f57012f2e0eddac18c597", null ],
+    [ "WriterBase", "classpanini_1_1_writer_base.html#ac606f8a7d0725678113d403c5711e50f", null ],
+    [ "~WriterBase", "classpanini_1_1_writer_base.html#aa2be58c597bb97187201ad260347417f", null ],
+    [ "Commit", "classpanini_1_1_writer_base.html#a3e699a4af7699bca800a2fbc2032c0d6", null ],
     [ "GetBraceBreakingStyle", "classpanini_1_1_writer_base.html#a4dac8be36a19ee0398ca8f6a3e003950", null ],
     [ "GetIncludeStyle", "classpanini_1_1_writer_base.html#aa387eeb5fe9aadf2f951e4a9acc89bcc", null ],
+    [ "IsChanged", "classpanini_1_1_writer_base.html#afcb026b5a9074fa8d61acf65d208467c", null ],
     [ "IsOnNewLine", "classpanini_1_1_writer_base.html#af7d736a22fe2b6709ec1ae1cfe4b7e2b", null ],
+    [ "OnCommit", "classpanini_1_1_writer_base.html#a9c8101fb81b38adc3c2a0b875b7d6a9f", null ],
     [ "operator<<", "classpanini_1_1_writer_base.html#adc95a106ee52884e308f2432294f9e7d", null ],
     [ "operator<<", "classpanini_1_1_writer_base.html#a45ae328f4b809a3fe459c6732db8aa6a", null ],
     [ "operator<<", "classpanini_1_1_writer_base.html#ae1e75a895e470635b99290549c6e8f30", null ],

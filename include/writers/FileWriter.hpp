@@ -46,6 +46,14 @@ namespace panini
 			m_target.open(path.string(), std::ios::out | std::ios::binary);
 		}
 
+		/*!
+			Always close the stream when @ref Commit is called.
+		*/
+		inline virtual bool IsChanged() const override
+		{
+			return true;
+		}
+
 	protected:
 		/*!
 			Writes the chunk to the file stream.

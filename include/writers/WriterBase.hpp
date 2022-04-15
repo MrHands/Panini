@@ -267,7 +267,7 @@ namespace panini
 		*/
 		inline virtual bool IsChanged() const
 		{
-			return true;
+			return false;
 		}
 
 		/*!

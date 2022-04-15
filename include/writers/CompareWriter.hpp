@@ -63,38 +63,22 @@ namespace panini
 		}
 
 		/*!
-			The output is committed to the path automatically when the instance
-			is destroyed.
-		*/
-		inline ~CompareWriter()
-		{
-			Commit();
-		}
-
-		/*!
 			Check if the output was changed compared to what was read from disk
 			when the CompareWriter was created.
 		*/
-		inline bool IsChanged() const
+		inline virtual bool IsChanged() const override
 		{
 			return m_writtenPrevious != m_writtenCurrent;
 		}
 
-		/*!
-			Checks if the generated output matches what was read from the file
-			path previously and only writes to disk if the output was changed.
-
-			@param force Force writing the file even if the output was not
-			changed.
-		*/
-		inline virtual bool Commit(bool force = false)
+	protected:
+		inline virtual void Write(const std::string& chunk) override
 		{
-			if (!IsChanged() &&
-				!force)
-			{
-				return false;
-			}
+			m_writtenCurrent += chunk;
+		}
 
+		inline virtual bool OnCommit(bool force = false) override
+		{
 			std::ofstream stream(m_filePath.string(), std::ios::binary);
 			if (!stream.is_open())
 			{
@@ -107,12 +91,6 @@ namespace panini
 			m_writtenPrevious = m_writtenCurrent;
 
 			return true;
-		}
-
-	private:
-		inline virtual void Write(const std::string& chunk) override
-		{
-			m_writtenCurrent += chunk;
 		}
 
 	protected:

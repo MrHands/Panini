@@ -32,8 +32,12 @@ namespace panini
 	/*!
 		\brief Base class for writers.
 
-		Writers take chunks and commands as input and process them to output. You can
-		configure them with a \ref Config instance.
+		Writers take chunks and commands as input and process them to a target. They
+		are configured with a \ref Config instance that is passed to their
+		constructor.
+
+		Writers commit their output to a target automatically when they are
+		destroyed.
 	*/
 	class WriterBase
 	{
@@ -42,7 +46,7 @@ namespace panini
 		/*!
 			Constructs a writer with an optional configuration instance.
 		*/
-		inline explicit WriterBase(const Config& config = Config())
+		inline explicit WriterBase(const Config& config = Config{})
 			: m_config(config)
 		{
 			// reserve cached strings
@@ -66,7 +70,45 @@ namespace panini
 			}
 		}
 
-		virtual ~WriterBase() = default;
+		/*!
+			The output is committed to the path automatically when the instance
+			is destroyed.
+		*/
+		virtual ~WriterBase()
+		{
+			Commit();
+		}
+
+		/*!
+			Get the default brace breaking style.
+
+			\return Brace breaking style.
+		*/
+		inline BraceBreakingStyle GetBraceBreakingStyle() const
+		{
+			return m_config.braceBreakingStyle;
+		}
+
+		/*!
+			Get the default include style.
+
+			\return Include style.
+		*/
+		inline IncludeStyle GetIncludeStyle() const
+		{
+			return m_config.includeStyle;
+		}
+
+		/*!
+			Check whether the writer is on a new line and waiting for new
+			chunks.
+
+			\return True if the writer is on a new line
+		*/
+		inline bool IsOnNewLine() const
+		{
+			return m_state == State::NewLine;
+		}
 
 		/*!
 			Write an `std::string` chunk to the output.
@@ -208,37 +250,6 @@ namespace panini
 		}
 
 		/*!
-			Check whether the writer is on a new line and waiting for new
-			chunks.
-
-			\return True if the writer is on a new line
-		*/
-		inline bool IsOnNewLine() const
-		{
-			return m_state == State::NewLine;
-		}
-
-		/*!
-			Get the default brace breaking style.
-
-			\return Brace breaking style.
-		*/
-		inline BraceBreakingStyle GetBraceBreakingStyle() const
-		{
-			return m_config.braceBreakingStyle;
-		}
-
-		/*!
-			Get the default include style.
-
-			\return Include style.
-		*/
-		inline IncludeStyle GetIncludeStyle() const
-		{
-			return m_config.includeStyle;
-		}
-
-		/*!
 			Set the writer to be inside a comment block, which will add " * "
 			after the indentation of a new line.
 		*/
@@ -250,13 +261,46 @@ namespace panini
 			m_commentIndentCached.clear();
 		}
 
+		/*!
+			Check if the output was changed compared to what the implementation has
+			seen before.
+		*/
+		inline virtual bool IsChanged() const
+		{
+			return true;
+		}
+
+		/*!
+			Commits the generated output to the target of a writer if the
+			output was changed.
+
+			@param force Force writing the file even if the output was not
+			changed.
+
+			@return Returns true if the commit was successful.
+		*/
+		inline bool Commit(bool force = false)
+		{
+			return (IsChanged() || force) && OnCommit(force);
+		}
+
 	protected:
 		/*!
-			Interface for writing chunks to the output.
+			Interface for writing chunks to the output. Must be implemented by
+			derived classes.
 		*/
 		virtual void Write(const std::string& chunk) = 0;
 
+		/*!
+			Called when the writer is committed to its target. Must be
+			implemented by derived classes.
+		*/
+		virtual bool OnCommit(bool force = false) = 0;
+
 	private:
+		/*!
+			Cache the indentation level to the target string.
+		*/
 		inline void CacheIndentation(std::string& target, int32_t count)
 		{
 			target.clear();

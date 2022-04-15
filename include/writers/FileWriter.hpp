@@ -27,7 +27,8 @@ namespace panini
 {
 
 	/*!
-		\brief Writes output to a file.
+		\brief Writes output to a target file using a file stream. The stream
+		is closed automatically when the writer is destroyed.
 
 		The \ref Config instance is used to configure the output.
 	*/
@@ -42,38 +43,37 @@ namespace panini
 		inline FileWriter(const std::filesystem::path& path, const Config& config = Config())
 			: WriterBase(config)
 		{
-			m_stream.open(path.string());
+			m_target.open(path.string(), std::ios::out | std::ios::binary);
 		}
 
+	protected:
 		/*!
-			The file is closed automatically when the instance is destroyed.
+			Writes the chunk to the file stream.
 		*/
-		inline ~FileWriter()
+		inline virtual void Write(const std::string& chunk) override
 		{
-			Close();
-		}
-
-		/*!
-			Close the file.
-		*/
-		inline void Close()
-		{
-			m_stream.close();
-		}
-
-	private:
-		inline virtual void Write(const std::string& chunk) final
-		{
-			if (!m_stream.is_open())
+			if (!m_target.is_open())
 			{
 				return;
 			}
 
-			m_stream << chunk;
+			m_target << chunk;
 		}
 
-	private:
-		std::ofstream m_stream;
+		/*!
+			Close the file stream when the writer is committed.
+		*/
+		inline virtual bool OnCommit(bool force) override
+		{
+			(void)force;
+
+			m_target.close();
+
+			return true;
+		}
+
+	protected:
+		std::ofstream m_target;
 
 	};
 

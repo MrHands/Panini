@@ -44,10 +44,23 @@ namespace panini
 		{
 		}
 
-	private:
-		inline virtual void Write(const std::string& chunk) final
+	protected:
+		/*!
+			Writes the chunk to the standard output of a console window.
+		*/
+		inline virtual void Write(const std::string& chunk) override
 		{
 			std::cout << chunk;
+		}
+
+		/*
+			Commits the console when the writer is destroyed.
+		*/
+		inline virtual bool OnCommit(bool force) override
+		{
+			(void)force;
+
+			return true;
 		}
 
 	};

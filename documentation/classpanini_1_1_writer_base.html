@@ -25,8 +25,9 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Panini
+   <div id="projectname">Panini<span id="projectnumber">&#160;1.1.0</span>
    </div>
+   <div id="projectbrief">Header-only library for generating C++, written in C++17</div>
   </td>
  </tr>
  </tbody>
@@ -102,17 +103,23 @@ Inheritance diagram for panini::WriterBase:</div>
   <map id="panini::WriterBase_map" name="panini::WriterBase_map">
 <area href="classpanini_1_1_compare_writer.html" title="Writes the output to a path only when it was changed." alt="panini::CompareWriter" shape="rect" coords="0,56,137,80"/>
 <area href="classpanini_1_1_console_writer.html" title="Writes output to the console." alt="panini::ConsoleWriter" shape="rect" coords="147,56,284,80"/>
-<area href="classpanini_1_1_file_writer.html" title="Writes output to a file." alt="panini::FileWriter" shape="rect" coords="294,56,431,80"/>
+<area href="classpanini_1_1_file_writer.html" title="Writes output to a target file using a file stream. The stream is closed automatically when the write..." alt="panini::FileWriter" shape="rect" coords="294,56,431,80"/>
 <area href="classpanini_1_1_string_writer.html" title="Writes output to a string." alt="panini::StringWriter" shape="rect" coords="441,56,578,80"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a9af272e8d7a436f437c895da934969f9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_writer_base.html#a9af272e8d7a436f437c895da934969f9">WriterBase</a> (const <a class="el" href="structpanini_1_1_config.html">Config</a> &amp;config=<a class="el" href="structpanini_1_1_config.html">Config</a>())</td></tr>
-<tr class="separator:a9af272e8d7a436f437c895da934969f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4e3bf78ba31f57012f2e0eddac18c597"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_writer_base.html#a4e3bf78ba31f57012f2e0eddac18c597">~WriterBase</a> ()=default</td></tr>
-<tr class="separator:a4e3bf78ba31f57012f2e0eddac18c597"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac606f8a7d0725678113d403c5711e50f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_writer_base.html#ac606f8a7d0725678113d403c5711e50f">WriterBase</a> (const <a class="el" href="structpanini_1_1_config.html">Config</a> &amp;config=<a class="el" href="structpanini_1_1_config.html">Config</a>{})</td></tr>
+<tr class="separator:ac606f8a7d0725678113d403c5711e50f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2be58c597bb97187201ad260347417f"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_writer_base.html#aa2be58c597bb97187201ad260347417f">~WriterBase</a> ()</td></tr>
+<tr class="separator:aa2be58c597bb97187201ad260347417f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4dac8be36a19ee0398ca8f6a3e003950"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___enums.html#ga0e8bf718da5e3c164599e591f6b76f5c">BraceBreakingStyle</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_writer_base.html#a4dac8be36a19ee0398ca8f6a3e003950">GetBraceBreakingStyle</a> () const</td></tr>
+<tr class="separator:a4dac8be36a19ee0398ca8f6a3e003950"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa387eeb5fe9aadf2f951e4a9acc89bcc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___enums.html#ga27a306a905c9b4ceccb79f449c97a80d">IncludeStyle</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_writer_base.html#aa387eeb5fe9aadf2f951e4a9acc89bcc">GetIncludeStyle</a> () const</td></tr>
+<tr class="separator:aa387eeb5fe9aadf2f951e4a9acc89bcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7d736a22fe2b6709ec1ae1cfe4b7e2b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_writer_base.html#af7d736a22fe2b6709ec1ae1cfe4b7e2b">IsOnNewLine</a> () const</td></tr>
+<tr class="separator:af7d736a22fe2b6709ec1ae1cfe4b7e2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5d27b39b303782a99e1dfe038c9164a5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classpanini_1_1_writer_base.html">WriterBase</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_writer_base.html#a5d27b39b303782a99e1dfe038c9164a5">operator&lt;&lt;</a> (const std::string &amp;chunk)</td></tr>
 <tr class="separator:a5d27b39b303782a99e1dfe038c9164a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a45ae328f4b809a3fe459c6732db8aa6a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classpanini_1_1_writer_base.html">WriterBase</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_writer_base.html#a45ae328f4b809a3fe459c6732db8aa6a">operator&lt;&lt;</a> (const char *chunkString)</td></tr>
@@ -125,26 +132,27 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ae1e75a895e470635b99290549c6e8f30"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adc95a106ee52884e308f2432294f9e7d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classpanini_1_1_writer_base.html">WriterBase</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_writer_base.html#adc95a106ee52884e308f2432294f9e7d">operator&lt;&lt;</a> (<a class="el" href="classpanini_1_1_command_base.html">CommandBase</a> &amp;&amp;command)</td></tr>
 <tr class="separator:adc95a106ee52884e308f2432294f9e7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af7d736a22fe2b6709ec1ae1cfe4b7e2b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_writer_base.html#af7d736a22fe2b6709ec1ae1cfe4b7e2b">IsOnNewLine</a> () const</td></tr>
-<tr class="separator:af7d736a22fe2b6709ec1ae1cfe4b7e2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4dac8be36a19ee0398ca8f6a3e003950"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___enums.html#ga0e8bf718da5e3c164599e591f6b76f5c">BraceBreakingStyle</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_writer_base.html#a4dac8be36a19ee0398ca8f6a3e003950">GetBraceBreakingStyle</a> () const</td></tr>
-<tr class="separator:a4dac8be36a19ee0398ca8f6a3e003950"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa387eeb5fe9aadf2f951e4a9acc89bcc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___enums.html#ga27a306a905c9b4ceccb79f449c97a80d">IncludeStyle</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_writer_base.html#aa387eeb5fe9aadf2f951e4a9acc89bcc">GetIncludeStyle</a> () const</td></tr>
-<tr class="separator:aa387eeb5fe9aadf2f951e4a9acc89bcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab22063f561d004f0d56844fe66a608d9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_writer_base.html#ab22063f561d004f0d56844fe66a608d9">SetIsInCommentBlock</a> (bool value)</td></tr>
 <tr class="separator:ab22063f561d004f0d56844fe66a608d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afcb026b5a9074fa8d61acf65d208467c"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_writer_base.html#afcb026b5a9074fa8d61acf65d208467c">IsChanged</a> () const</td></tr>
+<tr class="separator:afcb026b5a9074fa8d61acf65d208467c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e699a4af7699bca800a2fbc2032c0d6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_writer_base.html#a3e699a4af7699bca800a2fbc2032c0d6">Commit</a> (bool force=false)</td></tr>
+<tr class="separator:a3e699a4af7699bca800a2fbc2032c0d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:ae17a6c92990105e48b1c5667b68be1f6"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_writer_base.html#ae17a6c92990105e48b1c5667b68be1f6">Write</a> (const std::string &amp;chunk)=0</td></tr>
 <tr class="separator:ae17a6c92990105e48b1c5667b68be1f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c8101fb81b38adc3c2a0b875b7d6a9f"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_writer_base.html#a9c8101fb81b38adc3c2a0b875b7d6a9f">OnCommit</a> (bool force=false)=0</td></tr>
+<tr class="separator:a9c8101fb81b38adc3c2a0b875b7d6a9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Base class for writers. </p>
-<p >Writers take chunks and commands as input and process them to output. You can configure them with a <a class="el" href="structpanini_1_1_config.html">Config</a> instance. </p>
+<p >Writers take chunks and commands as input and process them to a target. They are configured with a <a class="el" href="structpanini_1_1_config.html">Config</a> instance that is passed to their constructor.</p>
+<p >Writers commit their output to a target automatically when they are destroyed. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a9af272e8d7a436f437c895da934969f9" name="a9af272e8d7a436f437c895da934969f9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9af272e8d7a436f437c895da934969f9">&#9670;&nbsp;</a></span>WriterBase()</h2>
+<a id="ac606f8a7d0725678113d403c5711e50f" name="ac606f8a7d0725678113d403c5711e50f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac606f8a7d0725678113d403c5711e50f">&#9670;&nbsp;</a></span>WriterBase()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -156,7 +164,7 @@ Protected Member Functions</h2></td></tr>
           <td class="memname">panini::WriterBase::WriterBase </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="structpanini_1_1_config.html">Config</a> &amp;&#160;</td>
-          <td class="paramname"><em>config</em> = <code><a class="el" href="structpanini_1_1_config.html">Config</a>()</code></td><td>)</td>
+          <td class="paramname"><em>config</em> = <code><a class="el" href="structpanini_1_1_config.html">Config</a>{}</code></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -170,8 +178,8 @@ Protected Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a4e3bf78ba31f57012f2e0eddac18c597" name="a4e3bf78ba31f57012f2e0eddac18c597"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4e3bf78ba31f57012f2e0eddac18c597">&#9670;&nbsp;</a></span>~WriterBase()</h2>
+<a id="aa2be58c597bb97187201ad260347417f" name="aa2be58c597bb97187201ad260347417f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2be58c597bb97187201ad260347417f">&#9670;&nbsp;</a></span>~WriterBase()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -188,14 +196,49 @@ Protected Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span><span class="mlabel">default</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >The output is committed to the path automatically when the instance is destroyed. </p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a3e699a4af7699bca800a2fbc2032c0d6" name="a3e699a4af7699bca800a2fbc2032c0d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3e699a4af7699bca800a2fbc2032c0d6">&#9670;&nbsp;</a></span>Commit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool panini::WriterBase::Commit </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>force</em> = <code>false</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Commits the generated output to the target of a writer if the output was changed.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">force</td><td>Force writing the file even if the output was not changed.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Returns true if the commit was successful. </dd></dl>
+
+</div>
+</div>
 <a id="a4dac8be36a19ee0398ca8f6a3e003950" name="a4dac8be36a19ee0398ca8f6a3e003950"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4dac8be36a19ee0398ca8f6a3e003950">&#9670;&nbsp;</a></span>GetBraceBreakingStyle()</h2>
 
@@ -250,6 +293,34 @@ Protected Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="afcb026b5a9074fa8d61acf65d208467c" name="afcb026b5a9074fa8d61acf65d208467c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afcb026b5a9074fa8d61acf65d208467c">&#9670;&nbsp;</a></span>IsChanged()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool panini::WriterBase::IsChanged </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Check if the output was changed compared to what the implementation has seen before. </p>
+
+<p>Reimplemented in <a class="el" href="classpanini_1_1_compare_writer.html#a0dbef621790c6792c390f53489c75f62">panini::CompareWriter</a>, and <a class="el" href="classpanini_1_1_file_writer.html#a3a11000a65ad121aaa060ec571ed206e">panini::FileWriter</a>.</p>
+
+</div>
+</div>
 <a id="af7d736a22fe2b6709ec1ae1cfe4b7e2b" name="af7d736a22fe2b6709ec1ae1cfe4b7e2b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af7d736a22fe2b6709ec1ae1cfe4b7e2b">&#9670;&nbsp;</a></span>IsOnNewLine()</h2>
 
@@ -274,6 +345,35 @@ Protected Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p >Check whether the writer is on a new line and waiting for new chunks.</p>
 <dl class="section return"><dt>Returns</dt><dd>True if the writer is on a new line </dd></dl>
+
+</div>
+</div>
+<a id="a9c8101fb81b38adc3c2a0b875b7d6a9f" name="a9c8101fb81b38adc3c2a0b875b7d6a9f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c8101fb81b38adc3c2a0b875b7d6a9f">&#9670;&nbsp;</a></span>OnCommit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool panini::WriterBase::OnCommit </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>force</em> = <code>false</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Called when the writer is committed to its target. Must be implemented by derived classes. </p>
+
+<p>Implemented in <a class="el" href="classpanini_1_1_console_writer.html#addeea4eea9cdfd4c8961bb92dab6915e">panini::ConsoleWriter</a>, <a class="el" href="classpanini_1_1_file_writer.html#a222f3fabfb54ecc1c7a8ddfffa929896">panini::FileWriter</a>, <a class="el" href="classpanini_1_1_string_writer.html#aa99574b7e394bb4be6d67f2bf85ad5bd">panini::StringWriter</a>, and <a class="el" href="classpanini_1_1_compare_writer.html#ae6d427b1268ea758a0b94562e2f798a2">panini::CompareWriter</a>.</p>
 
 </div>
 </div>
@@ -502,7 +602,9 @@ Protected Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p >Interface for writing chunks to the output. </p>
+<p >Interface for writing chunks to the output. Must be implemented by derived classes. </p>
+
+<p>Implemented in <a class="el" href="classpanini_1_1_compare_writer.html#a1ecc2202028ef7c13b1e2bdc11ff4f88">panini::CompareWriter</a>, <a class="el" href="classpanini_1_1_console_writer.html#a56fa3f67acd1a30c9e719ed660a958d8">panini::ConsoleWriter</a>, <a class="el" href="classpanini_1_1_file_writer.html#a9df86745d385b8042c63e2a77bcffefb">panini::FileWriter</a>, and <a class="el" href="classpanini_1_1_string_writer.html#aba99419fa3fea839789c939085d6c507">panini::StringWriter</a>.</p>
 
 </div>
 </div>

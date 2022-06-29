@@ -25,8 +25,9 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Panini
+   <div id="projectname">Panini<span id="projectnumber">&#160;1.1.0</span>
    </div>
+   <div id="projectbrief">Header-only library for generating C++, written in C++17</div>
   </td>
  </tr>
  </tbody>
@@ -171,7 +172,7 @@ $(document).ready(function(){initNavTree('_scope_8hpp_source.html',''); initResi
 <div class="ttc" id="aclasspanini_1_1_scope_html_a450f6204e469c448df3e6e5fbde8b3b2"><div class="ttname"><a href="classpanini_1_1_scope.html#a450f6204e469c448df3e6e5fbde8b3b2">panini::Scope::Scope</a></div><div class="ttdeci">Scope(std::string &amp;&amp;name, std::function&lt; void(WriterBase &amp;)&gt; &amp;&amp;callback, BraceBreakingStyle style=BraceBreakingStyle::Inherit)</div><div class="ttdef"><b>Definition:</b> Scope.hpp:81</div></div>
 <div class="ttc" id="aclasspanini_1_1_scope_html_ac731f452d4b711230194ba594621d36c"><div class="ttname"><a href="classpanini_1_1_scope.html#ac731f452d4b711230194ba594621d36c">panini::Scope::Scope</a></div><div class="ttdeci">Scope(const std::string &amp;name, std::function&lt; void(WriterBase &amp;)&gt; &amp;&amp;callback, BraceBreakingStyle braceStyle=BraceBreakingStyle::Inherit)</div><div class="ttdef"><b>Definition:</b> Scope.hpp:99</div></div>
 <div class="ttc" id="aclasspanini_1_1_scope_html_ad44c4fd0168cdfd266128ae3813763ab"><div class="ttname"><a href="classpanini_1_1_scope.html#ad44c4fd0168cdfd266128ae3813763ab">panini::Scope::Visit</a></div><div class="ttdeci">virtual void Visit(WriterBase &amp;writer) final</div><div class="ttdef"><b>Definition:</b> Scope.hpp:106</div></div>
-<div class="ttc" id="aclasspanini_1_1_writer_base_html"><div class="ttname"><a href="classpanini_1_1_writer_base.html">panini::WriterBase</a></div><div class="ttdoc">Base class for writers.</div><div class="ttdef"><b>Definition:</b> WriterBase.hpp:39</div></div>
+<div class="ttc" id="aclasspanini_1_1_writer_base_html"><div class="ttname"><a href="classpanini_1_1_writer_base.html">panini::WriterBase</a></div><div class="ttdoc">Base class for writers.</div><div class="ttdef"><b>Definition:</b> WriterBase.hpp:43</div></div>
 <div class="ttc" id="agroup___enums_html_ga0e8bf718da5e3c164599e591f6b76f5c"><div class="ttname"><a href="group___enums.html#ga0e8bf718da5e3c164599e591f6b76f5c">panini::BraceBreakingStyle</a></div><div class="ttdeci">BraceBreakingStyle</div><div class="ttdoc">Brace breaking style to use when writing to output.</div><div class="ttdef"><b>Definition:</b> Config.hpp:47</div></div>
 <div class="ttc" id="agroup___enums_html_gga0e8bf718da5e3c164599e591f6b76f5ca7193518e6f5f0076ef05680742323f9c"><div class="ttname"><a href="group___enums.html#gga0e8bf718da5e3c164599e591f6b76f5ca7193518e6f5f0076ef05680742323f9c">panini::BraceBreakingStyle::Attach</a></div><div class="ttdeci">@ Attach</div><div class="ttdoc">Open brace on the same line.</div></div>
 <div class="ttc" id="agroup___enums_html_gga0e8bf718da5e3c164599e591f6b76f5cac49484faf79e2388b580e49444d6ac11"><div class="ttname"><a href="group___enums.html#gga0e8bf718da5e3c164599e591f6b76f5cac49484faf79e2388b580e49444d6ac11">panini::BraceBreakingStyle::Inherit</a></div><div class="ttdeci">@ Inherit</div><div class="ttdoc">Inherit setting from the config, not valid on WriterBase.</div></div>

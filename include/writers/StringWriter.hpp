@@ -45,13 +45,27 @@ namespace panini
 		{
 		}
 
-	private:
-		inline virtual void Write(const std::string& chunk) final
+	protected:
+		/*
+			Writes the chunk to the target string.
+		*/
+		inline virtual void Write(const std::string& chunk) override
 		{
 			m_target += chunk;
 		}
 
-	private:
+		/*!
+			Called when the writer is committed.
+		*/
+		inline virtual bool OnCommit(bool force) override
+		{
+			(void)force;
+
+			return true;
+		}
+
+	protected:
+		//! Target string that will be written to.
 		std::string& m_target;
 
 	};

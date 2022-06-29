@@ -28,7 +28,7 @@ TEST(FileWriter, Write)
 
 	FileWriter w("out.txt");
 	w << "HACKING";
-	w.Close();
+	w.Commit();
 
 	std::string s;
 

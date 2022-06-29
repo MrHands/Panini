@@ -150,13 +150,10 @@ Protected Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr class="memitem:ac125fd304639524cc8e349fb463412de"><td class="memItemLeft" align="right" valign="top">std::filesystem::path&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_compare_writer.html#ac125fd304639524cc8e349fb463412de">m_filePath</a></td></tr>
-<tr class="memdesc:ac125fd304639524cc8e349fb463412de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Path that will be compared and written to.  <a href="classpanini_1_1_compare_writer.html#ac125fd304639524cc8e349fb463412de">More...</a><br /></td></tr>
 <tr class="separator:ac125fd304639524cc8e349fb463412de"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1d18328ac9975eb3f5a0f6e6e2145e3e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_compare_writer.html#a1d18328ac9975eb3f5a0f6e6e2145e3e">m_fileExists</a> = false</td></tr>
-<tr class="memdesc:a1d18328ac9975eb3f5a0f6e6e2145e3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whether the file existed when the instance was created.  <a href="classpanini_1_1_compare_writer.html#a1d18328ac9975eb3f5a0f6e6e2145e3e">More...</a><br /></td></tr>
-<tr class="separator:a1d18328ac9975eb3f5a0f6e6e2145e3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2050215a00488590d06fa37eb799504"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_compare_writer.html#ad2050215a00488590d06fa37eb799504">m_pathExists</a> = false</td></tr>
+<tr class="separator:ad2050215a00488590d06fa37eb799504"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a24f4e32f73e18ee4d08130a9f671c7d6"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_compare_writer.html#a24f4e32f73e18ee4d08130a9f671c7d6">m_writtenPrevious</a></td></tr>
-<tr class="memdesc:a24f4e32f73e18ee4d08130a9f671c7d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contents of the file that was written previously.  <a href="classpanini_1_1_compare_writer.html#a24f4e32f73e18ee4d08130a9f671c7d6">More...</a><br /></td></tr>
 <tr class="separator:a24f4e32f73e18ee4d08130a9f671c7d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abdb49e1fc5c2e6ea04ee4500c0c242f3"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_compare_writer.html#abdb49e1fc5c2e6ea04ee4500c0c242f3">m_writtenCurrent</a></td></tr>
 <tr class="memdesc:abdb49e1fc5c2e6ea04ee4500c0c242f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Newly generated contents of the file.  <a href="classpanini_1_1_compare_writer.html#abdb49e1fc5c2e6ea04ee4500c0c242f3">More...</a><br /></td></tr>
@@ -292,30 +289,6 @@ Protected Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a1d18328ac9975eb3f5a0f6e6e2145e3e" name="a1d18328ac9975eb3f5a0f6e6e2145e3e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1d18328ac9975eb3f5a0f6e6e2145e3e">&#9670;&nbsp;</a></span>m_fileExists</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool panini::CompareWriter::m_fileExists = false</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Whether the file existed when the instance was created. </p>
-
-</div>
-</div>
 <a id="ac125fd304639524cc8e349fb463412de" name="ac125fd304639524cc8e349fb463412de"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac125fd304639524cc8e349fb463412de">&#9670;&nbsp;</a></span>m_filePath</h2>
 
@@ -336,7 +309,27 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Path that will be compared and written to. </p>
+</div>
+</div>
+<a id="ad2050215a00488590d06fa37eb799504" name="ad2050215a00488590d06fa37eb799504"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2050215a00488590d06fa37eb799504">&#9670;&nbsp;</a></span>m_pathExists</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool panini::CompareWriter::m_pathExists = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -383,8 +376,6 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Contents of the file that was written previously. </p>
 
 </div>
 </div>

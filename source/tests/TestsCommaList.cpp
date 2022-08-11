@@ -22,6 +22,74 @@
 #include <gtest/gtest.h>
 #include <Panini.hpp>
 
+namespace panini
+{
+
+	struct CommaListOptions
+	{
+		std::string separatorEnd = "";
+		std::string separatorBegin = "";
+		bool addNewLine = false;
+	};
+
+	template <typename TItem>
+	class CommaList
+		: public CommandBase
+	{
+
+	public:
+		inline CommaList(const std::vector<TItem>& items, const std::string& separator = ", ")
+			: m_items(items)
+			, m_separator(separator)
+		{
+		}
+
+		inline CommaList(const std::vector<TItem>& items, std::function<std::string(const TItem&)> transform, const std::string& separator = ", ")
+			: m_items(items)
+			, m_transform(transform)
+			, m_separator(separator)
+		{
+		}
+
+		inline virtual void Visit(WriterBase& writer) final
+		{
+			if (m_transform)
+			{
+				size_t itemIndex = 0;
+				for (const TItem& item : m_items)
+				{
+					if (itemIndex++ > 0)
+					{
+						writer << m_separator;
+					}
+
+					writer << m_transform(item);
+				}
+			}
+			else
+			{
+				size_t itemIndex = 0;
+				for (const TItem& item : m_items)
+				{
+					if (itemIndex++ > 0)
+					{
+						writer << m_separator;
+					}
+
+					writer << item;
+				}
+			}
+		}
+
+	private:
+		std::vector<TItem> m_items;
+		std::string m_separator;
+		std::function<std::string(const TItem&)> m_transform;
+
+	};
+
+};
+
 TEST(CommaList, Strings)
 {
 	using namespace panini;

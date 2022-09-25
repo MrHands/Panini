@@ -110,7 +110,24 @@ TEST(CommaList, VectorOfStrings)
 	EXPECT_STREQ(R"(supposed, to, be, somewhere)", t.c_str());
 }
 
-TEST(CommaList, VectorOfInts)
+/*
+TEST(CommaList, SetOfStrings)
+{
+	using namespace panini;
+
+	std::string t;
+	StringWriter w(t);
+
+	std::set<std::string> s = {
+		"Apple", "Banana", "Cherry"
+	};
+
+	w << CommaList(s.begin(), s.end());
+
+	EXPECT_STREQ(R"(Apple, Banana, Cherry)", t.c_str());
+}*/
+
+TEST(CommaList, VectorOfIntegers)
 {
 	using namespace panini;
 
@@ -124,6 +141,26 @@ TEST(CommaList, VectorOfInts)
 	w << CommaList(s.begin(), s.end());
 
 	EXPECT_STREQ(R"(1, 3, 5, 7, 11)", t.c_str());
+}
+
+TEST(CommaList, SeparatorBegin)
+{
+	using namespace panini;
+
+	std::string t;
+	StringWriter w(t);
+
+	std::vector<std::string> s = {
+		"Taxi", "Cab", "Service"
+	};
+
+	CommaListOptions o;
+	o.separatorBegin = " -> ";
+	o.separatorEnd = "";
+
+	// w << CommaList(s.begin(), s.end(), o);
+
+	EXPECT_STREQ(R"( -> Taxi -> Cab -> Service)", t.c_str());
 }
 
 TEST(CommaList, Transform)

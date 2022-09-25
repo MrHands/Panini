@@ -41,7 +41,7 @@ namespace panini
 		using TUnderlying = typename std::iterator_traits<TIterator>::value_type;
 
 		template <typename TSource>
-		static std::string DefaultTransform(TSource& source, size_t index)
+		static std::string DefaultTransform(const TSource& source, size_t index)
 		{
 			(void)index;
 
@@ -49,7 +49,7 @@ namespace panini
 		}
 
 		template <>
-		static std::string DefaultTransform(std::string& source, size_t index)
+		static std::string DefaultTransform(const std::string& source, size_t index)
 		{
 			(void)index;
 
@@ -60,7 +60,7 @@ namespace panini
 			TIterator begin,
 			TIterator end,
 			const CommaListOptions& options = {},
-			std::function<std::string(TUnderlying&, size_t)> transform = DefaultTransform<TUnderlying>)
+			std::function<std::string(const TUnderlying&, size_t)> transform = DefaultTransform<TUnderlying>)
 			: m_begin(begin)
 			, m_end(end)
 			, m_options(options)
@@ -88,7 +88,7 @@ namespace panini
 		TIterator m_begin;
 		TIterator m_end;
 		CommaListOptions m_options;
-		std::function<std::string(TUnderlying&, size_t)> m_transform;
+		std::function<std::string(const TUnderlying&, size_t)> m_transform;
 
 	};
 
@@ -110,7 +110,6 @@ TEST(CommaList, VectorOfStrings)
 	EXPECT_STREQ(R"(supposed, to, be, somewhere)", t.c_str());
 }
 
-/*
 TEST(CommaList, SetOfStrings)
 {
 	using namespace panini;
@@ -125,7 +124,7 @@ TEST(CommaList, SetOfStrings)
 	w << CommaList(s.begin(), s.end());
 
 	EXPECT_STREQ(R"(Apple, Banana, Cherry)", t.c_str());
-}*/
+}
 
 TEST(CommaList, VectorOfIntegers)
 {
@@ -174,7 +173,7 @@ TEST(CommaList, Transform)
 		6, 12, 24, 48
 	};
 
-	w << CommaList(s.begin(), s.end(), {}, [](int32_t& it, size_t index) {
+	w << CommaList(s.begin(), s.end(), {}, [](const int32_t& it, size_t index) {
 		return std::string{ "[ " } + std::to_string(100 + it) + " ]";
 	});
 

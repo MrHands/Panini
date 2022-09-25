@@ -2,7 +2,6 @@ var hierarchy =
 [
     [ "panini::CommandBase", "classpanini_1_1_command_base.html", [
       [ "panini::Braces", "classpanini_1_1_braces.html", null ],
-      [ "panini::CommaList< TItem >", "classpanini_1_1_comma_list.html", null ],
       [ "panini::CommentBlock", "classpanini_1_1_comment_block.html", null ],
       [ "panini::CommentLine", "classpanini_1_1_comment_line.html", null ],
       [ "panini::Include", "classpanini_1_1_include.html", null ],

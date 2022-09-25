@@ -1,7 +1,6 @@
 var namespacepanini =
 [
     [ "Braces", "classpanini_1_1_braces.html", "classpanini_1_1_braces" ],
-    [ "CommaList", "classpanini_1_1_comma_list.html", "classpanini_1_1_comma_list" ],
     [ "CommandBase", "classpanini_1_1_command_base.html", "classpanini_1_1_command_base" ],
     [ "CommentBlock", "classpanini_1_1_comment_block.html", "classpanini_1_1_comment_block" ],
     [ "CommentLine", "classpanini_1_1_comment_line.html", "classpanini_1_1_comment_line" ],

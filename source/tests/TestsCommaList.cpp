@@ -157,9 +157,30 @@ TEST(CommaList, SeparatorBegin)
 	o.separatorBegin = " -> ";
 	o.separatorEnd = "";
 
-	// w << CommaList(s.begin(), s.end(), o);
+	// w << CommaList<std::vector<std::string>::const_iterator>(s.begin(), s.end(), o);
 
 	EXPECT_STREQ(R"( -> Taxi -> Cab -> Service)", t.c_str());
+}
+
+TEST(CommaList, SeparatorEnd)
+{
+	using namespace panini;
+
+	std::string t;
+	StringWriter w(t);
+
+	std::vector<std::string> s = {
+		"Blinded", "By", "The", "Lights"
+	};
+
+	CommaListOptions o;
+	o.separatorBegin = "";
+	o.separatorEnd = " and then ";
+
+	// unconfuse the compiler (VS 2017) with an explicit specialization
+	w << CommaList<std::vector<std::string>::const_iterator>(s.begin(), s.end(), o);
+
+	EXPECT_STREQ(R"(Blinded and then By and then The and then Lights)", t.c_str());
 }
 
 TEST(CommaList, Transform)

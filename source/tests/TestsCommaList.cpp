@@ -27,70 +27,74 @@ namespace panini
 
 	struct CommaListOptions
 	{
-		std::string separatorEnd = "";
 		std::string separatorBegin = "";
+		std::string separatorEnd = ", ";
 		bool addNewLine = false;
 	};
 
-	template <typename TItem>
+	template <typename TIterator>
 	class CommaList
 		: public CommandBase
 	{
 
 	public:
-		inline CommaList(const std::vector<TItem>& items, const std::string& separator = ", ")
-			: m_items(items)
-			, m_separator(separator)
+		using TUnderlying = typename std::iterator_traits<TIterator>::value_type;
+
+		template <typename TSource>
+		static std::string DefaultTransform(TSource& source, size_t index)
 		{
+			(void)index;
+
+			return std::to_string(source);
 		}
 
-		inline CommaList(const std::vector<TItem>& items, std::function<std::string(const TItem&)> transform, const std::string& separator = ", ")
-			: m_items(items)
+		template <>
+		static std::string DefaultTransform(std::string& source, size_t index)
+		{
+			(void)index;
+
+			return source;
+		}
+
+		inline CommaList(
+			TIterator begin,
+			TIterator end,
+			const CommaListOptions& options = {},
+			std::function<std::string(TUnderlying&, size_t)> transform = DefaultTransform<TUnderlying>)
+			: m_begin(begin)
+			, m_end(end)
+			, m_options(options)
 			, m_transform(transform)
-			, m_separator(separator)
 		{
 		}
 
 		inline virtual void Visit(WriterBase& writer) final
 		{
-			if (m_transform)
+			size_t index = 0;
+			for (TIterator item = m_begin; item != m_end; ++item)
 			{
-				size_t itemIndex = 0;
-				for (const TItem& item : m_items)
+				if (index++ > 0)
 				{
-					if (itemIndex++ > 0)
-					{
-						writer << m_separator;
-					}
-
-					writer << m_transform(item);
+					writer << m_options.separatorEnd;
 				}
-			}
-			else
-			{
-				size_t itemIndex = 0;
-				for (const TItem& item : m_items)
-				{
-					if (itemIndex++ > 0)
-					{
-						writer << m_separator;
-					}
 
-					writer << item;
-				}
+				writer
+					<< m_options.separatorBegin
+					<< m_transform(*item, index);
 			}
 		}
 
 	private:
-		std::vector<TItem> m_items;
-		std::string m_separator;
-		std::function<std::string(const TItem&)> m_transform;
+		TIterator m_begin;
+		TIterator m_end;
+		CommaListOptions m_options;
+		std::function<std::string(TUnderlying&, size_t)> m_transform;
 
 	};
 
 };
 
-TEST(CommaList, Strings)
+TEST(CommaList, VectorOfStrings)
 {
 	using namespace panini;
 
@@ -101,7 +105,41 @@ TEST(CommaList, Strings)
 		"supposed", "to", "be", "somewhere"
 	};
 
-	w << CommaList(s);
+	w << CommaList(s.begin(), s.end());
 
 	EXPECT_STREQ(R"(supposed, to, be, somewhere)", t.c_str());
+}
+
+TEST(CommaList, VectorOfInts)
+{
+	using namespace panini;
+
+	std::string t;
+	StringWriter w(t);
+
+	std::vector<int32_t> s = {
+		1, 3, 5, 7, 11
+	};
+
+	w << CommaList(s.begin(), s.end());
+
+	EXPECT_STREQ(R"(1, 3, 5, 7, 11)", t.c_str());
+}
+
+TEST(CommaList, Transform)
+{
+	using namespace panini;
+
+	std::string t;
+	StringWriter w(t);
+
+	std::vector<int32_t> s = {
+		6, 12, 24, 48
+	};
+
+	w << CommaList(s.begin(), s.end(), {}, [](int32_t& it, size_t index) {
+		return std::string{ "[ " } + std::to_string(100 + it) + " ]";
+	});
+
+	EXPECT_STREQ(R"([ 106 ], [ 112 ], [ 124 ], [ 148 ])", t.c_str());
 }

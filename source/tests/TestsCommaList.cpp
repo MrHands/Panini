@@ -29,7 +29,7 @@ namespace panini
 	{
 		std::string separatorBegin = "";
 		std::string separatorEnd = ", ";
-		bool addNewLine = false;
+		bool addNewLines = false;
 	};
 
 	template <typename TIterator>
@@ -75,6 +75,11 @@ namespace panini
 			{
 				if (index++ > 0)
 				{
+					if (m_options.addNewLines)
+					{
+						writer << NextLine();
+					}
+
 					writer << m_options.separatorEnd;
 				}
 
@@ -157,7 +162,10 @@ TEST(CommaList, SeparatorBegin)
 	o.separatorBegin = " -> ";
 	o.separatorEnd = "";
 
-	// w << CommaList<std::vector<std::string>::const_iterator>(s.begin(), s.end(), o);
+	// explicit specialization is a workaround for an internal compiler error
+	// when compiling with VS 2017
+	using TCommaList = CommaList<std::vector<std::string>::const_iterator>;
+	w << TCommaList(s.begin(), s.end(), o, TCommaList::DefaultTransform<std::string>);
 
 	EXPECT_STREQ(R"( -> Taxi -> Cab -> Service)", t.c_str());
 }
@@ -177,10 +185,58 @@ TEST(CommaList, SeparatorEnd)
 	o.separatorBegin = "";
 	o.separatorEnd = " and then ";
 
-	// unconfuse the compiler (VS 2017) with an explicit specialization
-	w << CommaList<std::vector<std::string>::const_iterator>(s.begin(), s.end(), o);
+	// explicit specialization is a workaround for an internal compiler error
+	// when compiling with VS 2017
+	using TCommaList = CommaList<std::vector<std::string>::const_iterator>;
+	w << TCommaList(s.begin(), s.end(), o, TCommaList::DefaultTransform<std::string>);
 
 	EXPECT_STREQ(R"(Blinded and then By and then The and then Lights)", t.c_str());
+}
+
+TEST(CommaList, AddNewLines)
+{
+	using namespace panini;
+
+	std::string t;
+	StringWriter w(t);
+
+	std::vector<std::string> s = {
+		"EFirst", "EThird", "ELast",
+	};
+
+	CommaListOptions o;
+	o.addNewLines = true;
+
+	// explicit specialization is a workaround for an internal compiler error
+	// when compiling with VS 2017
+	using TCommaList = CommaList<std::vector<std::string>::const_iterator>;
+	w << TCommaList(s.begin(), s.end(), o, TCommaList::DefaultTransform<std::string>);
+
+	EXPECT_STREQ(R"(EFirst, 
+EThird, 
+ELast)", t.c_str());
+}
+
+TEST(CommaList, AddNewLinesSingleItem)
+{
+	using namespace panini;
+
+	std::string t;
+	StringWriter w(t);
+
+	std::vector<std::string> s = {
+		"Next"
+	};
+
+	CommaListOptions o;
+	o.addNewLines = true;
+
+	// explicit specialization is a workaround for an internal compiler error
+	// when compiling with VS 2017
+	using TCommaList = CommaList<std::vector<std::string>::const_iterator>;
+	w << TCommaList(s.begin(), s.end(), o, TCommaList::DefaultTransform<std::string>);
+
+	EXPECT_STREQ(R"(Next)", t.c_str());
 }
 
 TEST(CommaList, Transform)

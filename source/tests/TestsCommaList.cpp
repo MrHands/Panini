@@ -338,12 +338,14 @@ TEST(CommaList, CustomIterator)
 	EXPECT_STREQ(R"(North, South, East, West)", t.c_str());
 }
 
+#include <writers/DebugWriter.hpp>
+
 TEST(CommaList, Example)
 {
 	using namespace panini;
 
 	std::string t;
-	StringWriter writer(t);
+	DebugWriter writer;
 
 	writer << Scope("enum Vehicles", [](WriterBase& writer) {
 		CommaListOptions options;

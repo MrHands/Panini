@@ -1,0 +1,140 @@
+/*
+	MIT No Attribution
+
+	Copyright 2021-2022 Mr. Hands
+
+	Permission is hereby granted, free of charge, to any person obtaining a copy
+	of this software and associated documentation files (the "Software"), to
+	deal in the Software without restriction, including without limitation the
+	rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+	sell copies of the Software, and to permit persons to whom the Software is
+	furnished to do so.
+
+	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+	THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+	FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+	DEALINGS IN THE SOFTWARE.
+*/
+
+#pragma once
+
+#include "writers/WriterBase.hpp"
+
+#ifdef _WINDOWS
+	#ifndef WIN32_LEAN_AND_MEAN
+		#define WIN32_LEAN_AND_MEAN
+	#endif
+
+	#include <Windows.h>
+#endif
+
+namespace panini
+{
+
+	class DebugWriter
+		: public WriterBase
+	{
+
+	public:
+		inline explicit DebugWriter()
+		{
+		#ifdef _WIN32
+			m_output = ::GetStdHandle(STD_OUTPUT_HANDLE);
+			m_intialized = ::GetConsoleScreenBufferInfo(m_output, &m_screenInfo);
+
+			m_consoleWidth = m_screenInfo.dwSize.X;
+			m_consoleHeight = m_screenInfo.dwSize.Y;
+
+			const DWORD length = m_screenInfo.dwSize.X * m_screenInfo.dwSize.Y;
+			m_cursor = { 0, 0 };
+
+			DWORD written = 0;
+			::FillConsoleOutputCharacterA(m_output, ' ', length, m_cursor, &written);
+			::FillConsoleOutputAttribute(m_output, m_screenInfo.wAttributes, length, m_cursor, &written);
+			::SetConsoleCursorPosition(m_output, m_cursor);
+		#endif
+
+			std::cout.flush();
+		}
+
+	private:
+		inline virtual void Write(const std::string& chunk) override
+		{
+			if (!m_started ||
+				IsOnNewLine())
+			{
+				m_started = true;
+
+				WriteChunk(std::to_string(m_lineCount) + ": ");
+
+				m_lineCount++;
+
+				if (IsOnNewLine())
+				{
+					m_cursorX = 0;
+					m_cursorY++;
+				}
+			}
+
+			// #TODO: GetConfig() on base class
+			if (chunk == "\n")
+			{
+				WriteChunk("<LF>");
+			}
+			else
+			{
+				WriteChunk(chunk);
+			}
+		}
+
+		inline virtual bool OnCommit(bool force = false) override
+		{
+			return true;
+		}
+
+		void WriteChunk(const std::string& chunk)
+		{
+			if (m_cursorX + chunk.length() >= m_consoleWidth)
+			{
+				WriteChunk(chunk.substr(0, m_consoleWidth - chunk.length()));
+
+				m_cursorX = 0;
+				m_cursorY++;
+				WriteChunk(chunk.substr(m_consoleWidth - chunk.length()));
+
+				return;
+			}
+
+			std::cout.flush();
+			std::cout << chunk;
+
+			m_cursorX += chunk.length();
+
+		#ifdef _WIN32
+			m_cursor.X = m_cursorX;
+			m_cursor.Y = m_cursorY;
+			::SetConsoleCursorPosition(m_output, m_cursor);
+		#endif
+		}
+
+	private:
+		bool m_intialized = false;
+		bool m_started = false;
+		int32_t m_lineCount = 1;
+		int32_t m_cursorX = 0;
+		int32_t m_cursorY = 0;
+		int32_t m_consoleWidth = 0;
+		int32_t m_consoleHeight = 0;
+
+	#ifdef _WIN32
+		HANDLE m_output;
+		CONSOLE_SCREEN_BUFFER_INFO m_screenInfo;
+		COORD m_cursor;
+	#endif
+
+	};
+
+};

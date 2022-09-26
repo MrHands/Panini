@@ -19,8 +19,42 @@
 	DEALINGS IN THE SOFTWARE.
 */
 
+#include <iterator>
 #include <gtest/gtest.h>
 #include <Panini.hpp>
+
+struct CustomIterator
+{
+	using iterator_category = std::forward_iterator_tag;
+	using difference_type = std::ptrdiff_t;
+	using value_type = std::string;
+	using pointer = value_type*;
+	using reference = value_type&;
+
+	CustomIterator(pointer source)
+		: value(source)
+	{
+	}
+
+	pointer value = nullptr;
+
+	bool operator != (CustomIterator& other) const
+	{
+		return value != other.value;
+	}
+
+	reference operator*()
+	{
+		return *value;
+	}
+
+	CustomIterator& operator++()
+	{
+		value++;
+
+		return *this;
+	}
+};
 
 TEST(CommaList, VectorOfStrings)
 {
@@ -178,4 +212,27 @@ TEST(CommaList, Transform)
 	});
 
 	EXPECT_STREQ(R"([ 106 ], [ 112 ], [ 124 ], [ 148 ])", t.c_str());
+}
+
+TEST(CommaList, CustomIterator)
+{
+	using namespace panini;
+
+	std::string t;
+	StringWriter w(t);
+
+	std::string s[] = {
+		"North",
+		"South",
+		"East",
+		"West"
+	};
+	const size_t sl = sizeof(s) / sizeof(std::string);
+
+	CustomIterator ib(&s[0]);
+	CustomIterator ie(&s[sl]);
+
+	w << CommaList<CustomIterator>(ib, ie);
+
+	EXPECT_STREQ(R"(North, South, East, West)", t.c_str());
 }

@@ -72,7 +72,7 @@ namespace panini
 			return source;
 		}
 
-		inline CommaList(
+		inline explicit CommaList(
 			TIterator begin,
 			TIterator end,
 			const CommaListOptions& options = {},

@@ -89,7 +89,7 @@ namespace panini
 			size_t index = 0;
 			for (TIterator item = m_begin; item != m_end; ++item)
 			{
-				if (index++ > 0)
+				if (index > 0)
 				{
 					writer << m_options.separatorEnd;
 
@@ -102,6 +102,8 @@ namespace panini
 				writer
 					<< m_options.separatorBegin
 					<< m_transform(*item, index);
+
+				index++;
 			}
 		}
 

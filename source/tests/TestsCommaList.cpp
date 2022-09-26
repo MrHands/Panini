@@ -60,7 +60,7 @@ private:
 
 };
 
-TEST(CommaList, VectorOfStrings)
+TEST(CommaList, Vector)
 {
 	using namespace panini;
 
@@ -76,7 +76,7 @@ TEST(CommaList, VectorOfStrings)
 	EXPECT_STREQ(R"(supposed, to, be, somewhere)", t.c_str());
 }
 
-TEST(CommaList, SetOfStrings)
+TEST(CommaList, Set)
 {
 	using namespace panini;
 
@@ -211,11 +211,63 @@ TEST(CommaList, Transform)
 		6, 12, 24, 48
 	};
 
-	w << CommaList(s.begin(), s.end(), {}, [](const int32_t& it, size_t index) {
+	CommaListOptions o;
+
+	w << CommaList(s.begin(), s.end(), o, [](const int32_t& it, size_t index) {
 		return std::string{ "[ " } + std::to_string(100 + it) + " ]";
 	});
 
 	EXPECT_STREQ(R"([ 106 ], [ 112 ], [ 124 ], [ 148 ])", t.c_str());
+}
+
+TEST(CommaList, TransformFirstItemOnly)
+{
+	using namespace panini;
+
+	std::string t;
+	StringWriter w(t);
+
+	std::vector<float> s = {
+		2.3f, 9.12f, 4.2f, 0.001f
+	};
+
+	CommaListOptions o;
+	o.separatorEnd = " + ";
+
+	w << CommaList(s.begin(), s.end(), o, [](const float& it, size_t index) {
+		if (index == 0) {
+			return std::string{ "{" } + std::to_string(it) + "}";
+		}
+
+		return std::to_string(it);
+	});
+
+	EXPECT_STREQ(R"({2.300000} + 9.120000 + 4.200000 + 0.001000)", t.c_str());
+}
+
+TEST(CommaList, TransformMap)
+{
+	using namespace panini;
+
+	std::string t;
+	StringWriter w(t);
+
+	std::map<std::string, std::string> s = {
+		{ "Engines", "GO" },
+		{ "Navigation", "GO" },
+		{ "Landing", "HOLD" },
+	};
+
+	CommaListOptions o;
+
+	// explicit specialization is a workaround for an internal compiler error
+	// when compiling with VS 2017
+	using TCommaList = CommaList<std::map<std::string, std::string>::const_iterator>;
+	w << TCommaList(s.begin(), s.end(), o, [](const std::pair<std::string, std::string>& it, size_t index) {
+		return it.first + ": " + it.second;
+	});
+
+	EXPECT_STREQ(R"(Engines: GO, Landing: HOLD, Navigation: GO)", t.c_str());
 }
 
 TEST(CommaList, CustomIterator)

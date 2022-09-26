@@ -86,11 +86,30 @@ TEST(CommaList, VectorEmpty)
 	std::vector<std::string> s = {};
 
 	// explicit specialization is a workaround for an internal compiler error
-	// when compiling with VS 2017
+	// when compiling with Visual Studio 2017
 	using TCommaList = CommaList<std::vector<std::string>::const_iterator>;
 	w << TCommaList(s.begin(), s.end());
 
 	EXPECT_STREQ(R"()", t.c_str());
+}
+
+TEST(CommaList, VectorReversed)
+{
+	using namespace panini;
+
+	std::string t;
+	StringWriter w(t);
+
+	std::vector<std::string> s = {
+		"Muffins", "Delicious", "Sale", "For"
+	};
+
+	// explicit specialization is a workaround for an internal compiler error
+	// when compiling with Visual Studio 2017
+	using TCommaList = CommaList<std::vector<std::string>::const_reverse_iterator>;
+	w << TCommaList(s.rbegin(), s.rend());
+
+	EXPECT_STREQ(R"(For, Sale, Delicious, Muffins)", t.c_str());
 }
 
 TEST(CommaList, Set)
@@ -109,22 +128,6 @@ TEST(CommaList, Set)
 	EXPECT_STREQ(R"(Apple, Banana, Cherry)", t.c_str());
 }
 
-TEST(CommaList, VectorOfIntegers)
-{
-	using namespace panini;
-
-	std::string t;
-	StringWriter w(t);
-
-	std::vector<int32_t> s = {
-		1, 3, 5, 7, 11
-	};
-
-	w << CommaList(s.begin(), s.end());
-
-	EXPECT_STREQ(R"(1, 3, 5, 7, 11)", t.c_str());
-}
-
 TEST(CommaList, SeparatorBegin)
 {
 	using namespace panini;
@@ -141,7 +144,7 @@ TEST(CommaList, SeparatorBegin)
 	o.chunkEndSeparator = "";
 
 	// explicit specialization is a workaround for an internal compiler error
-	// when compiling with VS 2017
+	// when compiling with Visual Studio 2017
 	using TCommaList = CommaList<std::vector<std::string>::const_iterator>;
 	w << TCommaList(s.begin(), s.end(), o, TCommaList::DefaultTransform<std::string>);
 
@@ -164,7 +167,7 @@ TEST(CommaList, SeparatorEnd)
 	o.chunkEndSeparator = " and then ";
 
 	// explicit specialization is a workaround for an internal compiler error
-	// when compiling with VS 2017
+	// when compiling with Visual Studio 2017
 	using TCommaList = CommaList<std::vector<std::string>::const_iterator>;
 	w << TCommaList(s.begin(), s.end(), o, TCommaList::DefaultTransform<std::string>);
 
@@ -186,7 +189,7 @@ TEST(CommaList, AddNewLines)
 	o.addNewLines = true;
 
 	// explicit specialization is a workaround for an internal compiler error
-	// when compiling with VS 2017
+	// when compiling with Visual Studio 2017
 	using TCommaList = CommaList<std::vector<std::string>::const_iterator>;
 	w << TCommaList(s.begin(), s.end(), o, TCommaList::DefaultTransform<std::string>);
 
@@ -210,7 +213,7 @@ TEST(CommaList, AddNewLinesSingleItem)
 	o.addNewLines = true;
 
 	// explicit specialization is a workaround for an internal compiler error
-	// when compiling with VS 2017
+	// when compiling with Visual Studio 2017
 	using TCommaList = CommaList<std::vector<std::string>::const_iterator>;
 	w << TCommaList(s.begin(), s.end(), o, TCommaList::DefaultTransform<std::string>);
 
@@ -235,6 +238,25 @@ TEST(CommaList, Transform)
 	});
 
 	EXPECT_STREQ(R"([ 106 ], [ 112 ], [ 124 ], [ 148 ])", t.c_str());
+}
+
+TEST(CommaList, TransformIntegers)
+{
+	using namespace panini;
+
+	std::string t;
+	StringWriter w(t);
+
+	std::vector<int32_t> s = {
+		1, 3, 5, 7, 11
+	};
+
+	// explicit specialization is a workaround for an internal compiler error
+	// when compiling with Visual Studio 2017
+	using TCommaList = CommaList<std::vector<int32_t>::const_iterator>;
+	w << TCommaList(s.begin(), s.end());
+
+	EXPECT_STREQ(R"(1, 3, 5, 7, 11)", t.c_str());
 }
 
 TEST(CommaList, TransformFirstItemOnly)
@@ -278,7 +300,7 @@ TEST(CommaList, TransformMap)
 	CommaListOptions o;
 
 	// explicit specialization is a workaround for an internal compiler error
-	// when compiling with VS 2017
+	// when compiling with Visual Studio 2017
 	using TCommaList = CommaList<std::map<std::string, std::string>::const_iterator>;
 	w << TCommaList(s.begin(), s.end(), o, [](const std::pair<std::string, std::string>& it, size_t index) {
 		return it.first + ": " + it.second;
@@ -308,4 +330,36 @@ TEST(CommaList, CustomIterator)
 	w << CommaList<CustomIterator>(ib, ie);
 
 	EXPECT_STREQ(R"(North, South, East, West)", t.c_str());
+}
+
+TEST(CommaList, Example)
+{
+	using namespace panini;
+
+	std::string t;
+	StringWriter writer(t);
+
+	writer << Scope("enum Vehicles", [](WriterBase& writer) {
+		CommaListOptions options;
+		options.chunkEndSeparator = ",";
+		options.addNewLines = true;
+
+		std::vector<std::string> myEnums = {
+			"DUCK_CAR",
+			"DUCK_PLANE",
+			"DUCK_MARINE"
+		};
+
+		// explicit specialization is a workaround for an internal compiler error
+		// when compiling with Visual Studio 2017
+		using TCommaList = CommaList<std::vector<std::string>::const_iterator>;
+		writer << TCommaList(myEnums.begin(), myEnums.end(), options, TCommaList::DefaultTransform<std::string>) << NextLine();
+	}) << ";";
+
+	EXPECT_STREQ(R"(enum Vehicles
+{
+	DUCK_CAR,
+	DUCK_PLANE,
+	DUCK_MARINE
+};)", t.c_str());
 }

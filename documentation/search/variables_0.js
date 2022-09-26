@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['bracebreakingstyle_0',['braceBreakingStyle',['../structpanini_1_1_config.html#a40ed6276b4b5789e61411ec4b7ae83e7',1,'panini::Config']]]
+  ['addnewlines_0',['addNewLines',['../structpanini_1_1_comma_list_options.html#acc13b57eeb160dd75a6416d0ecf49e02',1,'panini::CommaListOptions']]]
 ];

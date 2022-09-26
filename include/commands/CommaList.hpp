@@ -34,17 +34,39 @@ namespace panini
 		should be separated after the first item, e.g. function parameters.
 
 		The command works with iterators of any STL container and even custom
-		iterators, as long as the 
+		iterators, as long as the type implements the interface required
+		for `std::iterator_traits` to derive the underlying type.
 
-		Using the /ref CommaListOptions struct, you can specify the separator
-		chunk that should come before each item and the one that should come
-		after the first item, which is ", " by default. It's also possible to
-		add a new line after each item, which is disabled by default.
+		Using the CommaListOptions struct, you can specify the separator chunk
+		that should come before each item and the one that should come after
+		the first item, which is ", " by default. It's also possible to add a
+		new line after each item, which is disabled by default.
+
+		Finally, you can add a transform function to the command, which will be
+		called once for each item in the list and transforms the item to
+		a string.
 
 		Example:
 
 		\code{.cpp}
-			writer << CommaList(myEnu
+			writer << Scope("enum Vehicles", [](WriterBase& writer) {
+				CommaListOptions options;
+				options.chunkEndSeparator = ",";
+				options.addNewLines = true;
+
+				writer << CommaList(myEnums.begin(), myEnums.end(), options) << NextLine();
+			}) << ";";
+		\endcode
+
+		Output:
+
+		\code{.cpp}
+			enum Vehicles
+			{
+				DUCK_CAR,
+				DUCK_PLANE,
+				DUCK_MARINE
+			};
 		\endcode
 	*/
 
@@ -54,8 +76,23 @@ namespace panini
 	{
 
 	public:
+		/*!
+			Underlying type for the iterator derived using `std::iterator_traits`.
+		*/
 		using TUnderlying = typename std::iterator_traits<TIterator>::value_type;
 
+		/*!
+			\brief Default transform function for the command.
+
+			Each iterated item must pass through a function that "transforms"
+			it to an `std::string`. The default implementation calls
+			`std::to_string`, which will handle most standard types.
+
+			\param source   Value being processed.
+			\param index    Index of the value in the list.
+
+			\return Source value represented as a string.
+		*/
 		template <typename TSource>
 		static std::string DefaultTransform(const TSource& source, size_t index)
 		{
@@ -64,6 +101,10 @@ namespace panini
 			return std::to_string(source);
 		}
 
+		/*!
+			Specialization for transforming string items that passes the input
+			through unchanged.
+		*/
 		template <>
 		static std::string DefaultTransform(const std::string& source, size_t index)
 		{
@@ -72,6 +113,14 @@ namespace panini
 			return source;
 		}
 
+		/*!
+			Construct a CommaList from a begin and end iterator.
+
+			\param begin       Starting point for iteration.
+			\param end         End point for iteration.
+			\param options     Additional options for the command.
+			\param transform   Transforms each iterated to a string.
+		*/
 		inline explicit CommaList(
 			TIterator begin,
 			TIterator end,

@@ -76,6 +76,23 @@ TEST(CommaList, Vector)
 	EXPECT_STREQ(R"(supposed, to, be, somewhere)", t.c_str());
 }
 
+TEST(CommaList, VectorEmpty)
+{
+	using namespace panini;
+
+	std::string t;
+	StringWriter w(t);
+
+	std::vector<std::string> s = {};
+
+	// explicit specialization is a workaround for an internal compiler error
+	// when compiling with VS 2017
+	using TCommaList = CommaList<std::vector<std::string>::const_iterator>;
+	w << TCommaList(s.begin(), s.end());
+
+	EXPECT_STREQ(R"()", t.c_str());
+}
+
 TEST(CommaList, Set)
 {
 	using namespace panini;
@@ -120,8 +137,8 @@ TEST(CommaList, SeparatorBegin)
 	};
 
 	CommaListOptions o;
-	o.separatorBegin = " -> ";
-	o.separatorEnd = "";
+	o.chunkBeginSeparator = " -> ";
+	o.chunkEndSeparator = "";
 
 	// explicit specialization is a workaround for an internal compiler error
 	// when compiling with VS 2017
@@ -143,8 +160,8 @@ TEST(CommaList, SeparatorEnd)
 	};
 
 	CommaListOptions o;
-	o.separatorBegin = "";
-	o.separatorEnd = " and then ";
+	o.chunkBeginSeparator = "";
+	o.chunkEndSeparator = " and then ";
 
 	// explicit specialization is a workaround for an internal compiler error
 	// when compiling with VS 2017
@@ -232,7 +249,7 @@ TEST(CommaList, TransformFirstItemOnly)
 	};
 
 	CommaListOptions o;
-	o.separatorEnd = " + ";
+	o.chunkEndSeparator = " + ";
 
 	w << CommaList(s.begin(), s.end(), o, [](const float& it, size_t index) {
 		if (index == 0) {

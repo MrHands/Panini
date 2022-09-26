@@ -26,8 +26,8 @@ namespace panini
 
 	struct CommaListOptions
 	{
-		std::string separatorBegin = "";
-		std::string separatorEnd = ", ";
+		std::string chunkBeginSeparator = "";
+		std::string chunkEndSeparator = ", ";
 		bool addNewLines = false;
 	};
 

@@ -91,7 +91,7 @@ namespace panini
 			{
 				if (index > 0)
 				{
-					writer << m_options.separatorEnd;
+					writer << m_options.chunkEndSeparator;
 
 					if (m_options.addNewLines)
 					{
@@ -100,7 +100,7 @@ namespace panini
 				}
 
 				writer
-					<< m_options.separatorBegin
+					<< m_options.chunkBeginSeparator
 					<< m_transform(*item, index);
 
 				index++;

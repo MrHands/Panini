@@ -91,12 +91,12 @@ namespace panini
 			{
 				if (index++ > 0)
 				{
+					writer << m_options.separatorEnd;
+
 					if (m_options.addNewLines)
 					{
 						writer << NextLine();
 					}
-
-					writer << m_options.separatorEnd;
 				}
 
 				writer

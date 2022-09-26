@@ -23,8 +23,10 @@
 #include <gtest/gtest.h>
 #include <Panini.hpp>
 
-struct CustomIterator
+class CustomIterator
 {
+
+public:
 	using iterator_category = std::forward_iterator_tag;
 	using difference_type = std::ptrdiff_t;
 	using value_type = std::string;
@@ -32,28 +34,30 @@ struct CustomIterator
 	using reference = value_type&;
 
 	CustomIterator(pointer source)
-		: value(source)
+		: m_value(source)
 	{
 	}
 
-	pointer value = nullptr;
-
 	bool operator != (CustomIterator& other) const
 	{
-		return value != other.value;
+		return m_value != other.m_value;
 	}
 
 	reference operator*()
 	{
-		return *value;
+		return *m_value;
 	}
 
 	CustomIterator& operator++()
 	{
-		value++;
+		m_value++;
 
 		return *this;
 	}
+
+private:
+	pointer m_value = nullptr;
+
 };
 
 TEST(CommaList, VectorOfStrings)

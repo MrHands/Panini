@@ -233,7 +233,10 @@ TEST(CommaList, Transform)
 
 	CommaListOptions o;
 
-	w << CommaList(s.begin(), s.end(), o, [](const int32_t& it, size_t index) {
+	// explicit specialization is a workaround for an internal compiler error
+	// when compiling with Visual Studio 2017
+	using TCommaList = CommaList<std::vector<int32_t>::const_iterator>;
+	w << TCommaList(s.cbegin(), s.cend(), o, [](const int32_t& it, size_t index) {
 		return std::string{ "[ " } + std::to_string(100 + it) + " ]";
 	});
 
@@ -254,7 +257,7 @@ TEST(CommaList, TransformIntegers)
 	// explicit specialization is a workaround for an internal compiler error
 	// when compiling with Visual Studio 2017
 	using TCommaList = CommaList<std::vector<int32_t>::const_iterator>;
-	w << TCommaList(s.begin(), s.end());
+	w << TCommaList(s.begin(), s.end(), {}, TCommaList::DefaultTransform<int32_t>);
 
 	EXPECT_STREQ(R"(1, 3, 5, 7, 11)", t.c_str());
 }
@@ -273,7 +276,10 @@ TEST(CommaList, TransformFirstItemOnly)
 	CommaListOptions o;
 	o.chunkEndSeparator = " + ";
 
-	w << CommaList(s.begin(), s.end(), o, [](const float& it, size_t index) {
+	// explicit specialization is a workaround for an internal compiler error
+	// when compiling with Visual Studio 2017
+	using TCommaList = CommaList<std::vector<float>::const_iterator>;
+	w << TCommaList(s.begin(), s.end(), o, [](const float& it, size_t index) {
 		if (index == 0) {
 			return std::string{ "{" } + std::to_string(it) + "}";
 		}

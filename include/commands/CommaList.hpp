@@ -37,6 +37,9 @@ namespace panini
 		iterators, as long as the type implements the interface required
 		for `std::iterator_traits` to derive the underlying type.
 
+		If the underlying type for the iterator cannot be derived implicitly,
+		you can use the TUnderlying parameter to set the type explicitly.
+
 		Using the CommaListOptions struct, you can specify the separator chunk
 		that should come before each item and the one that should come after
 		the first item, which is ", " by default. It's also possible to add a
@@ -70,17 +73,15 @@ namespace panini
 		\endcode
 	*/
 
-	template <typename TIterator>
+	template <
+		class TIterator,
+		class TUnderlying = typename std::iterator_traits<TIterator>::value_type
+	>
 	class CommaList
 		: public CommandBase
 	{
 
 	public:
-		/*!
-			Underlying type for the iterator derived using `std::iterator_traits`.
-		*/
-		using TUnderlying = typename std::iterator_traits<TIterator>::value_type;
-
 		/*!
 			\brief Default transform function for the command.
 

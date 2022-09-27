@@ -28,6 +28,10 @@
 		#define WIN32_LEAN_AND_MEAN
 	#endif
 
+	#ifndef NOMINMAX
+		#define NOMINMAX
+	#endif
+
 	#include <Windows.h>
 #endif
 
@@ -35,6 +39,7 @@ namespace panini
 {
 
 	constexpr size_t g_MinimumLinePadding = 3;
+	constexpr int32_t g_MaxScreenHeight = 30;
 
 	class DebugWriter
 		: public WriterBase
@@ -60,9 +65,13 @@ namespace panini
 			m_output = ::GetStdHandle(STD_OUTPUT_HANDLE);
 			m_intialized = ::GetConsoleScreenBufferInfo(m_output, &m_screenInfo);
 
-			m_consoleWidth = m_screenInfo.dwSize.X;
-			m_consoleHeight = m_screenInfo.dwSize.Y;
-			const DWORD length = m_screenInfo.dwSize.X * m_screenInfo.dwSize.Y;
+			m_consoleWidth = static_cast<int32_t>(m_screenInfo.dwSize.X);
+			m_consoleHeight = std::min(
+				static_cast<int32_t>(m_screenInfo.dwSize.Y),
+				g_MaxScreenHeight
+			);
+
+			const DWORD screenSize = m_screenInfo.dwSize.X * m_screenInfo.dwSize.Y;
 
 			// clear the screen with spaces
 
@@ -70,7 +79,7 @@ namespace panini
 			::FillConsoleOutputCharacterA(
 				m_output,
 				' ',
-				length,
+				screenSize,
 				m_cursor,
 				&written
 			);
@@ -80,13 +89,24 @@ namespace panini
 			::FillConsoleOutputAttribute(
 				m_output,
 				m_screenInfo.wAttributes,
-				length,
+				screenSize,
 				m_cursor,
 				&written
 			);
 		#endif
 
 			std::cout.flush();
+
+			for (int y = 0; y < m_consoleHeight - 1; ++y)
+			{
+				SetCursorPosition(0, y);
+				std::cout << "----";
+			}
+
+			std::cout.flush();
+
+			SetCursorPosition(0, m_consoleHeight - 1);
+			std::cout << "> Press <Enter> to continue debugging, <Q> to quit";
 
 			// reset cursor
 
@@ -112,7 +132,6 @@ namespace panini
 			}
 
 			const std::string& indentStr = GetConfig().chunkIndent;
-			size_t indentOffset = 0;
 
 			// new line
 
@@ -132,11 +151,12 @@ namespace panini
 			{
 				SetColor(eColors_Green, eColors_White);
 
-				while (chunk.substr(indentOffset, indentStr.length()) == indentStr)
+				size_t offset = 0;
+				while (chunk.substr(offset, indentStr.length()) == indentStr)
 				{
 					WriteChunk(">>> ");
 
-					indentOffset += indentStr.length();
+					offset += indentStr.length();
 				}
 
 				ResetStyles();

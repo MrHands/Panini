@@ -71,12 +71,22 @@ namespace panini
 		}
 
 		/*!
-			The output is committed to the path automatically when the instance
-			is destroyed.
+			The output is automatically committed when the instance is
+			destroyed.
 		*/
 		virtual ~WriterBase()
 		{
 			Commit();
+		}
+
+		/*!
+			Get a reference to the active Config for this writer.
+
+			\return Config object.
+		*/
+		inline const Config& GetConfig() const
+		{
+			return m_config;
 		}
 
 		/*!
@@ -125,6 +135,12 @@ namespace panini
 				{
 					Write(m_lineIndentCached);
 				}
+				else
+				{
+					// allow writers to act on new lines
+
+					Write("");
+				}
 
 				m_state = State::Chunk;
 
@@ -167,11 +183,11 @@ namespace panini
 		*/
 		inline WriterBase& operator << (const NextLine& command)
 		{
-			if (m_lineChunkCountWritten == 0 &&
-				m_isInCommentBlock)
-			{
-				// edge-case for empty lines within a comment block
+			// edge-case for empty lines within a comment block
 
+			if (m_isInCommentBlock &&
+				m_lineChunkCountWritten == 0)
+			{
 				Write(" *");
 			}
 

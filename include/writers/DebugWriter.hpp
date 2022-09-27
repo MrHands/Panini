@@ -60,24 +60,35 @@ namespace panini
 
 			m_consoleWidth = m_screenInfo.dwSize.X;
 			m_consoleHeight = m_screenInfo.dwSize.Y;
+			const DWORD length = m_screenInfo.dwSize.X * m_screenInfo.dwSize.Y;
 
 			// clear the screen with spaces
 
 			DWORD written = 0;
-			const DWORD length = m_screenInfo.dwSize.X * m_screenInfo.dwSize.Y;
-			::FillConsoleOutputCharacterA(m_output, ' ', length, m_cursor, &written);
+			::FillConsoleOutputCharacterA(
+				m_output,
+				' ',
+				length,
+				m_cursor,
+				&written
+			);
 
 			// clear background formatting
 
-			::FillConsoleOutputAttribute(m_output, m_screenInfo.wAttributes, length, m_cursor, &written);
+			::FillConsoleOutputAttribute(
+				m_output,
+				m_screenInfo.wAttributes,
+				length,
+				m_cursor,
+				&written
+			);
 
 			// reset cursor
+
 			::SetConsoleCursorPosition(m_output, m_cursor);
 		#endif
 
 			std::cout.flush();
-
-			m_cursorY = -1;
 		}
 
 	private:
@@ -85,9 +96,6 @@ namespace panini
 		{
 			if (IsOnNewLine())
 			{
-				m_cursorX = 0;
-				m_cursorY++;
-
 				SetColor(eColors_Black, eColors_Red | eColors_Light);
 				WriteChunk(std::to_string(m_lineCount) + ": ");
 				SetColor(eColors_Black, eColors_White);
@@ -101,6 +109,7 @@ namespace panini
 
 				m_cursorX = 0;
 				m_cursorY++;
+				UpdateCursor();
 			}
 			else
 			{
@@ -128,6 +137,8 @@ namespace panini
 
 				m_cursorX = 0;
 				m_cursorY++;
+				UpdateCursor();
+
 				WriteChunk(chunk.substr(m_consoleWidth - chunk.length()));
 
 				return;
@@ -137,7 +148,11 @@ namespace panini
 			std::cout << chunk;
 
 			m_cursorX += chunk.length();
+			UpdateCursor();
+		}
 
+		void UpdateCursor()
+		{
 		#ifdef _WIN32
 			m_cursor.X = m_cursorX;
 			m_cursor.Y = m_cursorY;

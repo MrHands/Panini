@@ -98,14 +98,16 @@ namespace panini
 			{
 				SetColor(eColors_Black, eColors_Red | eColors_Light);
 				WriteChunk(std::to_string(m_lineCount) + ": ");
-				SetColor(eColors_Black, eColors_White);
+				ResetStyles();
 
 				m_lineCount++;
 			}
 
 			if (chunk == GetConfig().chunkNewLine)
 			{
+				SetColor(eColors_Fuchsia, eColors_White);
 				WriteChunk("<LF>");
+				ResetStyles();
 
 				m_cursorX = 0;
 				m_cursorY++;
@@ -127,6 +129,11 @@ namespace panini
 		#ifdef _WIN32
 			::SetConsoleTextAttribute(m_output, (background << 4) | foreground);
 		#endif
+		}
+
+		void ResetStyles()
+		{
+			SetColor(eColors_Black, eColors_White);
 		}
 
 		void WriteChunk(const std::string& chunk)

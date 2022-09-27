@@ -103,6 +103,11 @@ namespace panini
 				m_lineCount++;
 			}
 
+			const std::string& indentStr = GetConfig().chunkIndent;
+			size_t indentOffset = 0;
+
+			// new line
+
 			if (chunk == GetConfig().chunkNewLine)
 			{
 				SetColor(eColors_Fuchsia, eColors_White);
@@ -113,6 +118,26 @@ namespace panini
 				m_cursorY++;
 				UpdateCursor();
 			}
+
+			// indentation
+
+			else if (
+				chunk.substr(0, indentStr.length()) == indentStr)
+			{
+				SetColor(eColors_Green, eColors_White);
+
+				while (chunk.substr(indentOffset, indentStr.length()) == indentStr)
+				{
+					WriteChunk(">>> ");
+
+					indentOffset += indentStr.length();
+				}
+
+				ResetStyles();
+			}
+
+			// other chunks
+
 			else
 			{
 				WriteChunk(chunk);
@@ -124,19 +149,19 @@ namespace panini
 			return true;
 		}
 
-		void SetColor(uint16_t background, uint16_t foreground)
+		inline void SetColor(uint16_t background, uint16_t foreground)
 		{
 		#ifdef _WIN32
 			::SetConsoleTextAttribute(m_output, (background << 4) | foreground);
 		#endif
 		}
 
-		void ResetStyles()
+		inline void ResetStyles()
 		{
 			SetColor(eColors_Black, eColors_White);
 		}
 
-		void WriteChunk(const std::string& chunk)
+		inline void WriteChunk(const std::string& chunk)
 		{
 			if (m_cursorX + chunk.length() >= m_consoleWidth)
 			{
@@ -158,7 +183,7 @@ namespace panini
 			UpdateCursor();
 		}
 
-		void UpdateCursor()
+		inline void UpdateCursor()
 		{
 		#ifdef _WIN32
 			m_cursor.X = m_cursorX;

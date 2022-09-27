@@ -39,6 +39,16 @@ namespace panini
 	{
 
 	public:
+		enum Colors : uint16_t
+		{
+			eColors_Black = 0x0000,
+			eColors_Blue = 0x0001,
+			eColors_Green = 0x0002,
+			eColors_Red = 0x0004,
+			eColors_White = eColors_Blue | eColors_Green | eColors_Red,
+			eColors_Light = 0x0008,
+		};
+
 		inline explicit DebugWriter()
 		{
 		#ifdef _WIN32
@@ -68,7 +78,9 @@ namespace panini
 			{
 				m_started = true;
 
+				SetColor(eColors_Black, eColors_Red | eColors_Light);
 				WriteChunk(std::to_string(m_lineCount) + ": ");
+				SetColor(eColors_Black, eColors_White);
 
 				m_lineCount++;
 
@@ -93,6 +105,13 @@ namespace panini
 		inline virtual bool OnCommit(bool force = false) override
 		{
 			return true;
+		}
+
+		void SetColor(uint16_t background, uint16_t foreground)
+		{
+		#ifdef _WIN32
+			::SetConsoleTextAttribute(m_output, (background << 4) | foreground);
+		#endif
 		}
 
 		void WriteChunk(const std::string& chunk)

@@ -84,21 +84,23 @@ namespace panini
 				m_cursor,
 				&written
 			);
-
-			// reset cursor
-
-			::SetConsoleCursorPosition(m_output, m_cursor);
 		#endif
 
 			std::cout.flush();
+
+			// reset cursor
+
+			SetCursorPosition(0, 0);
 		}
 
 	private:
 		inline virtual void Write(const std::string& chunk) override
 		{
+			// line numbers
+
 			if (IsOnNewLine())
 			{
-				std::string padded = std::to_string(m_lineCount);
+				std::string padded = std::to_string(m_cursorY + 1);
 				for (size_t i = padded.length(); i < g_MinimumLinePadding; ++i)
 				{
 					padded.insert(padded.begin(), ' ');
@@ -107,8 +109,6 @@ namespace panini
 				SetColor(eColors_White, eColors_Black);
 				WriteChunk(padded + " ");
 				ResetStyles();
-
-				m_lineCount++;
 			}
 
 			const std::string& indentStr = GetConfig().chunkIndent;
@@ -122,9 +122,7 @@ namespace panini
 				WriteChunk("<LF>");
 				ResetStyles();
 
-				m_cursorX = 0;
-				m_cursorY++;
-				UpdateCursor();
+				SetCursorPosition(0, m_cursorY + 1);
 			}
 
 			// indentation
@@ -157,6 +155,18 @@ namespace panini
 			return true;
 		}
 
+		inline void SetCursorPosition(int32_t x, int32_t y)
+		{
+			m_cursorX = x;
+			m_cursorY = y;
+
+		#ifdef _WIN32
+			m_cursor.X = m_cursorX;
+			m_cursor.Y = m_cursorY;
+			::SetConsoleCursorPosition(m_output, m_cursor);
+		#endif
+		}
+
 		inline void SetColor(uint16_t background, uint16_t foreground)
 		{
 		#ifdef _WIN32
@@ -175,10 +185,7 @@ namespace panini
 			{
 				WriteChunk(chunk.substr(0, m_consoleWidth - chunk.length()));
 
-				m_cursorX = 0;
-				m_cursorY++;
-				UpdateCursor();
-
+				SetCursorPosition(0, m_cursorY + 1);
 				WriteChunk(chunk.substr(m_consoleWidth - chunk.length()));
 
 				return;
@@ -187,22 +194,14 @@ namespace panini
 			std::cout.flush();
 			std::cout << chunk;
 
-			m_cursorX += chunk.length();
-			UpdateCursor();
-		}
-
-		inline void UpdateCursor()
-		{
-		#ifdef _WIN32
-			m_cursor.X = m_cursorX;
-			m_cursor.Y = m_cursorY;
-			::SetConsoleCursorPosition(m_output, m_cursor);
-		#endif
+			SetCursorPosition(
+				m_cursorX + chunk.length(),
+				m_cursorY
+			);
 		}
 
 	private:
 		bool m_intialized = false;
-		int32_t m_lineCount = 1;
 		int32_t m_cursorX = 0;
 		int32_t m_cursorY = 0;
 		int32_t m_consoleWidth = 0;

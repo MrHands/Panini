@@ -34,6 +34,8 @@
 namespace panini
 {
 
+	constexpr size_t g_MinimumLinePadding = 3;
+
 	class DebugWriter
 		: public WriterBase
 	{
@@ -96,8 +98,14 @@ namespace panini
 		{
 			if (IsOnNewLine())
 			{
-				SetColor(eColors_Black, eColors_Red | eColors_Light);
-				WriteChunk(std::to_string(m_lineCount) + ": ");
+				std::string padded = std::to_string(m_lineCount);
+				for (size_t i = padded.length(); i < g_MinimumLinePadding; ++i)
+				{
+					padded.insert(padded.begin(), ' ');
+				}
+				
+				SetColor(eColors_White, eColors_Black);
+				WriteChunk(padded + " ");
 				ResetStyles();
 
 				m_lineCount++;

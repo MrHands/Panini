@@ -107,7 +107,9 @@ namespace panini
 
 		void operator()(std::promise<bool>&& isDebugging)
 		{
-			const std::string message = "Press <Enter> to continue debugging, <Q> to quit";
+			const std::string message = m_endOfInput
+				? "<END>"
+				: "Press <Enter> to continue debugging, <Q> to quit";
 
 			SetCursorPosition(0, m_cursorY + 1);
 			SetColor(eColors_White | eColors_Light, eColors_Black);
@@ -163,6 +165,11 @@ namespace panini
 			// reset cursor
 
 			SetCursorPosition(0, m_cursorY - 1);
+		}
+
+		inline virtual bool IsChanged() const
+		{
+			return true;
 		}
 
 	private:
@@ -236,6 +243,14 @@ namespace panini
 
 		inline virtual bool OnCommit(bool force = false) override
 		{
+			m_endOfInput = true;
+
+			std::promise<bool> isDebugging;
+			std::thread inputThread(*this, std::move(isDebugging));
+			inputThread.join();
+
+			SetCursorPosition(0, m_cursorY + 1);
+
 			return true;
 		}
 
@@ -287,6 +302,7 @@ namespace panini
 	private:
 		bool m_intialized = false;
 		bool m_isDebugging = true;
+		bool m_endOfInput = false;
 		int32_t m_cursorX = 0;
 		int32_t m_cursorY = 0;
 		int32_t m_consoleWidth = 0;

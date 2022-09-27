@@ -364,6 +364,8 @@ TEST(CommaList, Example)
 		writer << TCommaList(myEnums.begin(), myEnums.end(), options, TCommaList::DefaultTransform<std::string>) << NextLine();
 	}) << ";";
 
+	writer.Commit();
+
 	EXPECT_STREQ(R"(enum Vehicles
 {
 	DUCK_CAR,

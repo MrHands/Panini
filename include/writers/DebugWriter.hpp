@@ -21,7 +21,7 @@
 
 #pragma once
 
-#include "writers/WriterBase.hpp"
+#include <thread>
 
 #ifdef _WINDOWS
 	#ifndef WIN32_LEAN_AND_MEAN
@@ -34,6 +34,8 @@
 
 	#include <Windows.h>
 #endif
+
+#include "writers/WriterBase.hpp"
 
 namespace panini
 {
@@ -61,7 +63,7 @@ namespace panini
 
 		inline explicit DebugWriter()
 		{
-		#ifdef _WIN32
+		#ifdef _WINDOWS
 			m_output = ::GetStdHandle(STD_OUTPUT_HANDLE);
 			m_intialized = ::GetConsoleScreenBufferInfo(m_output, &m_screenInfo);
 
@@ -97,7 +99,7 @@ namespace panini
 
 			std::cout.flush();
 
-			for (int y = 0; y < m_consoleHeight - 1; ++y)
+			for (int y = 0; y < m_consoleHeight; ++y)
 			{
 				SetCursorPosition(0, y);
 				std::cout << "----";
@@ -105,12 +107,64 @@ namespace panini
 
 			std::cout.flush();
 
-			SetCursorPosition(0, m_consoleHeight - 1);
-			std::cout << "> Press <Enter> to continue debugging, <Q> to quit";
-
 			// reset cursor
 
 			SetCursorPosition(0, 0);
+		}
+
+		void operator()()
+		{
+			const std::string message = "> Press <Enter> to continue debugging, <Q> to quit";
+
+			SetCursorPosition(0, m_cursorY + 1);
+			SetColor(eColors_White | eColors_Light, eColors_Black);
+			std::cout << message;
+			ResetStyles();
+
+			// wait for input
+
+		#ifdef _WINDOWS
+			HANDLE input = ::GetStdHandle(STD_INPUT_HANDLE);
+
+			while (1)
+			{
+				INPUT_RECORD record;
+				DWORD read = 0;
+				::ReadConsoleInputA(input, &record, 1, &read);
+				if (record.EventType == KEY_EVENT)
+				{
+					KEY_EVENT_RECORD& keyEvent = record.Event.KeyEvent;
+					if (keyEvent.bKeyDown)
+					{
+						continue;
+					}
+
+					if (keyEvent.wVirtualKeyCode == 'Q')
+					{
+						m_stopped = true;
+					}
+
+					break;
+				}
+			}
+		#endif
+
+			// clear line
+
+		#ifdef _WINDOWS
+			DWORD written = 0;
+			::FillConsoleOutputCharacterA(
+				m_output,
+				' ',
+				message.length(),
+				m_cursor,
+				&written
+			);
+		#endif
+
+			// reset cursor
+
+			SetCursorPosition(0, m_cursorY - 1);
 		}
 
 	private:
@@ -142,6 +196,11 @@ namespace panini
 				ResetStyles();
 
 				SetCursorPosition(0, m_cursorY + 1);
+
+				// wait for input
+
+				std::thread inputThread(*this);
+				inputThread.join();
 			}
 
 			// indentation
@@ -180,7 +239,7 @@ namespace panini
 			m_cursorX = x;
 			m_cursorY = y;
 
-		#ifdef _WIN32
+		#ifdef _WINDOWS
 			m_cursor.X = m_cursorX;
 			m_cursor.Y = m_cursorY;
 			::SetConsoleCursorPosition(m_output, m_cursor);
@@ -189,7 +248,7 @@ namespace panini
 
 		inline void SetColor(uint16_t background, uint16_t foreground)
 		{
-		#ifdef _WIN32
+		#ifdef _WINDOWS
 			::SetConsoleTextAttribute(m_output, (background << 4) | foreground);
 		#endif
 		}
@@ -222,12 +281,13 @@ namespace panini
 
 	private:
 		bool m_intialized = false;
+		bool m_stopped = false;
 		int32_t m_cursorX = 0;
 		int32_t m_cursorY = 0;
 		int32_t m_consoleWidth = 0;
 		int32_t m_consoleHeight = 0;
 
-	#ifdef _WIN32
+	#ifdef _WINDOWS
 		HANDLE m_output;
 		CONSOLE_SCREEN_BUFFER_INFO m_screenInfo;
 		COORD m_cursor = { 0, 0 };

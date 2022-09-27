@@ -21,6 +21,7 @@
 
 #pragma once
 
+#include <future>
 #include <thread>
 
 #ifdef _WINDOWS
@@ -99,22 +100,14 @@ namespace panini
 
 			std::cout.flush();
 
-			for (int y = 0; y < m_consoleHeight; ++y)
-			{
-				SetCursorPosition(0, y);
-				std::cout << "----";
-			}
-
-			std::cout.flush();
-
 			// reset cursor
 
 			SetCursorPosition(0, 0);
 		}
 
-		void operator()()
+		void operator()(std::promise<bool>&& isDebugging)
 		{
-			const std::string message = "> Press <Enter> to continue debugging, <Q> to quit";
+			const std::string message = "Press <Enter> to continue debugging, <Q> to quit";
 
 			SetCursorPosition(0, m_cursorY + 1);
 			SetColor(eColors_White | eColors_Light, eColors_Black);
@@ -139,10 +132,7 @@ namespace panini
 						continue;
 					}
 
-					if (keyEvent.wVirtualKeyCode == 'Q')
-					{
-						m_stopped = true;
-					}
+					isDebugging.set_value(keyEvent.wVirtualKeyCode != 'Q');
 
 					break;
 				}
@@ -156,6 +146,14 @@ namespace panini
 			::FillConsoleOutputCharacterA(
 				m_output,
 				' ',
+				message.length(),
+				m_cursor,
+				&written
+			);
+
+			::FillConsoleOutputAttribute(
+				m_output,
+				m_screenInfo.wAttributes,
 				message.length(),
 				m_cursor,
 				&written
@@ -199,8 +197,15 @@ namespace panini
 
 				// wait for input
 
-				std::thread inputThread(*this);
-				inputThread.join();
+				if (m_isDebugging)
+				{
+					std::promise<bool> isDebugging;
+					std::future<bool> future = isDebugging.get_future();
+					std::thread inputThread(*this, std::move(isDebugging));
+					inputThread.join();
+
+					m_isDebugging = future.get();
+				}
 			}
 
 			// indentation
@@ -281,7 +286,7 @@ namespace panini
 
 	private:
 		bool m_intialized = false;
-		bool m_stopped = false;
+		bool m_isDebugging = true;
 		int32_t m_cursorX = 0;
 		int32_t m_cursorY = 0;
 		int32_t m_consoleWidth = 0;

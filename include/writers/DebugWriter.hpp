@@ -62,7 +62,8 @@ namespace panini
 			eColors_Light    = 0x0008,
 		};
 
-		inline explicit DebugWriter()
+		inline explicit DebugWriter(const Config& config = Config{})
+			: WriterBase(config)
 		{
 		#ifdef _WINDOWS
 			m_output = ::GetStdHandle(STD_OUTPUT_HANDLE);
@@ -167,7 +168,7 @@ namespace panini
 			SetCursorPosition(0, m_cursorY - 1);
 		}
 
-		inline virtual bool IsChanged() const
+		inline virtual bool IsChanged() const override
 		{
 			return true;
 		}
@@ -220,14 +221,19 @@ namespace panini
 			else if (
 				chunk.substr(0, indentStr.length()) == indentStr)
 			{
-				SetColor(eColors_Green, eColors_White);
-
 				size_t offset = 0;
+				int32_t count = 0;
+
 				while (chunk.substr(offset, indentStr.length()) == indentStr)
 				{
-					WriteChunk(">>> ");
+					SetColor(
+						(count % 2 == 0) ? eColors_Yellow : eColors_Cyan,
+						eColors_White
+					);
+					WriteChunk("-> ");
 
 					offset += indentStr.length();
+					count++;
 				}
 
 				ResetStyles();
@@ -280,7 +286,7 @@ namespace panini
 
 		inline void WriteChunk(const std::string& chunk)
 		{
-			if (m_cursorX + chunk.length() >= m_consoleWidth)
+			if (m_cursorX + chunk.length() > m_consoleWidth)
 			{
 				WriteChunk(chunk.substr(0, m_consoleWidth - chunk.length()));
 

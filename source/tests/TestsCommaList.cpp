@@ -345,7 +345,7 @@ TEST(CommaList, Example)
 	using namespace panini;
 
 	std::string t;
-	DebugWriter writer;
+	StringWriter writer(t);
 
 	writer << Scope("enum Vehicles", [](WriterBase& writer) {
 		CommaListOptions options;
@@ -363,8 +363,6 @@ TEST(CommaList, Example)
 		using TCommaList = CommaList<std::vector<std::string>::const_iterator>;
 		writer << TCommaList(myEnums.begin(), myEnums.end(), options, TCommaList::DefaultTransform<std::string>) << NextLine();
 	}) << ";";
-
-	writer.Commit();
 
 	EXPECT_STREQ(R"(enum Vehicles
 {

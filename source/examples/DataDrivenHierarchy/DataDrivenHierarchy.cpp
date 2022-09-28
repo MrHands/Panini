@@ -126,15 +126,18 @@ public:
 	{
 		// resolve inheritance
 
-		auto inheritsFound = m_section.settings.find("inherits");
-		if (inheritsFound != m_section.settings.end())
+		auto inheritsSetting = GetSetting("inherits");
+		if (inheritsSetting.has_value())
 		{
-			auto parentFound = std::find_if(g_IniSections.begin(), g_IniSections.end(), [&inheritsFound](const std::shared_ptr<IniSection>& it) {
-				return it->name == inheritsFound->second.value;
+			m_isPure = false;
+
+			auto parentFound = std::find_if(g_IniSections.begin(), g_IniSections.end(), [&inheritsSetting](const std::shared_ptr<IniSection>& it) {
+				return it->name == inheritsSetting->value;
 			});
 			if (parentFound != g_IniSections.end())
 			{
-				m_section.settings.merge((*parentFound)->settings);
+				auto parentCopy = (*parentFound)->settings;
+				m_section.settings.merge(parentCopy);
 			}
 		}
 	}
@@ -143,24 +146,62 @@ public:
 	{
 		using namespace panini;
 
+		if (m_isPure)
+		{
+			// "pure" game objects cannot be instantiated
+
+			return;
+		}
+
 		std::stringstream functionScope;
 		functionScope << "GameObject* Create" << m_section.name << "()";
 
 		writer << Scope(functionScope.str(), [this](WriterBase& writer) {
 			writer << "GameObject* gameObject = new GameObject();" << NextLine();
 
-			std::optional<IniSetting> transformSetting = GetSetting("add_transform");
-			if (transformSetting.has_value())
+			// transform
+
+			if (GetSetting("add_transform").has_value())
 			{
 				writer << AddComponentCommand("TransformComponent", {}) << NextLine();
 			}
 
-			std::optional<IniSetting> spriteSetting = GetSetting("add_sprite");
-			if (spriteSetting.has_value())
+			// sprite
+
+			if (GetSetting("add_sprite").has_value())
 			{
 				writer << AddComponentCommand("SpriteComponent", {
 					std::string("\"") + GetSetting("sprite")->value + "\""
 				}) << NextLine();
+			}
+
+			// life
+
+			if (GetSetting("add_life").has_value())
+			{
+				std::vector<std::string> parameters = {
+					GetSetting("health")->value
+				};
+				if (GetSetting("bonus").has_value())
+				{
+					parameters.push_back(GetSetting("bonus")->value);
+				}
+
+				writer << AddComponentCommand("LifeComponent", parameters) << NextLine();
+			}
+
+			// player behavior
+
+			if (GetSetting("add_player").has_value())
+			{
+				writer << AddComponentCommand("PlayerBehavior", {}) << NextLine();
+			}
+
+			// enemy behavior
+
+			if (GetSetting("add_enemy").has_value())
+			{
+				writer << AddComponentCommand("EnemyBehavior", {}) << NextLine();
 			}
 
 			writer << "return gameObject;" << NextLine();
@@ -182,7 +223,7 @@ private:
 private:
 	IniSection m_section;
 
-	std::string m_className;
+	bool m_isPure = true;
 
 };
 

@@ -33,10 +33,8 @@
 #include "commands/NextLine.hpp"
 #include "commands/Scope.hpp"
 
-#include "data/IncludeEntry.hpp"
-#include "data/IncludeSet.hpp"
-
 #include "writers/CompareWriter.hpp"
 #include "writers/ConsoleWriter.hpp"
+#include "writers/DebugWriter.hpp"
 #include "writers/FileWriter.hpp"
 #include "writers/StringWriter.hpp"

@@ -21,9 +21,6 @@
 
 #pragma once
 
-#include <future>
-#include <thread>
-
 #ifdef _WINDOWS
 	#ifndef WIN32_LEAN_AND_MEAN
 		#define WIN32_LEAN_AND_MEAN
@@ -42,7 +39,6 @@ namespace panini
 {
 
 	constexpr size_t g_MinimumLinePadding = 3;
-	constexpr int32_t g_MaxScreenHeight = 30;
 
 	class DebugWriter
 		: public WriterBase
@@ -70,10 +66,7 @@ namespace panini
 			m_intialized = ::GetConsoleScreenBufferInfo(m_output, &m_screenInfo);
 
 			m_consoleWidth = static_cast<int32_t>(m_screenInfo.dwSize.X);
-			m_consoleHeight = std::min(
-				static_cast<int32_t>(m_screenInfo.dwSize.Y),
-				g_MaxScreenHeight
-			);
+			m_consoleHeight = static_cast<int32_t>(m_screenInfo.dwSize.Y);
 
 			const DWORD screenSize = m_screenInfo.dwSize.X * m_screenInfo.dwSize.Y;
 
@@ -104,68 +97,6 @@ namespace panini
 			// reset cursor
 
 			SetCursorPosition(0, 0);
-		}
-
-		void operator()(std::promise<bool>&& isDebugging)
-		{
-			const std::string message = m_endOfInput
-				? "<END>"
-				: "Press <Enter> to continue debugging, <Q> to quit";
-
-			SetCursorPosition(0, m_cursorY + 1);
-			SetColor(eColors_White | eColors_Light, eColors_Black);
-			std::cout << message;
-			ResetStyles();
-
-			// wait for input
-
-		#ifdef _WINDOWS
-			HANDLE input = ::GetStdHandle(STD_INPUT_HANDLE);
-
-			while (1)
-			{
-				INPUT_RECORD record;
-				DWORD read = 0;
-				::ReadConsoleInputA(input, &record, 1, &read);
-				if (record.EventType == KEY_EVENT)
-				{
-					KEY_EVENT_RECORD& keyEvent = record.Event.KeyEvent;
-					if (keyEvent.bKeyDown)
-					{
-						continue;
-					}
-
-					isDebugging.set_value(keyEvent.wVirtualKeyCode != 'Q');
-
-					break;
-				}
-			}
-		#endif
-
-			// clear line
-
-		#ifdef _WINDOWS
-			DWORD written = 0;
-			::FillConsoleOutputCharacterA(
-				m_output,
-				' ',
-				message.length(),
-				m_cursor,
-				&written
-			);
-
-			::FillConsoleOutputAttribute(
-				m_output,
-				m_screenInfo.wAttributes,
-				message.length(),
-				m_cursor,
-				&written
-			);
-		#endif
-
-			// reset cursor
-
-			SetCursorPosition(0, m_cursorY - 1);
 		}
 
 		inline virtual bool IsChanged() const override
@@ -203,16 +134,11 @@ namespace panini
 
 				SetCursorPosition(0, m_cursorY + 1);
 
-				// wait for input
+				// handle input
 
 				if (m_isDebugging)
 				{
-					std::promise<bool> isDebugging;
-					std::future<bool> future = isDebugging.get_future();
-					std::thread inputThread(*this, std::move(isDebugging));
-					inputThread.join();
-
-					m_isDebugging = future.get();
+					HandleInput("Press <Enter> to continue debugging, <Q> to quit");
 				}
 			}
 
@@ -249,11 +175,7 @@ namespace panini
 
 		inline virtual bool OnCommit(bool force = false) override
 		{
-			m_endOfInput = true;
-
-			std::promise<bool> isDebugging;
-			std::thread inputThread(*this, std::move(isDebugging));
-			inputThread.join();
+			HandleInput("<END>");
 
 			SetCursorPosition(0, m_cursorY + 1);
 
@@ -276,6 +198,9 @@ namespace panini
 		{
 		#ifdef _WINDOWS
 			::SetConsoleTextAttribute(m_output, (background << 4) | foreground);
+		#else
+			(void)background;
+			(void)foreground;
 		#endif
 		}
 
@@ -305,10 +230,72 @@ namespace panini
 			);
 		}
 
-	private:
+		inline void HandleInput(const std::string& message)
+		{
+			SetCursorPosition(0, m_cursorY + 1);
+			SetColor(eColors_White | eColors_Light, eColors_Black);
+			std::cout << message;
+			ResetStyles();
+
+			// wait for input
+
+		#ifdef _WINDOWS
+			HANDLE input = ::GetStdHandle(STD_INPUT_HANDLE);
+
+			while (1)
+			{
+				INPUT_RECORD record;
+				DWORD read = 0;
+				::ReadConsoleInputA(input, &record, 1, &read);
+				if (record.EventType == KEY_EVENT)
+				{
+					KEY_EVENT_RECORD& keyEvent = record.Event.KeyEvent;
+
+					// wait for the key to be released
+
+					if (keyEvent.bKeyDown)
+					{
+						continue;
+					}
+
+					// stop debugging when Q is pressed
+
+					m_isDebugging = keyEvent.wVirtualKeyCode != 'Q';
+
+					break;
+				}
+			}
+		#endif
+
+			// clear line
+
+		#ifdef _WINDOWS
+			DWORD written = 0;
+			::FillConsoleOutputCharacterA(
+				m_output,
+				' ',
+				message.length(),
+				m_cursor,
+				&written
+			);
+
+			::FillConsoleOutputAttribute(
+				m_output,
+				m_screenInfo.wAttributes,
+				message.length(),
+				m_cursor,
+				&written
+			);
+		#endif
+
+			// reset cursor
+
+			SetCursorPosition(0, m_cursorY - 1);
+		}
+
+	protected:
 		bool m_intialized = false;
 		bool m_isDebugging = true;
-		bool m_endOfInput = false;
 		int32_t m_cursorX = 0;
 		int32_t m_cursorY = 0;
 		int32_t m_consoleWidth = 0;

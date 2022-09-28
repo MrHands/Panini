@@ -24,9 +24,12 @@
 #include <optional>
 #include <regex>
 #include <string>
+#include <sstream>
 #include <iostream>
 
 #include <Panini.hpp>
+
+// ini parsing
 
 struct IniSetting
 {
@@ -37,10 +40,10 @@ struct IniSetting
 struct IniSection
 {
 	std::string name;
-	std::vector<IniSetting> settings;
+	std::map<std::string, IniSetting> settings;
 };
 
- std::optional<std::vector<std::shared_ptr<IniSection>>> ParseIni(const std::filesystem::path& iniPath)
+std::optional<std::vector<std::shared_ptr<IniSection>>> ParseIni(const std::filesystem::path& iniPath)
 {
 	std::ifstream stream(iniPath.string());
 	if (!stream.is_open())
@@ -73,14 +76,115 @@ struct IniSection
 		std::smatch settingMatch;
 		if (std::regex_search(line, settingMatch, settingSearch))
 		{
-			IniSetting& setting = section->settings.emplace_back();
+			IniSetting setting;
 			setting.name = settingMatch[1];
 			setting.value = settingMatch[2];
+
+			section->settings.insert_or_assign(setting.name, setting);
 		}
 	}
 
 	return allSections;
 }
+
+std::vector<std::shared_ptr<IniSection>> g_IniSections;
+
+class AddComponentCommand
+	: public panini::CommandBase
+{
+
+public:
+	AddComponentCommand(const std::string& typeName, const std::vector<std::string>& parameters)
+		: m_typeName(typeName)
+		, m_parameters(parameters)
+	{
+	}
+
+	virtual void Visit(panini::WriterBase& writer) final
+	{
+		using namespace panini;
+
+		writer << "gameObject->AddComponent<" << m_typeName << ">(";
+		writer << CommaList(m_parameters.begin(), m_parameters.end());
+		writer << ");";
+	}
+
+private:
+	std::string m_typeName;
+	std::vector<std::string> m_parameters;
+
+
+};
+
+class GameObjectCommand
+	: public panini::CommandBase
+{
+
+public:
+	GameObjectCommand(const IniSection& section)
+		: m_section(section)
+	{
+		// resolve inheritance
+
+		auto inheritsFound = m_section.settings.find("inherits");
+		if (inheritsFound != m_section.settings.end())
+		{
+			auto parentFound = std::find_if(g_IniSections.begin(), g_IniSections.end(), [&inheritsFound](const std::shared_ptr<IniSection>& it) {
+				return it->name == inheritsFound->second.value;
+			});
+			if (parentFound != g_IniSections.end())
+			{
+				m_section.settings.merge((*parentFound)->settings);
+			}
+		}
+	}
+
+	virtual void Visit(panini::WriterBase& writer) final
+	{
+		using namespace panini;
+
+		std::stringstream functionScope;
+		functionScope << "GameObject* Create" << m_section.name << "()";
+
+		writer << Scope(functionScope.str(), [this](WriterBase& writer) {
+			writer << "GameObject* gameObject = new GameObject();" << NextLine();
+
+			std::optional<IniSetting> transformSetting = GetSetting("add_transform");
+			if (transformSetting.has_value())
+			{
+				writer << AddComponentCommand("TransformComponent", {}) << NextLine();
+			}
+
+			std::optional<IniSetting> spriteSetting = GetSetting("add_sprite");
+			if (spriteSetting.has_value())
+			{
+				writer << AddComponentCommand("SpriteComponent", {
+					std::string("\"") + GetSetting("sprite")->value + "\""
+				}) << NextLine();
+			}
+
+			writer << "return gameObject;" << NextLine();
+		});
+	}
+
+private:
+	std::optional<IniSetting> GetSetting(const std::string& name)
+	{
+		auto found = m_section.settings.find(name);
+		if (found == m_section.settings.end())
+		{
+			return {};
+		}
+
+		return found->second;
+	}
+
+private:
+	IniSection m_section;
+
+	std::string m_className;
+
+};
 
 int main(int argc, char** argv)
 {
@@ -92,7 +196,16 @@ int main(int argc, char** argv)
 		return -1;
 	}
 
-	std::vector<std::shared_ptr<IniSection>> sections = std::move(result.value());
+	g_IniSections = std::move(result.value());
+
+	for (auto section : g_IniSections)
+	{
+		DebugWriter writer;
+
+		writer << GameObjectCommand(*section);
+
+		writer.Commit();
+	}
 
 	return 0;
 }

@@ -45,17 +45,20 @@ namespace panini
 	{
 
 	public:
-		enum Colors : uint16_t
+		struct Colors
 		{
-			eColors_Black    = 0x0000,
-			eColors_Blue     = 0x0001,
-			eColors_Green    = 0x0002,
-			eColors_Red      = 0x0004,
-			eColors_Yellow   = eColors_Red | eColors_Green,
-			eColors_Cyan     = eColors_Green | eColors_Blue,
-			eColors_Fuchsia  = eColors_Red | eColors_Blue,
-			eColors_White    = eColors_Red | eColors_Green | eColors_Blue,
-			eColors_Light    = 0x0008,
+			enum Values : uint16_t
+			{
+				Black    = 0x0000,
+				Blue     = 0x0001,
+				Green    = 0x0002,
+				Red      = 0x0004,
+				Yellow   = Red | Green,
+				Cyan     = Green | Blue,
+				Fuchsia  = Red | Blue,
+				White    = Red | Green | Blue,
+				Light    = 0x0008,
+			};
 		};
 
 		inline explicit DebugWriter(const Config& config = Config{})
@@ -104,7 +107,7 @@ namespace panini
 			return true;
 		}
 
-	private:
+	protected:
 		inline virtual void Write(const std::string& chunk) override
 		{
 			// line numbers
@@ -117,7 +120,7 @@ namespace panini
 					padded.insert(padded.begin(), ' ');
 				}
 				
-				SetColor(eColors_White, eColors_Black);
+				SetColor(Colors::White, Colors::Black);
 				WriteChunk(padded + " ");
 				ResetStyles();
 			}
@@ -128,7 +131,7 @@ namespace panini
 
 			if (chunk == GetConfig().chunkNewLine)
 			{
-				SetColor(eColors_Fuchsia, eColors_White);
+				SetColor(Colors::Fuchsia, Colors::White);
 				WriteChunk("<LF>");
 				ResetStyles();
 
@@ -153,8 +156,8 @@ namespace panini
 				while (chunk.substr(offset, indentStr.length()) == indentStr)
 				{
 					SetColor(
-						(count % 2 == 0) ? eColors_Yellow : eColors_Cyan,
-						eColors_White
+						(count % 2 == 0) ? Colors::Yellow : Colors::Cyan,
+						Colors::White
 					);
 					WriteChunk("-> ");
 
@@ -206,7 +209,7 @@ namespace panini
 
 		inline void ResetStyles()
 		{
-			SetColor(eColors_Black, eColors_White);
+			SetColor(Colors::Black, Colors::White);
 		}
 
 		inline void WriteChunk(const std::string& chunk)
@@ -233,7 +236,7 @@ namespace panini
 		inline void HandleInput(const std::string& message)
 		{
 			SetCursorPosition(0, m_cursorY + 1);
-			SetColor(eColors_White | eColors_Light, eColors_Black);
+			SetColor(Colors::White | Colors::Light, Colors::Black);
 			std::cout << message;
 			ResetStyles();
 

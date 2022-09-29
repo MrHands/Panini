@@ -38,7 +38,14 @@
 namespace panini
 {
 
-	constexpr size_t g_MinimumLinePadding = 3;
+	struct DebugWriterConfig
+		: public Config
+	{
+		/*!
+			Minimum length of line numbers, padded with spaces.
+		*/
+		size_t lineNumberPadding = 3;
+	};
 
 	class DebugWriter
 		: public WriterBase
@@ -61,8 +68,9 @@ namespace panini
 			};
 		};
 
-		inline explicit DebugWriter(const Config& config = Config{})
+		inline explicit DebugWriter(const DebugWriterConfig& config = DebugWriterConfig{})
 			: WriterBase(config)
+			, m_debugConfig(config)
 		{
 		#ifdef _WINDOWS
 			m_output = ::GetStdHandle(STD_OUTPUT_HANDLE);
@@ -115,7 +123,7 @@ namespace panini
 			if (IsOnNewLine())
 			{
 				std::string padded = std::to_string(m_cursorY + 1);
-				for (size_t i = padded.length(); i < g_MinimumLinePadding; ++i)
+				for (size_t i = padded.length(); i < m_debugConfig.lineNumberPadding; ++i)
 				{
 					padded.insert(padded.begin(), ' ');
 				}
@@ -297,6 +305,7 @@ namespace panini
 		}
 
 	protected:
+		DebugWriterConfig m_debugConfig;
 		bool m_intialized = false;
 		bool m_isDebugging = true;
 		int32_t m_cursorX = 0;

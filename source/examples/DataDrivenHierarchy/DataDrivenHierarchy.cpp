@@ -89,6 +89,8 @@ std::optional<std::vector<std::shared_ptr<IniSection>>> ParseIni(const std::file
 
 std::vector<std::shared_ptr<IniSection>> g_IniSections;
 
+// adds a component to our generated game objects
+
 class AddComponentCommand
 	: public panini::CommandBase
 {
@@ -113,8 +115,9 @@ private:
 	std::string m_typeName;
 	std::vector<std::string> m_parameters;
 
-
 };
+
+// generates a game object definition from an ini section
 
 class GameObjectCommand
 	: public panini::CommandBase
@@ -142,16 +145,14 @@ public:
 		}
 	}
 
+	bool GetIsPure() const
+	{
+		return m_isPure;
+	}
+
 	virtual void Visit(panini::WriterBase& writer) final
 	{
 		using namespace panini;
-
-		if (m_isPure)
-		{
-			// "pure" game objects cannot be instantiated
-
-			return;
-		}
 
 		std::stringstream functionScope;
 		functionScope << "GameObject* Create" << m_section.name << "()";
@@ -239,12 +240,22 @@ int main(int argc, char** argv)
 
 	g_IniSections = std::move(result.value());
 
+	// The DebugWriter will output to the console and stop execution at the end
+	// of each line. This allows you to step through the code generation line-
+	// by-line in order to find out where it may go wrong.
+
 	for (auto section : g_IniSections)
 	{
+		GameObjectCommand gameObject(*section);
+		if (gameObject.GetIsPure())
+		{
+			// "pure" game objects cannot be instantiated
+
+			continue;
+		}
+
 		DebugWriter writer;
-
-		writer << GameObjectCommand(*section);
-
+		writer << std::move(gameObject);
 		writer.Commit();
 	}
 

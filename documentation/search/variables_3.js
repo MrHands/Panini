@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['includestyle_0',['includeStyle',['../structpanini_1_1_config.html#a8e63eb10a8df10c7d9e936c27de1c330',1,'panini::Config']]]
+  ['filepath_0',['filePath',['../structpanini_1_1_compare_writer_config.html#af9ffe005d057adcbaa3777f85455e6cc',1,'panini::CompareWriterConfig']]]
 ];

@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['path_0',['path',['../structpanini_1_1_include_entry.html#ad5ad5aaf3af70fbb314c28b916675047',1,'panini::IncludeEntry']]],
-  ['priority_1',['priority',['../structpanini_1_1_include_entry.html#a1dabe0b8852d719ea649011e56a5ae2e',1,'panini::IncludeEntry']]]
+  ['linenumberpadding_0',['lineNumberPadding',['../structpanini_1_1_debug_writer_config.html#a64c973034eb3fc83c0d58d3b1274c1ba',1,'panini::DebugWriterConfig']]]
 ];

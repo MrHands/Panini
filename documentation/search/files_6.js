@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['panini_2ehpp_0',['Panini.hpp',['../_panini_8hpp.html',1,'']]]
+  ['nextline_2ehpp_0',['NextLine.hpp',['../_next_line_8hpp.html',1,'']]]
 ];

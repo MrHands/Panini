@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['doublequotes_0',['DoubleQuotes',['../group___enums.html#gga27a306a905c9b4ceccb79f449c97a80da33724f00ac6ac2b100c81979d170d9e6',1,'panini']]]
+  ['black_0',['Black',['../structpanini_1_1_debug_writer_1_1_colors.html#a7ece57f37556c08f2f926ef2823cdd84a30bad3b8f7ce2da8f2ca971afd6b794e',1,'panini::DebugWriter::Colors']]],
+  ['blue_1',['Blue',['../structpanini_1_1_debug_writer_1_1_colors.html#a7ece57f37556c08f2f926ef2823cdd84aa04008b56ed3c2328ac5be45cc4a32c3',1,'panini::DebugWriter::Colors']]]
 ];

@@ -25,6 +25,7 @@
 var NAVTREE =
 [
   [ "Panini", "index.html", [
+    [ "Deprecated List", "deprecated.html", null ],
     [ "Modules", "modules.html", "modules" ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
@@ -39,7 +40,9 @@ var NAVTREE =
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", null ],
         [ "Functions", "functions_func.html", null ],
-        [ "Variables", "functions_vars.html", null ]
+        [ "Variables", "functions_vars.html", null ],
+        [ "Enumerations", "functions_enum.html", null ],
+        [ "Enumerator", "functions_eval.html", null ]
       ] ]
     ] ],
     [ "Files", "files.html", [
@@ -51,7 +54,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_braces_8hpp.html",
-"structpanini_1_1_comma_list_options.html#af257706c774aefbffbca3ff5a68476e0"
+"classpanini_1_1_writer_base.html#aa387eeb5fe9aadf2f951e4a9acc89bcc"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -101,10 +101,11 @@ Inheritance diagram for panini::WriterBase:</div>
  <div class="center">
   <img src="classpanini_1_1_writer_base.png" usemap="#panini::WriterBase_map" alt=""/>
   <map id="panini::WriterBase_map" name="panini::WriterBase_map">
-<area href="classpanini_1_1_compare_writer.html" title="Writes the output to a path only when it was changed." alt="panini::CompareWriter" shape="rect" coords="0,56,137,80"/>
+<area href="classpanini_1_1_compare_writer.html" title="Writes output to a path only when it differs." alt="panini::CompareWriter" shape="rect" coords="0,56,137,80"/>
 <area href="classpanini_1_1_console_writer.html" title="Writes output to the console." alt="panini::ConsoleWriter" shape="rect" coords="147,56,284,80"/>
-<area href="classpanini_1_1_file_writer.html" title="Writes output to a target file using a file stream. The stream is closed automatically when the write..." alt="panini::FileWriter" shape="rect" coords="294,56,431,80"/>
-<area href="classpanini_1_1_string_writer.html" title="Writes output to a string." alt="panini::StringWriter" shape="rect" coords="441,56,578,80"/>
+<area href="classpanini_1_1_debug_writer.html" title="Writes output to the console line-by-line." alt="panini::DebugWriter" shape="rect" coords="294,56,431,80"/>
+<area href="classpanini_1_1_file_writer.html" title="Writes output to a target file using a file stream." alt="panini::FileWriter" shape="rect" coords="441,56,578,80"/>
+<area href="classpanini_1_1_string_writer.html" title="Writes output to a string." alt="panini::StringWriter" shape="rect" coords="588,56,725,80"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -112,8 +113,10 @@ Inheritance diagram for panini::WriterBase:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ac606f8a7d0725678113d403c5711e50f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_writer_base.html#ac606f8a7d0725678113d403c5711e50f">WriterBase</a> (const <a class="el" href="structpanini_1_1_config.html">Config</a> &amp;config=<a class="el" href="structpanini_1_1_config.html">Config</a>{})</td></tr>
 <tr class="separator:ac606f8a7d0725678113d403c5711e50f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa2be58c597bb97187201ad260347417f"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_writer_base.html#aa2be58c597bb97187201ad260347417f">~WriterBase</a> ()</td></tr>
-<tr class="separator:aa2be58c597bb97187201ad260347417f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e3bf78ba31f57012f2e0eddac18c597"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_writer_base.html#a4e3bf78ba31f57012f2e0eddac18c597">~WriterBase</a> ()=default</td></tr>
+<tr class="separator:a4e3bf78ba31f57012f2e0eddac18c597"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3c2f0c7a2cd32ec313b4a08e66b762b"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structpanini_1_1_config.html">Config</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_writer_base.html#ab3c2f0c7a2cd32ec313b4a08e66b762b">GetConfig</a> () const</td></tr>
+<tr class="separator:ab3c2f0c7a2cd32ec313b4a08e66b762b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4dac8be36a19ee0398ca8f6a3e003950"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___enums.html#ga0e8bf718da5e3c164599e591f6b76f5c">BraceBreakingStyle</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_writer_base.html#a4dac8be36a19ee0398ca8f6a3e003950">GetBraceBreakingStyle</a> () const</td></tr>
 <tr class="separator:a4dac8be36a19ee0398ca8f6a3e003950"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa387eeb5fe9aadf2f951e4a9acc89bcc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___enums.html#ga27a306a905c9b4ceccb79f449c97a80d">IncludeStyle</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_writer_base.html#aa387eeb5fe9aadf2f951e4a9acc89bcc">GetIncludeStyle</a> () const</td></tr>
@@ -178,8 +181,8 @@ Protected Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="aa2be58c597bb97187201ad260347417f" name="aa2be58c597bb97187201ad260347417f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa2be58c597bb97187201ad260347417f">&#9670;&nbsp;</a></span>~WriterBase()</h2>
+<a id="a4e3bf78ba31f57012f2e0eddac18c597" name="a4e3bf78ba31f57012f2e0eddac18c597"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e3bf78ba31f57012f2e0eddac18c597">&#9670;&nbsp;</a></span>~WriterBase()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -196,11 +199,10 @@ Protected Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">virtual</span><span class="mlabel">default</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
-<p >The output is committed to the path automatically when the instance is destroyed. </p>
 
 </div>
 </div>
@@ -266,6 +268,33 @@ Protected Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="ab3c2f0c7a2cd32ec313b4a08e66b762b" name="ab3c2f0c7a2cd32ec313b4a08e66b762b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3c2f0c7a2cd32ec313b4a08e66b762b">&#9670;&nbsp;</a></span>GetConfig()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="structpanini_1_1_config.html">Config</a> &amp; panini::WriterBase::GetConfig </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Get a reference to the active <a class="el" href="structpanini_1_1_config.html" title="Global configuration applied to writers.">Config</a> for this writer.</p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="structpanini_1_1_config.html" title="Global configuration applied to writers.">Config</a> object. </dd></dl>
+
+</div>
+</div>
 <a id="aa387eeb5fe9aadf2f951e4a9acc89bcc" name="aa387eeb5fe9aadf2f951e4a9acc89bcc"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa387eeb5fe9aadf2f951e4a9acc89bcc">&#9670;&nbsp;</a></span>GetIncludeStyle()</h2>
 
@@ -317,7 +346,7 @@ Protected Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p >Check if the output was changed compared to what the implementation has seen before. </p>
 
-<p>Reimplemented in <a class="el" href="classpanini_1_1_compare_writer.html#a0dbef621790c6792c390f53489c75f62">panini::CompareWriter</a>, and <a class="el" href="classpanini_1_1_file_writer.html#a3a11000a65ad121aaa060ec571ed206e">panini::FileWriter</a>.</p>
+<p>Reimplemented in <a class="el" href="classpanini_1_1_compare_writer.html#a0dbef621790c6792c390f53489c75f62">panini::CompareWriter</a>, <a class="el" href="classpanini_1_1_debug_writer.html#a32cb00fc589edf5856a94801aaefa2cf">panini::DebugWriter</a>, and <a class="el" href="classpanini_1_1_file_writer.html#a3a11000a65ad121aaa060ec571ed206e">panini::FileWriter</a>.</p>
 
 </div>
 </div>
@@ -373,7 +402,7 @@ Protected Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p >Called when the writer is committed to its target. Must be implemented by derived classes. </p>
 
-<p>Implemented in <a class="el" href="classpanini_1_1_console_writer.html#addeea4eea9cdfd4c8961bb92dab6915e">panini::ConsoleWriter</a>, <a class="el" href="classpanini_1_1_file_writer.html#a222f3fabfb54ecc1c7a8ddfffa929896">panini::FileWriter</a>, <a class="el" href="classpanini_1_1_string_writer.html#aa99574b7e394bb4be6d67f2bf85ad5bd">panini::StringWriter</a>, and <a class="el" href="classpanini_1_1_compare_writer.html#ae6d427b1268ea758a0b94562e2f798a2">panini::CompareWriter</a>.</p>
+<p>Implemented in <a class="el" href="classpanini_1_1_console_writer.html#addeea4eea9cdfd4c8961bb92dab6915e">panini::ConsoleWriter</a>, <a class="el" href="classpanini_1_1_file_writer.html#a222f3fabfb54ecc1c7a8ddfffa929896">panini::FileWriter</a>, <a class="el" href="classpanini_1_1_string_writer.html#aa99574b7e394bb4be6d67f2bf85ad5bd">panini::StringWriter</a>, <a class="el" href="classpanini_1_1_compare_writer.html#ae6d427b1268ea758a0b94562e2f798a2">panini::CompareWriter</a>, and <a class="el" href="classpanini_1_1_debug_writer.html#a396180436eb4d7ef561559d12c7b5333">panini::DebugWriter</a>.</p>
 
 </div>
 </div>
@@ -604,7 +633,7 @@ Protected Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p >Interface for writing chunks to the output. Must be implemented by derived classes. </p>
 
-<p>Implemented in <a class="el" href="classpanini_1_1_compare_writer.html#a1ecc2202028ef7c13b1e2bdc11ff4f88">panini::CompareWriter</a>, <a class="el" href="classpanini_1_1_console_writer.html#a56fa3f67acd1a30c9e719ed660a958d8">panini::ConsoleWriter</a>, <a class="el" href="classpanini_1_1_file_writer.html#a9df86745d385b8042c63e2a77bcffefb">panini::FileWriter</a>, and <a class="el" href="classpanini_1_1_string_writer.html#aba99419fa3fea839789c939085d6c507">panini::StringWriter</a>.</p>
+<p>Implemented in <a class="el" href="classpanini_1_1_compare_writer.html#a1ecc2202028ef7c13b1e2bdc11ff4f88">panini::CompareWriter</a>, <a class="el" href="classpanini_1_1_console_writer.html#a56fa3f67acd1a30c9e719ed660a958d8">panini::ConsoleWriter</a>, <a class="el" href="classpanini_1_1_debug_writer.html#a2f57938f97ca337c54f5fabbdc84f7ff">panini::DebugWriter</a>, <a class="el" href="classpanini_1_1_file_writer.html#a9df86745d385b8042c63e2a77bcffefb">panini::FileWriter</a>, and <a class="el" href="classpanini_1_1_string_writer.html#aba99419fa3fea839789c939085d6c507">panini::StringWriter</a>.</p>
 
 </div>
 </div>

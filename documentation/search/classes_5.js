@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['nextline_0',['NextLine',['../structpanini_1_1_next_line.html',1,'panini']]]
+  ['label_0',['Label',['../classpanini_1_1_label.html',1,'panini']]]
 ];

@@ -1,9 +1,10 @@
 var classpanini_1_1_writer_base =
 [
     [ "WriterBase", "classpanini_1_1_writer_base.html#ac606f8a7d0725678113d403c5711e50f", null ],
-    [ "~WriterBase", "classpanini_1_1_writer_base.html#aa2be58c597bb97187201ad260347417f", null ],
+    [ "~WriterBase", "classpanini_1_1_writer_base.html#a4e3bf78ba31f57012f2e0eddac18c597", null ],
     [ "Commit", "classpanini_1_1_writer_base.html#a3e699a4af7699bca800a2fbc2032c0d6", null ],
     [ "GetBraceBreakingStyle", "classpanini_1_1_writer_base.html#a4dac8be36a19ee0398ca8f6a3e003950", null ],
+    [ "GetConfig", "classpanini_1_1_writer_base.html#ab3c2f0c7a2cd32ec313b4a08e66b762b", null ],
     [ "GetIncludeStyle", "classpanini_1_1_writer_base.html#aa387eeb5fe9aadf2f951e4a9acc89bcc", null ],
     [ "IsChanged", "classpanini_1_1_writer_base.html#afcb026b5a9074fa8d61acf65d208467c", null ],
     [ "IsOnNewLine", "classpanini_1_1_writer_base.html#af7d736a22fe2b6709ec1ae1cfe4b7e2b", null ],

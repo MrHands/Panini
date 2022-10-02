@@ -1,8 +1,7 @@
 var searchData=
 [
-  ['m_5ffilepath_0',['m_filePath',['../classpanini_1_1_compare_writer.html#ac125fd304639524cc8e349fb463412de',1,'panini::CompareWriter']]],
-  ['m_5fpathexists_1',['m_pathExists',['../classpanini_1_1_compare_writer.html#ad2050215a00488590d06fa37eb799504',1,'panini::CompareWriter']]],
-  ['m_5ftarget_2',['m_target',['../classpanini_1_1_file_writer.html#a985647d768a0a6e5c80e69499453adb8',1,'panini::FileWriter::m_target()'],['../classpanini_1_1_string_writer.html#ad896bfed223757f926892dbc0146cd05',1,'panini::StringWriter::m_target()']]],
-  ['m_5fwrittencurrent_3',['m_writtenCurrent',['../classpanini_1_1_compare_writer.html#abdb49e1fc5c2e6ea04ee4500c0c242f3',1,'panini::CompareWriter']]],
-  ['m_5fwrittenprevious_4',['m_writtenPrevious',['../classpanini_1_1_compare_writer.html#a24f4e32f73e18ee4d08130a9f671c7d6',1,'panini::CompareWriter']]]
+  ['label_0',['Label',['../classpanini_1_1_label.html#abda00fbd34d62f64aed69674e70b884b',1,'panini::Label::Label(std::string &amp;&amp;name)'],['../classpanini_1_1_label.html#a26105ad9f070f7374d809f0ac45609c3',1,'panini::Label::Label(const std::string &amp;name)'],['../classpanini_1_1_label.html',1,'panini::Label']]],
+  ['label_2ehpp_1',['Label.hpp',['../_label_8hpp.html',1,'']]],
+  ['light_2',['Light',['../structpanini_1_1_debug_writer_1_1_colors.html#a7ece57f37556c08f2f926ef2823cdd84ae47b6055d94d2a3f5e45170b89864dd7',1,'panini::DebugWriter::Colors']]],
+  ['linenumberpadding_3',['lineNumberPadding',['../structpanini_1_1_debug_writer_config.html#a64c973034eb3fc83c0d58d3b1274c1ba',1,'panini::DebugWriterConfig']]]
 ];

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['writerbase_0',['WriterBase',['../classpanini_1_1_writer_base.html',1,'panini']]]
+  ['scope_0',['Scope',['../classpanini_1_1_scope.html',1,'panini']]],
+  ['stringwriter_1',['StringWriter',['../classpanini_1_1_string_writer.html',1,'panini']]]
 ];

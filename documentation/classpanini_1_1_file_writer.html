@@ -92,7 +92,7 @@ $(document).ready(function(){initNavTree('classpanini_1_1_file_writer.html','');
 </div><!--header-->
 <div class="contents">
 
-<p>Writes output to a target file using a file stream. The stream is closed automatically when the writer is destroyed.  
+<p>Writes output to a target file using a file stream.  
  <a href="classpanini_1_1_file_writer.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_file_writer_8hpp_source.html">FileWriter.hpp</a>&gt;</code></p>
@@ -108,15 +108,21 @@ Inheritance diagram for panini::FileWriter:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:aabf6c225a4fe23436d74a409a851de80"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_file_writer.html#aabf6c225a4fe23436d74a409a851de80">FileWriter</a> (const <a class="el" href="structpanini_1_1_file_writer_config.html">FileWriterConfig</a> &amp;config={})</td></tr>
+<tr class="separator:aabf6c225a4fe23436d74a409a851de80"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a76e74540b0b624bf5379f12d5258c6af"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_file_writer.html#a76e74540b0b624bf5379f12d5258c6af">FileWriter</a> (const std::filesystem::path &amp;path, const <a class="el" href="structpanini_1_1_config.html">Config</a> &amp;config=<a class="el" href="structpanini_1_1_config.html">Config</a>())</td></tr>
 <tr class="separator:a76e74540b0b624bf5379f12d5258c6af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abebf12a461125178e566485b3b675bd8"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_file_writer.html#abebf12a461125178e566485b3b675bd8">~FileWriter</a> () override</td></tr>
+<tr class="separator:abebf12a461125178e566485b3b675bd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3a11000a65ad121aaa060ec571ed206e"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_file_writer.html#a3a11000a65ad121aaa060ec571ed206e">IsChanged</a> () const override</td></tr>
 <tr class="separator:a3a11000a65ad121aaa060ec571ed206e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classpanini_1_1_writer_base"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classpanini_1_1_writer_base')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classpanini_1_1_writer_base.html">panini::WriterBase</a></td></tr>
 <tr class="memitem:ac606f8a7d0725678113d403c5711e50f inherit pub_methods_classpanini_1_1_writer_base"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_writer_base.html#ac606f8a7d0725678113d403c5711e50f">WriterBase</a> (const <a class="el" href="structpanini_1_1_config.html">Config</a> &amp;config=<a class="el" href="structpanini_1_1_config.html">Config</a>{})</td></tr>
 <tr class="separator:ac606f8a7d0725678113d403c5711e50f inherit pub_methods_classpanini_1_1_writer_base"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa2be58c597bb97187201ad260347417f inherit pub_methods_classpanini_1_1_writer_base"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_writer_base.html#aa2be58c597bb97187201ad260347417f">~WriterBase</a> ()</td></tr>
-<tr class="separator:aa2be58c597bb97187201ad260347417f inherit pub_methods_classpanini_1_1_writer_base"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e3bf78ba31f57012f2e0eddac18c597 inherit pub_methods_classpanini_1_1_writer_base"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_writer_base.html#a4e3bf78ba31f57012f2e0eddac18c597">~WriterBase</a> ()=default</td></tr>
+<tr class="separator:a4e3bf78ba31f57012f2e0eddac18c597 inherit pub_methods_classpanini_1_1_writer_base"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3c2f0c7a2cd32ec313b4a08e66b762b inherit pub_methods_classpanini_1_1_writer_base"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structpanini_1_1_config.html">Config</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_writer_base.html#ab3c2f0c7a2cd32ec313b4a08e66b762b">GetConfig</a> () const</td></tr>
+<tr class="separator:ab3c2f0c7a2cd32ec313b4a08e66b762b inherit pub_methods_classpanini_1_1_writer_base"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4dac8be36a19ee0398ca8f6a3e003950 inherit pub_methods_classpanini_1_1_writer_base"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___enums.html#ga0e8bf718da5e3c164599e591f6b76f5c">BraceBreakingStyle</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_writer_base.html#a4dac8be36a19ee0398ca8f6a3e003950">GetBraceBreakingStyle</a> () const</td></tr>
 <tr class="separator:a4dac8be36a19ee0398ca8f6a3e003950 inherit pub_methods_classpanini_1_1_writer_base"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa387eeb5fe9aadf2f951e4a9acc89bcc inherit pub_methods_classpanini_1_1_writer_base"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___enums.html#ga27a306a905c9b4ceccb79f449c97a80d">IncludeStyle</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_writer_base.html#aa387eeb5fe9aadf2f951e4a9acc89bcc">GetIncludeStyle</a> () const</td></tr>
@@ -149,15 +155,53 @@ Protected Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
+<tr class="memitem:aaf5bbcb08157600b2cceb1e98535fdeb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structpanini_1_1_file_writer_config.html">FileWriterConfig</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_file_writer.html#aaf5bbcb08157600b2cceb1e98535fdeb">m_fileConfig</a></td></tr>
+<tr class="separator:aaf5bbcb08157600b2cceb1e98535fdeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a985647d768a0a6e5c80e69499453adb8"><td class="memItemLeft" align="right" valign="top">std::ofstream&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_file_writer.html#a985647d768a0a6e5c80e69499453adb8">m_target</a></td></tr>
 <tr class="separator:a985647d768a0a6e5c80e69499453adb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10acf64d6e4e031bfda1b46a90b4c380"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_file_writer.html#a10acf64d6e4e031bfda1b46a90b4c380">m_written</a></td></tr>
+<tr class="separator:a10acf64d6e4e031bfda1b46a90b4c380"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >Writes output to a target file using a file stream. The stream is closed automatically when the writer is destroyed. </p>
+<div class="textblock"><p >Writes output to a target file using a file stream. </p>
+<p >The file stream is closed automatically when the writer is destroyed.</p>
 <p >The <a class="el" href="structpanini_1_1_config.html">Config</a> instance is used to configure the output. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="aabf6c225a4fe23436d74a409a851de80" name="aabf6c225a4fe23436d74a409a851de80"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aabf6c225a4fe23436d74a409a851de80">&#9670;&nbsp;</a></span>FileWriter() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">panini::FileWriter::FileWriter </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structpanini_1_1_file_writer_config.html">FileWriterConfig</a> &amp;&#160;</td>
+          <td class="paramname"><em>config</em> = <code>{}</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Construct and configure the writer.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">config</td><td>Configuration instance. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a76e74540b0b624bf5379f12d5258c6af" name="a76e74540b0b624bf5379f12d5258c6af"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a76e74540b0b624bf5379f12d5258c6af">&#9670;&nbsp;</a></span>FileWriter()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a76e74540b0b624bf5379f12d5258c6af">&#9670;&nbsp;</a></span>FileWriter() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -189,7 +233,41 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p >Construct a <a class="el" href="classpanini_1_1_file_writer.html" title="Writes output to a target file using a file stream. The stream is closed automatically when the write...">FileWriter</a> with a path and a configuration. </p>
+<p >Construct and configure the writer.</p>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000002">Deprecated:</a></b></dt><dd>This constructor will likely be removed in a future version. Prefer initializing the writer with a <a class="el" href="structpanini_1_1_file_writer_config.html">FileWriterConfig</a> instance instead.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>Path to the target file. </td></tr>
+    <tr><td class="paramname">config</td><td>Configuration instance. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="abebf12a461125178e566485b3b675bd8" name="abebf12a461125178e566485b3b675bd8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abebf12a461125178e566485b3b675bd8">&#9670;&nbsp;</a></span>~FileWriter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual panini::FileWriter::~FileWriter </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Will call <a class="el" href="classpanini_1_1_writer_base.html#a3e699a4af7699bca800a2fbc2032c0d6">Commit()</a> automatically when the writer is destroyed. </p>
 
 </div>
 </div>
@@ -281,6 +359,28 @@ Protected Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="aaf5bbcb08157600b2cceb1e98535fdeb" name="aaf5bbcb08157600b2cceb1e98535fdeb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf5bbcb08157600b2cceb1e98535fdeb">&#9670;&nbsp;</a></span>m_fileConfig</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structpanini_1_1_file_writer_config.html">FileWriterConfig</a> panini::FileWriter::m_fileConfig</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a985647d768a0a6e5c80e69499453adb8" name="a985647d768a0a6e5c80e69499453adb8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a985647d768a0a6e5c80e69499453adb8">&#9670;&nbsp;</a></span>m_target</h2>
 
@@ -292,6 +392,28 @@ Protected Attributes</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">std::ofstream panini::FileWriter::m_target</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a10acf64d6e4e031bfda1b46a90b4c380" name="a10acf64d6e4e031bfda1b46a90b4c380"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10acf64d6e4e031bfda1b46a90b4c380">&#9670;&nbsp;</a></span>m_written</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string panini::FileWriter::m_written</td>
         </tr>
       </table>
   </td>

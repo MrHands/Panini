@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['singlequotes_0',['SingleQuotes',['../group___enums.html#gga27a306a905c9b4ceccb79f449c97a80dae522cdf475c9b1059020759a3a241908',1,'panini']]]
+  ['doublequotes_0',['DoubleQuotes',['../group___enums.html#gga27a306a905c9b4ceccb79f449c97a80da33724f00ac6ac2b100c81979d170d9e6',1,'panini']]]
 ];

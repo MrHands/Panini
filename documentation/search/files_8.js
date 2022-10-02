@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['writerbase_2ehpp_0',['WriterBase.hpp',['../_writer_base_8hpp.html',1,'']]]
+  ['scope_2ehpp_0',['Scope.hpp',['../_scope_8hpp.html',1,'']]],
+  ['stringwriter_2ehpp_1',['StringWriter.hpp',['../_string_writer_8hpp.html',1,'']]]
 ];

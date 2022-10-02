@@ -80,7 +80,9 @@ namespace panini
 		{
 			m_compareConfig.filePath = filePath;
 
-			std::ifstream stream(m_compareConfig.filePath.string(), std::ios::in | std::ios::binary);
+			// read the previous output, if available
+
+			std::ifstream stream(m_compareConfig.filePath.string(), std::ios::binary);
 			m_pathExists = stream.is_open();
 			if (m_pathExists)
 			{
@@ -89,9 +91,9 @@ namespace panini
 				stream.seekg(0, std::ios::beg);
 				stream.read(&m_writtenPrevious[0], m_writtenPrevious.size());
 				stream.close();
-			}
 
-			m_writtenCurrent.reserve(m_writtenPrevious.size());
+				m_writtenCurrent.reserve(m_writtenPrevious.size());
+			}
 		}
 
 		/*!
@@ -137,8 +139,6 @@ namespace panini
 		CompareWriterConfig m_compareConfig;
 		bool m_pathExists = false;
 		std::string m_writtenPrevious;
-
-		//! Newly generated contents of the file.
 		std::string m_writtenCurrent;
 
 	};

@@ -41,6 +41,22 @@ TEST(FileWriter, Write)
 	EXPECT_STREQ("HACKING", ss.str().c_str());
 }
 
+TEST(FileWriter, PreventDoubleCommit)
+{
+	using namespace panini;
+
+	FileWriterConfig c;
+	c.targetPath = "file_double_commit.txt";
+
+	FileWriter w(c);
+	w << "Wherever you go, whatever you do";
+	EXPECT_TRUE(w.IsChanged());
+	EXPECT_TRUE(w.Commit());
+
+	EXPECT_FALSE(w.IsChanged());
+	EXPECT_FALSE(w.Commit());
+}
+
 TEST(FileWriter, ScopedCommit)
 {
 	using namespace panini;

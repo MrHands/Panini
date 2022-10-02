@@ -134,6 +134,14 @@ namespace panini
 		}
 
 		/*!
+			Will call Commit() automatically when the writer is destroyed.
+		*/
+		inline virtual ~DebugWriter() override
+		{
+			Commit();
+		}
+
+		/*!
 			Always handle remaining input when \ref Commit is called.
 		*/
 		inline virtual bool IsChanged() const override

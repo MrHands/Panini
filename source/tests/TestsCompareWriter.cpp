@@ -43,6 +43,27 @@ TEST(CompareWriter, WriteNewFile)
 	EXPECT_STREQ("I'll catch you next time, Gadget!", ss.str().c_str());
 }
 
+TEST(CompareWriter, PreventDoubleCommit)
+{
+	using namespace panini;
+
+	CompareWriterConfig c;
+	c.filePath = "compare_double_commit.txt";
+	std::filesystem::remove(c.filePath);
+
+	std::ofstream p(c.filePath, std::ios::out | std::ios::binary);
+	p << "Won't they always love you?";
+	p.close();
+
+	CompareWriter w(c);
+	w << "Yes, they will.";
+	EXPECT_TRUE(w.IsChanged());
+	EXPECT_TRUE(w.Commit());
+
+	EXPECT_FALSE(w.IsChanged());
+	EXPECT_FALSE(w.Commit());
+}
+
 TEST(CompareWriter, ScopedCommit)
 {
 	using namespace panini;

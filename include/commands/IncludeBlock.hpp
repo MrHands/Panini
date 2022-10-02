@@ -30,7 +30,7 @@ namespace panini
 {
 
 	/*!
-		\brief Outputs a block of include statements.
+		\brief Command for outputting a block of include statements.
 
 		Example:
 

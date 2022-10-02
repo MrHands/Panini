@@ -27,7 +27,7 @@ namespace panini
 {
 
 	/*!
-		\brief Outputs a label statement.
+		\brief Command for outputting a label statement.
 
 		A label is a name and a ":" chunk. The command pops the indentation
 		before writing the label and restores it afterwards.

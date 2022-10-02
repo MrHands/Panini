@@ -28,7 +28,7 @@ namespace panini
 {
 
 	/*!
-		\brief Output comment blocks over multiple lines.
+		\brief Command for outputting comment blocks over multiple lines.
 
 		A comment block starts with /&zwj;* and ends with *&zwj;/. Chunks output
 		inside the callback are prefixed with " * " to produce multi-line

@@ -28,7 +28,7 @@ namespace panini
 {
 
 	/*!
-		\brief Outputs opening and closing curly braces.
+		\brief Command for outputting opening and closing curly braces.
 
 		Adding opening and closing braces to the output can be frustrating
 		to do by hand because you have to take the brace breaking style and

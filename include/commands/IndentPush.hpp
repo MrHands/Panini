@@ -25,7 +25,7 @@ namespace panini
 {
 
 	/*!
-		\brief Increments the indentation level on the writer.
+		\brief Command for incrementing the indentation level on the writer.
 
 		\sa WriterBase
 	*/

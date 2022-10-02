@@ -28,7 +28,7 @@ namespace panini
 {
 
 	/*!
-		\brief Output a line that starts with a comment.
+		\brief Command for outputting a single-line comment.
 
 		Comment lines start with "// " in the output. Empty lines will be
 		output as well.

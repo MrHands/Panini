@@ -28,7 +28,8 @@ namespace panini
 {
 
 	/*!
-		\brief Outputs a list of items, comma-separated by default.
+		\brief Command for outputting a list of items, comma-separated by
+		default.
 
 		The CommaList command makes it easy to print a list of items that
 		should be separated after the first item, e.g. function parameters.

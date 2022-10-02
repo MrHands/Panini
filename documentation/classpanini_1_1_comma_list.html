@@ -91,7 +91,7 @@ $(document).ready(function(){initNavTree('classpanini_1_1_comma_list.html',''); 
 </div><!--header-->
 <div class="contents">
 
-<p>Outputs a list of items, comma-separated by default.  
+<p>Command for outputting a list of items, comma-separated by default.  
  <a href="classpanini_1_1_comma_list.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_comma_list_8hpp_source.html">CommaList.hpp</a>&gt;</code></p>
@@ -127,8 +127,8 @@ Static Public Member Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;class TIterator, class TUnderlying = typename std::iterator_traits&lt;TIterator&gt;::value_type&gt;<br />
-class panini::CommaList&lt; TIterator, TUnderlying &gt;</div><p >Outputs a list of items, comma-separated by default. </p>
-<p >The <a class="el" href="classpanini_1_1_comma_list.html" title="Outputs a list of items, comma-separated by default.">CommaList</a> command makes it easy to print a list of items that should be separated after the first item, e.g. function parameters.</p>
+class panini::CommaList&lt; TIterator, TUnderlying &gt;</div><p >Command for outputting a list of items, comma-separated by default. </p>
+<p >The <a class="el" href="classpanini_1_1_comma_list.html" title="Command for outputting a list of items, comma-separated by default.">CommaList</a> command makes it easy to print a list of items that should be separated after the first item, e.g. function parameters.</p>
 <p >The command works with iterators of any STL container and even custom iterators, as long as the type implements the interface required for <code>std::iterator_traits</code> to derive the underlying type.</p>
 <p >If the underlying type for the iterator cannot be derived implicitly, you can use the TUnderlying parameter to set the type explicitly.</p>
 <p >Using the <a class="el" href="structpanini_1_1_comma_list_options.html">CommaListOptions</a> struct, you can specify the separator chunk that should come before each item and the one that should come after the first item, which is ", " by default. It's also possible to add a new line after each item, which is disabled by default.</p>
@@ -141,7 +141,7 @@ class panini::CommaList&lt; TIterator, TUnderlying &gt;</div><p >Outputs a list 
 <div class="line"> </div>
 <div class="line">    writer &lt;&lt; <a class="code hl_function" href="classpanini_1_1_comma_list.html#afd0efc72392fef1a943f941151775925">CommaList</a>(myEnums.begin(), myEnums.end(), options) &lt;&lt; NextLine();</div>
 <div class="line">}) &lt;&lt; <span class="stringliteral">&quot;;&quot;</span>;</div>
-<div class="ttc" id="aclasspanini_1_1_comma_list_html_afd0efc72392fef1a943f941151775925"><div class="ttname"><a href="classpanini_1_1_comma_list.html#afd0efc72392fef1a943f941151775925">panini::CommaList::CommaList</a></div><div class="ttdeci">CommaList(TIterator begin, TIterator end, const CommaListOptions &amp;options={}, std::function&lt; std::string(const TUnderlying &amp;, size_t)&gt; transform=DefaultTransform&lt; TUnderlying &gt;)</div><div class="ttdef"><b>Definition:</b> CommaList.hpp:125</div></div>
+<div class="ttc" id="aclasspanini_1_1_comma_list_html_afd0efc72392fef1a943f941151775925"><div class="ttname"><a href="classpanini_1_1_comma_list.html#afd0efc72392fef1a943f941151775925">panini::CommaList::CommaList</a></div><div class="ttdeci">CommaList(TIterator begin, TIterator end, const CommaListOptions &amp;options={}, std::function&lt; std::string(const TUnderlying &amp;, size_t)&gt; transform=DefaultTransform&lt; TUnderlying &gt;)</div><div class="ttdef"><b>Definition:</b> CommaList.hpp:126</div></div>
 </div><!-- fragment --><p >Output:</p>
 <div class="fragment"><div class="line"><span class="keyword">enum</span> Vehicles</div>
 <div class="line">{</div>
@@ -197,7 +197,7 @@ template&lt;class TIterator , class TUnderlying  = typename std::iterator_traits
   </tr>
 </table>
 </div><div class="memdoc">
-<p >Construct a <a class="el" href="classpanini_1_1_comma_list.html" title="Outputs a list of items, comma-separated by default.">CommaList</a> from a begin and end iterator.</p>
+<p >Construct a <a class="el" href="classpanini_1_1_comma_list.html" title="Command for outputting a list of items, comma-separated by default.">CommaList</a> from a begin and end iterator.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">begin</td><td>Starting point for iteration. </td></tr>

@@ -29,7 +29,7 @@ namespace panini
 {
 
 	/*!
-		\brief Output a scope with braces.
+		\brief Command for outputting a scope with braces.
 
 		Scopes have a named chunk and use a \ref Braces command to add opening
 		and closing braces to the output.

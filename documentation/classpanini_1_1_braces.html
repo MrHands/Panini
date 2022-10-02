@@ -90,7 +90,7 @@ $(document).ready(function(){initNavTree('classpanini_1_1_braces.html',''); init
 </div><!--header-->
 <div class="contents">
 
-<p>Outputs opening and closing curly braces.  
+<p>Command for outputting opening and closing curly braces.  
  <a href="classpanini_1_1_braces.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_braces_8hpp_source.html">Braces.hpp</a>&gt;</code></p>
@@ -115,9 +115,9 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a140398d6b1c2df6c74881b8aaadfd550 inherit pub_methods_classpanini_1_1_command_base"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >Outputs opening and closing curly braces. </p>
+<div class="textblock"><p >Command for outputting opening and closing curly braces. </p>
 <p >Adding opening and closing braces to the output can be frustrating to do by hand because you have to take the brace breaking style and indentation into account. This command handles that for you.</p>
-<p >If you want to prefix the opening brace with a chunk, it may be beneficial to use a <a class="el" href="classpanini_1_1_scope.html" title="Output a scope with braces.">Scope</a> instead.</p>
+<p >If you want to prefix the opening brace with a chunk, it may be beneficial to use a <a class="el" href="classpanini_1_1_scope.html" title="Command for outputting a scope with braces.">Scope</a> instead.</p>
 <dl class="section note"><dt>Note</dt><dd>The command will <em>not</em> output a space before the opening brace if the brace breaking style was set to <a class="el" href="group___enums.html#gga0e8bf718da5e3c164599e591f6b76f5ca7193518e6f5f0076ef05680742323f9c" title="Open brace on the same line.">BraceBreakingStyle::Attach</a></dd></dl>
 <p>Example:</p>
 <div class="fragment"><div class="line">writer &lt;&lt; <a class="code hl_function" href="classpanini_1_1_braces.html#abae686888fb786f59838fccbbc4a2aa2">Braces</a>([](WriterBase&amp; writer) {</div>
@@ -135,7 +135,7 @@ Public Member Functions</h2></td></tr>
 <div class="line">        <span class="stringliteral">&quot;p4ssw0rd&quot;</span></div>
 <div class="line">    };</div>
 <div class="line">}</div>
-</div><!-- fragment --><dl class="section see"><dt>See also</dt><dd><a class="el" href="classpanini_1_1_scope.html" title="Output a scope with braces.">Scope</a> </dd></dl>
+</div><!-- fragment --><dl class="section see"><dt>See also</dt><dd><a class="el" href="classpanini_1_1_scope.html" title="Command for outputting a scope with braces.">Scope</a> </dd></dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="abae686888fb786f59838fccbbc4a2aa2" name="abae686888fb786f59838fccbbc4a2aa2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abae686888fb786f59838fccbbc4a2aa2">&#9670;&nbsp;</a></span>Braces()</h2>
@@ -170,7 +170,7 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p >Create a <a class="el" href="classpanini_1_1_braces.html" title="Outputs opening and closing curly braces.">Braces</a> command a <code>callback</code> that is moved into the instance.</p>
+<p >Create a <a class="el" href="classpanini_1_1_braces.html" title="Command for outputting opening and closing curly braces.">Braces</a> command a <code>callback</code> that is moved into the instance.</p>
 <p >The callback is called when the command is visited by a <a class="el" href="classpanini_1_1_writer_base.html">WriterBase</a>.</p>
 <p >Setting the <code>style</code> parameter to <a class="el" href="group___enums.html#gga0e8bf718da5e3c164599e591f6b76f5cac49484faf79e2388b580e49444d6ac11">BraceBreakingStyle::Inherit</a> copies the brace breaking style from the writer, otherwise it will be overridden for this command only. </p>
 

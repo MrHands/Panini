@@ -25,7 +25,7 @@ namespace panini
 {
 
 	/*!
-		\brief Outputs a new line chunk.
+		\brief Command for outtputing a new line chunk.
 
 		\sa WriterBase
 	*/

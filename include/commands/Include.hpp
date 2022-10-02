@@ -29,7 +29,7 @@ namespace panini
 {
 
 	/*!
-		\brief Outputs an include statement for C++.
+		\brief Command for outputting an include statement for C++.
 
 		Include statements can be output by hand with relative ease, but this
 		command will help you standardize how they are written.

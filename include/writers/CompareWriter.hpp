@@ -40,7 +40,7 @@ namespace panini
 	};
 
 	/*!
-		\brief Writes the output to a path only when it was changed.
+		\brief Writes output to a path only when it differs.
 
 		The CompareWriter stores the contents of the target path first. When
 		the new output differs from what was seen before, the output will be

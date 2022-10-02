@@ -37,9 +37,11 @@ namespace panini
 
 	public:
 		/*!
-			Construct a ConsoleWriter with a configuration.
+			Construct and configure the writer.
+
+			\param config  Configuration instance.
 		*/
-		inline ConsoleWriter(const Config& config = Config())
+		inline explicit ConsoleWriter(const Config& config = Config())
 			: WriterBase(config)
 		{
 		}

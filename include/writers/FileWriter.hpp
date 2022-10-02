@@ -27,8 +27,9 @@ namespace panini
 {
 
 	/*!
-		\brief Writes output to a target file using a file stream. The stream
-		is closed automatically when the writer is destroyed.
+		\brief Writes output to a target file using a file stream.
+		
+		The file stream is closed automatically when the writer is destroyed.
 
 		The \ref Config instance is used to configure the output.
 	*/
@@ -38,7 +39,10 @@ namespace panini
 
 	public:
 		/*!
-			Construct a FileWriter with a path and a configuration.
+			Construct and configure the writer.
+
+			\param path    Path to the target file.
+			\param config  Configuration instance.
 		*/
 		inline FileWriter(const std::filesystem::path& path, const Config& config = Config())
 			: WriterBase(config)
@@ -47,7 +51,7 @@ namespace panini
 		}
 
 		/*!
-			Always close the stream when @ref Commit is called.
+			Always close the stream when \ref Commit is called.
 		*/
 		inline virtual bool IsChanged() const override
 		{

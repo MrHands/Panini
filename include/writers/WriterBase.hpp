@@ -177,7 +177,7 @@ namespace panini
 		/*!
 			Write a new line chunk to the output.
 
-			New line chunks can be configured with the @ref Config.
+			New line chunks can be configured with the \ref Config.
 
 			\return Reference to itself to allow for chaining.
 		*/
@@ -290,10 +290,10 @@ namespace panini
 			Commits the generated output to the target of a writer if the
 			output was changed.
 
-			@param force Force writing the file even if the output was not
+			\param force Force writing the file even if the output was not
 			changed.
 
-			@return Returns true if the commit was successful.
+			\return Returns true if the commit was successful.
 		*/
 		inline bool Commit(bool force = false)
 		{

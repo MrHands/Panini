@@ -42,7 +42,10 @@ namespace panini
 
 	public:
 		/*!
-			Construct a CompareWriter with a file path and a configuration.
+			Construct and configure the writer.
+
+			\param filePath  File that will be compared against the output.
+			\param config    Configuration instance.
 		*/
 		inline CompareWriter(const std::filesystem::path& filePath, const Config& config = Config())
 			: WriterBase(config)

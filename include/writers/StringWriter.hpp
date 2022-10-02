@@ -37,7 +37,10 @@ namespace panini
 
 	public:
 		/*!
-			Construct a StringWriter with a target and a configuration.
+			Construct and configure the writer.
+
+			\param target  String that output will be written to.
+			\param config  Configuration instance.
 		*/
 		inline StringWriter(std::string& target, const Config& config = Config())
 			: WriterBase(config)

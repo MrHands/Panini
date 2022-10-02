@@ -38,6 +38,10 @@
 namespace panini
 {
 
+	/*!
+		Configuration for the \ref DebugWriter class.
+	*/
+
 	struct DebugWriterConfig
 		: public Config
 	{
@@ -47,34 +51,53 @@ namespace panini
 		size_t lineNumberPadding = 3;
 	};
 
+	/*!
+		\brief Writes output to the console line-by-line.
+
+		The DebugWriter will halt execution every time it receives a
+		\ref NextLine command. The writer will wait for user input to either
+		continue debugging or stop execution.
+
+		It will display line numbers before the output and highlight both
+		indentation and new lines in the output.
+
+		The \ref DebugWriterConfig instance is used to configure the output.
+	*/
+
 	class DebugWriter
 		: public WriterBase
 	{
 
 	public:
+		/*!
+			Colors used in the console output.
+		*/
 		struct Colors
 		{
 			enum Values : uint16_t
 			{
-				Black    = 0x0000,
-				Blue     = 0x0001,
-				Green    = 0x0002,
-				Red      = 0x0004,
+				Black    = 0,
+				Blue     = (1 << 0),
+				Green    = (1 << 1),
+				Red      = (1 << 2),
 				Yellow   = Red | Green,
 				Cyan     = Green | Blue,
 				Fuchsia  = Red | Blue,
 				White    = Red | Green | Blue,
-				Light    = 0x0008,
+				Light    = (1 << 3),
 			};
 		};
 
+		/*!
+			Construct and configure the writer.
+		*/
 		inline explicit DebugWriter(const DebugWriterConfig& config = DebugWriterConfig{})
 			: WriterBase(config)
 			, m_debugConfig(config)
 		{
 		#ifdef _WINDOWS
 			m_output = ::GetStdHandle(STD_OUTPUT_HANDLE);
-			m_intialized = ::GetConsoleScreenBufferInfo(m_output, &m_screenInfo);
+			m_initialized = ::GetConsoleScreenBufferInfo(m_output, &m_screenInfo);
 
 			m_consoleWidth = static_cast<int32_t>(m_screenInfo.dwSize.X);
 			m_consoleHeight = static_cast<int32_t>(m_screenInfo.dwSize.Y);
@@ -110,14 +133,25 @@ namespace panini
 			SetCursorPosition(0, 0);
 		}
 
+		/*!
+			Always handle remaining input when \ref Commit is called.
+		*/
 		inline virtual bool IsChanged() const override
 		{
 			return true;
 		}
 
 	protected:
+		/*!
+			Writes the chunk to the console.
+		*/
 		inline virtual void Write(const std::string& chunk) override
 		{
+			if (!m_initialized)
+			{
+				return;
+			}
+
 			// line numbers
 
 			if (IsOnNewLine())
@@ -193,6 +227,9 @@ namespace panini
 			return true;
 		}
 
+		/*!
+			Moves the cursor in the console window.
+		*/
 		inline void SetCursorPosition(int32_t x, int32_t y)
 		{
 			m_cursorX = x;
@@ -205,6 +242,9 @@ namespace panini
 		#endif
 		}
 
+		/*!
+			Sets the background and foreground colors used for the output.
+		*/
 		inline void SetColor(uint16_t background, uint16_t foreground)
 		{
 		#ifdef _WINDOWS
@@ -215,11 +255,18 @@ namespace panini
 		#endif
 		}
 
+		/*!
+			Reset colors to the default white on black color scheme.
+		*/
 		inline void ResetStyles()
 		{
 			SetColor(Colors::Black, Colors::White);
 		}
 
+		/*!
+			Internal method for writing a chunk to the console window, clipping
+			it and pushing it to the next line if it's too long.
+		*/
 		inline void WriteChunk(const std::string& chunk)
 		{
 			if (m_cursorX + chunk.length() > m_consoleWidth)
@@ -241,6 +288,9 @@ namespace panini
 			);
 		}
 
+		/*!
+			Handle user input.
+		*/
 		inline void HandleInput(const std::string& message)
 		{
 			SetCursorPosition(0, m_cursorY + 1);
@@ -306,7 +356,7 @@ namespace panini
 
 	protected:
 		DebugWriterConfig m_debugConfig;
-		bool m_intialized = false;
+		bool m_initialized = false;
 		bool m_isDebugging = true;
 		int32_t m_cursorX = 0;
 		int32_t m_cursorY = 0;

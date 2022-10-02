@@ -19,9 +19,10 @@ var searchData=
   ['comparewriter_16',['CompareWriter',['../classpanini_1_1_compare_writer.html#ae1c7649f2744030894eda7d6dc6981db',1,'panini::CompareWriter::CompareWriter(const CompareWriterConfig &amp;config={})'],['../classpanini_1_1_compare_writer.html#a71287dd41f1f8266be545f760a528156',1,'panini::CompareWriter::CompareWriter(const std::filesystem::path &amp;filePath, const Config &amp;config=Config())'],['../classpanini_1_1_compare_writer.html',1,'panini::CompareWriter']]],
   ['comparewriter_2ehpp_17',['CompareWriter.hpp',['../_compare_writer_8hpp.html',1,'']]],
   ['comparewriterconfig_18',['CompareWriterConfig',['../structpanini_1_1_compare_writer_config.html',1,'panini']]],
-  ['config_19',['Config',['../structpanini_1_1_config.html',1,'panini']]],
-  ['config_2ehpp_20',['Config.hpp',['../_config_8hpp.html',1,'']]],
-  ['consolewriter_21',['ConsoleWriter',['../classpanini_1_1_console_writer.html#aa723a35904cf23540857e0b1bf747838',1,'panini::ConsoleWriter::ConsoleWriter()'],['../classpanini_1_1_console_writer.html',1,'panini::ConsoleWriter']]],
-  ['consolewriter_2ehpp_22',['ConsoleWriter.hpp',['../_console_writer_8hpp.html',1,'']]],
-  ['cyan_23',['Cyan',['../structpanini_1_1_debug_writer_1_1_colors.html#a7ece57f37556c08f2f926ef2823cdd84a589fc29a2dd61a74664507ea1b2d8056',1,'panini::DebugWriter::Colors']]]
+  ['comparewriterconfig_2ehpp_19',['CompareWriterConfig.hpp',['../_compare_writer_config_8hpp.html',1,'']]],
+  ['config_20',['Config',['../structpanini_1_1_config.html',1,'panini']]],
+  ['config_2ehpp_21',['Config.hpp',['../_config_8hpp.html',1,'']]],
+  ['consolewriter_22',['ConsoleWriter',['../classpanini_1_1_console_writer.html#aa723a35904cf23540857e0b1bf747838',1,'panini::ConsoleWriter::ConsoleWriter()'],['../classpanini_1_1_console_writer.html',1,'panini::ConsoleWriter']]],
+  ['consolewriter_2ehpp_23',['ConsoleWriter.hpp',['../_console_writer_8hpp.html',1,'']]],
+  ['cyan_24',['Cyan',['../structpanini_1_1_debug_writer_1_1_colors.html#a7ece57f37556c08f2f926ef2823cdd84a589fc29a2dd61a74664507ea1b2d8056',1,'panini::DebugWriter::Colors']]]
 ];

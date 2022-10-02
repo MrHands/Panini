@@ -25,7 +25,7 @@
 #include "commands/IndentPop.hpp"
 #include "commands/IndentPush.hpp"
 #include "commands/NextLine.hpp"
-#include "Config.hpp"
+#include "data/Config.hpp"
 
 namespace panini
 {

@@ -33,23 +33,11 @@
 	#include <Windows.h>
 #endif
 
+#include "data/DebugWriterConfig.hpp"
 #include "writers/WriterBase.hpp"
 
 namespace panini
 {
-
-	/*!
-		Configuration for the \ref DebugWriter class.
-	*/
-
-	struct DebugWriterConfig
-		: public Config
-	{
-		/*!
-			Minimum length of line numbers, padded with spaces.
-		*/
-		size_t lineNumberPadding = 3;
-	};
 
 	/*!
 		\brief Writes output to the console line-by-line.

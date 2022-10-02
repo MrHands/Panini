@@ -21,23 +21,11 @@
 
 #pragma once
 
+#include "data/CompareWriterConfig.hpp"
 #include "writers/WriterBase.hpp"
 
 namespace panini
 {
-
-	/*!
-		Configuration for the \ref CompareWriter class.
-	*/
-
-	struct CompareWriterConfig
-		: public Config
-	{
-		/*!
-			File that will be compared against the output.
-		*/
-		std::filesystem::path filePath;
-	};
 
 	/*!
 		\brief Writes output to a path only when it differs.

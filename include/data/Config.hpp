@@ -21,16 +21,6 @@
 
 #pragma once
 
-// C/STL
-
-#include <filesystem>
-#include <fstream>
-#include <functional>
-#include <iostream>
-#include <stdint.h>
-#include <string>
-#include <vector>
-
 /*!
 	\file Config.hpp
 	\defgroup Enums Global enumeration values

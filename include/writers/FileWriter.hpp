@@ -21,23 +21,11 @@
 
 #pragma once
 
+#include "data/FileWriterConfig.hpp"
 #include "writers/WriterBase.hpp"
 
 namespace panini
 {
-
-	/*!
-		Configuration for the \ref FileWriter class.
-	*/
-
-	struct FileWriterConfig
-		: public Config
-	{
-		/*!
-			Path to the target file.
-		*/
-		std::filesystem::path targetPath;
-	};
 
 	/*!
 		\brief Writes output to a target file using a file stream.

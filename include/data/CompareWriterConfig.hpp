@@ -21,34 +21,21 @@
 
 #pragma once
 
-// C/STL
+#include "data/Config.hpp"
 
-#include <filesystem>
-#include <fstream>
-#include <functional>
-#include <iostream>
-#include <stdint.h>
-#include <string>
-#include <vector>
+namespace panini
+{
 
-// Commands
+	/*!
+		\brief Configuration for the \ref CompareWriter class.
+	*/
+	struct CompareWriterConfig
+		: public Config
+	{
+		/*!
+			File that will be compared against the output.
+		*/
+		std::filesystem::path filePath;
+	};
 
-#include "commands/Braces.hpp"
-#include "commands/CommaList.hpp"
-#include "commands/CommentBlock.hpp"
-#include "commands/CommentLine.hpp"
-#include "commands/Include.hpp"
-#include "commands/IncludeBlock.hpp"
-#include "commands/IndentPop.hpp"
-#include "commands/IndentPush.hpp"
-#include "commands/Label.hpp"
-#include "commands/NextLine.hpp"
-#include "commands/Scope.hpp"
-
-// Writers
-
-#include "writers/CompareWriter.hpp"
-#include "writers/ConsoleWriter.hpp"
-#include "writers/DebugWriter.hpp"
-#include "writers/FileWriter.hpp"
-#include "writers/StringWriter.hpp"
+};

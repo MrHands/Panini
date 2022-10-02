@@ -6,6 +6,7 @@ var searchData=
   ['commentblock_2ehpp_3',['CommentBlock.hpp',['../_comment_block_8hpp.html',1,'']]],
   ['commentline_2ehpp_4',['CommentLine.hpp',['../_comment_line_8hpp.html',1,'']]],
   ['comparewriter_2ehpp_5',['CompareWriter.hpp',['../_compare_writer_8hpp.html',1,'']]],
-  ['config_2ehpp_6',['Config.hpp',['../_config_8hpp.html',1,'']]],
-  ['consolewriter_2ehpp_7',['ConsoleWriter.hpp',['../_console_writer_8hpp.html',1,'']]]
+  ['comparewriterconfig_2ehpp_6',['CompareWriterConfig.hpp',['../_compare_writer_config_8hpp.html',1,'']]],
+  ['config_2ehpp_7',['Config.hpp',['../_config_8hpp.html',1,'']]],
+  ['consolewriter_2ehpp_8',['ConsoleWriter.hpp',['../_console_writer_8hpp.html',1,'']]]
 ];

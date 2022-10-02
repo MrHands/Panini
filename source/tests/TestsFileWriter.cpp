@@ -26,15 +26,55 @@ TEST(FileWriter, Write)
 {
 	using namespace panini;
 
-	FileWriter w("out.txt");
+	FileWriterConfig c;
+	c.targetPath = "file_out.txt";
+
+	FileWriter w(c);
 	w << "HACKING";
 	w.Commit();
 
-	std::string s;
-
-	std::ifstream f("out.txt");
+	std::ifstream f(c.targetPath);
 	EXPECT_TRUE(f.is_open());
-	f >> s;
+	std::stringstream ss;
+	ss << f.rdbuf();
 
-	EXPECT_STREQ("HACKING", s.c_str());
+	EXPECT_STREQ("HACKING", ss.str().c_str());
+}
+
+TEST(FileWriter, ScopedCommit)
+{
+	using namespace panini;
+
+	FileWriterConfig c;
+	c.targetPath = "file_scoped_commit.txt";
+
+	{
+		FileWriter w(c);
+		w << "Even if you snore";
+	}
+
+	std::ifstream f(c.targetPath);
+	EXPECT_TRUE(f.is_open());
+	std::stringstream ss;
+	ss << f.rdbuf();
+
+	EXPECT_STREQ("Even if you snore", ss.str().c_str());
+}
+
+TEST(FileWriter, DeprecatedConstructor)
+{
+	using namespace panini;
+
+	std::filesystem::path fp = "file_deprecated.txt";
+
+	FileWriter w(fp);
+	w << "This seems like a bad idea.";
+	w.Commit();
+
+	std::ifstream f(fp);
+	EXPECT_TRUE(f.is_open());
+	std::stringstream ss;
+	ss << f.rdbuf();
+
+	EXPECT_STREQ("This seems like a bad idea.", ss.str().c_str());
 }

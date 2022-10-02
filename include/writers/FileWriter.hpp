@@ -27,6 +27,19 @@ namespace panini
 {
 
 	/*!
+		Configuration for the \ref FileWriter class.
+	*/
+
+	struct FileWriterConfig
+		: public Config
+	{
+		/*!
+			Path to the target file.
+		*/
+		std::filesystem::path targetPath;
+	};
+
+	/*!
 		\brief Writes output to a target file using a file stream.
 		
 		The file stream is closed automatically when the writer is destroyed.
@@ -41,6 +54,21 @@ namespace panini
 		/*!
 			Construct and configure the writer.
 
+			\param config    Configuration instance.
+		*/
+		inline FileWriter(const FileWriterConfig& config = {})
+			: FileWriter(config.targetPath, config)
+		{
+			m_fileConfig = config;
+		}
+
+		/*!
+			Construct and configure the writer.
+
+			\deprecated This constructor will likely be removed in a future
+			version. Prefer initializing the writer with a
+			\ref FileWriterConfig instance instead.
+
 			\param path    Path to the target file.
 			\param config  Configuration instance.
 		*/
@@ -51,11 +79,19 @@ namespace panini
 		}
 
 		/*!
+			Will call Commit() automatically when the writer is destroyed.
+		*/
+		inline virtual ~FileWriter() override
+		{
+			Commit();
+		}
+
+		/*!
 			Always close the stream when \ref Commit is called.
 		*/
 		inline virtual bool IsChanged() const override
 		{
-			return true;
+			return m_target.is_open();
 		}
 
 	protected:
@@ -69,7 +105,7 @@ namespace panini
 				return;
 			}
 
-			m_target << chunk;
+			m_written += chunk;
 		}
 
 		/*!
@@ -79,13 +115,16 @@ namespace panini
 		{
 			(void)force;
 
+			m_target.write(m_written.c_str(), m_written.length());
 			m_target.close();
 
 			return true;
 		}
 
 	protected:
+		FileWriterConfig m_fileConfig;
 		std::ofstream m_target;
+		std::string m_written;
 
 	};
 

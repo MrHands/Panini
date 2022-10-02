@@ -57,6 +57,17 @@ namespace panini
 		/*!
 			Construct and configure the writer.
 
+			\param config    Configuration instance.
+		*/
+		inline CompareWriter(const CompareWriterConfig& config = {})
+			: CompareWriter(config.filePath, config)
+		{
+			m_compareConfig = config;
+		}
+
+		/*!
+			Construct and configure the writer.
+
 			\deprecated This constructor will likely be removed in a future
 			version. Prefer initializing the writer with a
 			\ref CompareWriterConfig instance instead.
@@ -84,17 +95,6 @@ namespace panini
 		}
 
 		/*!
-			Construct and configure the writer.
-
-			\param config    Configuration instance.
-		*/
-		inline CompareWriter(const CompareWriterConfig& config = {})
-			: CompareWriter(config.filePath, config)
-		{
-			m_compareConfig = config;
-		}
-
-		/*!
 			Check if the output was changed compared to what was read from disk
 			when the CompareWriter was created.
 		*/
@@ -117,7 +117,7 @@ namespace panini
 				return false;
 			}
 
-			stream << m_writtenCurrent;
+			stream.write(m_writtenCurrent.c_str(), m_writtenCurrent.length());
 			stream.close();
 
 			m_writtenPrevious = m_writtenCurrent;

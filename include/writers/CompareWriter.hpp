@@ -27,6 +27,19 @@ namespace panini
 {
 
 	/*!
+		Configuration for the \ref CompareWriter class.
+	*/
+
+	struct CompareWriterConfig
+		: public Config
+	{
+		/*!
+			File that will be compared against the output.
+		*/
+		std::filesystem::path filePath;
+	};
+
+	/*!
 		\brief Writes the output to a path only when it was changed.
 
 		The CompareWriter stores the contents of the target path first. When
@@ -44,14 +57,19 @@ namespace panini
 		/*!
 			Construct and configure the writer.
 
+			\deprecated This constructor will likely be removed in a future
+			version. Prefer initializing the writer with a
+			\ref CompareWriterConfig instance instead.
+
 			\param filePath  File that will be compared against the output.
 			\param config    Configuration instance.
 		*/
 		inline CompareWriter(const std::filesystem::path& filePath, const Config& config = Config())
 			: WriterBase(config)
-			, m_filePath(filePath)
 		{
-			std::ifstream stream(m_filePath.string(), std::ios::in | std::ios::binary);
+			m_compareConfig.filePath = filePath;
+
+			std::ifstream stream(m_compareConfig.filePath.string(), std::ios::in | std::ios::binary);
 			m_pathExists = stream.is_open();
 			if (m_pathExists)
 			{
@@ -63,6 +81,17 @@ namespace panini
 			}
 
 			m_writtenCurrent.reserve(m_writtenPrevious.size());
+		}
+
+		/*!
+			Construct and configure the writer.
+
+			\param config    Configuration instance.
+		*/
+		inline CompareWriter(const CompareWriterConfig& config = {})
+			: CompareWriter(config.filePath, config)
+		{
+			m_compareConfig = config;
 		}
 
 		/*!
@@ -82,13 +111,7 @@ namespace panini
 
 		inline virtual bool OnCommit(bool force = false) override
 		{
-			if (!IsChanged() &&
-				!force)
-			{
-				return false;
-			}
-
-			std::ofstream stream(m_filePath.string(), std::ios::binary);
+			std::ofstream stream(m_compareConfig.filePath.string(), std::ios::binary);
 			if (!stream.is_open())
 			{
 				return false;
@@ -103,7 +126,7 @@ namespace panini
 		}
 
 	protected:
-		std::filesystem::path m_filePath;
+		CompareWriterConfig m_compareConfig;
 		bool m_pathExists = false;
 		std::string m_writtenPrevious;
 

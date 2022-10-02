@@ -26,7 +26,9 @@ TEST(CompareWriter, WriteNewFile)
 {
 	using namespace panini;
 
-	std::filesystem::remove("compare_write.txt");
+	CompareWriterConfig c;
+	c.filePath = "compare_write.txt";
+	std::filesystem::remove(c.filePath);
 
 	CompareWriter w("compare_write.txt");
 	w << "I'll catch you next time, Gadget!";
@@ -46,18 +48,22 @@ TEST(CompareWriter, FileExistsAndOutputWasUnchanged)
 {
 	using namespace panini;
 
-	std::ofstream p("compare_exists.txt", std::ios::out | std::ios::binary);
+	CompareWriterConfig c;
+	c.filePath = "compare_exists.txt";
+	std::filesystem::remove(c.filePath);
+
+	std::ofstream p(c.filePath, std::ios::out | std::ios::binary);
 	p << "TRUE\nTRUE\nFALSE";
 	p.close();
 
-	CompareWriter w("compare_exists.txt");
+	CompareWriter w(c);
 	w << "TRUE\nTRUE\nFALSE";
 	EXPECT_FALSE(w.IsChanged());
 	EXPECT_FALSE(w.Commit());
 
 	std::stringstream ss;
 
-	std::ifstream f("compare_exists.txt", std::ios::in | std::ios::binary);
+	std::ifstream f(c.filePath, std::ios::in | std::ios::binary);
 	EXPECT_TRUE(f.is_open());
 	ss << f.rdbuf();
 
@@ -68,18 +74,22 @@ TEST(CompareWriter, FileExistsAndOutputWasChanged)
 {
 	using namespace panini;
 
-	std::ofstream p("compare_changed.txt", std::ios::out | std::ios::binary);
+	CompareWriterConfig c;
+	c.filePath = "compare_changed.txt";
+	std::filesystem::remove(c.filePath);
+
+	std::ofstream p(c.filePath, std::ios::out | std::ios::binary);
 	p << "going to { the moon }";
 	p.close();
 
-	CompareWriter w("compare_changed.txt");
+	CompareWriter w(c);
 	w << "going to { mars }";
 	EXPECT_TRUE(w.IsChanged());
 	EXPECT_TRUE(w.Commit());
 
 	std::stringstream ss;
 
-	std::ifstream f("compare_changed.txt", std::ios::in | std::ios::binary);
+	std::ifstream f(c.filePath, std::ios::in | std::ios::binary);
 	EXPECT_TRUE(f.is_open());
 	ss << f.rdbuf();
 
@@ -90,20 +100,45 @@ TEST(CompareWriter, WindowsNewLines)
 {
 	using namespace panini;
 
-	std::ofstream p("compare_windows.txt", std::ios::out | std::ios::binary);
+	CompareWriterConfig c;
+	c.filePath = "compare_windows.txt";
+	std::filesystem::remove(c.filePath);
+
+	std::ofstream p(c.filePath, std::ios::out | std::ios::binary);
 	p << "Actually,\r\nI *love*\r\nstrPascalCase";
 	p.close();
 
-	CompareWriter w("compare_windows.txt");
+	CompareWriter w(c);
 	w << "Actually,\r\nI *love*\r\nstrPascalCase";
 	EXPECT_FALSE(w.IsChanged());
 	EXPECT_FALSE(w.Commit());
 
 	std::stringstream ss;
 
-	std::ifstream f("compare_windows.txt", std::ios::in | std::ios::binary);
+	std::ifstream f(c.filePath, std::ios::in | std::ios::binary);
 	EXPECT_TRUE(f.is_open());
 	ss << f.rdbuf();
 
 	EXPECT_STREQ("Actually,\r\nI *love*\r\nstrPascalCase", ss.str().c_str());
+}
+
+TEST(CompareWriter, DeprecatedConstructor)
+{
+	using namespace panini;
+
+	std::filesystem::path fp = "deprecated.txt";
+	std::filesystem::remove(fp);
+
+	CompareWriter w(fp);
+	w << "Please don't use me anymore!";
+	EXPECT_TRUE(w.IsChanged());
+	EXPECT_TRUE(w.Commit());
+
+	std::stringstream ss;
+
+	std::ifstream f(fp, std::ios::in | std::ios::binary);
+	EXPECT_TRUE(f.is_open());
+	ss << f.rdbuf();
+
+	EXPECT_STREQ("Please don't use me anymore!", ss.str().c_str());
 }

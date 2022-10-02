@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.19)
 
 project(
 	panini
-	VERSION 1.1.0
+	VERSION 1.2.0
 	LANGUAGES CXX
 	DESCRIPTION "Header-only library for generating C++, written in C++17"
 	HOMEPAGE_URL "https://github.com/MrHands/Panini"
@@ -176,6 +176,14 @@ if(PANINI_INSTALL)
 		"${PROJECT_NAME}ConfigVersion.cmake"
 		VERSION ${PROJECT_VERSION}
 		COMPATIBILITY SameMajorVersion
+	)
+
+	# generate version file
+
+	configure_file(
+		${CMAKE_CURRENT_SOURCE_DIR}/cmake/Version.hpp.in
+		${CMAKE_CURRENT_SOURCE_DIR}/include/Version.hpp
+		@ONLY
 	)
 
 	# generate the configuration file for the installed package

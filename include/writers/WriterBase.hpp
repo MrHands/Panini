@@ -70,14 +70,7 @@ namespace panini
 			}
 		}
 
-		/*!
-			The output is automatically committed when the instance is
-			destroyed.
-		*/
-		virtual ~WriterBase()
-		{
-			Commit();
-		}
+		virtual ~WriterBase() = default;
 
 		/*!
 			Get a reference to the active Config for this writer.

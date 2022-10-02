@@ -30,18 +30,38 @@ TEST(CompareWriter, WriteNewFile)
 	c.filePath = "compare_write.txt";
 	std::filesystem::remove(c.filePath);
 
-	CompareWriter w("compare_write.txt");
+	CompareWriter w(c);
 	w << "I'll catch you next time, Gadget!";
 	EXPECT_TRUE(w.IsChanged());
 	EXPECT_TRUE(w.Commit());
 
-	std::stringstream ss;
-
-	std::ifstream f("compare_write.txt", std::ios::in | std::ios::binary);
+	std::ifstream f(c.filePath, std::ios::in | std::ios::binary);
 	EXPECT_TRUE(f.is_open());
+	std::stringstream ss;
 	ss << f.rdbuf();
 
 	EXPECT_STREQ("I'll catch you next time, Gadget!", ss.str().c_str());
+}
+
+TEST(CompareWriter, ScopedCommit)
+{
+	using namespace panini;
+
+	CompareWriterConfig c;
+	c.filePath = "compare_scoped_commit.txt";
+	std::filesystem::remove(c.filePath);
+
+	{
+		CompareWriter w(c);
+		w << "Ballad Heaven";
+	}
+
+	std::ifstream f(c.filePath, std::ios::in | std::ios::binary);
+	EXPECT_TRUE(f.is_open());
+	std::stringstream ss;
+	ss << f.rdbuf();
+
+	EXPECT_STREQ("Ballad Heaven", ss.str().c_str());
 }
 
 TEST(CompareWriter, FileExistsAndOutputWasUnchanged)
@@ -61,10 +81,9 @@ TEST(CompareWriter, FileExistsAndOutputWasUnchanged)
 	EXPECT_FALSE(w.IsChanged());
 	EXPECT_FALSE(w.Commit());
 
-	std::stringstream ss;
-
 	std::ifstream f(c.filePath, std::ios::in | std::ios::binary);
 	EXPECT_TRUE(f.is_open());
+	std::stringstream ss;
 	ss << f.rdbuf();
 
 	EXPECT_STREQ("TRUE\nTRUE\nFALSE", ss.str().c_str());
@@ -87,10 +106,9 @@ TEST(CompareWriter, FileExistsAndOutputWasChanged)
 	EXPECT_TRUE(w.IsChanged());
 	EXPECT_TRUE(w.Commit());
 
-	std::stringstream ss;
-
 	std::ifstream f(c.filePath, std::ios::in | std::ios::binary);
 	EXPECT_TRUE(f.is_open());
+	std::stringstream ss;
 	ss << f.rdbuf();
 
 	EXPECT_STREQ("going to { mars }", ss.str().c_str());
@@ -113,10 +131,9 @@ TEST(CompareWriter, WindowsNewLines)
 	EXPECT_FALSE(w.IsChanged());
 	EXPECT_FALSE(w.Commit());
 
-	std::stringstream ss;
-
 	std::ifstream f(c.filePath, std::ios::in | std::ios::binary);
 	EXPECT_TRUE(f.is_open());
+	std::stringstream ss;
 	ss << f.rdbuf();
 
 	EXPECT_STREQ("Actually,\r\nI *love*\r\nstrPascalCase", ss.str().c_str());
@@ -134,10 +151,9 @@ TEST(CompareWriter, DeprecatedConstructor)
 	EXPECT_TRUE(w.IsChanged());
 	EXPECT_TRUE(w.Commit());
 
-	std::stringstream ss;
-
 	std::ifstream f(fp, std::ios::in | std::ios::binary);
 	EXPECT_TRUE(f.is_open());
+	std::stringstream ss;
 	ss << f.rdbuf();
 
 	EXPECT_STREQ("Please don't use me anymore!", ss.str().c_str());

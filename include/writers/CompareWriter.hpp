@@ -95,6 +95,14 @@ namespace panini
 		}
 
 		/*!
+			Will call Commit() automatically when the writer is destroyed.
+		*/
+		inline virtual ~CompareWriter() override
+		{
+			Commit();
+		}
+
+		/*!
 			Check if the output was changed compared to what was read from disk
 			when the CompareWriter was created.
 		*/

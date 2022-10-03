@@ -21,4 +21,7 @@
 
 #pragma once
 
+#define PANINI_VERSION_MAJOR 1
+#define PANINI_VERSION_MINOR 2
+#define PANINI_VERSION_PATCH 0
 #define PANINI_VERSION_STR "1.2.0"

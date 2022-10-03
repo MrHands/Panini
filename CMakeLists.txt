@@ -178,6 +178,13 @@ if(PANINI_INSTALL)
 		COMPATIBILITY SameMajorVersion
 	)
 
+	# split version into components
+
+	string(REPLACE "." ";" VERSION_LIST ${CMAKE_PROJECT_VERSION})
+	list(GET VERSION_LIST 0 ${PROJECT_NAME}_VERSION_MAJOR)
+	list(GET VERSION_LIST 1 ${PROJECT_NAME}_VERSION_MINOR)
+	list(GET VERSION_LIST 2 ${PROJECT_NAME}_VERSION_PATCH)
+
 	# generate version file
 
 	configure_file(

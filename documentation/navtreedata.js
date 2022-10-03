@@ -58,7 +58,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_braces_8hpp.html",
-"classpanini_1_1_writer_base.html#a3e699a4af7699bca800a2fbc2032c0d6"
+"classpanini_1_1_writer_base.html#a4dac8be36a19ee0398ca8f6a3e003950"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

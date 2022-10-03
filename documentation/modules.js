@@ -1,4 +1,4 @@
 var modules =
 [
-    [ "Global enumeration values", "group___enums.html", "group___enums" ]
+    [ "Global values", "group___globals.html", "group___globals" ]
 ];

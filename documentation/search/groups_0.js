@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['global_20enumeration_20values_0',['Global enumeration values',['../group___enums.html',1,'']]]
+  ['global_20values_0',['Global values',['../group___globals.html',1,'']]]
 ];

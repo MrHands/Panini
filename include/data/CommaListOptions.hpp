@@ -24,10 +24,26 @@
 namespace panini
 {
 
+	/*!
+		\brief Options for the CommaList command.
+	*/
 	struct CommaListOptions
 	{
+		/*!
+			Chunk inserted before each item in the list, including the first
+			item.
+		*/
 		std::string chunkBeginSeparator = "";
+
+		/*!
+			Chunk inserted after the first item in the list, excluding the last
+			item in the list.
+		*/
 		std::string chunkEndSeparator = ", ";
+
+		/*!
+			Whether to add NextLine commands after each item in the list.
+		*/
 		bool addNewLines = false;
 	};
 

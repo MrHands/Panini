@@ -25,7 +25,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Panini<span id="projectnumber">&#160;1.1.0</span>
+   <div id="projectname">Panini<span id="projectnumber">&#160;1.2.0</span>
    </div>
    <div id="projectbrief">Header-only library for generating C++, written in C++17</div>
   </td>
@@ -131,7 +131,7 @@ class panini::CommaList&lt; TIterator, TUnderlying &gt;</div><p >Command for out
 <p >The <a class="el" href="classpanini_1_1_comma_list.html" title="Command for outputting a list of items, comma-separated by default.">CommaList</a> command makes it easy to print a list of items that should be separated after the first item, e.g. function parameters.</p>
 <p >The command works with iterators of any STL container and even custom iterators, as long as the type implements the interface required for <code>std::iterator_traits</code> to derive the underlying type.</p>
 <p >If the underlying type for the iterator cannot be derived implicitly, you can use the TUnderlying parameter to set the type explicitly.</p>
-<p >Using the <a class="el" href="structpanini_1_1_comma_list_options.html">CommaListOptions</a> struct, you can specify the separator chunk that should come before each item and the one that should come after the first item, which is ", " by default. It's also possible to add a new line after each item, which is disabled by default.</p>
+<p >Using the <a class="el" href="structpanini_1_1_comma_list_options.html" title="Options for the CommaList command.">CommaListOptions</a> struct, you can specify the separator chunk that should come before each item and the one that should come after the first item, which is ", " by default. It's also possible to add a new line after each item, which is disabled by default.</p>
 <p >Finally, you can add a transform function to the command, which will be called once for each item in the list and transforms the item to a string.</p>
 <p >Example:</p>
 <div class="fragment"><div class="line">writer &lt;&lt; Scope(<span class="stringliteral">&quot;enum Vehicles&quot;</span>, [](WriterBase&amp; writer) {</div>

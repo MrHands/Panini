@@ -58,7 +58,7 @@ namespace panini
 
 	public:
 		/*!
-			Colors used in the console output.
+			\brief Colors used in the console output.
 		*/
 		struct Colors
 		{

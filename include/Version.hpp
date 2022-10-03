@@ -21,7 +21,48 @@
 
 #pragma once
 
+/*!
+	Major version number for the library.
+
+	This number indicates that the library changed in an incompatible way with
+	your existing code.
+
+	For example, code built using Panini 1.x.x will not be compatible with
+	version 2.x.x and will have to be rewritten.
+
+	\ingroup Globals
+*/
 #define PANINI_VERSION_MAJOR 1
+
+/*!
+	Minor version number for the library.
+
+	Changes to this number might introduce new features, but they should be
+	compatible with existing code.
+
+	For example, it should be safe to upgrade from Panini 1.1.x to 1.2.x,
+	although you might have to make some changes to your code.
+
+	\ingroup Globals
+*/
 #define PANINI_VERSION_MINOR 2
+
+/*!
+	Patch version number for the library.
+
+	Changes to this number strictly indicate bug fixes and other clean ups that
+	are always safe to integrate in your code.
+
+	For example, you can safely upgrade from Panini 1.2.12 to 1.2.25 without
+	having to make changes to your code.
+
+	\ingroup Globals
+*/
 #define PANINI_VERSION_PATCH 0
+
+/*!
+	Complete version number for the library, as a string.
+
+	\ingroup Globals
+*/
 #define PANINI_VERSION_STR "1.2.0"

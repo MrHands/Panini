@@ -21,17 +21,12 @@
 
 #pragma once
 
-/*!
-	\file Config.hpp
-	\defgroup Enums Global enumeration values
-*/
-
 namespace panini
 {
 	/*!
 		\enum BraceBreakingStyle
 		\brief Brace breaking style to use when writing to output.
-		\ingroup Enums
+		\ingroup Globals
 	*/
 	enum class BraceBreakingStyle
 	{
@@ -44,7 +39,7 @@ namespace panini
 	/*!
 		\enum IncludeStyle
 		\brief Include style to use when writing to output.
-		\ingroup Enums
+		\ingroup Globals
 	*/
 	enum class IncludeStyle
 	{

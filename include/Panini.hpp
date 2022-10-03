@@ -31,6 +31,14 @@
 #include <string>
 #include <vector>
 
+// Global
+
+/*!
+	\defgroup Globals Global values
+*/
+
+#include "Version.hpp"
+
 // Commands
 
 #include "commands/Braces.hpp"

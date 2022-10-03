@@ -1,6 +1,10 @@
-Panini is a header-only library for generating C++ code written in C++17. The main advantage is that this allows you to write small programs for code-generation that you can step through with a debugger while your code is being output.
+Panini is a header-only library for generating C++ code written in C++17.
 
-While Panini is best suited for generating C++, you can use it to generate code for any language, including JavaScript, TypeScript, XML, or even Python. The library has no dependencies except for STL which should make it easy to integrate into your existing codebase.
+Panini allows you to write small executables for code-generation that you can step through with a debugger while your code is being output. Because the code generation is itself written in C++, you can call the same functions and use the same tools as the rest of your codebase.
+
+The library takes a write-only approach to code generation, which means output is only ever appended to, and never rolled back. This means Panini can be very fast because the only state it has to keep track of is whether a new line was just started.
+
+While Panini is best suited for generating C++, you can use it to generate code for any programming language, including JavaScript, TypeScript, XML, or even Python. The library uses the C++ Standard Template Library (STL) and has no other dependencies.
 
 # Example
 
@@ -41,7 +45,7 @@ Which will output the following to the console:
 
 # Installation
 
-Panini comes with a `CMakeLists.txt` configuration file. As an example, you can use the following command to generate a solution for Visual Studio 2017 in the `build` directory:
+Panini comes with a `CMakeLists.txt` configuration file. Although you should refer to the [CMake documentation](https://cmake.org/) for your specific configuration, as an example, you can use the following command to generate a solution for Visual Studio 2017 in the `build` directory:
 
 	cmake -G "Visual Studio 15 2017 Win64" -S . -B build
 
@@ -62,7 +66,7 @@ Panini does not do any string processing itself but we can recommend the [fmt](h
 
 ## Commands
 
-Commands can range from the humble `NextLine`, which adds a new line chunk, to the more complicated `Braces`, which adds opening and closing braces to the output based on the brace breaking style.
+Commands can range from the humble `NextLine`, which adds a new line chunk, to the more involved `Braces`, which adds opening and closing braces to the output based on the brace breaking style.
 
 You can create a custom command by inheriting from `panini::CommandBase` and implementing the `Visit` method.
 
@@ -76,6 +80,6 @@ You always start your code generation by declaring a `Writer` and optionally giv
 
 You can create a custom writer by inheriting from `panini::WriterBase` and implementing the `Write` method.
 
-## Config
+## Configuration
 
 Config allows you to change the indentation style (tabs or spaces), new line style (Unix or Windows), and brace breaking style for the writer.

@@ -8,40 +8,44 @@ While Panini is best suited for generating C++, you can use it to generate code 
 
 # Example
 
-	#include <Panini.hpp>
+```cpp
+#include <Panini.hpp>
 
-	int main(int argc, char** argv)
+int main(int argc, char** argv)
+{
+	using namespace panini;
+
+	ConsoleWriter writer;
+
+	writer << Include("iostream", IncludeStyle::AngularBrackets) << NextLine();
+
+	writer << NextLine();
+
+	writer << Scope("int main(int argc, char** argv)", [](WriterBase& writer)
 	{
-		using namespace panini;
-
-		ConsoleWriter writer;
-
-		writer << Include("iostream", IncludeStyle::AngularBrackets) << NextLine();
+		writer << R"(std::cout << "Hello, World!" << std::endl;)" << NextLine();
 
 		writer << NextLine();
 
-		writer << Scope("int main(int argc, char** argv)", [](WriterBase& writer)
-		{
-			writer << R"(std::cout << "Hello, World!" << std::endl;)" << NextLine();
+		writer << "return 0;" << NextLine();
+	}) << NextLine();
 
-			writer << NextLine();
-
-			writer << "return 0;" << NextLine();
-		}) << NextLine();
-
-		return 0;
-	}
+	return 0;
+}
+```
 
 Which will output the following to the console:
 
-	#include <iostream>
+```cpp
+#include <iostream>
 
-	int main(int argc, char** argv)
-	{
-		std::cout << "Hello, World!" << std::endl;
+int main(int argc, char** argv)
+{
+	std::cout << "Hello, World!" << std::endl;
 
-		return 0;
-	}
+	return 0;
+}
+```
 
 # Installation
 
@@ -74,9 +78,11 @@ You can create a custom command by inheriting from `panini::CommandBase` and imp
 
 You always start your code generation by declaring a `Writer` and optionally giving it a `Config`. Panini comes with several writer implementations by default.
 
-	Config config;
-	config.indentChunk = "  ";
-	FileWriter writer("taxes.csv", config);
+```cpp
+Config config;
+config.indentChunk = "  ";
+FileWriter writer("taxes.csv", config);
+```
 
 You can create a custom writer by inheriting from `panini::WriterBase` and implementing the `Write` method.
 

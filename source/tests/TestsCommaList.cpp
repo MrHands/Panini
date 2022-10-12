@@ -440,6 +440,38 @@ TEST(CommaList, Pointers)
 	EXPECT_STREQ(R"(Push, Squeeze, Bang, Blow)", t.c_str());
 }
 
+TEST(CommaList, PointersWithTransform)
+{
+	using namespace panini;
+
+	std::string t;
+	StringWriter w(t);
+
+	std::string s[] = {
+		"You",
+		"Belong",
+		"To"
+	};
+	std::string* sb = &s[0];
+
+	const size_t sl = sizeof(s) / sizeof(std::string);
+	std::string* se = &s[sl];
+
+	CommaListOptions o;
+	o.addNewLines = true;
+
+	// explicit specialization is a workaround for an internal compiler error
+	// when compiling with Visual Studio 2017
+	w << CommaList<std::string*>(sb, se, o, [](WriterBase& writer, const std::string& it, size_t index) {
+		(void)index;
+		writer << it;
+	});
+
+	EXPECT_STREQ(R"(You, 
+Belong, 
+To)", t.c_str());
+}
+
 TEST(CommaList, CustomIterator)
 {
 	using namespace panini;
@@ -463,7 +495,33 @@ TEST(CommaList, CustomIterator)
 	EXPECT_STREQ(R"(North, South, East, West)", t.c_str());
 }
 
-#include <writers/DebugWriter.hpp>
+TEST(CommaList, CustomIteratorWithTransform)
+{
+	using namespace panini;
+
+	std::string t;
+	StringWriter w(t);
+
+	std::string s[] = {
+		"GundamOne",
+		"GundamZ",
+	};
+	const size_t sl = sizeof(s) / sizeof(std::string);
+
+	CustomIterator ib(&s[0]);
+	CustomIterator ie(&s[sl]);
+
+	CommaListOptions o;
+
+	// explicit specialization is a workaround for an internal compiler error
+	// when compiling with Visual Studio 2017
+	w << CommaList<CustomIterator>(ib, ie, o, [](WriterBase& writer, const std::string& it, size_t index) {
+		(void)index;
+		writer << "[ " << it << " ]";
+	});
+
+	EXPECT_STREQ(R"([ GundamOne ], [ GundamZ ])", t.c_str());
+}
 
 TEST(CommaList, Example)
 {

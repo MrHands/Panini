@@ -417,6 +417,29 @@ TEST(CommaList, TransformMap)
 	EXPECT_STREQ(R"(Engines: GO, Landing: HOLD, Navigation: GO)", t.c_str());
 }
 
+TEST(CommaList, Pointers)
+{
+	using namespace panini;
+
+	std::string t;
+	StringWriter w(t);
+
+	std::string s[] = {
+		"Push",
+		"Squeeze",
+		"Bang",
+		"Blow"
+	};
+	std::string* sb = &s[0];
+
+	const size_t sl = sizeof(s) / sizeof(std::string);
+	std::string* se = &s[sl];
+
+	w << CommaList(sb, se);
+
+	EXPECT_STREQ(R"(Push, Squeeze, Bang, Blow)", t.c_str());
+}
+
 TEST(CommaList, CustomIterator)
 {
 	using namespace panini;

@@ -24,6 +24,8 @@
 #include "commands/CommandBase.hpp"
 #include "data/CommaListOptions.hpp"
 
+#include <type_traits>
+
 namespace panini
 {
 
@@ -76,7 +78,12 @@ namespace panini
 
 	template <
 		class TIterator,
-		class TUnderlying = typename std::iterator_traits<TIterator>::value_type
+		class TUnderlying =
+			std::conditional<
+				std::is_pointer_v<TIterator>,
+				std::remove_pointer_t<TIterator>,
+				typename std::iterator_traits<TIterator>::value_type
+			>::type
 	>
 	class CommaList
 		: public CommandBase

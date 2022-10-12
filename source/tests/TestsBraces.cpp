@@ -73,6 +73,7 @@ TEST(Braces, OverrideAttachEmpty)
 	StringWriter w(t);
 
 	w << Braces([](WriterBase& w) {
+		(void)w;
 	}, BraceBreakingStyle::Attach);
 
 	EXPECT_STREQ(R"({
@@ -125,6 +126,7 @@ TEST(Braces, ConfigAttachEmpty)
 	StringWriter w(t, c);
 
 	w << Braces([](WriterBase& w) {
+		(void)w;
 	});
 
 	EXPECT_STREQ(R"({
@@ -156,6 +158,7 @@ TEST(Braces, OverrideAllmanEmpty)
 	StringWriter w(t);
 
 	w << Braces([](WriterBase& w) {
+		(void)w;
 	}, BraceBreakingStyle::Allman);
 
 	EXPECT_STREQ(R"({
@@ -213,6 +216,7 @@ TEST(Braces, ConfigAllmanEmpty)
 	StringWriter w(t, c);
 
 	w << Braces([](WriterBase& w) {
+		(void)w;
 	});
 
 	EXPECT_STREQ(R"({
@@ -249,6 +253,7 @@ TEST(Braces, OverrideWhitesmithsEmpty)
 	StringWriter w(t);
 
 	w << Braces([](WriterBase& w) {
+		(void)w;
 	}, BraceBreakingStyle::Whitesmiths);
 
 	EXPECT_STREQ(R"({
@@ -306,6 +311,7 @@ TEST(Braces, ConfigWhitesmithsEmpty)
 	StringWriter w(t, c);
 
 	w << Braces([](WriterBase& w) {
+		(void)w;
 	});
 
 	EXPECT_STREQ(R"({

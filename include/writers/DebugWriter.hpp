@@ -216,6 +216,8 @@ namespace panini
 
 		inline virtual bool OnCommit(bool force = false) override
 		{
+			(void)force;
+
 			HandleInput("<END>");
 
 			SetCursorPosition(0, m_cursorY + 1);
@@ -232,8 +234,8 @@ namespace panini
 			m_cursorY = y;
 
 		#ifdef _WINDOWS
-			m_cursor.X = m_cursorX;
-			m_cursor.Y = m_cursorY;
+			m_cursor.X = static_cast<SHORT>(m_cursorX);
+			m_cursor.Y = static_cast<SHORT>(m_cursorY);
 			::SetConsoleCursorPosition(m_output, m_cursor);
 		#endif
 		}
@@ -265,12 +267,15 @@ namespace panini
 		*/
 		inline void WriteChunk(const std::string& chunk)
 		{
-			if (m_cursorX + chunk.length() > m_consoleWidth)
+			size_t offsetX = static_cast<size_t>(m_cursorX) + chunk.length();
+			size_t maxWidth = static_cast<size_t>(m_consoleWidth);
+
+			if (offsetX > maxWidth)
 			{
-				WriteChunk(chunk.substr(0, m_consoleWidth - chunk.length()));
+				WriteChunk(chunk.substr(0, maxWidth - chunk.length()));
 
 				SetCursorPosition(0, m_cursorY + 1);
-				WriteChunk(chunk.substr(m_consoleWidth - chunk.length()));
+				WriteChunk(chunk.substr(maxWidth - chunk.length()));
 
 				return;
 			}
@@ -279,7 +284,7 @@ namespace panini
 			std::cout << chunk;
 
 			SetCursorPosition(
-				m_cursorX + chunk.length(),
+				m_cursorX + static_cast<int32_t>(chunk.length()),
 				m_cursorY
 			);
 		}

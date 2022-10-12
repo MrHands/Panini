@@ -237,6 +237,7 @@ TEST(CommaList, Transform)
 	// when compiling with Visual Studio 2017
 	using TCommaList = CommaList<std::vector<int32_t>::const_iterator>;
 	w << TCommaList(s.cbegin(), s.cend(), o, [](const int32_t& it, size_t index) {
+		(void)index;
 		return std::string{ "[ " } + std::to_string(100 + it) + " ]";
 	});
 
@@ -309,6 +310,7 @@ TEST(CommaList, TransformMap)
 	// when compiling with Visual Studio 2017
 	using TCommaList = CommaList<std::map<std::string, std::string>::const_iterator>;
 	w << TCommaList(s.begin(), s.end(), o, [](const std::pair<std::string, std::string>& it, size_t index) {
+		(void)index;
 		return it.first + ": " + it.second;
 	});
 

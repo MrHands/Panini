@@ -30,7 +30,7 @@ TEST(IncludeSet, Empty)
 
 	auto& e = s.GetEntries();
 
-	ASSERT_EQ(0, e.size());
+	ASSERT_EQ(size_t{ 0 }, e.size());
 }
 
 TEST(IncludeSet, AddPaths)
@@ -42,13 +42,13 @@ TEST(IncludeSet, AddPaths)
 
 	auto& e = s.GetEntries();
 
-	ASSERT_EQ(1, e.size());
+	ASSERT_EQ(size_t{ 1 }, e.size());
 	EXPECT_STREQ("FrogDetective.h", e[0].path.string().c_str());
 
 	s.Add("BigDipper.h", IncludeStyle::DoubleQuotes);
 	s.Add("World/Pond.h", IncludeStyle::AngularBrackets);
 
-	ASSERT_EQ(3, e.size());
+	ASSERT_EQ(size_t{ 3 }, e.size());
 	EXPECT_STREQ("FrogDetective.h", e[0].path.string().c_str());
 	EXPECT_STREQ("BigDipper.h", e[1].path.string().c_str());
 	EXPECT_STREQ("World/Pond.h", e[2].path.string().c_str());
@@ -64,12 +64,12 @@ TEST(IncludeSet, AddDuplicates)
 
 	auto& e = s.GetEntries();
 
-	ASSERT_EQ(1, e.size());
+	ASSERT_EQ(size_t{ 1 }, e.size());
 	EXPECT_STREQ("math/vector2.h", e[0].path.string().c_str());
 
 	s.Add("math/vector2.h", IncludeStyle::AngularBrackets);
 
-	ASSERT_EQ(2, e.size());
+	ASSERT_EQ(size_t{ 2 }, e.size());
 	EXPECT_STREQ("math/vector2.h", e[0].path.string().c_str());
 	EXPECT_STREQ("math/vector2.h", e[1].path.string().c_str());
 }
@@ -86,7 +86,7 @@ TEST(IncludeSet, ConstructEntries)
 
 	auto& e = s.GetEntries();
 
-	ASSERT_EQ(3, e.size());
+	ASSERT_EQ(size_t{ 3 }, e.size());
 	EXPECT_STREQ("Fire.h", e[0].path.string().c_str());
 	EXPECT_STREQ("Grass.h", e[1].path.string().c_str());
 	EXPECT_STREQ("Magic.h", e[2].path.string().c_str());
@@ -102,7 +102,7 @@ TEST(IncludeSet, ConstructPaths)
 
 	auto& e = s.GetEntries();
 
-	ASSERT_EQ(3, e.size());
+	ASSERT_EQ(size_t{ 3 }, e.size());
 	EXPECT_STREQ("Duplicate.h", e[0].path.string().c_str());
 	EXPECT_STREQ("NoYou.h", e[1].path.string().c_str());
 	EXPECT_STREQ("StopIt.h", e[2].path.string().c_str());
@@ -121,7 +121,7 @@ TEST(IncludeSet, ConstructDuplicates)
 
 	auto& e = s.GetEntries();
 
-	ASSERT_EQ(3, e.size());
+	ASSERT_EQ(size_t{ 3 }, e.size());
 	EXPECT_STREQ("Dragon.h", e[0].path.string().c_str());
 	EXPECT_STREQ("Princess.h", e[1].path.string().c_str());
 	EXPECT_STREQ("Princess.h", e[2].path.string().c_str());
@@ -139,7 +139,7 @@ TEST(IncludeSet, SortByStyle)
 
 	auto& e = s.GetEntries();
 
-	ASSERT_EQ(4, e.size());
+	ASSERT_EQ(size_t{ 4 }, e.size());
 	EXPECT_STREQ("vector1.h", e[0].path.string().c_str());
 	EXPECT_STREQ("vector2.h", e[1].path.string().c_str());
 	EXPECT_STREQ("vector3.h", e[2].path.string().c_str());
@@ -181,7 +181,7 @@ TEST(IncludeSet, SortFoldersFirst)
 
 	auto& e = s.GetEntries();
 
-	ASSERT_EQ(4, e.size());
+	ASSERT_EQ(size_t{ 4 }, e.size());
 	EXPECT_STREQ("Game/Design/Map.h", e[0].path.string().c_str());
 	EXPECT_STREQ("Game/Land/Impl.h", e[1].path.string().c_str());
 	EXPECT_STREQ("Game/Water/Fish.h", e[2].path.string().c_str());
@@ -201,7 +201,7 @@ TEST(IncludeSet, SortWithInheritIsInvalid)
 
 	auto& e = s.GetEntries();
 
-	ASSERT_EQ(3, e.size());
+	ASSERT_EQ(size_t{ 3 }, e.size());
 	EXPECT_STREQ("Water.h", e[0].path.string().c_str());
 	EXPECT_STREQ("Aquarium/Reef.h", e[1].path.string().c_str());
 	EXPECT_STREQ("Aquarium/Clownfish.h", e[2].path.string().c_str());

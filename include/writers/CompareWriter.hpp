@@ -75,7 +75,7 @@ namespace panini
 			if (m_pathExists)
 			{
 				stream.seekg(0, std::ios::end);
-				m_writtenPrevious.resize(stream.tellg());
+				m_writtenPrevious.resize(static_cast<size_t>(stream.tellg()));
 				stream.seekg(0, std::ios::beg);
 				stream.read(&m_writtenPrevious[0], m_writtenPrevious.size());
 				stream.close();
@@ -109,6 +109,8 @@ namespace panini
 
 		inline virtual bool OnCommit(bool force = false) override
 		{
+			(void)force;
+
 			std::ofstream stream(m_compareConfig.filePath.string(), std::ios::binary);
 			if (!stream.is_open())
 			{

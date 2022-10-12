@@ -47,6 +47,7 @@ TEST(CommentBlock, Empty)
 	StringWriter w(t);
 
 	w << CommentBlock([](WriterBase& w) {
+		(void)w;
 	});
 
 	EXPECT_STREQ(R"(/* 

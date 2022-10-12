@@ -230,6 +230,9 @@ private:
 
 int main(int argc, char** argv)
 {
+	(int)argc;
+	(int)argv;
+
 	using namespace panini;
 
 	auto result = ParseIni(std::filesystem::current_path() / "Hierarchy.ini");

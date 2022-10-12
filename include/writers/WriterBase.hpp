@@ -176,6 +176,8 @@ namespace panini
 		*/
 		inline WriterBase& operator << (const NextLine& command)
 		{
+			(void)command;
+
 			// edge-case for empty lines within a comment block
 
 			if (m_isInCommentBlock &&
@@ -202,6 +204,8 @@ namespace panini
 		*/
 		inline WriterBase& operator << (const IndentPush& command)
 		{
+			(void)command;
+
 			if (!m_isInCommentBlock)
 			{
 				CacheIndentation(m_lineIndentCached, ++m_lineIndentCount);
@@ -224,6 +228,8 @@ namespace panini
 		*/
 		inline WriterBase& operator << (const IndentPop& command)
 		{
+			(void)command;
+
 			if (!m_isInCommentBlock)
 			{
 				if (m_lineIndentCount > 0)

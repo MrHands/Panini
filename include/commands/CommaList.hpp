@@ -188,6 +188,12 @@ namespace panini
 
 				index++;
 			}
+
+			if (index > 0 &&
+				!m_options.skipLastItemEndSeparator)
+			{
+				writer << m_options.chunkEndSeparator;
+			}
 		}
 
 	private:

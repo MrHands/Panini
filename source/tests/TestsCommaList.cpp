@@ -288,6 +288,86 @@ TEST(CommaList, SkipFirstItemMultipleItems)
 || this.magic.compares(other.magic))", t.c_str());
 }
 
+TEST(CommaList, SkipFirstItemEmpty)
+{
+	using namespace panini;
+
+	std::string t;
+	StringWriter w(t);
+
+	std::vector<std::string> s = {};
+
+	CommaListOptions o;
+	o.chunkBeginSeparator = " o ";
+	o.skipFirstItemBeginSeparator = true;
+
+	w << CommaList(s.begin(), s.end(), o);
+
+	EXPECT_STREQ(R"()", t.c_str());
+}
+
+TEST(CommaList, KeepLastItemSingleItem)
+{
+	using namespace panini;
+
+	std::string t;
+	StringWriter w(t);
+
+	std::vector<std::string> s = {
+		"lunch"
+	};
+
+	CommaListOptions o;
+	o.chunkEndSeparator = "<>";
+	o.skipLastItemEndSeparator = false;
+
+	w << CommaList(s.begin(), s.end(), o);
+
+	EXPECT_STREQ(R"(lunch<>)", t.c_str());
+}
+
+TEST(CommaList, KeepLastItemMultipleItems)
+{
+	using namespace panini;
+
+	std::string t;
+	StringWriter w(t);
+
+	std::vector<std::string> s = {
+		"Water",
+		"Beer",
+		"Whiskey"
+	};
+
+	CommaListOptions o;
+	o.skipLastItemEndSeparator = false;
+	o.addNewLines = true;
+
+	w << CommaList(s.begin(), s.end(), o);
+
+	EXPECT_STREQ(R"(Water, 
+Beer, 
+Whiskey, )", t.c_str());
+}
+
+TEST(CommaList, KeepLastItemEmpty)
+{
+	using namespace panini;
+
+	std::string t;
+	StringWriter w(t);
+
+	std::vector<std::string> s = {};
+
+	CommaListOptions o;
+	o.chunkEndSeparator = " [[[";
+	o.skipLastItemEndSeparator = true;
+
+	w << CommaList(s.begin(), s.end(), o);
+
+	EXPECT_STREQ(R"()", t.c_str());
+}
+
 TEST(CommaList, Transform)
 {
 	using namespace panini;

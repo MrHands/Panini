@@ -36,10 +36,10 @@ namespace panini
 		The CommaList command makes it easy to print a list of items that should
 		be separated after the first item, e.g. function parameters.
 
-		The command works with pointers and iterators of any STL container, for
-		example `std::vector` and `std::set`. Custom iterators are supported as
-		well, as long as the type implements the interface required for
-		`std::iterator_traits` to derive the underlying type.
+		The command works with pointers of any type and iterators of any STL
+		container. Custom iterators are supported as well, as long as the type
+		implements the interface required for `std::iterator_traits` to derive
+		the underlying type.
 
 		Using the CommaListOptions struct, you can specify the separator chunk
 		that should come before each item and the one that should come after the
@@ -47,8 +47,8 @@ namespace panini
 		line after each item, which is disabled by default.
 
 		Finally, you can add a transform function to the command, which will be
-		called once for each item in the list and transforms the item to
-		a string.
+		called once for each item in the list and is used to transform your data
+		before being passed to the writer.
 
 		Example:
 
@@ -144,7 +144,7 @@ namespace panini
 		}
 
 		/*!
-			Construct a CommaList from a begin and end iterator.
+			Construct a CommaList and add a transform function.
 
 			\param begin       Starting point for iteration.
 			\param end         End point for iteration.
@@ -155,11 +155,11 @@ namespace panini
 			TIterator begin,
 			TIterator end,
 			const CommaListOptions& options,
-			std::function<void(WriterBase&, const TUnderlying&, size_t)> transform)
+			std::function<void(WriterBase&, const TUnderlying&, size_t)>&& transform)
 			: m_begin(begin)
 			, m_end(end)
 			, m_options(options)
-			, m_transform(transform)
+			, m_transform(std::move(transform))
 		{
 		}
 

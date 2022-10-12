@@ -220,6 +220,58 @@ TEST(CommaList, AddNewLinesSingleItem)
 	EXPECT_STREQ(R"(Next)", t.c_str());
 }
 
+TEST(CommaList, SkipFirstItemSingleItem)
+{
+	using namespace panini;
+
+	std::string t;
+	StringWriter w(t);
+
+	std::vector<std::string> s = {
+		"Fish",
+	};
+
+	CommaListOptions o;
+	o.chunkBeginSeparator = "->";
+	o.skipFirstItemBeginSeparator = true;
+
+	// explicit specialization is a workaround for an internal compiler error
+	// when compiling with Visual Studio 2017
+	using TCommaList = CommaList<std::vector<std::string>::const_iterator>;
+	w << TCommaList(s.begin(), s.end(), o, TCommaList::DefaultTransform<std::string>);
+
+	EXPECT_STREQ(R"(Fish)", t.c_str());
+}
+
+TEST(CommaList, SkipFirstItemMultipleItems)
+{
+	using namespace panini;
+
+	std::string t;
+	StringWriter w(t);
+
+	std::vector<std::string> s = {
+		"this.coin == other.coin",
+		"this.stage == other.stage",
+		"this.magic.compares(other.magic)",
+	};
+
+	CommaListOptions o;
+	o.chunkBeginSeparator = "|| ";
+	o.chunkEndSeparator = "";
+	o.addNewLines = true;
+	o.skipFirstItemBeginSeparator = true;
+
+	// explicit specialization is a workaround for an internal compiler error
+	// when compiling with Visual Studio 2017
+	using TCommaList = CommaList<std::vector<std::string>::const_iterator>;
+	w << TCommaList(s.begin(), s.end(), o, TCommaList::DefaultTransform<std::string>);
+
+	EXPECT_STREQ(R"(this.coin == other.coin
+|| this.stage == other.stage
+|| this.magic.compares(other.magic))", t.c_str());
+}
+
 TEST(CommaList, Transform)
 {
 	using namespace panini;

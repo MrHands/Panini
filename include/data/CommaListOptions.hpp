@@ -45,6 +45,8 @@ namespace panini
 			Whether to add NextLine commands after each item in the list.
 		*/
 		bool addNewLines = false;
+
+		bool skipFirstItemBeginSeparator = false;
 	};
 
 };

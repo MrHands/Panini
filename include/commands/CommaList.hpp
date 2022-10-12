@@ -150,9 +150,13 @@ namespace panini
 					}
 				}
 
-				writer
-					<< m_options.chunkBeginSeparator
-					<< m_transform(*item, index);
+				if (index > 0 ||
+					!m_options.skipFirstItemBeginSeparator)
+				{
+					writer << m_options.chunkBeginSeparator;
+				}
+
+				writer << m_transform(*item, index);
 
 				index++;
 			}

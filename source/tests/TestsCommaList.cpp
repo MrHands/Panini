@@ -334,9 +334,9 @@ TEST(CommaList, Transform)
 	// explicit specialization is a workaround for an internal compiler error
 	// when compiling with Visual Studio 2017
 	using TCommaList = CommaList<std::vector<int32_t>::const_iterator>;
-	w << TCommaList(s.cbegin(), s.cend(), o, [](const int32_t& it, size_t index) {
+	w << TCommaList(s.cbegin(), s.cend(), o, [](WriterBase& writer, const int32_t& it, size_t index) {
 		(void)index;
-		return std::string{ "[ " } + std::to_string(100 + it) + " ]";
+		writer << "[ " << std::to_string(100 + it) << " ]";
 	});
 
 	EXPECT_STREQ(R"([ 106 ], [ 112 ], [ 124 ], [ 148 ])", t.c_str());
@@ -378,12 +378,14 @@ TEST(CommaList, TransformFirstItemOnly)
 	// explicit specialization is a workaround for an internal compiler error
 	// when compiling with Visual Studio 2017
 	using TCommaList = CommaList<std::vector<float>::const_iterator>;
-	w << TCommaList(s.begin(), s.end(), o, [](const float& it, size_t index) {
+	w << TCommaList(s.begin(), s.end(), o, [](WriterBase& writer, const float& it, size_t index) {
 		if (index == 0) {
-			return std::string{ "{" } + std::to_string(it) + "}";
+			writer << "{" << std::to_string(it) << "}";
+
+			return;
 		}
 
-		return std::to_string(it);
+		writer << std::to_string(it);
 	});
 
 	EXPECT_STREQ(R"({2.300000} + 9.120000 + 4.200000 + 0.001000)", t.c_str());
@@ -407,9 +409,9 @@ TEST(CommaList, TransformMap)
 	// explicit specialization is a workaround for an internal compiler error
 	// when compiling with Visual Studio 2017
 	using TCommaList = CommaList<std::map<std::string, std::string>::const_iterator>;
-	w << TCommaList(s.begin(), s.end(), o, [](const std::pair<std::string, std::string>& it, size_t index) {
+	w << TCommaList(s.begin(), s.end(), o, [](WriterBase& writer, const std::pair<std::string, std::string>& it, size_t index) {
 		(void)index;
-		return it.first + ": " + it.second;
+		writer << it.first << ": " << it.second;
 	});
 
 	EXPECT_STREQ(R"(Engines: GO, Landing: HOLD, Navigation: GO)", t.c_str());

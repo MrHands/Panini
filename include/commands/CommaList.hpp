@@ -96,11 +96,11 @@ namespace panini
 			\return Source value represented as a string.
 		*/
 		template <typename TSource>
-		static std::string DefaultTransform(const TSource& source, size_t index)
+		static void DefaultTransform(WriterBase& writer, const TSource& item, size_t index)
 		{
 			(void)index;
 
-			return std::to_string(source);
+			writer << std::to_string(item);
 		}
 
 		/*!
@@ -108,11 +108,11 @@ namespace panini
 			through unchanged.
 		*/
 		template <>
-		static std::string DefaultTransform(const std::string& source, size_t index)
+		static void DefaultTransform(WriterBase& writer, const std::string& item, size_t index)
 		{
 			(void)index;
 
-			return source;
+			writer << item;
 		}
 
 		/*!
@@ -127,7 +127,7 @@ namespace panini
 			TIterator begin,
 			TIterator end,
 			const CommaListOptions& options = {},
-			std::function<std::string(const TUnderlying&, size_t)> transform = DefaultTransform<TUnderlying>)
+			std::function<void(WriterBase&, const TUnderlying&, size_t)> transform = DefaultTransform<TUnderlying>)
 			: m_begin(begin)
 			, m_end(end)
 			, m_options(options)
@@ -156,7 +156,7 @@ namespace panini
 					writer << m_options.chunkBeginSeparator;
 				}
 
-				writer << m_transform(*item, index);
+				m_transform(writer, *item, index);
 
 				index++;
 			}
@@ -166,7 +166,7 @@ namespace panini
 		TIterator m_begin;
 		TIterator m_end;
 		CommaListOptions m_options;
-		std::function<std::string(const TUnderlying&, size_t)> m_transform;
+		std::function<void(WriterBase&, const TUnderlying&, size_t)> m_transform;
 
 	};
 

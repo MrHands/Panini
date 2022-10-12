@@ -128,7 +128,30 @@ TEST(CommaList, Set)
 	EXPECT_STREQ(R"(Apple, Banana, Cherry)", t.c_str());
 }
 
-TEST(CommaList, SeparatorBegin)
+TEST(CommaList, BeginSeparatorSingleItem)
+{
+	using namespace panini;
+
+	std::string t;
+	StringWriter w(t);
+
+	std::vector<std::string> s = {
+		"Crab"
+	};
+
+	CommaListOptions o;
+	o.chunkBeginSeparator = "turn into ";
+	o.chunkEndSeparator = "";
+
+	// explicit specialization is a workaround for an internal compiler error
+	// when compiling with Visual Studio 2017
+	using TCommaList = CommaList<std::vector<std::string>::const_iterator>;
+	w << TCommaList(s.begin(), s.end(), o, TCommaList::DefaultTransform<std::string>);
+
+	EXPECT_STREQ(R"(turn into Crab)", t.c_str());
+}
+
+TEST(CommaList, BeginSeparatorMultipleItems)
 {
 	using namespace panini;
 
@@ -151,7 +174,30 @@ TEST(CommaList, SeparatorBegin)
 	EXPECT_STREQ(R"( -> Taxi -> Cab -> Service)", t.c_str());
 }
 
-TEST(CommaList, SeparatorEnd)
+TEST(CommaList, EndSeparatorSingleItem)
+{
+	using namespace panini;
+
+	std::string t;
+	StringWriter w(t);
+
+	std::vector<std::string> s = {
+		"Electricity"
+	};
+
+	CommaListOptions o;
+	o.chunkBeginSeparator = "";
+	o.chunkEndSeparator = ": [0]";
+
+	// explicit specialization is a workaround for an internal compiler error
+	// when compiling with Visual Studio 2017
+	using TCommaList = CommaList<std::vector<std::string>::const_iterator>;
+	w << TCommaList(s.begin(), s.end(), o, TCommaList::DefaultTransform<std::string>);
+
+	EXPECT_STREQ(R"(Electricity)", t.c_str());
+}
+
+TEST(CommaList, EndSeparatorMultipleItems)
 {
 	using namespace panini;
 

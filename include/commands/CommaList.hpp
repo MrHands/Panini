@@ -120,6 +120,17 @@ namespace panini
 			writer << item;
 		}
 
+		inline explicit CommaList(
+			TIterator begin,
+			TIterator end,
+			const CommaListOptions& options = {})
+			: m_begin(begin)
+			, m_end(end)
+			, m_options(options)
+			, m_transform(DefaultTransform<TUnderlying>)
+		{
+		}
+
 		/*!
 			Construct a CommaList from a begin and end iterator.
 
@@ -131,8 +142,8 @@ namespace panini
 		inline explicit CommaList(
 			TIterator begin,
 			TIterator end,
-			const CommaListOptions& options = {},
-			std::function<void(WriterBase&, const TUnderlying&, size_t)> transform = DefaultTransform<TUnderlying>)
+			const CommaListOptions& options,
+			std::function<void(WriterBase&, const TUnderlying&, size_t)> transform)
 			: m_begin(begin)
 			, m_end(end)
 			, m_options(options)

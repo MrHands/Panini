@@ -336,7 +336,7 @@ namespace panini
 			::FillConsoleOutputCharacterA(
 				m_output,
 				' ',
-				message.length(),
+				static_cast<DWORD>(message.length()),
 				m_cursor,
 				&written
 			);
@@ -344,7 +344,7 @@ namespace panini
 			::FillConsoleOutputAttribute(
 				m_output,
 				m_screenInfo.wAttributes,
-				message.length(),
+				static_cast<DWORD>(message.length()),
 				m_cursor,
 				&written
 			);

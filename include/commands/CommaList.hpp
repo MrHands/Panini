@@ -76,20 +76,18 @@ namespace panini
 		\endcode
 	*/
 
-	template <
-		class TIterator,
-		class TUnderlying =
-			std::conditional<
-				std::is_pointer_v<TIterator>,
-				std::remove_pointer_t<TIterator>,
-				typename std::iterator_traits<TIterator>::value_type
-			>::type
-	>
+	template <class TIterator>
 	class CommaList
 		: public CommandBase
 	{
 
 	public:
+		using TUnderlying = typename std::conditional<
+			std::is_pointer_v<TIterator>,
+			std::remove_pointer_t<TIterator>,
+			typename std::iterator_traits<TIterator>::value_type
+		>::type;
+
 		/*!
 			\brief Default transform function for the command.
 

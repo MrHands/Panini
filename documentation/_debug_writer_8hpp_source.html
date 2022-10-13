@@ -25,7 +25,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Panini<span id="projectnumber">&#160;1.2.0</span>
+   <div id="projectname">Panini<span id="projectnumber">&#160;1.3.0</span>
    </div>
    <div id="projectbrief">Header-only library for generating C++, written in C++17</div>
   </td>
@@ -276,164 +276,169 @@ $(document).ready(function(){initNavTree('_debug_writer_8hpp_source.html',''); i
 <div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span> </div>
 <div class="line"><a id="l00217" name="l00217"></a><span class="lineno"><a class="line" href="classpanini_1_1_debug_writer.html#a396180436eb4d7ef561559d12c7b5333">  217</a></span>        <span class="keyword">inline</span> <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="classpanini_1_1_debug_writer.html#a396180436eb4d7ef561559d12c7b5333">OnCommit</a>(<span class="keywordtype">bool</span> force = <span class="keyword">false</span>)<span class="keyword"> override</span></div>
 <div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span><span class="keyword">        </span>{</div>
-<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>            <a class="code hl_function" href="classpanini_1_1_debug_writer.html#ad2a6c0479d0f91e6a44ae2fb4e5950db">HandleInput</a>(<span class="stringliteral">&quot;&lt;END&gt;&quot;</span>);</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>            (void)force;</div>
 <div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span> </div>
-<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>            <a class="code hl_function" href="classpanini_1_1_debug_writer.html#a0287ac31b27759b233694479c9270906">SetCursorPosition</a>(0, <a class="code hl_variable" href="classpanini_1_1_debug_writer.html#a87ed45d76342f209ed1e3ad9460c9e60">m_cursorY</a> + 1);</div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>            <a class="code hl_function" href="classpanini_1_1_debug_writer.html#ad2a6c0479d0f91e6a44ae2fb4e5950db">HandleInput</a>(<span class="stringliteral">&quot;&lt;END&gt;&quot;</span>);</div>
 <div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span> </div>
-<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>        }</div>
-<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span> </div>
-<div class="line"><a id="l00229" name="l00229"></a><span class="lineno"><a class="line" href="classpanini_1_1_debug_writer.html#a0287ac31b27759b233694479c9270906">  229</a></span>        <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classpanini_1_1_debug_writer.html#a0287ac31b27759b233694479c9270906">SetCursorPosition</a>(int32_t x, int32_t y)</div>
-<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>        {</div>
-<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>            <a class="code hl_variable" href="classpanini_1_1_debug_writer.html#af542687372b5ceba74c49c7730994124">m_cursorX</a> = x;</div>
-<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>            <a class="code hl_variable" href="classpanini_1_1_debug_writer.html#a87ed45d76342f209ed1e3ad9460c9e60">m_cursorY</a> = y;</div>
-<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span> </div>
-<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span><span class="preprocessor">        #ifdef _WINDOWS</span></div>
-<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>            m_cursor.X = <a class="code hl_variable" href="classpanini_1_1_debug_writer.html#af542687372b5ceba74c49c7730994124">m_cursorX</a>;</div>
-<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>            m_cursor.Y = <a class="code hl_variable" href="classpanini_1_1_debug_writer.html#a87ed45d76342f209ed1e3ad9460c9e60">m_cursorY</a>;</div>
-<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>            ::SetConsoleCursorPosition(m_output, m_cursor);</div>
-<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span><span class="preprocessor">        #endif</span></div>
-<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>        }</div>
-<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span> </div>
-<div class="line"><a id="l00244" name="l00244"></a><span class="lineno"><a class="line" href="classpanini_1_1_debug_writer.html#ab13628ea74abb59d48c863fe9fbd9bac">  244</a></span>        <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classpanini_1_1_debug_writer.html#ab13628ea74abb59d48c863fe9fbd9bac">SetColor</a>(uint16_t background, uint16_t foreground)</div>
-<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>        {</div>
-<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span><span class="preprocessor">        #ifdef _WINDOWS</span></div>
-<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>            ::SetConsoleTextAttribute(m_output, (background &lt;&lt; 4) | foreground);</div>
-<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span><span class="preprocessor">        #else</span></div>
-<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>            (void)background;</div>
-<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>            (void)foreground;</div>
-<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span><span class="preprocessor">        #endif</span></div>
-<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>        }</div>
-<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span> </div>
-<div class="line"><a id="l00257" name="l00257"></a><span class="lineno"><a class="line" href="classpanini_1_1_debug_writer.html#a3815ad5498023ed216b4127b4089f34e">  257</a></span>        <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classpanini_1_1_debug_writer.html#a3815ad5498023ed216b4127b4089f34e">ResetStyles</a>()</div>
-<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>        {</div>
-<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>            <a class="code hl_function" href="classpanini_1_1_debug_writer.html#ab13628ea74abb59d48c863fe9fbd9bac">SetColor</a>(<a class="code hl_enumvalue" href="structpanini_1_1_debug_writer_1_1_colors.html#a7ece57f37556c08f2f926ef2823cdd84a30bad3b8f7ce2da8f2ca971afd6b794e">Colors::Black</a>, <a class="code hl_enumvalue" href="structpanini_1_1_debug_writer_1_1_colors.html#a7ece57f37556c08f2f926ef2823cdd84a7e1ab1576cd63c26e2adb51fff2eaddb">Colors::White</a>);</div>
-<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>        }</div>
-<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span> </div>
-<div class="line"><a id="l00266" name="l00266"></a><span class="lineno"><a class="line" href="classpanini_1_1_debug_writer.html#a333d99c432bae2ace43cbd0d98c56a8f">  266</a></span>        <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classpanini_1_1_debug_writer.html#a333d99c432bae2ace43cbd0d98c56a8f">WriteChunk</a>(<span class="keyword">const</span> std::string&amp; chunk)</div>
-<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>        {</div>
-<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="classpanini_1_1_debug_writer.html#af542687372b5ceba74c49c7730994124">m_cursorX</a> + chunk.length() &gt; <a class="code hl_variable" href="classpanini_1_1_debug_writer.html#a2f0eb5a65e4780e42d9b301798eed3e8">m_consoleWidth</a>)</div>
-<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>            {</div>
-<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>                <a class="code hl_function" href="classpanini_1_1_debug_writer.html#a333d99c432bae2ace43cbd0d98c56a8f">WriteChunk</a>(chunk.substr(0, <a class="code hl_variable" href="classpanini_1_1_debug_writer.html#a2f0eb5a65e4780e42d9b301798eed3e8">m_consoleWidth</a> - chunk.length()));</div>
-<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span> </div>
-<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>                <a class="code hl_function" href="classpanini_1_1_debug_writer.html#a0287ac31b27759b233694479c9270906">SetCursorPosition</a>(0, <a class="code hl_variable" href="classpanini_1_1_debug_writer.html#a87ed45d76342f209ed1e3ad9460c9e60">m_cursorY</a> + 1);</div>
-<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>                <a class="code hl_function" href="classpanini_1_1_debug_writer.html#a333d99c432bae2ace43cbd0d98c56a8f">WriteChunk</a>(chunk.substr(<a class="code hl_variable" href="classpanini_1_1_debug_writer.html#a2f0eb5a65e4780e42d9b301798eed3e8">m_consoleWidth</a> - chunk.length()));</div>
-<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span> </div>
-<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>                <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>            }</div>
-<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span> </div>
-<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>            std::cout.flush();</div>
-<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>            std::cout &lt;&lt; chunk;</div>
-<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span> </div>
-<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>            <a class="code hl_function" href="classpanini_1_1_debug_writer.html#a0287ac31b27759b233694479c9270906">SetCursorPosition</a>(</div>
-<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>                <a class="code hl_variable" href="classpanini_1_1_debug_writer.html#af542687372b5ceba74c49c7730994124">m_cursorX</a> + chunk.length(),</div>
-<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>                <a class="code hl_variable" href="classpanini_1_1_debug_writer.html#a87ed45d76342f209ed1e3ad9460c9e60">m_cursorY</a></div>
-<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>            );</div>
-<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>        }</div>
-<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span> </div>
-<div class="line"><a id="l00290" name="l00290"></a><span class="lineno"><a class="line" href="classpanini_1_1_debug_writer.html#ad2a6c0479d0f91e6a44ae2fb4e5950db">  290</a></span>        <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classpanini_1_1_debug_writer.html#ad2a6c0479d0f91e6a44ae2fb4e5950db">HandleInput</a>(<span class="keyword">const</span> std::string&amp; message)</div>
-<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>        {</div>
-<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>            <a class="code hl_function" href="classpanini_1_1_debug_writer.html#a0287ac31b27759b233694479c9270906">SetCursorPosition</a>(0, <a class="code hl_variable" href="classpanini_1_1_debug_writer.html#a87ed45d76342f209ed1e3ad9460c9e60">m_cursorY</a> + 1);</div>
-<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span>            <a class="code hl_function" href="classpanini_1_1_debug_writer.html#ab13628ea74abb59d48c863fe9fbd9bac">SetColor</a>(<a class="code hl_enumvalue" href="structpanini_1_1_debug_writer_1_1_colors.html#a7ece57f37556c08f2f926ef2823cdd84a7e1ab1576cd63c26e2adb51fff2eaddb">Colors::White</a> | <a class="code hl_enumvalue" href="structpanini_1_1_debug_writer_1_1_colors.html#a7ece57f37556c08f2f926ef2823cdd84ae47b6055d94d2a3f5e45170b89864dd7">Colors::Light</a>, <a class="code hl_enumvalue" href="structpanini_1_1_debug_writer_1_1_colors.html#a7ece57f37556c08f2f926ef2823cdd84a30bad3b8f7ce2da8f2ca971afd6b794e">Colors::Black</a>);</div>
-<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span>            std::cout &lt;&lt; message;</div>
-<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span>            <a class="code hl_function" href="classpanini_1_1_debug_writer.html#a3815ad5498023ed216b4127b4089f34e">ResetStyles</a>();</div>
-<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span> </div>
-<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span>            <span class="comment">// wait for input</span></div>
-<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span> </div>
-<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span><span class="preprocessor">        #ifdef _WINDOWS</span></div>
-<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span>            HANDLE input = ::GetStdHandle(STD_INPUT_HANDLE);</div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>            <a class="code hl_function" href="classpanini_1_1_debug_writer.html#a0287ac31b27759b233694479c9270906">SetCursorPosition</a>(0, <a class="code hl_variable" href="classpanini_1_1_debug_writer.html#a87ed45d76342f209ed1e3ad9460c9e60">m_cursorY</a> + 1);</div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span> </div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>        }</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span> </div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno"><a class="line" href="classpanini_1_1_debug_writer.html#a0287ac31b27759b233694479c9270906">  231</a></span>        <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classpanini_1_1_debug_writer.html#a0287ac31b27759b233694479c9270906">SetCursorPosition</a>(int32_t x, int32_t y)</div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>        {</div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>            <a class="code hl_variable" href="classpanini_1_1_debug_writer.html#af542687372b5ceba74c49c7730994124">m_cursorX</a> = x;</div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>            <a class="code hl_variable" href="classpanini_1_1_debug_writer.html#a87ed45d76342f209ed1e3ad9460c9e60">m_cursorY</a> = y;</div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span> </div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span><span class="preprocessor">        #ifdef _WINDOWS</span></div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>            m_cursor.X = <span class="keyword">static_cast&lt;</span>SHORT<span class="keyword">&gt;</span>(<a class="code hl_variable" href="classpanini_1_1_debug_writer.html#af542687372b5ceba74c49c7730994124">m_cursorX</a>);</div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>            m_cursor.Y = <span class="keyword">static_cast&lt;</span>SHORT<span class="keyword">&gt;</span>(<a class="code hl_variable" href="classpanini_1_1_debug_writer.html#a87ed45d76342f209ed1e3ad9460c9e60">m_cursorY</a>);</div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>            ::SetConsoleCursorPosition(m_output, m_cursor);</div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span><span class="preprocessor">        #endif</span></div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>        }</div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span> </div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno"><a class="line" href="classpanini_1_1_debug_writer.html#ab13628ea74abb59d48c863fe9fbd9bac">  246</a></span>        <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classpanini_1_1_debug_writer.html#ab13628ea74abb59d48c863fe9fbd9bac">SetColor</a>(uint16_t background, uint16_t foreground)</div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>        {</div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span><span class="preprocessor">        #ifdef _WINDOWS</span></div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>            ::SetConsoleTextAttribute(m_output, (background &lt;&lt; 4) | foreground);</div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span><span class="preprocessor">        #else</span></div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>            (void)background;</div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>            (void)foreground;</div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span><span class="preprocessor">        #endif</span></div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>        }</div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span> </div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno"><a class="line" href="classpanini_1_1_debug_writer.html#a3815ad5498023ed216b4127b4089f34e">  259</a></span>        <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classpanini_1_1_debug_writer.html#a3815ad5498023ed216b4127b4089f34e">ResetStyles</a>()</div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>        {</div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>            <a class="code hl_function" href="classpanini_1_1_debug_writer.html#ab13628ea74abb59d48c863fe9fbd9bac">SetColor</a>(<a class="code hl_enumvalue" href="structpanini_1_1_debug_writer_1_1_colors.html#a7ece57f37556c08f2f926ef2823cdd84a30bad3b8f7ce2da8f2ca971afd6b794e">Colors::Black</a>, <a class="code hl_enumvalue" href="structpanini_1_1_debug_writer_1_1_colors.html#a7ece57f37556c08f2f926ef2823cdd84a7e1ab1576cd63c26e2adb51fff2eaddb">Colors::White</a>);</div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>        }</div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span> </div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno"><a class="line" href="classpanini_1_1_debug_writer.html#a333d99c432bae2ace43cbd0d98c56a8f">  268</a></span>        <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classpanini_1_1_debug_writer.html#a333d99c432bae2ace43cbd0d98c56a8f">WriteChunk</a>(<span class="keyword">const</span> std::string&amp; chunk)</div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>        {</div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>            <span class="keywordtype">size_t</span> offsetX = <span class="keyword">static_cast&lt;</span><span class="keywordtype">size_t</span><span class="keyword">&gt;</span>(<a class="code hl_variable" href="classpanini_1_1_debug_writer.html#af542687372b5ceba74c49c7730994124">m_cursorX</a>) + chunk.length();</div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>            <span class="keywordtype">size_t</span> maxWidth = <span class="keyword">static_cast&lt;</span><span class="keywordtype">size_t</span><span class="keyword">&gt;</span>(<a class="code hl_variable" href="classpanini_1_1_debug_writer.html#a2f0eb5a65e4780e42d9b301798eed3e8">m_consoleWidth</a>);</div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span> </div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>            <span class="keywordflow">if</span> (offsetX &gt; maxWidth)</div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>            {</div>
+<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>                <a class="code hl_function" href="classpanini_1_1_debug_writer.html#a333d99c432bae2ace43cbd0d98c56a8f">WriteChunk</a>(chunk.substr(0, maxWidth - chunk.length()));</div>
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span> </div>
+<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>                <a class="code hl_function" href="classpanini_1_1_debug_writer.html#a0287ac31b27759b233694479c9270906">SetCursorPosition</a>(0, <a class="code hl_variable" href="classpanini_1_1_debug_writer.html#a87ed45d76342f209ed1e3ad9460c9e60">m_cursorY</a> + 1);</div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>                <a class="code hl_function" href="classpanini_1_1_debug_writer.html#a333d99c432bae2ace43cbd0d98c56a8f">WriteChunk</a>(chunk.substr(maxWidth - chunk.length()));</div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span> </div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>                <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>            }</div>
+<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span> </div>
+<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>            std::cout.flush();</div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>            std::cout &lt;&lt; chunk;</div>
+<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span> </div>
+<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>            <a class="code hl_function" href="classpanini_1_1_debug_writer.html#a0287ac31b27759b233694479c9270906">SetCursorPosition</a>(</div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>                <a class="code hl_variable" href="classpanini_1_1_debug_writer.html#af542687372b5ceba74c49c7730994124">m_cursorX</a> + <span class="keyword">static_cast&lt;</span>int32_t<span class="keyword">&gt;</span>(chunk.length()),</div>
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>                <a class="code hl_variable" href="classpanini_1_1_debug_writer.html#a87ed45d76342f209ed1e3ad9460c9e60">m_cursorY</a></div>
+<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>            );</div>
+<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>        }</div>
+<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span> </div>
+<div class="line"><a id="l00295" name="l00295"></a><span class="lineno"><a class="line" href="classpanini_1_1_debug_writer.html#ad2a6c0479d0f91e6a44ae2fb4e5950db">  295</a></span>        <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classpanini_1_1_debug_writer.html#ad2a6c0479d0f91e6a44ae2fb4e5950db">HandleInput</a>(<span class="keyword">const</span> std::string&amp; message)</div>
+<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span>        {</div>
+<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span>            <a class="code hl_function" href="classpanini_1_1_debug_writer.html#a0287ac31b27759b233694479c9270906">SetCursorPosition</a>(0, <a class="code hl_variable" href="classpanini_1_1_debug_writer.html#a87ed45d76342f209ed1e3ad9460c9e60">m_cursorY</a> + 1);</div>
+<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span>            <a class="code hl_function" href="classpanini_1_1_debug_writer.html#ab13628ea74abb59d48c863fe9fbd9bac">SetColor</a>(<a class="code hl_enumvalue" href="structpanini_1_1_debug_writer_1_1_colors.html#a7ece57f37556c08f2f926ef2823cdd84a7e1ab1576cd63c26e2adb51fff2eaddb">Colors::White</a> | <a class="code hl_enumvalue" href="structpanini_1_1_debug_writer_1_1_colors.html#a7ece57f37556c08f2f926ef2823cdd84ae47b6055d94d2a3f5e45170b89864dd7">Colors::Light</a>, <a class="code hl_enumvalue" href="structpanini_1_1_debug_writer_1_1_colors.html#a7ece57f37556c08f2f926ef2823cdd84a30bad3b8f7ce2da8f2ca971afd6b794e">Colors::Black</a>);</div>
+<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span>            std::cout &lt;&lt; message;</div>
+<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span>            <a class="code hl_function" href="classpanini_1_1_debug_writer.html#a3815ad5498023ed216b4127b4089f34e">ResetStyles</a>();</div>
 <div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span> </div>
-<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span>            <span class="keywordflow">while</span> (1)</div>
-<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span>            {</div>
-<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>                INPUT_RECORD record;</div>
-<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>                DWORD read = 0;</div>
-<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>                ::ReadConsoleInputA(input, &amp;record, 1, &amp;read);</div>
-<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span>                <span class="keywordflow">if</span> (record.EventType == KEY_EVENT)</div>
-<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span>                {</div>
-<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span>                    KEY_EVENT_RECORD&amp; keyEvent = record.Event.KeyEvent;</div>
-<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span> </div>
-<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span>                    <span class="comment">// wait for the key to be released</span></div>
-<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span> </div>
-<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span>                    <span class="keywordflow">if</span> (keyEvent.bKeyDown)</div>
-<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span>                    {</div>
-<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span>                        <span class="keywordflow">continue</span>;</div>
-<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span>                    }</div>
+<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span>            <span class="comment">// wait for input</span></div>
+<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span> </div>
+<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span><span class="preprocessor">        #ifdef _WINDOWS</span></div>
+<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>            HANDLE input = ::GetStdHandle(STD_INPUT_HANDLE);</div>
+<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span> </div>
+<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span>            <span class="keywordflow">while</span> (1)</div>
+<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span>            {</div>
+<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span>                INPUT_RECORD record;</div>
+<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span>                DWORD read = 0;</div>
+<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span>                ::ReadConsoleInputA(input, &amp;record, 1, &amp;read);</div>
+<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span>                <span class="keywordflow">if</span> (record.EventType == KEY_EVENT)</div>
+<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span>                {</div>
+<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span>                    KEY_EVENT_RECORD&amp; keyEvent = record.Event.KeyEvent;</div>
+<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span> </div>
+<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span>                    <span class="comment">// wait for the key to be released</span></div>
 <div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span> </div>
-<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span>                    <span class="comment">// stop debugging when Q is pressed</span></div>
-<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span> </div>
-<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span>                    <a class="code hl_variable" href="classpanini_1_1_debug_writer.html#a87eb06cd6a557eba5e169505b612235a">m_isDebugging</a> = keyEvent.wVirtualKeyCode != <span class="charliteral">&#39;Q&#39;</span>;</div>
-<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span> </div>
-<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span>                    <span class="keywordflow">break</span>;</div>
-<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span>                }</div>
-<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span>            }</div>
-<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span><span class="preprocessor">        #endif</span></div>
+<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span>                    <span class="keywordflow">if</span> (keyEvent.bKeyDown)</div>
+<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span>                    {</div>
+<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span>                        <span class="keywordflow">continue</span>;</div>
+<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span>                    }</div>
+<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span> </div>
+<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span>                    <span class="comment">// stop debugging when Q is pressed</span></div>
+<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span> </div>
+<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span>                    <a class="code hl_variable" href="classpanini_1_1_debug_writer.html#a87eb06cd6a557eba5e169505b612235a">m_isDebugging</a> = keyEvent.wVirtualKeyCode != <span class="charliteral">&#39;Q&#39;</span>;</div>
 <div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span> </div>
-<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span>            <span class="comment">// clear line</span></div>
-<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span> </div>
-<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span><span class="preprocessor">        #ifdef _WINDOWS</span></div>
-<div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span>            DWORD written = 0;</div>
-<div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span>            ::FillConsoleOutputCharacterA(</div>
-<div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span>                m_output,</div>
-<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span>                <span class="charliteral">&#39; &#39;</span>,</div>
-<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span>                message.length(),</div>
-<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span>                m_cursor,</div>
-<div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span>                &amp;written</div>
-<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span>            );</div>
-<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span> </div>
-<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span>            ::FillConsoleOutputAttribute(</div>
-<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span>                m_output,</div>
-<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span>                m_screenInfo.wAttributes,</div>
-<div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span>                message.length(),</div>
-<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span>                m_cursor,</div>
-<div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span>                &amp;written</div>
-<div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span>            );</div>
-<div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span><span class="preprocessor">        #endif</span></div>
-<div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span> </div>
-<div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span>            <span class="comment">// reset cursor</span></div>
-<div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span> </div>
-<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span>            <a class="code hl_function" href="classpanini_1_1_debug_writer.html#a0287ac31b27759b233694479c9270906">SetCursorPosition</a>(0, <a class="code hl_variable" href="classpanini_1_1_debug_writer.html#a87ed45d76342f209ed1e3ad9460c9e60">m_cursorY</a> - 1);</div>
-<div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span>        }</div>
+<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span>                }</div>
+<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span>            }</div>
+<div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span><span class="preprocessor">        #endif</span></div>
+<div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span> </div>
+<div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span>            <span class="comment">// clear line</span></div>
+<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span> </div>
+<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span><span class="preprocessor">        #ifdef _WINDOWS</span></div>
+<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span>            DWORD written = 0;</div>
+<div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span>            ::FillConsoleOutputCharacterA(</div>
+<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span>                m_output,</div>
+<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span>                <span class="charliteral">&#39; &#39;</span>,</div>
+<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span>                <span class="keyword">static_cast&lt;</span>DWORD<span class="keyword">&gt;</span>(message.length()),</div>
+<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span>                m_cursor,</div>
+<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span>                &amp;written</div>
+<div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span>            );</div>
+<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span> </div>
+<div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span>            ::FillConsoleOutputAttribute(</div>
+<div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span>                m_output,</div>
+<div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span>                m_screenInfo.wAttributes,</div>
+<div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span>                <span class="keyword">static_cast&lt;</span>DWORD<span class="keyword">&gt;</span>(message.length()),</div>
+<div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span>                m_cursor,</div>
+<div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span>                &amp;written</div>
+<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span>            );</div>
+<div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span><span class="preprocessor">        #endif</span></div>
 <div class="line"><a id="l00352" name="l00352"></a><span class="lineno">  352</span> </div>
-<div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span>    <span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00354" name="l00354"></a><span class="lineno"><a class="line" href="classpanini_1_1_debug_writer.html#aab54a036efbdcbf9d55be7fb9226ff7e">  354</a></span>        <a class="code hl_struct" href="structpanini_1_1_debug_writer_config.html">DebugWriterConfig</a> <a class="code hl_variable" href="classpanini_1_1_debug_writer.html#aab54a036efbdcbf9d55be7fb9226ff7e">m_debugConfig</a>;</div>
-<div class="line"><a id="l00355" name="l00355"></a><span class="lineno"><a class="line" href="classpanini_1_1_debug_writer.html#aae240ffacc85ddff9b947ae0de062cf9">  355</a></span>        <span class="keywordtype">bool</span> <a class="code hl_variable" href="classpanini_1_1_debug_writer.html#aae240ffacc85ddff9b947ae0de062cf9">m_initialized</a> = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00356" name="l00356"></a><span class="lineno"><a class="line" href="classpanini_1_1_debug_writer.html#a87eb06cd6a557eba5e169505b612235a">  356</a></span>        <span class="keywordtype">bool</span> <a class="code hl_variable" href="classpanini_1_1_debug_writer.html#a87eb06cd6a557eba5e169505b612235a">m_isDebugging</a> = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00357" name="l00357"></a><span class="lineno"><a class="line" href="classpanini_1_1_debug_writer.html#af542687372b5ceba74c49c7730994124">  357</a></span>        int32_t <a class="code hl_variable" href="classpanini_1_1_debug_writer.html#af542687372b5ceba74c49c7730994124">m_cursorX</a> = 0;</div>
-<div class="line"><a id="l00358" name="l00358"></a><span class="lineno"><a class="line" href="classpanini_1_1_debug_writer.html#a87ed45d76342f209ed1e3ad9460c9e60">  358</a></span>        int32_t <a class="code hl_variable" href="classpanini_1_1_debug_writer.html#a87ed45d76342f209ed1e3ad9460c9e60">m_cursorY</a> = 0;</div>
-<div class="line"><a id="l00359" name="l00359"></a><span class="lineno"><a class="line" href="classpanini_1_1_debug_writer.html#a2f0eb5a65e4780e42d9b301798eed3e8">  359</a></span>        int32_t <a class="code hl_variable" href="classpanini_1_1_debug_writer.html#a2f0eb5a65e4780e42d9b301798eed3e8">m_consoleWidth</a> = 0;</div>
-<div class="line"><a id="l00360" name="l00360"></a><span class="lineno"><a class="line" href="classpanini_1_1_debug_writer.html#a6041ceed6b8d4afdca36aff5644340f5">  360</a></span>        int32_t <a class="code hl_variable" href="classpanini_1_1_debug_writer.html#a6041ceed6b8d4afdca36aff5644340f5">m_consoleHeight</a> = 0;</div>
-<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span> </div>
-<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span><span class="preprocessor">    #ifdef _WINDOWS</span></div>
-<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span>        HANDLE m_output;</div>
-<div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span>        CONSOLE_SCREEN_BUFFER_INFO m_screenInfo;</div>
-<div class="line"><a id="l00365" name="l00365"></a><span class="lineno">  365</span>        COORD m_cursor = { 0, 0 };</div>
-<div class="line"><a id="l00366" name="l00366"></a><span class="lineno">  366</span><span class="preprocessor">    #endif</span></div>
-<div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span> </div>
-<div class="line"><a id="l00368" name="l00368"></a><span class="lineno">  368</span>    };</div>
-<div class="line"><a id="l00369" name="l00369"></a><span class="lineno">  369</span> </div>
-<div class="line"><a id="l00370" name="l00370"></a><span class="lineno">  370</span>};</div>
+<div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span>            <span class="comment">// reset cursor</span></div>
+<div class="line"><a id="l00354" name="l00354"></a><span class="lineno">  354</span> </div>
+<div class="line"><a id="l00355" name="l00355"></a><span class="lineno">  355</span>            <a class="code hl_function" href="classpanini_1_1_debug_writer.html#a0287ac31b27759b233694479c9270906">SetCursorPosition</a>(0, <a class="code hl_variable" href="classpanini_1_1_debug_writer.html#a87ed45d76342f209ed1e3ad9460c9e60">m_cursorY</a> - 1);</div>
+<div class="line"><a id="l00356" name="l00356"></a><span class="lineno">  356</span>        }</div>
+<div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span> </div>
+<div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span>    <span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00359" name="l00359"></a><span class="lineno"><a class="line" href="classpanini_1_1_debug_writer.html#aab54a036efbdcbf9d55be7fb9226ff7e">  359</a></span>        <a class="code hl_struct" href="structpanini_1_1_debug_writer_config.html">DebugWriterConfig</a> <a class="code hl_variable" href="classpanini_1_1_debug_writer.html#aab54a036efbdcbf9d55be7fb9226ff7e">m_debugConfig</a>;</div>
+<div class="line"><a id="l00360" name="l00360"></a><span class="lineno"><a class="line" href="classpanini_1_1_debug_writer.html#aae240ffacc85ddff9b947ae0de062cf9">  360</a></span>        <span class="keywordtype">bool</span> <a class="code hl_variable" href="classpanini_1_1_debug_writer.html#aae240ffacc85ddff9b947ae0de062cf9">m_initialized</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00361" name="l00361"></a><span class="lineno"><a class="line" href="classpanini_1_1_debug_writer.html#a87eb06cd6a557eba5e169505b612235a">  361</a></span>        <span class="keywordtype">bool</span> <a class="code hl_variable" href="classpanini_1_1_debug_writer.html#a87eb06cd6a557eba5e169505b612235a">m_isDebugging</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00362" name="l00362"></a><span class="lineno"><a class="line" href="classpanini_1_1_debug_writer.html#af542687372b5ceba74c49c7730994124">  362</a></span>        int32_t <a class="code hl_variable" href="classpanini_1_1_debug_writer.html#af542687372b5ceba74c49c7730994124">m_cursorX</a> = 0;</div>
+<div class="line"><a id="l00363" name="l00363"></a><span class="lineno"><a class="line" href="classpanini_1_1_debug_writer.html#a87ed45d76342f209ed1e3ad9460c9e60">  363</a></span>        int32_t <a class="code hl_variable" href="classpanini_1_1_debug_writer.html#a87ed45d76342f209ed1e3ad9460c9e60">m_cursorY</a> = 0;</div>
+<div class="line"><a id="l00364" name="l00364"></a><span class="lineno"><a class="line" href="classpanini_1_1_debug_writer.html#a2f0eb5a65e4780e42d9b301798eed3e8">  364</a></span>        int32_t <a class="code hl_variable" href="classpanini_1_1_debug_writer.html#a2f0eb5a65e4780e42d9b301798eed3e8">m_consoleWidth</a> = 0;</div>
+<div class="line"><a id="l00365" name="l00365"></a><span class="lineno"><a class="line" href="classpanini_1_1_debug_writer.html#a6041ceed6b8d4afdca36aff5644340f5">  365</a></span>        int32_t <a class="code hl_variable" href="classpanini_1_1_debug_writer.html#a6041ceed6b8d4afdca36aff5644340f5">m_consoleHeight</a> = 0;</div>
+<div class="line"><a id="l00366" name="l00366"></a><span class="lineno">  366</span> </div>
+<div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span><span class="preprocessor">    #ifdef _WINDOWS</span></div>
+<div class="line"><a id="l00368" name="l00368"></a><span class="lineno">  368</span>        HANDLE m_output;</div>
+<div class="line"><a id="l00369" name="l00369"></a><span class="lineno">  369</span>        CONSOLE_SCREEN_BUFFER_INFO m_screenInfo;</div>
+<div class="line"><a id="l00370" name="l00370"></a><span class="lineno">  370</span>        COORD m_cursor = { 0, 0 };</div>
+<div class="line"><a id="l00371" name="l00371"></a><span class="lineno">  371</span><span class="preprocessor">    #endif</span></div>
+<div class="line"><a id="l00372" name="l00372"></a><span class="lineno">  372</span> </div>
+<div class="line"><a id="l00373" name="l00373"></a><span class="lineno">  373</span>    };</div>
+<div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span> </div>
+<div class="line"><a id="l00375" name="l00375"></a><span class="lineno">  375</span>};</div>
 <div class="ttc" id="a_debug_writer_config_8hpp_html"><div class="ttname"><a href="_debug_writer_config_8hpp.html">DebugWriterConfig.hpp</a></div></div>
 <div class="ttc" id="a_writer_base_8hpp_html"><div class="ttname"><a href="_writer_base_8hpp.html">WriterBase.hpp</a></div></div>
 <div class="ttc" id="aclasspanini_1_1_debug_writer_html"><div class="ttname"><a href="classpanini_1_1_debug_writer.html">panini::DebugWriter</a></div><div class="ttdoc">Writes output to the console line-by-line.</div><div class="ttdef"><b>Definition:</b> DebugWriter.hpp:57</div></div>
-<div class="ttc" id="aclasspanini_1_1_debug_writer_html_a0287ac31b27759b233694479c9270906"><div class="ttname"><a href="classpanini_1_1_debug_writer.html#a0287ac31b27759b233694479c9270906">panini::DebugWriter::SetCursorPosition</a></div><div class="ttdeci">void SetCursorPosition(int32_t x, int32_t y)</div><div class="ttdef"><b>Definition:</b> DebugWriter.hpp:229</div></div>
-<div class="ttc" id="aclasspanini_1_1_debug_writer_html_a2f0eb5a65e4780e42d9b301798eed3e8"><div class="ttname"><a href="classpanini_1_1_debug_writer.html#a2f0eb5a65e4780e42d9b301798eed3e8">panini::DebugWriter::m_consoleWidth</a></div><div class="ttdeci">int32_t m_consoleWidth</div><div class="ttdef"><b>Definition:</b> DebugWriter.hpp:359</div></div>
+<div class="ttc" id="aclasspanini_1_1_debug_writer_html_a0287ac31b27759b233694479c9270906"><div class="ttname"><a href="classpanini_1_1_debug_writer.html#a0287ac31b27759b233694479c9270906">panini::DebugWriter::SetCursorPosition</a></div><div class="ttdeci">void SetCursorPosition(int32_t x, int32_t y)</div><div class="ttdef"><b>Definition:</b> DebugWriter.hpp:231</div></div>
+<div class="ttc" id="aclasspanini_1_1_debug_writer_html_a2f0eb5a65e4780e42d9b301798eed3e8"><div class="ttname"><a href="classpanini_1_1_debug_writer.html#a2f0eb5a65e4780e42d9b301798eed3e8">panini::DebugWriter::m_consoleWidth</a></div><div class="ttdeci">int32_t m_consoleWidth</div><div class="ttdef"><b>Definition:</b> DebugWriter.hpp:364</div></div>
 <div class="ttc" id="aclasspanini_1_1_debug_writer_html_a2f57938f97ca337c54f5fabbdc84f7ff"><div class="ttname"><a href="classpanini_1_1_debug_writer.html#a2f57938f97ca337c54f5fabbdc84f7ff">panini::DebugWriter::Write</a></div><div class="ttdeci">virtual void Write(const std::string &amp;chunk) override</div><div class="ttdef"><b>Definition:</b> DebugWriter.hpp:144</div></div>
 <div class="ttc" id="aclasspanini_1_1_debug_writer_html_a32cb00fc589edf5856a94801aaefa2cf"><div class="ttname"><a href="classpanini_1_1_debug_writer.html#a32cb00fc589edf5856a94801aaefa2cf">panini::DebugWriter::IsChanged</a></div><div class="ttdeci">virtual bool IsChanged() const override</div><div class="ttdef"><b>Definition:</b> DebugWriter.hpp:135</div></div>
-<div class="ttc" id="aclasspanini_1_1_debug_writer_html_a333d99c432bae2ace43cbd0d98c56a8f"><div class="ttname"><a href="classpanini_1_1_debug_writer.html#a333d99c432bae2ace43cbd0d98c56a8f">panini::DebugWriter::WriteChunk</a></div><div class="ttdeci">void WriteChunk(const std::string &amp;chunk)</div><div class="ttdef"><b>Definition:</b> DebugWriter.hpp:266</div></div>
-<div class="ttc" id="aclasspanini_1_1_debug_writer_html_a3815ad5498023ed216b4127b4089f34e"><div class="ttname"><a href="classpanini_1_1_debug_writer.html#a3815ad5498023ed216b4127b4089f34e">panini::DebugWriter::ResetStyles</a></div><div class="ttdeci">void ResetStyles()</div><div class="ttdef"><b>Definition:</b> DebugWriter.hpp:257</div></div>
+<div class="ttc" id="aclasspanini_1_1_debug_writer_html_a333d99c432bae2ace43cbd0d98c56a8f"><div class="ttname"><a href="classpanini_1_1_debug_writer.html#a333d99c432bae2ace43cbd0d98c56a8f">panini::DebugWriter::WriteChunk</a></div><div class="ttdeci">void WriteChunk(const std::string &amp;chunk)</div><div class="ttdef"><b>Definition:</b> DebugWriter.hpp:268</div></div>
+<div class="ttc" id="aclasspanini_1_1_debug_writer_html_a3815ad5498023ed216b4127b4089f34e"><div class="ttname"><a href="classpanini_1_1_debug_writer.html#a3815ad5498023ed216b4127b4089f34e">panini::DebugWriter::ResetStyles</a></div><div class="ttdeci">void ResetStyles()</div><div class="ttdef"><b>Definition:</b> DebugWriter.hpp:259</div></div>
 <div class="ttc" id="aclasspanini_1_1_debug_writer_html_a396180436eb4d7ef561559d12c7b5333"><div class="ttname"><a href="classpanini_1_1_debug_writer.html#a396180436eb4d7ef561559d12c7b5333">panini::DebugWriter::OnCommit</a></div><div class="ttdeci">virtual bool OnCommit(bool force=false) override</div><div class="ttdef"><b>Definition:</b> DebugWriter.hpp:217</div></div>
-<div class="ttc" id="aclasspanini_1_1_debug_writer_html_a6041ceed6b8d4afdca36aff5644340f5"><div class="ttname"><a href="classpanini_1_1_debug_writer.html#a6041ceed6b8d4afdca36aff5644340f5">panini::DebugWriter::m_consoleHeight</a></div><div class="ttdeci">int32_t m_consoleHeight</div><div class="ttdef"><b>Definition:</b> DebugWriter.hpp:360</div></div>
-<div class="ttc" id="aclasspanini_1_1_debug_writer_html_a87eb06cd6a557eba5e169505b612235a"><div class="ttname"><a href="classpanini_1_1_debug_writer.html#a87eb06cd6a557eba5e169505b612235a">panini::DebugWriter::m_isDebugging</a></div><div class="ttdeci">bool m_isDebugging</div><div class="ttdef"><b>Definition:</b> DebugWriter.hpp:356</div></div>
-<div class="ttc" id="aclasspanini_1_1_debug_writer_html_a87ed45d76342f209ed1e3ad9460c9e60"><div class="ttname"><a href="classpanini_1_1_debug_writer.html#a87ed45d76342f209ed1e3ad9460c9e60">panini::DebugWriter::m_cursorY</a></div><div class="ttdeci">int32_t m_cursorY</div><div class="ttdef"><b>Definition:</b> DebugWriter.hpp:358</div></div>
+<div class="ttc" id="aclasspanini_1_1_debug_writer_html_a6041ceed6b8d4afdca36aff5644340f5"><div class="ttname"><a href="classpanini_1_1_debug_writer.html#a6041ceed6b8d4afdca36aff5644340f5">panini::DebugWriter::m_consoleHeight</a></div><div class="ttdeci">int32_t m_consoleHeight</div><div class="ttdef"><b>Definition:</b> DebugWriter.hpp:365</div></div>
+<div class="ttc" id="aclasspanini_1_1_debug_writer_html_a87eb06cd6a557eba5e169505b612235a"><div class="ttname"><a href="classpanini_1_1_debug_writer.html#a87eb06cd6a557eba5e169505b612235a">panini::DebugWriter::m_isDebugging</a></div><div class="ttdeci">bool m_isDebugging</div><div class="ttdef"><b>Definition:</b> DebugWriter.hpp:361</div></div>
+<div class="ttc" id="aclasspanini_1_1_debug_writer_html_a87ed45d76342f209ed1e3ad9460c9e60"><div class="ttname"><a href="classpanini_1_1_debug_writer.html#a87ed45d76342f209ed1e3ad9460c9e60">panini::DebugWriter::m_cursorY</a></div><div class="ttdeci">int32_t m_cursorY</div><div class="ttdef"><b>Definition:</b> DebugWriter.hpp:363</div></div>
 <div class="ttc" id="aclasspanini_1_1_debug_writer_html_a9338c544a7d414536113ce0a17325863"><div class="ttname"><a href="classpanini_1_1_debug_writer.html#a9338c544a7d414536113ce0a17325863">panini::DebugWriter::DebugWriter</a></div><div class="ttdeci">DebugWriter(const DebugWriterConfig &amp;config=DebugWriterConfig{})</div><div class="ttdef"><b>Definition:</b> DebugWriter.hpp:82</div></div>
 <div class="ttc" id="aclasspanini_1_1_debug_writer_html_aa4e71695a5214ea669ed4b166bb54750"><div class="ttname"><a href="classpanini_1_1_debug_writer.html#aa4e71695a5214ea669ed4b166bb54750">panini::DebugWriter::~DebugWriter</a></div><div class="ttdeci">virtual ~DebugWriter() override</div><div class="ttdef"><b>Definition:</b> DebugWriter.hpp:127</div></div>
-<div class="ttc" id="aclasspanini_1_1_debug_writer_html_aab54a036efbdcbf9d55be7fb9226ff7e"><div class="ttname"><a href="classpanini_1_1_debug_writer.html#aab54a036efbdcbf9d55be7fb9226ff7e">panini::DebugWriter::m_debugConfig</a></div><div class="ttdeci">DebugWriterConfig m_debugConfig</div><div class="ttdef"><b>Definition:</b> DebugWriter.hpp:354</div></div>
-<div class="ttc" id="aclasspanini_1_1_debug_writer_html_aae240ffacc85ddff9b947ae0de062cf9"><div class="ttname"><a href="classpanini_1_1_debug_writer.html#aae240ffacc85ddff9b947ae0de062cf9">panini::DebugWriter::m_initialized</a></div><div class="ttdeci">bool m_initialized</div><div class="ttdef"><b>Definition:</b> DebugWriter.hpp:355</div></div>
-<div class="ttc" id="aclasspanini_1_1_debug_writer_html_ab13628ea74abb59d48c863fe9fbd9bac"><div class="ttname"><a href="classpanini_1_1_debug_writer.html#ab13628ea74abb59d48c863fe9fbd9bac">panini::DebugWriter::SetColor</a></div><div class="ttdeci">void SetColor(uint16_t background, uint16_t foreground)</div><div class="ttdef"><b>Definition:</b> DebugWriter.hpp:244</div></div>
-<div class="ttc" id="aclasspanini_1_1_debug_writer_html_ad2a6c0479d0f91e6a44ae2fb4e5950db"><div class="ttname"><a href="classpanini_1_1_debug_writer.html#ad2a6c0479d0f91e6a44ae2fb4e5950db">panini::DebugWriter::HandleInput</a></div><div class="ttdeci">void HandleInput(const std::string &amp;message)</div><div class="ttdef"><b>Definition:</b> DebugWriter.hpp:290</div></div>
-<div class="ttc" id="aclasspanini_1_1_debug_writer_html_af542687372b5ceba74c49c7730994124"><div class="ttname"><a href="classpanini_1_1_debug_writer.html#af542687372b5ceba74c49c7730994124">panini::DebugWriter::m_cursorX</a></div><div class="ttdeci">int32_t m_cursorX</div><div class="ttdef"><b>Definition:</b> DebugWriter.hpp:357</div></div>
+<div class="ttc" id="aclasspanini_1_1_debug_writer_html_aab54a036efbdcbf9d55be7fb9226ff7e"><div class="ttname"><a href="classpanini_1_1_debug_writer.html#aab54a036efbdcbf9d55be7fb9226ff7e">panini::DebugWriter::m_debugConfig</a></div><div class="ttdeci">DebugWriterConfig m_debugConfig</div><div class="ttdef"><b>Definition:</b> DebugWriter.hpp:359</div></div>
+<div class="ttc" id="aclasspanini_1_1_debug_writer_html_aae240ffacc85ddff9b947ae0de062cf9"><div class="ttname"><a href="classpanini_1_1_debug_writer.html#aae240ffacc85ddff9b947ae0de062cf9">panini::DebugWriter::m_initialized</a></div><div class="ttdeci">bool m_initialized</div><div class="ttdef"><b>Definition:</b> DebugWriter.hpp:360</div></div>
+<div class="ttc" id="aclasspanini_1_1_debug_writer_html_ab13628ea74abb59d48c863fe9fbd9bac"><div class="ttname"><a href="classpanini_1_1_debug_writer.html#ab13628ea74abb59d48c863fe9fbd9bac">panini::DebugWriter::SetColor</a></div><div class="ttdeci">void SetColor(uint16_t background, uint16_t foreground)</div><div class="ttdef"><b>Definition:</b> DebugWriter.hpp:246</div></div>
+<div class="ttc" id="aclasspanini_1_1_debug_writer_html_ad2a6c0479d0f91e6a44ae2fb4e5950db"><div class="ttname"><a href="classpanini_1_1_debug_writer.html#ad2a6c0479d0f91e6a44ae2fb4e5950db">panini::DebugWriter::HandleInput</a></div><div class="ttdeci">void HandleInput(const std::string &amp;message)</div><div class="ttdef"><b>Definition:</b> DebugWriter.hpp:295</div></div>
+<div class="ttc" id="aclasspanini_1_1_debug_writer_html_af542687372b5ceba74c49c7730994124"><div class="ttname"><a href="classpanini_1_1_debug_writer.html#af542687372b5ceba74c49c7730994124">panini::DebugWriter::m_cursorX</a></div><div class="ttdeci">int32_t m_cursorX</div><div class="ttdef"><b>Definition:</b> DebugWriter.hpp:362</div></div>
 <div class="ttc" id="aclasspanini_1_1_writer_base_html"><div class="ttname"><a href="classpanini_1_1_writer_base.html">panini::WriterBase</a></div><div class="ttdoc">Base class for writers.</div><div class="ttdef"><b>Definition:</b> WriterBase.hpp:43</div></div>
-<div class="ttc" id="aclasspanini_1_1_writer_base_html_a3e699a4af7699bca800a2fbc2032c0d6"><div class="ttname"><a href="classpanini_1_1_writer_base.html#a3e699a4af7699bca800a2fbc2032c0d6">panini::WriterBase::Commit</a></div><div class="ttdeci">bool Commit(bool force=false)</div><div class="ttdef"><b>Definition:</b> WriterBase.hpp:291</div></div>
+<div class="ttc" id="aclasspanini_1_1_writer_base_html_a3e699a4af7699bca800a2fbc2032c0d6"><div class="ttname"><a href="classpanini_1_1_writer_base.html#a3e699a4af7699bca800a2fbc2032c0d6">panini::WriterBase::Commit</a></div><div class="ttdeci">bool Commit(bool force=false)</div><div class="ttdef"><b>Definition:</b> WriterBase.hpp:297</div></div>
 <div class="ttc" id="aclasspanini_1_1_writer_base_html_ab3c2f0c7a2cd32ec313b4a08e66b762b"><div class="ttname"><a href="classpanini_1_1_writer_base.html#ab3c2f0c7a2cd32ec313b4a08e66b762b">panini::WriterBase::GetConfig</a></div><div class="ttdeci">const Config &amp; GetConfig() const</div><div class="ttdef"><b>Definition:</b> WriterBase.hpp:80</div></div>
 <div class="ttc" id="aclasspanini_1_1_writer_base_html_ac606f8a7d0725678113d403c5711e50f"><div class="ttname"><a href="classpanini_1_1_writer_base.html#ac606f8a7d0725678113d403c5711e50f">panini::WriterBase::WriterBase</a></div><div class="ttdeci">WriterBase(const Config &amp;config=Config{})</div><div class="ttdef"><b>Definition:</b> WriterBase.hpp:49</div></div>
 <div class="ttc" id="aclasspanini_1_1_writer_base_html_af7d736a22fe2b6709ec1ae1cfe4b7e2b"><div class="ttname"><a href="classpanini_1_1_writer_base.html#af7d736a22fe2b6709ec1ae1cfe4b7e2b">panini::WriterBase::IsOnNewLine</a></div><div class="ttdeci">bool IsOnNewLine() const</div><div class="ttdef"><b>Definition:</b> WriterBase.hpp:111</div></div>

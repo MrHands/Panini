@@ -1,5 +1,7 @@
 var classpanini_1_1_comma_list =
 [
-    [ "CommaList", "classpanini_1_1_comma_list.html#afd0efc72392fef1a943f941151775925", null ],
-    [ "Visit", "classpanini_1_1_comma_list.html#a4ea12cee257052581e8dae7df05d59d9", null ]
+    [ "TUnderlying", "classpanini_1_1_comma_list.html#a3ed1960e25cd1de99b8d83e702f4af53", null ],
+    [ "CommaList", "classpanini_1_1_comma_list.html#a8409d3feda54c453ac213c2f58e53ab0", null ],
+    [ "CommaList", "classpanini_1_1_comma_list.html#a76377ca99649a69ae2d9ccc99b0a58ba", null ],
+    [ "Visit", "classpanini_1_1_comma_list.html#a02e70b1efad12abf916fb5b5baa87e46", null ]
 ];

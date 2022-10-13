@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['commalist_0',['CommaList',['../classpanini_1_1_comma_list.html#afd0efc72392fef1a943f941151775925',1,'panini::CommaList']]],
+  ['commalist_0',['CommaList',['../classpanini_1_1_comma_list.html#a8409d3feda54c453ac213c2f58e53ab0',1,'panini::CommaList::CommaList(TIterator begin, TIterator end, const CommaListOptions &amp;options={})'],['../classpanini_1_1_comma_list.html#a76377ca99649a69ae2d9ccc99b0a58ba',1,'panini::CommaList::CommaList(TIterator begin, TIterator end, const CommaListOptions &amp;options, std::function&lt; void(WriterBase &amp;, const TUnderlying &amp;, size_t)&gt; &amp;&amp;transform)']]],
   ['commentblock_1',['CommentBlock',['../classpanini_1_1_comment_block.html#a30186e0cc4f5119c8f82076440497ef1',1,'panini::CommentBlock']]],
   ['commentline_2',['CommentLine',['../classpanini_1_1_comment_line.html#a0efb77b15af783430c6fd07e0c6b516d',1,'panini::CommentLine::CommentLine(const std::string &amp;comment)'],['../classpanini_1_1_comment_line.html#a87f884fc847f532804edb87af1cca430',1,'panini::CommentLine::CommentLine(std::string &amp;&amp;comment) noexcept']]],
   ['commit_3',['Commit',['../classpanini_1_1_writer_base.html#a3e699a4af7699bca800a2fbc2032c0d6',1,'panini::WriterBase']]],

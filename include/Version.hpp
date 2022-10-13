@@ -45,7 +45,7 @@
 
 	\ingroup Globals
 */
-#define PANINI_VERSION_MINOR 2
+#define PANINI_VERSION_MINOR 3
 
 /*!
 	Patch version number for the library.
@@ -65,4 +65,4 @@
 
 	\ingroup Globals
 */
-#define PANINI_VERSION_STR "1.2.0"
+#define PANINI_VERSION_STR "1.3.0"

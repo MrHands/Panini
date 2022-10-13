@@ -25,7 +25,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Panini<span id="projectnumber">&#160;1.2.0</span>
+   <div id="projectname">Panini<span id="projectnumber">&#160;1.3.0</span>
    </div>
    <div id="projectbrief">Header-only library for generating C++, written in C++17</div>
   </td>
@@ -83,16 +83,18 @@ $(document).ready(function(){initNavTree('classpanini_1_1_comma_list.html',''); 
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">panini::CommaList&lt; TIterator, TUnderlying &gt; Member List</div></div>
+  <div class="headertitle"><div class="title">panini::CommaList&lt; TIterator &gt; Member List</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>This is the complete list of members for <a class="el" href="classpanini_1_1_comma_list.html">panini::CommaList&lt; TIterator, TUnderlying &gt;</a>, including all inherited members.</p>
+<p>This is the complete list of members for <a class="el" href="classpanini_1_1_comma_list.html">panini::CommaList&lt; TIterator &gt;</a>, including all inherited members.</p>
 <table class="directory">
-  <tr class="even"><td class="entry"><a class="el" href="classpanini_1_1_comma_list.html#afd0efc72392fef1a943f941151775925">CommaList</a>(TIterator begin, TIterator end, const CommaListOptions &amp;options={}, std::function&lt; std::string(const TUnderlying &amp;, size_t)&gt; transform=DefaultTransform&lt; TUnderlying &gt;)</td><td class="entry"><a class="el" href="classpanini_1_1_comma_list.html">panini::CommaList&lt; TIterator, TUnderlying &gt;</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">explicit</span></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="classpanini_1_1_comma_list.html#add01a339ee1050879531746ce69f053d">DefaultTransform</a>(const TSource &amp;source, size_t index)</td><td class="entry"><a class="el" href="classpanini_1_1_comma_list.html">panini::CommaList&lt; TIterator, TUnderlying &gt;</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">static</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classpanini_1_1_comma_list.html#a7bc0b3234e4781cdc6b906a733fe2fd0">DefaultTransform</a>(const std::string &amp;source, size_t index)</td><td class="entry"><a class="el" href="classpanini_1_1_comma_list.html">panini::CommaList&lt; TIterator, TUnderlying &gt;</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">static</span></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="classpanini_1_1_comma_list.html#a4ea12cee257052581e8dae7df05d59d9">Visit</a>(WriterBase &amp;writer) final</td><td class="entry"><a class="el" href="classpanini_1_1_comma_list.html">panini::CommaList&lt; TIterator, TUnderlying &gt;</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">virtual</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classpanini_1_1_comma_list.html#a8409d3feda54c453ac213c2f58e53ab0">CommaList</a>(TIterator begin, TIterator end, const CommaListOptions &amp;options={})</td><td class="entry"><a class="el" href="classpanini_1_1_comma_list.html">panini::CommaList&lt; TIterator &gt;</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">explicit</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classpanini_1_1_comma_list.html#a76377ca99649a69ae2d9ccc99b0a58ba">CommaList</a>(TIterator begin, TIterator end, const CommaListOptions &amp;options, std::function&lt; void(WriterBase &amp;, const TUnderlying &amp;, size_t)&gt; &amp;&amp;transform)</td><td class="entry"><a class="el" href="classpanini_1_1_comma_list.html">panini::CommaList&lt; TIterator &gt;</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">explicit</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classpanini_1_1_comma_list.html#a8547bc7c69960e61ee7df4d4cf51c3b0">DefaultTransform</a>(WriterBase &amp;writer, const TItem &amp;item, size_t index)</td><td class="entry"><a class="el" href="classpanini_1_1_comma_list.html">panini::CommaList&lt; TIterator &gt;</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">static</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classpanini_1_1_comma_list.html#ad807ae0ca84a223ba233029e441f9a2e">DefaultTransform</a>(WriterBase &amp;writer, const std::string &amp;item, size_t index)</td><td class="entry"><a class="el" href="classpanini_1_1_comma_list.html">panini::CommaList&lt; TIterator &gt;</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">static</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classpanini_1_1_comma_list.html#a3ed1960e25cd1de99b8d83e702f4af53">TUnderlying</a> typedef</td><td class="entry"><a class="el" href="classpanini_1_1_comma_list.html">panini::CommaList&lt; TIterator &gt;</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classpanini_1_1_comma_list.html#a02e70b1efad12abf916fb5b5baa87e46">Visit</a>(WriterBase &amp;writer) final</td><td class="entry"><a class="el" href="classpanini_1_1_comma_list.html">panini::CommaList&lt; TIterator &gt;</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">virtual</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classpanini_1_1_command_base.html#a140398d6b1c2df6c74881b8aaadfd550">~CommandBase</a>()=default</td><td class="entry"><a class="el" href="classpanini_1_1_command_base.html">panini::CommandBase</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
 </table></div><!-- contents -->
 </div><!-- doc-content -->

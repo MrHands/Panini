@@ -5,7 +5,7 @@ var searchData=
   ['chunkindent_2',['chunkIndent',['../structpanini_1_1_config.html#acbe90039abf26d60e8c22924d97001f9',1,'panini::Config']]],
   ['chunknewline_3',['chunkNewLine',['../structpanini_1_1_config.html#a74cfd8461ea8f5a046f4a29c290ab103',1,'panini::Config']]],
   ['colors_4',['Colors',['../structpanini_1_1_debug_writer_1_1_colors.html',1,'panini::DebugWriter']]],
-  ['commalist_5',['CommaList',['../classpanini_1_1_comma_list.html#afd0efc72392fef1a943f941151775925',1,'panini::CommaList::CommaList()'],['../classpanini_1_1_comma_list.html',1,'panini::CommaList&lt; TIterator, TUnderlying &gt;']]],
+  ['commalist_5',['CommaList',['../classpanini_1_1_comma_list.html#a8409d3feda54c453ac213c2f58e53ab0',1,'panini::CommaList::CommaList(TIterator begin, TIterator end, const CommaListOptions &amp;options={})'],['../classpanini_1_1_comma_list.html#a76377ca99649a69ae2d9ccc99b0a58ba',1,'panini::CommaList::CommaList(TIterator begin, TIterator end, const CommaListOptions &amp;options, std::function&lt; void(WriterBase &amp;, const TUnderlying &amp;, size_t)&gt; &amp;&amp;transform)'],['../classpanini_1_1_comma_list.html',1,'panini::CommaList&lt; TIterator &gt;']]],
   ['commalist_2ehpp_6',['CommaList.hpp',['../_comma_list_8hpp.html',1,'']]],
   ['commalistoptions_7',['CommaListOptions',['../structpanini_1_1_comma_list_options.html',1,'panini']]],
   ['commalistoptions_2ehpp_8',['CommaListOptions.hpp',['../_comma_list_options_8hpp.html',1,'']]],

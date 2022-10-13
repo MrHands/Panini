@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Panini: panini::CommaList&lt; TIterator, TUnderlying &gt; Class Template Reference</title>
+<title>Panini: panini::CommaList&lt; TIterator &gt; Class Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,7 +25,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Panini<span id="projectnumber">&#160;1.2.0</span>
+   <div id="projectname">Panini<span id="projectnumber">&#160;1.3.0</span>
    </div>
    <div id="projectbrief">Header-only library for generating C++, written in C++17</div>
   </td>
@@ -84,10 +84,11 @@ $(document).ready(function(){initNavTree('classpanini_1_1_comma_list.html',''); 
 
 <div class="header">
   <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="classpanini_1_1_comma_list-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">panini::CommaList&lt; TIterator, TUnderlying &gt; Class Template Reference</div></div>
+  <div class="headertitle"><div class="title">panini::CommaList&lt; TIterator &gt; Class Template Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
@@ -96,52 +97,58 @@ $(document).ready(function(){initNavTree('classpanini_1_1_comma_list.html',''); 
 
 <p><code>#include &lt;<a class="el" href="_comma_list_8hpp_source.html">CommaList.hpp</a>&gt;</code></p>
 <div class="dynheader">
-Inheritance diagram for panini::CommaList&lt; TIterator, TUnderlying &gt;:</div>
+Inheritance diagram for panini::CommaList&lt; TIterator &gt;:</div>
 <div class="dyncontent">
  <div class="center">
-  <img src="classpanini_1_1_comma_list.png" usemap="#panini::CommaList_3C_20TIterator_2C_20TUnderlying_20_3E_map" alt=""/>
-  <map id="panini::CommaList_3C_20TIterator_2C_20TUnderlying_20_3E_map" name="panini::CommaList_3C_20TIterator_2C_20TUnderlying_20_3E_map">
-<area href="classpanini_1_1_command_base.html" title="Base class for commands." alt="panini::CommandBase" shape="rect" coords="0,0,260,24"/>
+  <img src="classpanini_1_1_comma_list.png" usemap="#panini::CommaList_3C_20TIterator_20_3E_map" alt=""/>
+  <map id="panini::CommaList_3C_20TIterator_20_3E_map" name="panini::CommaList_3C_20TIterator_20_3E_map">
+<area href="classpanini_1_1_command_base.html" title="Base class for commands." alt="panini::CommandBase" shape="rect" coords="0,0,183,24"/>
   </map>
 </div></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a3ed1960e25cd1de99b8d83e702f4af53"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_comma_list.html#a3ed1960e25cd1de99b8d83e702f4af53">TUnderlying</a> = typename std::conditional&lt; std::is_pointer_v&lt; TIterator &gt;, std::remove_pointer_t&lt; TIterator &gt;, typename std::iterator_traits&lt; TIterator &gt;::value_type &gt;::type</td></tr>
+<tr class="separator:a3ed1960e25cd1de99b8d83e702f4af53"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:afd0efc72392fef1a943f941151775925"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_comma_list.html#afd0efc72392fef1a943f941151775925">CommaList</a> (TIterator begin, TIterator end, const <a class="el" href="structpanini_1_1_comma_list_options.html">CommaListOptions</a> &amp;options={}, std::function&lt; std::string(const TUnderlying &amp;, size_t)&gt; transform=<a class="el" href="classpanini_1_1_comma_list.html#add01a339ee1050879531746ce69f053d">DefaultTransform</a>&lt; TUnderlying &gt;)</td></tr>
-<tr class="separator:afd0efc72392fef1a943f941151775925"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4ea12cee257052581e8dae7df05d59d9"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_comma_list.html#a4ea12cee257052581e8dae7df05d59d9">Visit</a> (<a class="el" href="classpanini_1_1_writer_base.html">WriterBase</a> &amp;writer) final</td></tr>
-<tr class="separator:a4ea12cee257052581e8dae7df05d59d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8409d3feda54c453ac213c2f58e53ab0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_comma_list.html#a8409d3feda54c453ac213c2f58e53ab0">CommaList</a> (TIterator begin, TIterator end, const <a class="el" href="structpanini_1_1_comma_list_options.html">CommaListOptions</a> &amp;options={})</td></tr>
+<tr class="separator:a8409d3feda54c453ac213c2f58e53ab0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76377ca99649a69ae2d9ccc99b0a58ba"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_comma_list.html#a76377ca99649a69ae2d9ccc99b0a58ba">CommaList</a> (TIterator begin, TIterator end, const <a class="el" href="structpanini_1_1_comma_list_options.html">CommaListOptions</a> &amp;options, std::function&lt; void(<a class="el" href="classpanini_1_1_writer_base.html">WriterBase</a> &amp;, const <a class="el" href="classpanini_1_1_comma_list.html#a3ed1960e25cd1de99b8d83e702f4af53">TUnderlying</a> &amp;, size_t)&gt; &amp;&amp;transform)</td></tr>
+<tr class="separator:a76377ca99649a69ae2d9ccc99b0a58ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02e70b1efad12abf916fb5b5baa87e46"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_comma_list.html#a02e70b1efad12abf916fb5b5baa87e46">Visit</a> (<a class="el" href="classpanini_1_1_writer_base.html">WriterBase</a> &amp;writer) final</td></tr>
+<tr class="separator:a02e70b1efad12abf916fb5b5baa87e46"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classpanini_1_1_command_base"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classpanini_1_1_command_base')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classpanini_1_1_command_base.html">panini::CommandBase</a></td></tr>
 <tr class="memitem:a140398d6b1c2df6c74881b8aaadfd550 inherit pub_methods_classpanini_1_1_command_base"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_command_base.html#a140398d6b1c2df6c74881b8aaadfd550">~CommandBase</a> ()=default</td></tr>
 <tr class="separator:a140398d6b1c2df6c74881b8aaadfd550 inherit pub_methods_classpanini_1_1_command_base"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:add01a339ee1050879531746ce69f053d"><td class="memTemplParams" colspan="2">template&lt;typename TSource &gt; </td></tr>
-<tr class="memitem:add01a339ee1050879531746ce69f053d"><td class="memTemplItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classpanini_1_1_comma_list.html#add01a339ee1050879531746ce69f053d">DefaultTransform</a> (const TSource &amp;source, size_t index)</td></tr>
-<tr class="memdesc:add01a339ee1050879531746ce69f053d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default transform function for the command.  <a href="classpanini_1_1_comma_list.html#add01a339ee1050879531746ce69f053d">More...</a><br /></td></tr>
-<tr class="separator:add01a339ee1050879531746ce69f053d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7bc0b3234e4781cdc6b906a733fe2fd0"><td class="memItemLeft" align="right" valign="top">template&lt;&gt; </td></tr>
-<tr class="memitem:a7bc0b3234e4781cdc6b906a733fe2fd0"><td class="memTemplItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classpanini_1_1_comma_list.html#a7bc0b3234e4781cdc6b906a733fe2fd0">DefaultTransform</a> (const std::string &amp;source, size_t index)</td></tr>
-<tr class="separator:a7bc0b3234e4781cdc6b906a733fe2fd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8547bc7c69960e61ee7df4d4cf51c3b0"><td class="memTemplParams" colspan="2">template&lt;typename TItem &gt; </td></tr>
+<tr class="memitem:a8547bc7c69960e61ee7df4d4cf51c3b0"><td class="memTemplItemLeft" align="right" valign="top">static void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classpanini_1_1_comma_list.html#a8547bc7c69960e61ee7df4d4cf51c3b0">DefaultTransform</a> (<a class="el" href="classpanini_1_1_writer_base.html">WriterBase</a> &amp;writer, const TItem &amp;item, size_t index)</td></tr>
+<tr class="memdesc:a8547bc7c69960e61ee7df4d4cf51c3b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default transform function for the command.  <a href="classpanini_1_1_comma_list.html#a8547bc7c69960e61ee7df4d4cf51c3b0">More...</a><br /></td></tr>
+<tr class="separator:a8547bc7c69960e61ee7df4d4cf51c3b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad807ae0ca84a223ba233029e441f9a2e"><td class="memItemLeft" align="right" valign="top">template&lt;&gt; </td></tr>
+<tr class="memitem:ad807ae0ca84a223ba233029e441f9a2e"><td class="memTemplItemLeft" align="right" valign="top">static void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classpanini_1_1_comma_list.html#ad807ae0ca84a223ba233029e441f9a2e">DefaultTransform</a> (<a class="el" href="classpanini_1_1_writer_base.html">WriterBase</a> &amp;writer, const std::string &amp;item, size_t index)</td></tr>
+<tr class="separator:ad807ae0ca84a223ba233029e441f9a2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><div class="compoundTemplParams">template&lt;class TIterator, class TUnderlying = typename std::iterator_traits&lt;TIterator&gt;::value_type&gt;<br />
-class panini::CommaList&lt; TIterator, TUnderlying &gt;</div><p >Command for outputting a list of items, comma-separated by default. </p>
+<div class="textblock"><div class="compoundTemplParams">template&lt;class TIterator&gt;<br />
+class panini::CommaList&lt; TIterator &gt;</div><p >Command for outputting a list of items, comma-separated by default. </p>
 <p >The <a class="el" href="classpanini_1_1_comma_list.html" title="Command for outputting a list of items, comma-separated by default.">CommaList</a> command makes it easy to print a list of items that should be separated after the first item, e.g. function parameters.</p>
-<p >The command works with iterators of any STL container and even custom iterators, as long as the type implements the interface required for <code>std::iterator_traits</code> to derive the underlying type.</p>
-<p >If the underlying type for the iterator cannot be derived implicitly, you can use the TUnderlying parameter to set the type explicitly.</p>
+<p >The command works with pointers of any type and iterators of any STL container. Custom iterators are supported as well, as long as the type implements the interface required for <code>std::iterator_traits</code> to derive the underlying type.</p>
 <p >Using the <a class="el" href="structpanini_1_1_comma_list_options.html" title="Options for the CommaList command.">CommaListOptions</a> struct, you can specify the separator chunk that should come before each item and the one that should come after the first item, which is ", " by default. It's also possible to add a new line after each item, which is disabled by default.</p>
-<p >Finally, you can add a transform function to the command, which will be called once for each item in the list and transforms the item to a string.</p>
+<p >Finally, you can add a transform function to the command, which will be called once for each item in the list and is used to transform your data before being passed to the writer.</p>
 <p >Example:</p>
 <div class="fragment"><div class="line">writer &lt;&lt; Scope(<span class="stringliteral">&quot;enum Vehicles&quot;</span>, [](WriterBase&amp; writer) {</div>
 <div class="line">    CommaListOptions options;</div>
 <div class="line">    options.chunkEndSeparator = <span class="stringliteral">&quot;,&quot;</span>;</div>
 <div class="line">    options.addNewLines = <span class="keyword">true</span>;</div>
 <div class="line"> </div>
-<div class="line">    writer &lt;&lt; <a class="code hl_function" href="classpanini_1_1_comma_list.html#afd0efc72392fef1a943f941151775925">CommaList</a>(myEnums.begin(), myEnums.end(), options) &lt;&lt; NextLine();</div>
+<div class="line">    writer &lt;&lt; <a class="code hl_function" href="classpanini_1_1_comma_list.html#a8409d3feda54c453ac213c2f58e53ab0">CommaList</a>(myEnums.begin(), myEnums.end(), options) &lt;&lt; NextLine();</div>
 <div class="line">}) &lt;&lt; <span class="stringliteral">&quot;;&quot;</span>;</div>
-<div class="ttc" id="aclasspanini_1_1_comma_list_html_afd0efc72392fef1a943f941151775925"><div class="ttname"><a href="classpanini_1_1_comma_list.html#afd0efc72392fef1a943f941151775925">panini::CommaList::CommaList</a></div><div class="ttdeci">CommaList(TIterator begin, TIterator end, const CommaListOptions &amp;options={}, std::function&lt; std::string(const TUnderlying &amp;, size_t)&gt; transform=DefaultTransform&lt; TUnderlying &gt;)</div><div class="ttdef"><b>Definition:</b> CommaList.hpp:126</div></div>
+<div class="ttc" id="aclasspanini_1_1_comma_list_html_a8409d3feda54c453ac213c2f58e53ab0"><div class="ttname"><a href="classpanini_1_1_comma_list.html#a8409d3feda54c453ac213c2f58e53ab0">panini::CommaList::CommaList</a></div><div class="ttdeci">CommaList(TIterator begin, TIterator end, const CommaListOptions &amp;options={})</div><div class="ttdef"><b>Definition:</b> CommaList.hpp:135</div></div>
 </div><!-- fragment --><p >Output:</p>
 <div class="fragment"><div class="line"><span class="keyword">enum</span> Vehicles</div>
 <div class="line">{</div>
@@ -149,20 +156,38 @@ class panini::CommaList&lt; TIterator, TUnderlying &gt;</div><p >Command for out
 <div class="line">    DUCK_PLANE,</div>
 <div class="line">    DUCK_MARINE</div>
 <div class="line">};</div>
-</div><!-- fragment --> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="afd0efc72392fef1a943f941151775925" name="afd0efc72392fef1a943f941151775925"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afd0efc72392fef1a943f941151775925">&#9670;&nbsp;</a></span>CommaList()</h2>
+</div><!-- fragment --> </div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="a3ed1960e25cd1de99b8d83e702f4af53" name="a3ed1960e25cd1de99b8d83e702f4af53"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ed1960e25cd1de99b8d83e702f4af53">&#9670;&nbsp;</a></span>TUnderlying</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class TIterator , class TUnderlying  = typename std::iterator_traits&lt;TIterator&gt;::value_type&gt; </div>
+template&lt;class TIterator &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classpanini_1_1_comma_list.html">panini::CommaList</a>&lt; TIterator &gt;::<a class="el" href="classpanini_1_1_comma_list.html#a3ed1960e25cd1de99b8d83e702f4af53">TUnderlying</a> =  typename std::conditional&lt; std::is_pointer_v&lt;TIterator&gt;, std::remove_pointer_t&lt;TIterator&gt;, typename std::iterator_traits&lt;TIterator&gt;::value_type &gt;::type</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Underlying type as derived from TIterator, which should be either a pointer type or an iterator one. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a8409d3feda54c453ac213c2f58e53ab0" name="a8409d3feda54c453ac213c2f58e53ab0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8409d3feda54c453ac213c2f58e53ab0">&#9670;&nbsp;</a></span>CommaList() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class TIterator &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classpanini_1_1_comma_list.html">panini::CommaList</a>&lt; TIterator, TUnderlying &gt;::<a class="el" href="classpanini_1_1_comma_list.html">CommaList</a> </td>
+          <td class="memname"><a class="el" href="classpanini_1_1_comma_list.html">panini::CommaList</a>&lt; TIterator &gt;::<a class="el" href="classpanini_1_1_comma_list.html">CommaList</a> </td>
           <td>(</td>
           <td class="paramtype">TIterator&#160;</td>
           <td class="paramname"><em>begin</em>, </td>
@@ -177,13 +202,7 @@ template&lt;class TIterator , class TUnderlying  = typename std::iterator_traits
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const <a class="el" href="structpanini_1_1_comma_list_options.html">CommaListOptions</a> &amp;&#160;</td>
-          <td class="paramname"><em>options</em> = <code>{}</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::function&lt; std::string(const TUnderlying &amp;, size_t)&gt;&#160;</td>
-          <td class="paramname"><em>transform</em> = <code><a class="el" href="classpanini_1_1_comma_list.html#add01a339ee1050879531746ce69f053d">DefaultTransform</a>&lt;TUnderlying&gt;</code>&#160;</td>
+          <td class="paramname"><em>options</em> = <code>{}</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -203,6 +222,65 @@ template&lt;class TIterator , class TUnderlying  = typename std::iterator_traits
     <tr><td class="paramname">begin</td><td>Starting point for iteration. </td></tr>
     <tr><td class="paramname">end</td><td>End point for iteration. </td></tr>
     <tr><td class="paramname">options</td><td>Additional options for the command. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a76377ca99649a69ae2d9ccc99b0a58ba" name="a76377ca99649a69ae2d9ccc99b0a58ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76377ca99649a69ae2d9ccc99b0a58ba">&#9670;&nbsp;</a></span>CommaList() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class TIterator &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classpanini_1_1_comma_list.html">panini::CommaList</a>&lt; TIterator &gt;::<a class="el" href="classpanini_1_1_comma_list.html">CommaList</a> </td>
+          <td>(</td>
+          <td class="paramtype">TIterator&#160;</td>
+          <td class="paramname"><em>begin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TIterator&#160;</td>
+          <td class="paramname"><em>end</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structpanini_1_1_comma_list_options.html">CommaListOptions</a> &amp;&#160;</td>
+          <td class="paramname"><em>options</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::function&lt; void(<a class="el" href="classpanini_1_1_writer_base.html">WriterBase</a> &amp;, const <a class="el" href="classpanini_1_1_comma_list.html#a3ed1960e25cd1de99b8d83e702f4af53">TUnderlying</a> &amp;, size_t)&gt; &amp;&amp;&#160;</td>
+          <td class="paramname"><em>transform</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Construct a <a class="el" href="classpanini_1_1_comma_list.html" title="Command for outputting a list of items, comma-separated by default.">CommaList</a> and add a transform function.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">begin</td><td>Starting point for iteration. </td></tr>
+    <tr><td class="paramname">end</td><td>End point for iteration. </td></tr>
+    <tr><td class="paramname">options</td><td>Additional options for the command. </td></tr>
     <tr><td class="paramname">transform</td><td>Transforms each iterated to a string. </td></tr>
   </table>
   </dd>
@@ -211,13 +289,13 @@ template&lt;class TIterator , class TUnderlying  = typename std::iterator_traits
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a7bc0b3234e4781cdc6b906a733fe2fd0" name="a7bc0b3234e4781cdc6b906a733fe2fd0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7bc0b3234e4781cdc6b906a733fe2fd0">&#9670;&nbsp;</a></span>DefaultTransform() <span class="overload">[1/2]</span></h2>
+<a id="ad807ae0ca84a223ba233029e441f9a2e" name="ad807ae0ca84a223ba233029e441f9a2e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad807ae0ca84a223ba233029e441f9a2e">&#9670;&nbsp;</a></span>DefaultTransform() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class TIterator , class TUnderlying  = typename std::iterator_traits&lt;TIterator&gt;::value_type&gt; </div>
+template&lt;class TIterator &gt; </div>
 <div class="memtemplate">
 template&lt;&gt; </div>
 <table class="mlabels">
@@ -225,10 +303,16 @@ template&lt;&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static std::string <a class="el" href="classpanini_1_1_comma_list.html">panini::CommaList</a>&lt; TIterator, TUnderlying &gt;::DefaultTransform </td>
+          <td class="memname">static void <a class="el" href="classpanini_1_1_comma_list.html">panini::CommaList</a>&lt; TIterator &gt;::DefaultTransform </td>
           <td>(</td>
+          <td class="paramtype"><a class="el" href="classpanini_1_1_writer_base.html">WriterBase</a> &amp;&#160;</td>
+          <td class="paramname"><em>writer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>source</em>, </td>
+          <td class="paramname"><em>item</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -252,24 +336,30 @@ template&lt;&gt; </div>
 
 </div>
 </div>
-<a id="add01a339ee1050879531746ce69f053d" name="add01a339ee1050879531746ce69f053d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#add01a339ee1050879531746ce69f053d">&#9670;&nbsp;</a></span>DefaultTransform() <span class="overload">[2/2]</span></h2>
+<a id="a8547bc7c69960e61ee7df4d4cf51c3b0" name="a8547bc7c69960e61ee7df4d4cf51c3b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8547bc7c69960e61ee7df4d4cf51c3b0">&#9670;&nbsp;</a></span>DefaultTransform() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class TIterator , class TUnderlying  = typename std::iterator_traits&lt;TIterator&gt;::value_type&gt; </div>
+template&lt;class TIterator &gt; </div>
 <div class="memtemplate">
-template&lt;typename TSource &gt; </div>
+template&lt;typename TItem &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static std::string <a class="el" href="classpanini_1_1_comma_list.html">panini::CommaList</a>&lt; TIterator, TUnderlying &gt;::DefaultTransform </td>
+          <td class="memname">static void <a class="el" href="classpanini_1_1_comma_list.html">panini::CommaList</a>&lt; TIterator &gt;::DefaultTransform </td>
           <td>(</td>
-          <td class="paramtype">const TSource &amp;&#160;</td>
-          <td class="paramname"><em>source</em>, </td>
+          <td class="paramtype"><a class="el" href="classpanini_1_1_writer_base.html">WriterBase</a> &amp;&#160;</td>
+          <td class="paramname"><em>writer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const TItem &amp;&#160;</td>
+          <td class="paramname"><em>item</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -291,10 +381,12 @@ template&lt;typename TSource &gt; </div>
 </div><div class="memdoc">
 
 <p>Default transform function for the command. </p>
-<p >Each iterated item must pass through a function that "transforms" it to an <code>std::string</code>. The default implementation calls <code>std::to_string</code>, which will handle most standard types.</p>
+<p >Each iterated item is passed through a function that "transforms" it to an <code>std::string</code> before passing it to the active writer.</p>
+<p >The default implementation calls <code>std::to_string</code>, which will handle most standard types.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">source</td><td>Value being processed. </td></tr>
+    <tr><td class="paramname">writer</td><td>Active writer. </td></tr>
+    <tr><td class="paramname">item</td><td>Value being processed. </td></tr>
     <tr><td class="paramname">index</td><td>Index of the value in the list.</td></tr>
   </table>
   </dd>
@@ -303,19 +395,19 @@ template&lt;typename TSource &gt; </div>
 
 </div>
 </div>
-<a id="a4ea12cee257052581e8dae7df05d59d9" name="a4ea12cee257052581e8dae7df05d59d9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4ea12cee257052581e8dae7df05d59d9">&#9670;&nbsp;</a></span>Visit()</h2>
+<a id="a02e70b1efad12abf916fb5b5baa87e46" name="a02e70b1efad12abf916fb5b5baa87e46"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a02e70b1efad12abf916fb5b5baa87e46">&#9670;&nbsp;</a></span>Visit()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class TIterator , class TUnderlying  = typename std::iterator_traits&lt;TIterator&gt;::value_type&gt; </div>
+template&lt;class TIterator &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual void <a class="el" href="classpanini_1_1_comma_list.html">panini::CommaList</a>&lt; TIterator, TUnderlying &gt;::Visit </td>
+          <td class="memname">virtual void <a class="el" href="classpanini_1_1_comma_list.html">panini::CommaList</a>&lt; TIterator &gt;::Visit </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classpanini_1_1_writer_base.html">WriterBase</a> &amp;&#160;</td>
           <td class="paramname"><em>writer</em></td><td>)</td>

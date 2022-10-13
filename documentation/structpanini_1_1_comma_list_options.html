@@ -25,7 +25,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Panini<span id="projectnumber">&#160;1.2.0</span>
+   <div id="projectname">Panini<span id="projectnumber">&#160;1.3.0</span>
    </div>
    <div id="projectbrief">Header-only library for generating C++, written in C++17</div>
   </td>
@@ -103,6 +103,10 @@ Public Attributes</h2></td></tr>
 <tr class="separator:af257706c774aefbffbca3ff5a68476e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acc13b57eeb160dd75a6416d0ecf49e02"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpanini_1_1_comma_list_options.html#acc13b57eeb160dd75a6416d0ecf49e02">addNewLines</a> = false</td></tr>
 <tr class="separator:acc13b57eeb160dd75a6416d0ecf49e02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a445373ff36d28afbaaae1a15231b6505"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpanini_1_1_comma_list_options.html#a445373ff36d28afbaaae1a15231b6505">skipFirstItemBeginSeparator</a> = false</td></tr>
+<tr class="separator:a445373ff36d28afbaaae1a15231b6505"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae94ba8e983dcc39aeca02ea8bee125da"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpanini_1_1_comma_list_options.html#ae94ba8e983dcc39aeca02ea8bee125da">skipLastItemEndSeparator</a> = true</td></tr>
+<tr class="separator:ae94ba8e983dcc39aeca02ea8bee125da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Options for the <a class="el" href="classpanini_1_1_comma_list.html" title="Command for outputting a list of items, comma-separated by default.">CommaList</a> command. </p>
@@ -133,7 +137,8 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Chunk inserted before each item in the list, including the first item. </p>
+<p >Chunk inserted before each item in the list, including the first item by default.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="structpanini_1_1_comma_list_options.html#a445373ff36d28afbaaae1a15231b6505">skipFirstItemBeginSeparator</a> </dd></dl>
 
 </div>
 </div>
@@ -148,7 +153,38 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Chunk inserted after the first item in the list, excluding the last item in the list. </p>
+<p >Chunk inserted after the first item in the list, excluding the last item in the list by default.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="structpanini_1_1_comma_list_options.html#ae94ba8e983dcc39aeca02ea8bee125da">skipLastItemEndSeparator</a> </dd></dl>
+
+</div>
+</div>
+<a id="a445373ff36d28afbaaae1a15231b6505" name="a445373ff36d28afbaaae1a15231b6505"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a445373ff36d28afbaaae1a15231b6505">&#9670;&nbsp;</a></span>skipFirstItemBeginSeparator</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool panini::CommaListOptions::skipFirstItemBeginSeparator = false</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Skip adding the begin separator to the first item in the list. </p>
+
+</div>
+</div>
+<a id="ae94ba8e983dcc39aeca02ea8bee125da" name="ae94ba8e983dcc39aeca02ea8bee125da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae94ba8e983dcc39aeca02ea8bee125da">&#9670;&nbsp;</a></span>skipLastItemEndSeparator</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool panini::CommaListOptions::skipLastItemEndSeparator = true</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Skip adding the end separator to the last item in the list. </p>
 
 </div>
 </div>

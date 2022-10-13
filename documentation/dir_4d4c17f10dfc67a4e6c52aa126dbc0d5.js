@@ -4,7 +4,7 @@ var dir_4d4c17f10dfc67a4e6c52aa126dbc0d5 =
       [ "panini::Braces", "classpanini_1_1_braces.html", "classpanini_1_1_braces" ]
     ] ],
     [ "CommaList.hpp", "_comma_list_8hpp.html", [
-      [ "panini::CommaList< TIterator, TUnderlying >", "classpanini_1_1_comma_list.html", "classpanini_1_1_comma_list" ]
+      [ "panini::CommaList< TIterator >", "classpanini_1_1_comma_list.html", "classpanini_1_1_comma_list" ]
     ] ],
     [ "CommandBase.hpp", "_command_base_8hpp.html", [
       [ "panini::CommandBase", "classpanini_1_1_command_base.html", "classpanini_1_1_command_base" ]

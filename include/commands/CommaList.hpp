@@ -24,6 +24,8 @@
 #include "commands/CommandBase.hpp"
 #include "data/CommaListOptions.hpp"
 
+#include <type_traits>
+
 namespace panini
 {
 
@@ -31,24 +33,22 @@ namespace panini
 		\brief Command for outputting a list of items, comma-separated by
 		default.
 
-		The CommaList command makes it easy to print a list of items that
-		should be separated after the first item, e.g. function parameters.
+		The CommaList command makes it easy to print a list of items that should
+		be separated after the first item, e.g. function parameters.
 
-		The command works with iterators of any STL container and even custom
-		iterators, as long as the type implements the interface required
-		for `std::iterator_traits` to derive the underlying type.
-
-		If the underlying type for the iterator cannot be derived implicitly,
-		you can use the TUnderlying parameter to set the type explicitly.
+		The command works with pointers of any type and iterators of any STL
+		container. Custom iterators are supported as well, as long as the type
+		implements the interface required for `std::iterator_traits` to derive
+		the underlying type.
 
 		Using the CommaListOptions struct, you can specify the separator chunk
-		that should come before each item and the one that should come after
-		the first item, which is ", " by default. It's also possible to add a
-		new line after each item, which is disabled by default.
+		that should come before each item and the one that should come after the
+		first item, which is ", " by default. It's also possible to add a new
+		line after each item, which is disabled by default.
 
 		Finally, you can add a transform function to the command, which will be
-		called once for each item in the list and transforms the item to
-		a string.
+		called once for each item in the list and is used to transform your data
+		before being passed to the writer.
 
 		Example:
 
@@ -74,33 +74,43 @@ namespace panini
 		\endcode
 	*/
 
-	template <
-		class TIterator,
-		class TUnderlying = typename std::iterator_traits<TIterator>::value_type
-	>
+	template <class TIterator>
 	class CommaList
 		: public CommandBase
 	{
 
 	public:
 		/*!
+			Underlying type as derived from TIterator, which should be either a
+			pointer type or an iterator one.
+		*/
+		using TUnderlying = typename std::conditional<
+			std::is_pointer_v<TIterator>,
+			std::remove_pointer_t<TIterator>,
+			typename std::iterator_traits<TIterator>::value_type
+		>::type;
+
+		/*!
 			\brief Default transform function for the command.
 
-			Each iterated item must pass through a function that "transforms"
-			it to an `std::string`. The default implementation calls
-			`std::to_string`, which will handle most standard types.
+			Each iterated item is passed through a function that "transforms" it
+			to an `std::string` before passing it to the active writer.
+			
+			The default implementation calls `std::to_string`, which will handle
+			most standard types.
 
-			\param source   Value being processed.
+			\param writer   Active writer.
+			\param item     Value being processed.
 			\param index    Index of the value in the list.
 
 			\return Source value represented as a string.
 		*/
-		template <typename TSource>
-		static std::string DefaultTransform(const TSource& source, size_t index)
+		template <typename TItem>
+		static void DefaultTransform(WriterBase& writer, const TItem& item, size_t index)
 		{
 			(void)index;
 
-			return std::to_string(source);
+			writer << std::to_string(item);
 		}
 
 		/*!
@@ -108,15 +118,33 @@ namespace panini
 			through unchanged.
 		*/
 		template <>
-		static std::string DefaultTransform(const std::string& source, size_t index)
+		static void DefaultTransform(WriterBase& writer, const std::string& item, size_t index)
 		{
 			(void)index;
 
-			return source;
+			writer << item;
 		}
 
 		/*!
 			Construct a CommaList from a begin and end iterator.
+
+			\param begin       Starting point for iteration.
+			\param end         End point for iteration.
+			\param options     Additional options for the command.
+		*/
+		inline explicit CommaList(
+			TIterator begin,
+			TIterator end,
+			const CommaListOptions& options = {})
+			: m_begin(begin)
+			, m_end(end)
+			, m_options(options)
+			, m_transform(DefaultTransform<TUnderlying>)
+		{
+		}
+
+		/*!
+			Construct a CommaList and add a transform function.
 
 			\param begin       Starting point for iteration.
 			\param end         End point for iteration.
@@ -126,12 +154,12 @@ namespace panini
 		inline explicit CommaList(
 			TIterator begin,
 			TIterator end,
-			const CommaListOptions& options = {},
-			std::function<std::string(const TUnderlying&, size_t)> transform = DefaultTransform<TUnderlying>)
+			const CommaListOptions& options,
+			std::function<void(WriterBase&, const TUnderlying&, size_t)>&& transform)
 			: m_begin(begin)
 			, m_end(end)
 			, m_options(options)
-			, m_transform(transform)
+			, m_transform(std::move(transform))
 		{
 		}
 
@@ -156,9 +184,15 @@ namespace panini
 					writer << m_options.chunkBeginSeparator;
 				}
 
-				writer << m_transform(*item, index);
+				m_transform(writer, *item, index);
 
 				index++;
+			}
+
+			if (index > 0 &&
+				!m_options.skipLastItemEndSeparator)
+			{
+				writer << m_options.chunkEndSeparator;
 			}
 		}
 
@@ -166,7 +200,7 @@ namespace panini
 		TIterator m_begin;
 		TIterator m_end;
 		CommaListOptions m_options;
-		std::function<std::string(const TUnderlying&, size_t)> m_transform;
+		std::function<void(WriterBase&, const TUnderlying&, size_t)> m_transform;
 
 	};
 

@@ -115,7 +115,7 @@ namespace panini
 
 		inline void Visit(WriterBase& writer) final
 		{
-			BraceBreakingStyle breakingStyle =
+			const BraceBreakingStyle breakingStyle =
 				m_options.breakingStyle == BraceBreakingStyle::Inherit
 					? writer.GetBraceBreakingStyle()
 					: m_options.breakingStyle;

@@ -23,6 +23,8 @@
 
 #include "data/IncludeEntry.hpp"
 
+#include <filesystem>
+
 namespace panini
 {
 
@@ -48,7 +50,7 @@ namespace panini
 		*/
 		inline IncludeSet(std::initializer_list<IncludeEntry> entries)
 		{
-			for (auto& entry : entries)
+			for (const IncludeEntry& entry : entries)
 			{
 				Add(entry.path, entry.style);
 			}
@@ -57,9 +59,11 @@ namespace panini
 		/*!
 			Construct an IncludeSet from a list of paths and an IncludeStyle.
 		*/
-		inline IncludeSet(std::initializer_list<std::filesystem::path> paths, IncludeStyle style)
+		inline IncludeSet(
+			std::initializer_list<std::filesystem::path> paths,
+			IncludeStyle style)
 		{
-			for (auto& path : paths)
+			for (const std::filesystem::path& path : paths)
 			{
 				Add(path, style);
 			}
@@ -115,13 +119,19 @@ namespace panini
 			\note Duplicate paths will note be added, unless they differ in
 			IncludeStyle.
 		*/
-		inline void Add(const std::filesystem::path& path, IncludeStyle style = IncludeStyle::Inherit)
+		inline void Add(
+			const std::filesystem::path& path,
+			IncludeStyle style = IncludeStyle::Inherit)
 		{
 			// check if the path is not already known
 
-			auto found = std::find_if(m_entries.begin(), m_entries.end(), [&path, &style](const IncludeEntry& it) {
-				return it.path == path && it.style == style;
-			});
+			auto found = std::find_if(
+				m_entries.begin(),
+				m_entries.end(),
+				[&path, &style](const IncludeEntry& it) {
+					return it.path == path && it.style == style;
+				}
+			);
 			if (found != m_entries.end())
 			{
 				return;
@@ -129,8 +139,7 @@ namespace panini
 
 			// add new entry to list
 
-			IncludeEntry entry(path, style);
-			m_entries.emplace_back(entry);
+			m_entries.emplace_back(IncludeEntry{ path, style });
 		}
 
 		/*!
@@ -192,29 +201,33 @@ namespace panini
 
 				// paths with folders should come before files
 
-				std::string regularPath = entry.path.string();
+				const std::string path = entry.path.string();
 
 				size_t offset = 0;
-				size_t nextSlash = 0;
-				while ((nextSlash = regularPath.find_first_of('/', offset)) != std::string::npos)
+				size_t next = 0;
+				while ((next = path.find_first_of('/', offset)) != std::string::npos)
 				{
 					entry.priority--;
-					offset = nextSlash + 1;
+					offset = next + 1;
 				}
 			}
 
 			// sort by priority and path
 
-			std::sort(m_entries.begin(), m_entries.end(), [](IncludeEntry& left, IncludeEntry& right) {
-				if (left.priority != right.priority)
-				{
-					return left.priority < right.priority;
+			std::sort(
+				m_entries.begin(),
+				m_entries.end(),
+				[](IncludeEntry& left, IncludeEntry& right) {
+					if (left.priority != right.priority)
+					{
+						return left.priority < right.priority;
+					}
+					else
+					{
+						return left.path < right.path;
+					}
 				}
-				else
-				{
-					return left.path < right.path;
-				}
-			});
+			);
 		}
 
 	private:

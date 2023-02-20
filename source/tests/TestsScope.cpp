@@ -1,7 +1,7 @@
 /*
 	MIT No Attribution
 
-	Copyright 2021-2022 Mr. Hands
+	Copyright 2021-2023 Mr. Hands
 
 	Permission is hereby granted, free of charge, to any person obtaining a copy
 	of this software and associated documentation files (the "Software"), to
@@ -22,7 +22,21 @@
 #include <gtest/gtest.h>
 #include <Panini.hpp>
 
-TEST(Scope, Regular)
+TEST(Scope, BreakingStyleInheritEmpty)
+{
+	using namespace panini;
+
+	std::string t;
+	StringWriter w(t);
+
+	w << Scope("", [](WriterBase&) {
+	});
+
+	EXPECT_STREQ(R"({
+})", t.c_str());
+}
+
+TEST(Scope, BreakingStyleInheritRegular)
 {
 	using namespace panini;
 
@@ -39,23 +53,21 @@ TEST(Scope, Regular)
 })", t.c_str());
 }
 
-TEST(Scope, Empty)
+TEST(Scope, BreakingStyleAttachEmpty)
 {
 	using namespace panini;
 
 	std::string t;
 	StringWriter w(t);
 
-	w << Scope("", [](WriterBase& writer) {
-		writer << "bool game_running = true;" << NextLine();
-	});
+	w << Scope("", [](WriterBase&) {
+	}, BraceBreakingStyle::Attach);
 
 	EXPECT_STREQ(R"({
-	bool game_running = true;
 })", t.c_str());
 }
 
-TEST(Scope, OverrideBracesAttach)
+TEST(Scope, BreakingStyleAttachRegular)
 {
 	using namespace panini;
 
@@ -71,7 +83,133 @@ TEST(Scope, OverrideBracesAttach)
 })", t.c_str());
 }
 
-TEST(Scope, ConfigBracesAttach)
+TEST(Scope, BreakingStyleAllmanEmpty)
+{
+	using namespace panini;
+
+	std::string t;
+	StringWriter w(t);
+
+	w << Scope("", [](WriterBase&) {
+	}, BraceBreakingStyle::Allman);
+
+	EXPECT_STREQ(R"({
+})", t.c_str());
+}
+
+TEST(Scope, BreakingStyleAllmanRegular)
+{
+	using namespace panini;
+
+	std::string t;
+	StringWriter w(t);
+
+	w << Scope("dipInAndOut()", [](WriterBase& writer) {
+		writer << "charge(EPremium);" << NextLine();
+	}, BraceBreakingStyle::Allman);
+
+	EXPECT_STREQ(R"(dipInAndOut()
+{
+	charge(EPremium);
+})", t.c_str());
+}
+
+TEST(Scope, BreakingStyleWhitesmithsEmpty)
+{
+	using namespace panini;
+
+	std::string t;
+	StringWriter w(t);
+
+	w << Scope("", [](WriterBase&) {
+	}, BraceBreakingStyle::Whitesmiths);
+
+	EXPECT_STREQ(R"({
+})", t.c_str());
+}
+
+TEST(Scope, BreakingStyleWhitesmithsRegular)
+{
+	using namespace panini;
+
+	std::string t;
+	StringWriter w(t);
+
+	w << Scope("cooking()", [](WriterBase& writer) {
+		writer << "scale(with_ingredients);" << NextLine();
+	}, BraceBreakingStyle::Whitesmiths);
+
+	EXPECT_STREQ(R"(cooking()
+	{
+	scale(with_ingredients);
+	})", t.c_str());
+}
+
+TEST(Scope, ScopeOptionsInherit)
+{
+	using namespace panini;
+
+	std::string t;
+	StringWriter w(t);
+
+	ScopeOptions o;
+	o.chunkBraceOpen = "<<";
+	o.chunkBraceClose = ">>";
+
+	w << Scope("strawberry", [](WriterBase& w) {
+		w << "franchises;" << NextLine();
+	}, o);
+
+	EXPECT_STREQ(R"(strawberry
+<<
+	franchises;
+>>)", t.c_str());
+}
+
+TEST(Scope, ScopeOptionsAttach)
+{
+	using namespace panini;
+
+	std::string t;
+	StringWriter w(t);
+
+	ScopeOptions o;
+	o.breakingStyle = BraceBreakingStyle::Attach;
+	o.chunkBraceOpen = "{{";
+	o.chunkBraceClose = "}}";
+
+	w << Scope("steak", [](WriterBase& w) {
+		w << "laborCosts();" << NextLine();
+	}, o);
+
+	EXPECT_STREQ(R"(steak {{
+	laborCosts();
+}})", t.c_str());
+}
+
+TEST(Scope, ScopeOptionsWhitesmiths)
+{
+	using namespace panini;
+
+	std::string t;
+	StringWriter w(t);
+
+	ScopeOptions o;
+	o.breakingStyle = BraceBreakingStyle::Whitesmiths;
+	o.chunkBraceOpen = "d";
+	o.chunkBraceClose = "b";
+
+	w << Scope("WhatAreYou", [](WriterBase& w) {
+		w << "LovingSandwich" << NextLine();
+	}, o);
+
+	EXPECT_STREQ(R"(WhatAreYou
+	d
+	LovingSandwich
+	b)", t.c_str());
+}
+
+TEST(Scope, InheritConfigAttach)
 {
 	using namespace panini;
 
@@ -81,10 +219,14 @@ TEST(Scope, ConfigBracesAttach)
 	StringWriter w(t, c);
 
 	w << Scope("struct Public", [](WriterBase& writer) {
-		writer << "Public() = default;" << NextLine();
+		writer << Scope("Public()", [](WriterBase& writer) {
+			writer << "m_private = true;" << NextLine();
+		}) << NextLine();
 	});
 
 	EXPECT_STREQ(R"(struct Public {
-	Public() = default;
+	Public() {
+		m_private = true;
+	}
 })", t.c_str());
 }

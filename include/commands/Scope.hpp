@@ -86,7 +86,7 @@ namespace panini
 			TCallback&& callback,
 			BraceBreakingStyle breakingStyle = BraceBreakingStyle::Inherit)
 			: m_name(name)
-			, m_callback(callback)
+			, m_callback(std::move(callback))
 		{
 			m_options.breakingStyle = breakingStyle;
 		}
@@ -107,9 +107,29 @@ namespace panini
 			TCallback&& callback,
 			BraceBreakingStyle breakingStyle = BraceBreakingStyle::Inherit)
 			: m_name(name)
-			, m_callback(callback)
+			, m_callback(std::move(callback))
 		{
 			m_options.breakingStyle = breakingStyle;
+		}
+
+		inline Scope(
+			std::string&& name,
+			TCallback&& callback,
+			const ScopeOptions& options)
+			: m_name(name)
+			, m_callback(std::move(callback))
+			, m_options(options)
+		{
+		}
+
+		inline Scope(
+			const std::string& name,
+			TCallback&& callback,
+			const ScopeOptions& options)
+			: m_name(name)
+			, m_callback(std::move(callback))
+			, m_options(options)
+		{
 		}
 
 		inline void Visit(WriterBase& writer) final

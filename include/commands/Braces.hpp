@@ -22,20 +22,25 @@
 #pragma once
 
 #include "commands/CommandBase.hpp"
+#include "options/BracesOptions.hpp"
 #include "writers/WriterBase.hpp"
 
 namespace panini
 {
 
 	/*!
-		\brief Command for outputting opening and closing curly braces.
+		\brief Command for outputting opening and closing (curly) braces.
 
-		Adding opening and closing braces to the output can be frustrating
-		to do by hand because you have to take the brace breaking style and
-		indentation into account. This command handles that for you.
+		This command tracks the current indentation level and takes the brace
+		breaking style into account when outputting braces. You can change both
+		the brace breaking style and the brace chunks it outputs with the
+		\ref BracesOptions parameter.
+
+		After outputting the opening brace, the Braces command calls a callback
+		with the current \ref WriterBase instance as a parameter.
 
 		If you want to prefix the opening brace with a chunk, it may be
-		beneficial to use a Scope instead.
+		beneficial to use a \ref Scope instead.
 
 		\note The command will *not* output a space before the opening brace if
 		the brace breaking style was set to BraceBreakingStyle::Attach
@@ -44,7 +49,7 @@ namespace panini
 
 		\code{.cpp}
 			writer << Braces([](WriterBase& writer) {
-				writer << "const char* passwords[] = " << Braces([](WriterBrace& writer) {
+				writer << "const char* passwords[] = " << Braces([](WriterBase& writer) {
 					writer << R"("password",)" << NextLine();
 					writer << R"("p4ssw0rd")" << NextLine();
 				}, BraceBreakingStyle::Attach) << ";" << NextLine();
@@ -72,28 +77,46 @@ namespace panini
 		using TCallback = std::function<void(WriterBase&)>;
 
 		/*!
+			Create a Braces command with a callback that is moved into the
+			instance.
+
+			The callback is called when the command is visited by a
+			\ref WriterBase.
+
+			Setting the `breakingStyle` parameter to \ref BraceBreakingStyle::Inherit
+			copies the brace breaking style from the writer, otherwise it will
+			be overridden for this command only.
+		*/
+		inline Braces(TCallback&& callback, BraceBreakingStyle breakingStyle = BraceBreakingStyle::Inherit)
+			: m_callback(callback)
+		{
+			m_options.breakingStyle = breakingStyle;
+		}
+
+		/*!
 			Create a Braces command a `callback` that is moved into the
 			instance.
 
 			The callback is called when the command is visited by a
 			\ref WriterBase.
 
-			Setting the `style` parameter to \ref BraceBreakingStyle::Inherit
-			copies the brace breaking style from the writer, otherwise it will
-			be overridden for this command only.
+			Setting the `breakingStyle` parameter in the options to
+			\ref BraceBreakingStyle::Inherit copies the brace breaking style
+			from the writer, otherwise it will be overridden for this command
+			only.
 		*/
-		inline Braces(TCallback&& callback, BraceBreakingStyle braceStyle = BraceBreakingStyle::Inherit)
+		inline Braces(TCallback&& callback, const BracesOptions& options)
 			: m_callback(callback)
-			, m_braceStyle(braceStyle)
+			, m_options(options)
 		{
 		}
 
 		inline virtual void Visit(WriterBase& writer) final
 		{
 			BraceBreakingStyle breakingStyle =
-				m_braceStyle == BraceBreakingStyle::Inherit
+				m_options.breakingStyle == BraceBreakingStyle::Inherit
 					? writer.GetBraceBreakingStyle()
-					: m_braceStyle;
+					: m_options.breakingStyle;
 
 			const bool wasNewLine = writer.IsOnNewLine();
 
@@ -102,9 +125,9 @@ namespace panini
 
 			case BraceBreakingStyle::Attach:
 				{
-					writer << "{" << IndentPush() << NextLine();
+					writer << m_options.chunkBraceOpen << IndentPush() << NextLine();
 					m_callback(writer);
-					writer << IndentPop() << "}";
+					writer << IndentPop() << m_options.chunkBraceClose;
 
 				} break;
 
@@ -115,9 +138,9 @@ namespace panini
 						writer << NextLine();
 					}
 
-					writer << "{" << IndentPush() << NextLine();
+					writer << m_options.chunkBraceOpen << IndentPush() << NextLine();
 					m_callback(writer);
-					writer << IndentPop() << "}";
+					writer << IndentPop() << m_options.chunkBraceClose;
 
 				} break;
 
@@ -128,9 +151,9 @@ namespace panini
 						writer << NextLine() << IndentPush();
 					}
 
-					writer << "{" << NextLine();
+					writer << m_options.chunkBraceOpen << NextLine();
 					m_callback(writer);
-					writer << "}";
+					writer << m_options.chunkBraceClose;
 
 					if (!wasNewLine)
 					{
@@ -141,12 +164,13 @@ namespace panini
 
 			default:
 				break;
+
 			}
 		}
 
 	private:
 		TCallback m_callback;
-		BraceBreakingStyle m_braceStyle;
+		BracesOptions m_options;
 
 	};
 

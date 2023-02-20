@@ -21,20 +21,21 @@
 
 #pragma once
 
+#include <string>
+
+#include "data/BraceBreakingStyle.hpp"
+
 namespace panini
 {
 
 	/*!
-		\enum BraceBreakingStyle
-		\brief Brace breaking style to use when writing to output.
-		\ingroup Globals
+		\brief Options for the \ref Braces command.
 	*/
-	enum class BraceBreakingStyle
+	struct BracesOptions
 	{
-		Inherit,      //!< Inherit setting from the config, not valid on \ref WriterBase
-		Attach,       //!< Open brace on the same line
-		Allman,       //!< New line before brace open
-		Whitesmiths   //!< New line and indent before brace open and brace close
+		BraceBreakingStyle breakingStyle = BraceBreakingStyle::Inherit;
+		std::string chunkBraceOpen = "{";
+		std::string chunkBraceClose = "}";
 	};
 
 };

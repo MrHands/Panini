@@ -23,6 +23,7 @@
 
 #include "commands/Braces.hpp"
 #include "commands/CommandBase.hpp"
+#include "options/ScopeOptions.hpp"
 #include "writers/WriterBase.hpp"
 
 namespace panini
@@ -67,6 +68,8 @@ namespace panini
 	{
 
 	public:
+		using TCallback = std::function<void(WriterBase&)>;
+
 		/*!
 			Create a Scope with a `name` and a `callback` that are moved into
 			the instance.
@@ -74,15 +77,18 @@ namespace panini
 			The callback is called when the command is visited by a
 			\ref WriterBase.
 			
-			Setting the `style` parameter to \ref BraceBreakingStyle::Inherit
+			Setting the `breakingStyle` parameter to \ref BraceBreakingStyle::Inherit
 			copies the brace breaking style from the writer, otherwise it will
 			be overridden for this command only.
 		*/
-		inline Scope(std::string&& name, std::function<void(WriterBase&)>&& callback, BraceBreakingStyle style = BraceBreakingStyle::Inherit)
+		inline Scope(
+			std::string&& name,
+			TCallback&& callback,
+			BraceBreakingStyle breakingStyle = BraceBreakingStyle::Inherit)
 			: m_name(name)
 			, m_callback(callback)
-			, m_style(style)
 		{
+			m_options.breakingStyle = breakingStyle;
 		}
 
 		/*!
@@ -92,41 +98,44 @@ namespace panini
 			The callback is called when the command is visited by a
 			\ref WriterBase.
 
-			Setting the `style` parameter to \ref BraceBreakingStyle::Inherit
+			Setting the `breakingStyle` parameter to \ref BraceBreakingStyle::Inherit
 			copies the brace breaking style from the writer, otherwise it will
 			be overridden for this command only.
 		*/
-		inline Scope(const std::string& name, std::function<void(WriterBase&)>&& callback, BraceBreakingStyle braceStyle = BraceBreakingStyle::Inherit)
+		inline Scope(
+			const std::string& name,
+			TCallback&& callback,
+			BraceBreakingStyle breakingStyle = BraceBreakingStyle::Inherit)
 			: m_name(name)
 			, m_callback(callback)
-			, m_style(braceStyle)
 		{
+			m_options.breakingStyle = breakingStyle;
 		}
 
-		inline virtual void Visit(WriterBase& writer) final
+		inline void Visit(WriterBase& writer) final
 		{
-			BraceBreakingStyle braceStyle =
-				m_style == BraceBreakingStyle::Inherit
+			const BraceBreakingStyle breakingStyle =
+				m_options.breakingStyle == BraceBreakingStyle::Inherit
 					? writer.GetBraceBreakingStyle()
-					: m_style;
+					: m_options.breakingStyle;
 
 			if (!m_name.empty())
 			{
 				writer << m_name;
 
-				if (braceStyle == BraceBreakingStyle::Attach)
+				if (breakingStyle == BraceBreakingStyle::Attach)
 				{
-					writer << " ";
+					writer << m_options.chunkAttachSpacing;
 				}
 			}
 
-			writer << Braces(std::move(m_callback), braceStyle);
+			writer << Braces(std::move(m_callback), m_options);
 		}
 
 	private:
 		std::string m_name;
-		std::function<void(WriterBase&)> m_callback;
-		BraceBreakingStyle m_style;
+		TCallback m_callback;
+		ScopeOptions m_options;
 
 	};
 

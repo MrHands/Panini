@@ -33,8 +33,24 @@ namespace panini
 	*/
 	struct BracesOptions
 	{
+		/*!
+			Brace breaking style to use for the command.
+
+			When this parameter is set to \ref BraceBreakingStyle::Inherit,
+			the brace breaking style is copied from the active writer.
+
+			\sa WriterBase::GetBraceBreakingStyle
+		*/
 		BraceBreakingStyle breakingStyle = BraceBreakingStyle::Inherit;
+
+		/*!
+			Chunk inserted to open the scope.
+		*/
 		std::string chunkBraceOpen = "{";
+
+		/*!
+			Chunk inserted to close the scope.
+		*/
 		std::string chunkBraceClose = "}";
 	};
 

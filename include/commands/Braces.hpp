@@ -87,7 +87,9 @@ namespace panini
 			copies the brace breaking style from the writer, otherwise it will
 			be overridden for this command only.
 		*/
-		inline Braces(TCallback&& callback, BraceBreakingStyle breakingStyle = BraceBreakingStyle::Inherit)
+		inline Braces(
+			TCallback&& callback,
+			BraceBreakingStyle breakingStyle = BraceBreakingStyle::Inherit)
 			: m_callback(callback)
 		{
 			m_options.breakingStyle = breakingStyle;
@@ -111,7 +113,7 @@ namespace panini
 		{
 		}
 
-		inline virtual void Visit(WriterBase& writer) final
+		inline void Visit(WriterBase& writer) final
 		{
 			BraceBreakingStyle breakingStyle =
 				m_options.breakingStyle == BraceBreakingStyle::Inherit

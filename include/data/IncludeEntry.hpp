@@ -21,7 +21,7 @@
 
 #pragma once
 
-#include "Config.hpp"
+#include "data/IncludeStyle.hpp"
 
 namespace panini
 {

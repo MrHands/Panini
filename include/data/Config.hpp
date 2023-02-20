@@ -21,33 +21,11 @@
 
 #pragma once
 
+#include "data/BraceBreakingStyle.hpp"
+#include "data/IncludeStyle.hpp"
+
 namespace panini
 {
-	/*!
-		\enum BraceBreakingStyle
-		\brief Brace breaking style to use when writing to output.
-		\ingroup Globals
-	*/
-	enum class BraceBreakingStyle
-	{
-		Inherit,      //!< Inherit setting from the config, not valid on WriterBase
-		Attach,       //!< Open brace on the same line
-		Allman,       //!< New line before brace open
-		Whitesmiths   //!< New line and indent before brace open and brace close
-	};
-
-	/*!
-		\enum IncludeStyle
-		\brief Include style to use when writing to output.
-		\ingroup Globals
-	*/
-	enum class IncludeStyle
-	{
-		Inherit,         //!< Inherit setting from the config, not valid on WriterBase
-		DoubleQuotes,    //!< Output double quotation marks ""
-		SingleQuotes,    //!< Output single quotation marks '' (not valid for C++)
-		AngularBrackets  //!< Output angular brackets <>
-	};
 
 	/*!
 		\brief Global configuration applied to writers.

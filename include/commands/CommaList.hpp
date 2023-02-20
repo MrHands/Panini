@@ -22,7 +22,7 @@
 #pragma once
 
 #include "commands/CommandBase.hpp"
-#include "data/CommaListOptions.hpp"
+#include "options/CommaListOptions.hpp"
 
 #include <type_traits>
 

@@ -70,6 +70,11 @@ file(
 	${${PROJECT_NAME}_SOURCE_DIR}/include/data/*.hpp
 )
 file(
+	GLOB PANINI_OPTIONS_DATA
+	CONFIGURE_DEPENDS
+	${${PROJECT_NAME}_SOURCE_DIR}/include/options/*.hpp
+)
+file(
 	GLOB PANINI_INCLUDES_WRITERS
 	CONFIGURE_DEPENDS
 	${${PROJECT_NAME}_SOURCE_DIR}/include/writers/*.hpp
@@ -80,6 +85,7 @@ add_library(
 	${PANINI_INCLUDES}
 	${PANINI_INCLUDES_COMMANDS}
 	${PANINI_INCLUDES_DATA}
+	${PANINI_OPTIONS_DATA}
 	${PANINI_INCLUDES_WRITERS}
 )
 
@@ -94,6 +100,7 @@ set_target_properties(
 source_group("include" FILES ${PANINI_INCLUDES})
 source_group("include/commands" FILES ${PANINI_INCLUDES_COMMANDS})
 source_group("include/data" FILES ${PANINI_INCLUDES_DATA})
+source_group("include/options" FILES ${PANINI_OPTIONS_DATA})
 source_group("include/writers" FILES ${PANINI_INCLUDES_WRITERS})
 
 target_include_directories(

@@ -48,11 +48,13 @@ namespace panini
 
 		Finally, you can add a transform function to the command, which will be
 		called once for each item in the list and is used to transform your data
-		before being passed to the writer.
+		to a format that the active writer can process.
 
 		Example:
 
 		\code{.cpp}
+			std::vector<std::string> myEnums{ "DUCK_CAR", "DUCK_PLANE", "DUCK_MARINE" };
+
 			writer << Scope("enum Vehicles", [](WriterBase& writer) {
 				CommaListOptions options;
 				options.chunkEndSeparator = ",";
@@ -91,6 +93,16 @@ namespace panini
 		>::type;
 
 		/*!
+			Function for transforming elements in the list to chunks for a \ref
+			WriterBase instance.
+
+			\param writer     Active writer.
+			\param item       Value being processed.
+			\param listIndex  Index of the value in the list.
+		*/
+		using TTransform = std::function<void(WriterBase& writer, const TUnderlying& item, size_t listIndex)>;
+
+		/*!
 			\brief Default transform function for the command.
 
 			Each iterated item is passed through a function that "transforms" it
@@ -99,16 +111,14 @@ namespace panini
 			The default implementation calls `std::to_string`, which will handle
 			most standard types.
 
-			\param writer   Active writer.
-			\param item     Value being processed.
-			\param index    Index of the value in the list.
-
-			\return Source value represented as a string.
+			\param writer     Active writer.
+			\param item       Value being processed.
+			\param listIndex  Index of the value in the list.
 		*/
 		template <typename TItem>
-		static void DefaultTransform(WriterBase& writer, const TItem& item, size_t index)
+		static void DefaultTransform(WriterBase& writer, const TItem& item, size_t listIndex)
 		{
-			(void)index;
+			(void)listIndex;
 
 			writer << std::to_string(item);
 		}
@@ -116,11 +126,15 @@ namespace panini
 		/*!
 			Specialization for transforming string items that passes the input
 			through unchanged.
+
+			\param writer     Active writer.
+			\param item       Value being processed.
+			\param listIndex  Index of the value in the list.
 		*/
 		template <>
-		static void DefaultTransform(WriterBase& writer, const std::string& item, size_t index)
+		static void DefaultTransform(WriterBase& writer, const std::string& item, size_t listIndex)
 		{
-			(void)index;
+			(void)listIndex;
 
 			writer << item;
 		}
@@ -155,7 +169,7 @@ namespace panini
 			TIterator begin,
 			TIterator end,
 			const CommaListOptions& options,
-			std::function<void(WriterBase&, const TUnderlying&, size_t)>&& transform)
+			TTransform&& transform)
 			: m_begin(begin)
 			, m_end(end)
 			, m_options(options)
@@ -200,7 +214,7 @@ namespace panini
 		TIterator m_begin;
 		TIterator m_end;
 		CommaListOptions m_options;
-		std::function<void(WriterBase&, const TUnderlying&, size_t)> m_transform;
+		TTransform m_transform;
 
 	};
 

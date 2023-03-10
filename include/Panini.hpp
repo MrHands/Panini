@@ -45,6 +45,7 @@
 #include "commands/CommaList.hpp"
 #include "commands/CommentBlock.hpp"
 #include "commands/CommentLine.hpp"
+#include "commands/FeatureFlag.hpp"
 #include "commands/Include.hpp"
 #include "commands/IncludeBlock.hpp"
 #include "commands/IndentPop.hpp"

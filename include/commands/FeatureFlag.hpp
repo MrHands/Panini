@@ -33,14 +33,21 @@ namespace panini
 	public:
 		using TCallback = std::function<void(WriterBase&)>;
 
-		FeatureFlag(bool condition, const std::string& comment, TCallback&& callbackThen)
+		inline FeatureFlag(
+			bool condition,
+			const std::string& comment,
+			TCallback&& callbackThen)
 			: m_condition(condition)
 			, m_comment(comment)
 			, m_callbackThen(std::move(callbackThen))
 		{
 		}
 
-		FeatureFlag(bool condition, const std::string& comment, TCallback&& callbackThen, TCallback&& callbackElse)
+		inline FeatureFlag(
+			bool condition,
+			const std::string& comment,
+			TCallback&& callbackThen,
+			TCallback&& callbackElse)
 			: m_condition(condition)
 			, m_comment(comment)
 			, m_callbackThen(std::move(callbackThen))
@@ -48,7 +55,7 @@ namespace panini
 		{
 		}
 
-		void Visit(WriterBase& writer) override
+		inline void Visit(WriterBase& writer) override
 		{
 			if (m_condition)
 			{

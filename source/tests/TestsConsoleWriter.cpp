@@ -1,7 +1,7 @@
 /*
 	MIT No Attribution
 
-	Copyright 2021-2022 Mr. Hands
+	Copyright 2021-2023 Mr. Hands
 
 	Permission is hereby granted, free of charge, to any person obtaining a copy
 	of this software and associated documentation files (the "Software"), to
@@ -26,7 +26,13 @@ TEST(ConsoleWriter, Write)
 {
 	using namespace panini;
 
-	ConsoleWriter w;
+	std::stringstream ss;
+
+	ConsoleWriter w(ss);
 	w << "Hello from console!" << NextLine();
 	w << IndentPush() << "And me!" << NextLine();
+
+	EXPECT_STREQ(R"(Hello from console!
+	And me!
+)", ss.str().c_str());
 }

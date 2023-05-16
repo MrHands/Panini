@@ -1,7 +1,7 @@
 /*
 	MIT No Attribution
 
-	Copyright 2021-2022 Mr. Hands
+	Copyright 2021-2023 Mr. Hands
 
 	Permission is hereby granted, free of charge, to any person obtaining a copy
 	of this software and associated documentation files (the "Software"), to
@@ -29,7 +29,9 @@ namespace panini
 	/*!
 		\brief Writes output to the console.
 
-		The \ref Config instance is used to configure the output.
+		The ConsoleWriter will write to `std::cout` by default, which is the
+		default output stream for console programs. You can write to a different
+		stream by supplying it as the first argument to the constructor.
 	*/
 	class ConsoleWriter
 		: public WriterBase
@@ -37,22 +39,37 @@ namespace panini
 
 	public:
 		/*!
-			Construct and configure the writer.
+			Write to the default output stream for console programs.
 
-			\param config  Configuration instance.
+			\param config  Configuration instance
 		*/
 		inline explicit ConsoleWriter(const Config& config = Config())
 			: WriterBase(config)
+			, m_outputStream(std::cout)
+		{
+		}
+
+		/*!
+			Configure the output stream to use for the writer.
+
+			\param outputStream Stream used for writing
+			\param config Configuration instance
+		*/
+		inline explicit ConsoleWriter(
+			std::ostream& outputStream,
+			const Config& config = Config())
+			: WriterBase(config)
+			, m_outputStream(outputStream)
 		{
 		}
 
 	protected:
 		/*!
-			Writes the chunk to the standard output of a console window.
+			Writes the chunk to the console stream.
 		*/
 		inline void Write(const std::string& chunk) override
 		{
-			std::cout << chunk;
+			m_outputStream << chunk;
 		}
 
 		/*
@@ -60,7 +77,7 @@ namespace panini
 		*/
 		inline void WriteNewLine() override
 		{
-			std::cout << std::endl;
+			m_outputStream << std::endl;
 		}
 
 		/*
@@ -72,6 +89,9 @@ namespace panini
 
 			return true;
 		}
+
+	protected:
+		std::ostream& m_outputStream;
 
 	};
 

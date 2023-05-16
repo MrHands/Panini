@@ -165,28 +165,9 @@ namespace panini
 
 			const std::string& indentStr = GetConfig().chunkIndent;
 
-			// new line
-
-			if (chunk == GetConfig().chunkNewLine)
-			{
-				SetColor(Colors::Fuchsia, Colors::White);
-				WriteChunk("<LF>");
-				ResetStyles();
-
-				SetCursorPosition(0, m_cursorY + 1);
-
-				// handle input
-
-				if (m_isDebugging)
-				{
-					HandleInput("Press <Enter> to continue debugging, <Q> to quit");
-				}
-			}
-
 			// indentation
 
-			else if (
-				chunk.substr(0, indentStr.length()) == indentStr)
+			if (chunk.substr(0, indentStr.length()) == indentStr)
 			{
 				size_t offset = 0;
 				int32_t count = 0;
@@ -214,11 +195,32 @@ namespace panini
 			}
 		}
 
+		inline void WriteNewLine() override
+		{
+			SetColor(Colors::Fuchsia, Colors::White);
+			WriteChunk("<LF>");
+			ResetStyles();
+
+			SetCursorPosition(0, m_cursorY + 1);
+
+			// handle input
+
+			if (m_isDebugging)
+			{
+				HandleInput("Press <Enter> to continue, <Q> to quit debugging");
+			}
+		}
+
 		inline bool OnCommit(bool force = false) override
 		{
 			(void)force;
 
-			HandleInput("<END>");
+			if (m_initialized)
+			{
+				HandleInput("<END>");
+
+				m_initialized = false;
+			}
 
 			SetCursorPosition(0, m_cursorY + 1);
 

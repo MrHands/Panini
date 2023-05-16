@@ -50,15 +50,20 @@ namespace panini
 		/*!
 			Writes the chunk to the standard output of a console window.
 		*/
-		inline virtual void Write(const std::string& chunk) override
+		inline void Write(const std::string& chunk) override
 		{
+			if (IsOnNewLine())
+			{
+				std::cout << std::endl;
+			}
+
 			std::cout << chunk;
 		}
 
 		/*
 			Commits the console when the writer is destroyed.
 		*/
-		inline virtual bool OnCommit(bool force) override
+		inline bool OnCommit(bool force) override
 		{
 			(void)force;
 

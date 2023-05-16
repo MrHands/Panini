@@ -1,7 +1,7 @@
 /*
 	MIT No Attribution
 
-	Copyright 2021-2022 Mr. Hands
+	Copyright 2021-2023 Mr. Hands
 
 	Permission is hereby granted, free of charge, to any person obtaining a copy
 	of this software and associated documentation files (the "Software"), to
@@ -30,10 +30,10 @@ class XmlElement
 {
 
 public:
-	XmlElement(std::string&& name, std::string&& properties, std::function<void(panini::WriterBase&)>&& callback)
+	XmlElement(const std::string& name, const std::string& properties, std::function<void(panini::WriterBase&)>&& callback)
 		: m_name(name)
 		, m_properties(properties)
-		, m_callback(callback)
+		, m_callback(std::move(callback))
 	{
 	}
 
@@ -54,9 +54,9 @@ public:
 
 		writer << IndentPop() << "</" << m_name << ">";
 
-		// protip: never end a command with a NextLine() command!
-		// because panini is write-forward only, you cannot undo a new line
-		// if it turns out you don't need it on the next command
+		// Protip: Never end a custom command with a NextLine() command! Panini
+		// is write-forward only, meaning that you cannot undo a new line if it
+		// turns out you don't need it on the next command.
 	}
 
 private:
@@ -73,7 +73,7 @@ int main(int argc, char** argv)
 
 	using namespace panini;
 
-	// logging
+	// set up logging to the console
 
 	ConsoleWriter logger;
 
@@ -83,16 +83,16 @@ int main(int argc, char** argv)
 	config.chunkIndent = "  ";
 	config.chunkNewLine = "\r\n";
 
-	// the CompareWriter will compare the output against an existing file
-	// if the generated output was changed it will write it to the specified
-	// path
+	// the CompareWriter will compare the output against an existing file if the
+	// generated output was changed it will write it to the specified path
 
 	logger << "Generating MyStory.vcxproj..." << NextLine();
+	logger << NextLine();
 
 	CompareWriter writer("MyStory.vcxproj", config);
 
 	// the R"XML()XML" syntax is used here to allow us to write strings
-	// directly without having to escape characters like "
+	// directly without having to escape characters like quotation marks (")
 
 	writer << R"XML(<?xml version="1.0" encoding="utf-8"?>)XML" << NextLine();
 	writer << XmlElement("Project", R"XML(DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003")XML", [](WriterBase& writer) {

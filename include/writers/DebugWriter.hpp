@@ -124,7 +124,7 @@ namespace panini
 		/*!
 			Will call Commit() automatically when the writer is destroyed.
 		*/
-		inline virtual ~DebugWriter() override
+		inline ~DebugWriter() override
 		{
 			Commit();
 		}
@@ -132,7 +132,7 @@ namespace panini
 		/*!
 			Always handle remaining input when \ref Commit is called.
 		*/
-		inline virtual bool IsChanged() const override
+		inline bool IsChanged() const override
 		{
 			return true;
 		}
@@ -141,7 +141,7 @@ namespace panini
 		/*!
 			Writes the chunk to the console.
 		*/
-		inline virtual void Write(const std::string& chunk) override
+		inline void Write(const std::string& chunk) override
 		{
 			if (!m_initialized)
 			{
@@ -214,7 +214,7 @@ namespace panini
 			}
 		}
 
-		inline virtual bool OnCommit(bool force = false) override
+		inline bool OnCommit(bool force = false) override
 		{
 			(void)force;
 

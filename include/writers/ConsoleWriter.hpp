@@ -52,16 +52,19 @@ namespace panini
 		*/
 		inline void Write(const std::string& chunk) override
 		{
-			if (IsOnNewLine())
-			{
-				std::cout << std::endl;
-			}
-
 			std::cout << chunk;
 		}
 
 		/*
-			Commits the console when the writer is destroyed.
+			Flush the console output on a new line.
+		*/
+		inline void WriteNewLine() override
+		{
+			std::cout << std::endl;
+		}
+
+		/*
+			Always commit to the console when the writer is destroyed.
 		*/
 		inline bool OnCommit(bool force) override
 		{

@@ -32,8 +32,8 @@ namespace panini
 	/*!
 		\brief Base class for writers.
 
-		Writers take chunks and commands as input and process them to a target. They
-		are configured with a \ref Config instance that is passed to their
+		Writers take chunks and commands as input and process them to a target.
+		They are configured with a \ref Config instance that is passed to their
 		constructor.
 
 		Writers commit their output to a target automatically when they are
@@ -186,7 +186,7 @@ namespace panini
 				Write(" *");
 			}
 
-			Write(m_config.chunkNewLine);
+			WriteNewLine();
 
 			m_state = State::NewLine;
 
@@ -234,14 +234,20 @@ namespace panini
 			{
 				if (m_lineIndentCount > 0)
 				{
-					CacheIndentation(m_lineIndentCached, --m_lineIndentCount);
+					CacheIndentation(
+						m_lineIndentCached,
+						--m_lineIndentCount
+					);
 				}
 			}
 			else
 			{
 				if (m_commentIndentCount > 0)
 				{
-					CacheIndentation(m_commentIndentCached, --m_commentIndentCount);
+					CacheIndentation(
+						m_commentIndentCached,
+						--m_commentIndentCount
+					);
 				}
 			}
 
@@ -277,8 +283,8 @@ namespace panini
 		}
 
 		/*!
-			Check if the output was changed compared to what the implementation has
-			seen before.
+			Check if the output was changed compared to what the implementation
+			has seen before.
 		*/
 		inline virtual bool IsChanged() const
 		{
@@ -301,14 +307,20 @@ namespace panini
 
 	protected:
 		/*!
-			Interface for writing chunks to the output. Must be implemented by
-			derived classes.
+			Writes chunks to the output.
 		*/
 		virtual void Write(const std::string& chunk) = 0;
 
 		/*!
-			Called when the writer is committed to its target. Must be
-			implemented by derived classes.
+			Writes a new line chunk to the output.
+		*/
+		virtual void WriteNewLine()
+		{
+			Write(m_config.chunkNewLine);
+		}
+
+		/*!
+			Checks if the writer should commit its output to the target.
 		*/
 		virtual bool OnCommit(bool force = false) = 0;
 

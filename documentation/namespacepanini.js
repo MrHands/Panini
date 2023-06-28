@@ -1,9 +1,10 @@
 var namespacepanini =
 [
     [ "Braces", "classpanini_1_1_braces.html", "classpanini_1_1_braces" ],
+    [ "BracesOptions", "structpanini_1_1_braces_options.html", "structpanini_1_1_braces_options" ],
     [ "CommaList", "classpanini_1_1_comma_list.html", "classpanini_1_1_comma_list" ],
     [ "CommaListOptions", "structpanini_1_1_comma_list_options.html", "structpanini_1_1_comma_list_options" ],
-    [ "CommandBase", "classpanini_1_1_command_base.html", "classpanini_1_1_command_base" ],
+    [ "Command", "classpanini_1_1_command.html", "classpanini_1_1_command" ],
     [ "CommentBlock", "classpanini_1_1_comment_block.html", "classpanini_1_1_comment_block" ],
     [ "CommentLine", "classpanini_1_1_comment_line.html", "classpanini_1_1_comment_line" ],
     [ "CompareWriter", "classpanini_1_1_compare_writer.html", "classpanini_1_1_compare_writer" ],
@@ -12,6 +13,7 @@ var namespacepanini =
     [ "ConsoleWriter", "classpanini_1_1_console_writer.html", "classpanini_1_1_console_writer" ],
     [ "DebugWriter", "classpanini_1_1_debug_writer.html", "classpanini_1_1_debug_writer" ],
     [ "DebugWriterConfig", "structpanini_1_1_debug_writer_config.html", "structpanini_1_1_debug_writer_config" ],
+    [ "FeatureFlag", "classpanini_1_1_feature_flag.html", "classpanini_1_1_feature_flag" ],
     [ "FileWriter", "classpanini_1_1_file_writer.html", "classpanini_1_1_file_writer" ],
     [ "FileWriterConfig", "structpanini_1_1_file_writer_config.html", "structpanini_1_1_file_writer_config" ],
     [ "Include", "classpanini_1_1_include.html", "classpanini_1_1_include" ],
@@ -23,8 +25,11 @@ var namespacepanini =
     [ "Label", "classpanini_1_1_label.html", "classpanini_1_1_label" ],
     [ "NextLine", "structpanini_1_1_next_line.html", null ],
     [ "Scope", "classpanini_1_1_scope.html", "classpanini_1_1_scope" ],
+    [ "ScopeOptions", "structpanini_1_1_scope_options.html", "structpanini_1_1_scope_options" ],
     [ "StringWriter", "classpanini_1_1_string_writer.html", "classpanini_1_1_string_writer" ],
-    [ "WriterBase", "classpanini_1_1_writer_base.html", "classpanini_1_1_writer_base" ],
+    [ "Writer", "classpanini_1_1_writer.html", "classpanini_1_1_writer" ],
+    [ "CommandBase", "namespacepanini.html#a3bae42e312a3110bd9bbc0b6446bb60c", null ],
+    [ "WriterBase", "namespacepanini.html#a66c34486f3625afb06a2f4fc23590594", null ],
     [ "BraceBreakingStyle", "group___globals.html#ga0e8bf718da5e3c164599e591f6b76f5c", [
       [ "Inherit", "group___globals.html#gga0e8bf718da5e3c164599e591f6b76f5cac49484faf79e2388b580e49444d6ac11", null ],
       [ "Attach", "group___globals.html#gga0e8bf718da5e3c164599e591f6b76f5ca7193518e6f5f0076ef05680742323f9c", null ],

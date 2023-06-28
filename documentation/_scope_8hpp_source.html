@@ -25,7 +25,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Panini<span id="projectnumber">&#160;1.3.0</span>
+   <div id="projectname">Panini<span id="projectnumber">&#160;1.4.0</span>
    </div>
    <div id="projectbrief">Header-only library for generating C++, written in C++17</div>
   </td>
@@ -110,73 +110,109 @@ $(document).ready(function(){initNavTree('_scope_8hpp_source.html',''); initResi
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#include &quot;<a class="code" href="_braces_8hpp.html">commands/Braces.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#include &quot;<a class="code" href="_command_base_8hpp.html">commands/CommandBase.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#include &quot;<a class="code" href="_writer_base_8hpp.html">writers/WriterBase.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacepanini.html">panini</a></div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>{</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="classpanini_1_1_scope.html">   65</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classpanini_1_1_scope.html">Scope</a></div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        : <span class="keyword">public</span> <a class="code hl_class" href="classpanini_1_1_command_base.html">CommandBase</a></div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    {</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="classpanini_1_1_scope.html#a450f6204e469c448df3e6e5fbde8b3b2">   81</a></span>        <span class="keyword">inline</span> <a class="code hl_function" href="classpanini_1_1_scope.html#a450f6204e469c448df3e6e5fbde8b3b2">Scope</a>(std::string&amp;&amp; name, std::function&lt;<span class="keywordtype">void</span>(<a class="code hl_class" href="classpanini_1_1_writer_base.html">WriterBase</a>&amp;)&gt;&amp;&amp; callback, <a class="code hl_enumeration" href="group___globals.html#ga0e8bf718da5e3c164599e591f6b76f5c">BraceBreakingStyle</a> style = <a class="code hl_enumvalue" href="group___globals.html#gga0e8bf718da5e3c164599e591f6b76f5cac49484faf79e2388b580e49444d6ac11">BraceBreakingStyle::Inherit</a>)</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>            : m_name(name)</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>            , m_callback(callback)</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>            , m_style(style)</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        {</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        }</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno"><a class="line" href="classpanini_1_1_scope.html#ac731f452d4b711230194ba594621d36c">   99</a></span>        <span class="keyword">inline</span> <a class="code hl_function" href="classpanini_1_1_scope.html#ac731f452d4b711230194ba594621d36c">Scope</a>(<span class="keyword">const</span> std::string&amp; name, std::function&lt;<span class="keywordtype">void</span>(<a class="code hl_class" href="classpanini_1_1_writer_base.html">WriterBase</a>&amp;)&gt;&amp;&amp; callback, <a class="code hl_enumeration" href="group___globals.html#ga0e8bf718da5e3c164599e591f6b76f5c">BraceBreakingStyle</a> braceStyle = <a class="code hl_enumvalue" href="group___globals.html#gga0e8bf718da5e3c164599e591f6b76f5cac49484faf79e2388b580e49444d6ac11">BraceBreakingStyle::Inherit</a>)</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>            : m_name(name)</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>            , m_callback(callback)</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>            , m_style(braceStyle)</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        {</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        }</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno"><a class="line" href="classpanini_1_1_scope.html#ad44c4fd0168cdfd266128ae3813763ab">  106</a></span>        <span class="keyword">inline</span> <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classpanini_1_1_scope.html#ad44c4fd0168cdfd266128ae3813763ab">Visit</a>(<a class="code hl_class" href="classpanini_1_1_writer_base.html">WriterBase</a>&amp; writer) <span class="keyword">final</span></div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        {</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>            <a class="code hl_enumeration" href="group___globals.html#ga0e8bf718da5e3c164599e591f6b76f5c">BraceBreakingStyle</a> braceStyle =</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>                m_style == <a class="code hl_enumvalue" href="group___globals.html#gga0e8bf718da5e3c164599e591f6b76f5cac49484faf79e2388b580e49444d6ac11">BraceBreakingStyle::Inherit</a></div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>                    ? writer.GetBraceBreakingStyle()</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>                    : m_style;</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>            <span class="keywordflow">if</span> (!m_name.empty())</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>            {</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>                writer &lt;&lt; m_name;</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>                <span class="keywordflow">if</span> (braceStyle == <a class="code hl_enumvalue" href="group___globals.html#gga0e8bf718da5e3c164599e591f6b76f5ca7193518e6f5f0076ef05680742323f9c">BraceBreakingStyle::Attach</a>)</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>                {</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>                    writer &lt;&lt; <span class="stringliteral">&quot; &quot;</span>;</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>                }</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>            }</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span> </div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>            writer &lt;&lt; <a class="code hl_class" href="classpanini_1_1_braces.html">Braces</a>(std::move(m_callback), braceStyle);</div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        }</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>        std::string m_name;</div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>        std::function&lt;void(<a class="code hl_class" href="classpanini_1_1_writer_base.html">WriterBase</a>&amp;)&gt; m_callback;</div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>        <a class="code hl_enumeration" href="group___globals.html#ga0e8bf718da5e3c164599e591f6b76f5c">BraceBreakingStyle</a> m_style;</div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span> </div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    };</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span> </div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>};</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#include &quot;<a class="code" href="_command_8hpp.html">commands/Command.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#include &quot;<a class="code" href="_scope_options_8hpp.html">options/ScopeOptions.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#include &quot;<a class="code" href="_writer_8hpp.html">writers/Writer.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacepanini.html">panini</a></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>{</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="classpanini_1_1_scope.html">   66</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classpanini_1_1_scope.html">Scope</a></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        : <span class="keyword">public</span> <a class="code hl_class" href="classpanini_1_1_command.html">Command</a></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    {</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="classpanini_1_1_scope.html#a7ce1ad35e795c9c1ec1dba8d0ebe5d4f">   71</a></span>        <span class="keyword">using</span> <a class="code hl_typedef" href="classpanini_1_1_scope.html#a7ce1ad35e795c9c1ec1dba8d0ebe5d4f">TCallback</a> = std::function&lt;void(<a class="code hl_class" href="classpanini_1_1_writer.html">Writer</a>&amp;)&gt;;</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="classpanini_1_1_scope.html#a0f685437c4b44583c830abc1a6a5a43f">   84</a></span>        <span class="keyword">inline</span> <a class="code hl_function" href="classpanini_1_1_scope.html#a0f685437c4b44583c830abc1a6a5a43f">Scope</a>(</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>            std::string&amp;&amp; name,</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>            <a class="code hl_typedef" href="classpanini_1_1_scope.html#a7ce1ad35e795c9c1ec1dba8d0ebe5d4f">TCallback</a>&amp;&amp; callback,</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>            <a class="code hl_enumeration" href="group___globals.html#ga0e8bf718da5e3c164599e591f6b76f5c">BraceBreakingStyle</a> breakingStyle = <a class="code hl_enumvalue" href="group___globals.html#gga0e8bf718da5e3c164599e591f6b76f5cac49484faf79e2388b580e49444d6ac11">BraceBreakingStyle::Inherit</a>)</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>            : m_name(name)</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>            , m_callback(std::move(callback))</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        {</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>            m_options.<a class="code hl_variable" href="structpanini_1_1_braces_options.html#a596f64f07eb490534b4234a4a53dc747">breakingStyle</a> = breakingStyle;</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        }</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno"><a class="line" href="classpanini_1_1_scope.html#a8a4423f6d0c3ef1ede27379c6f1c84b3">  105</a></span>        <span class="keyword">inline</span> <a class="code hl_function" href="classpanini_1_1_scope.html#a8a4423f6d0c3ef1ede27379c6f1c84b3">Scope</a>(</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>            <span class="keyword">const</span> std::string&amp; name,</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>            <a class="code hl_typedef" href="classpanini_1_1_scope.html#a7ce1ad35e795c9c1ec1dba8d0ebe5d4f">TCallback</a>&amp;&amp; callback,</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>            <a class="code hl_enumeration" href="group___globals.html#ga0e8bf718da5e3c164599e591f6b76f5c">BraceBreakingStyle</a> breakingStyle = <a class="code hl_enumvalue" href="group___globals.html#gga0e8bf718da5e3c164599e591f6b76f5cac49484faf79e2388b580e49444d6ac11">BraceBreakingStyle::Inherit</a>)</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>            : m_name(name)</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>            , m_callback(std::move(callback))</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>        {</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>            m_options.<a class="code hl_variable" href="structpanini_1_1_braces_options.html#a596f64f07eb490534b4234a4a53dc747">breakingStyle</a> = breakingStyle;</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        }</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno"><a class="line" href="classpanini_1_1_scope.html#a02782f085464463ec8fe2aad10a6c2eb">  115</a></span>        <span class="keyword">inline</span> <a class="code hl_function" href="classpanini_1_1_scope.html#a02782f085464463ec8fe2aad10a6c2eb">Scope</a>(</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>            std::string&amp;&amp; name,</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>            <a class="code hl_typedef" href="classpanini_1_1_scope.html#a7ce1ad35e795c9c1ec1dba8d0ebe5d4f">TCallback</a>&amp;&amp; callback,</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>            <span class="keyword">const</span> <a class="code hl_struct" href="structpanini_1_1_scope_options.html">ScopeOptions</a>&amp; options)</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>            : m_name(name)</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>            , m_callback(std::move(callback))</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>            , m_options(options)</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        {</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>        }</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span> </div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno"><a class="line" href="classpanini_1_1_scope.html#ada6f621cce9bc29536596336e735eeb3">  125</a></span>        <span class="keyword">inline</span> <a class="code hl_function" href="classpanini_1_1_scope.html#ada6f621cce9bc29536596336e735eeb3">Scope</a>(</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>            <span class="keyword">const</span> std::string&amp; name,</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>            <a class="code hl_typedef" href="classpanini_1_1_scope.html#a7ce1ad35e795c9c1ec1dba8d0ebe5d4f">TCallback</a>&amp;&amp; callback,</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>            <span class="keyword">const</span> <a class="code hl_struct" href="structpanini_1_1_scope_options.html">ScopeOptions</a>&amp; options)</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>            : m_name(name)</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>            , m_callback(std::move(callback))</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>            , m_options(options)</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>        {</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>        }</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span> </div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno"><a class="line" href="classpanini_1_1_scope.html#aa9beefcd10c290adbc3bc7164c8806c3">  135</a></span>        <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classpanini_1_1_scope.html#aa9beefcd10c290adbc3bc7164c8806c3">Visit</a>(<a class="code hl_class" href="classpanini_1_1_writer.html">Writer</a>&amp; writer) <span class="keyword">final</span></div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>        {</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>            <span class="keyword">const</span> <a class="code hl_enumeration" href="group___globals.html#ga0e8bf718da5e3c164599e591f6b76f5c">BraceBreakingStyle</a> breakingStyle =</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>                m_options.<a class="code hl_variable" href="structpanini_1_1_braces_options.html#a596f64f07eb490534b4234a4a53dc747">breakingStyle</a> == <a class="code hl_enumvalue" href="group___globals.html#gga0e8bf718da5e3c164599e591f6b76f5cac49484faf79e2388b580e49444d6ac11">BraceBreakingStyle::Inherit</a></div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>                    ? writer.GetBraceBreakingStyle()</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>                    : m_options.<a class="code hl_variable" href="structpanini_1_1_braces_options.html#a596f64f07eb490534b4234a4a53dc747">breakingStyle</a>;</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span> </div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>            <span class="keywordflow">if</span> (!m_name.empty())</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>            {</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>                writer &lt;&lt; m_name;</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span> </div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>                <span class="keywordflow">if</span> (breakingStyle == <a class="code hl_enumvalue" href="group___globals.html#gga0e8bf718da5e3c164599e591f6b76f5ca7193518e6f5f0076ef05680742323f9c">BraceBreakingStyle::Attach</a>)</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>                {</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>                    writer &lt;&lt; m_options.<a class="code hl_variable" href="structpanini_1_1_scope_options.html#a75d1baf5585c925b221c15e2c93f1618">chunkAttachSpacing</a>;</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>                }</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>            }</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span> </div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>            writer &lt;&lt; <a class="code hl_class" href="classpanini_1_1_braces.html">Braces</a>(std::move(m_callback), m_options);</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>        }</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span> </div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>        std::string m_name;</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>        <a class="code hl_typedef" href="classpanini_1_1_scope.html#a7ce1ad35e795c9c1ec1dba8d0ebe5d4f">TCallback</a> m_callback;</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>        <a class="code hl_struct" href="structpanini_1_1_scope_options.html">ScopeOptions</a> m_options;</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span> </div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    };</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span> </div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>};</div>
 <div class="ttc" id="a_braces_8hpp_html"><div class="ttname"><a href="_braces_8hpp.html">Braces.hpp</a></div></div>
-<div class="ttc" id="a_command_base_8hpp_html"><div class="ttname"><a href="_command_base_8hpp.html">CommandBase.hpp</a></div></div>
-<div class="ttc" id="a_writer_base_8hpp_html"><div class="ttname"><a href="_writer_base_8hpp.html">WriterBase.hpp</a></div></div>
-<div class="ttc" id="aclasspanini_1_1_braces_html"><div class="ttname"><a href="classpanini_1_1_braces.html">panini::Braces</a></div><div class="ttdoc">Command for outputting opening and closing curly braces.</div><div class="ttdef"><b>Definition:</b> Braces.hpp:69</div></div>
-<div class="ttc" id="aclasspanini_1_1_command_base_html"><div class="ttname"><a href="classpanini_1_1_command_base.html">panini::CommandBase</a></div><div class="ttdoc">Base class for commands.</div><div class="ttdef"><b>Definition:</b> CommandBase.hpp:43</div></div>
-<div class="ttc" id="aclasspanini_1_1_scope_html"><div class="ttname"><a href="classpanini_1_1_scope.html">panini::Scope</a></div><div class="ttdoc">Command for outputting a scope with braces.</div><div class="ttdef"><b>Definition:</b> Scope.hpp:67</div></div>
-<div class="ttc" id="aclasspanini_1_1_scope_html_a450f6204e469c448df3e6e5fbde8b3b2"><div class="ttname"><a href="classpanini_1_1_scope.html#a450f6204e469c448df3e6e5fbde8b3b2">panini::Scope::Scope</a></div><div class="ttdeci">Scope(std::string &amp;&amp;name, std::function&lt; void(WriterBase &amp;)&gt; &amp;&amp;callback, BraceBreakingStyle style=BraceBreakingStyle::Inherit)</div><div class="ttdef"><b>Definition:</b> Scope.hpp:81</div></div>
-<div class="ttc" id="aclasspanini_1_1_scope_html_ac731f452d4b711230194ba594621d36c"><div class="ttname"><a href="classpanini_1_1_scope.html#ac731f452d4b711230194ba594621d36c">panini::Scope::Scope</a></div><div class="ttdeci">Scope(const std::string &amp;name, std::function&lt; void(WriterBase &amp;)&gt; &amp;&amp;callback, BraceBreakingStyle braceStyle=BraceBreakingStyle::Inherit)</div><div class="ttdef"><b>Definition:</b> Scope.hpp:99</div></div>
-<div class="ttc" id="aclasspanini_1_1_scope_html_ad44c4fd0168cdfd266128ae3813763ab"><div class="ttname"><a href="classpanini_1_1_scope.html#ad44c4fd0168cdfd266128ae3813763ab">panini::Scope::Visit</a></div><div class="ttdeci">virtual void Visit(WriterBase &amp;writer) final</div><div class="ttdef"><b>Definition:</b> Scope.hpp:106</div></div>
-<div class="ttc" id="aclasspanini_1_1_writer_base_html"><div class="ttname"><a href="classpanini_1_1_writer_base.html">panini::WriterBase</a></div><div class="ttdoc">Base class for writers.</div><div class="ttdef"><b>Definition:</b> WriterBase.hpp:43</div></div>
-<div class="ttc" id="agroup___globals_html_ga0e8bf718da5e3c164599e591f6b76f5c"><div class="ttname"><a href="group___globals.html#ga0e8bf718da5e3c164599e591f6b76f5c">panini::BraceBreakingStyle</a></div><div class="ttdeci">BraceBreakingStyle</div><div class="ttdoc">Brace breaking style to use when writing to output.</div><div class="ttdef"><b>Definition:</b> Config.hpp:32</div></div>
+<div class="ttc" id="a_command_8hpp_html"><div class="ttname"><a href="_command_8hpp.html">Command.hpp</a></div></div>
+<div class="ttc" id="a_scope_options_8hpp_html"><div class="ttname"><a href="_scope_options_8hpp.html">ScopeOptions.hpp</a></div></div>
+<div class="ttc" id="a_writer_8hpp_html"><div class="ttname"><a href="_writer_8hpp.html">Writer.hpp</a></div></div>
+<div class="ttc" id="aclasspanini_1_1_braces_html"><div class="ttname"><a href="classpanini_1_1_braces.html">panini::Braces</a></div><div class="ttdoc">Command for outputting opening and closing (curly) braces.</div><div class="ttdef"><b>Definition:</b> Braces.hpp:74</div></div>
+<div class="ttc" id="aclasspanini_1_1_command_html"><div class="ttname"><a href="classpanini_1_1_command.html">panini::Command</a></div><div class="ttdoc">Base class for commands.</div><div class="ttdef"><b>Definition:</b> Command.hpp:43</div></div>
+<div class="ttc" id="aclasspanini_1_1_scope_html"><div class="ttname"><a href="classpanini_1_1_scope.html">panini::Scope</a></div><div class="ttdoc">Command for outputting a scope with braces.</div><div class="ttdef"><b>Definition:</b> Scope.hpp:68</div></div>
+<div class="ttc" id="aclasspanini_1_1_scope_html_a02782f085464463ec8fe2aad10a6c2eb"><div class="ttname"><a href="classpanini_1_1_scope.html#a02782f085464463ec8fe2aad10a6c2eb">panini::Scope::Scope</a></div><div class="ttdeci">Scope(std::string &amp;&amp;name, TCallback &amp;&amp;callback, const ScopeOptions &amp;options)</div><div class="ttdef"><b>Definition:</b> Scope.hpp:115</div></div>
+<div class="ttc" id="aclasspanini_1_1_scope_html_a0f685437c4b44583c830abc1a6a5a43f"><div class="ttname"><a href="classpanini_1_1_scope.html#a0f685437c4b44583c830abc1a6a5a43f">panini::Scope::Scope</a></div><div class="ttdeci">Scope(std::string &amp;&amp;name, TCallback &amp;&amp;callback, BraceBreakingStyle breakingStyle=BraceBreakingStyle::Inherit)</div><div class="ttdef"><b>Definition:</b> Scope.hpp:84</div></div>
+<div class="ttc" id="aclasspanini_1_1_scope_html_a7ce1ad35e795c9c1ec1dba8d0ebe5d4f"><div class="ttname"><a href="classpanini_1_1_scope.html#a7ce1ad35e795c9c1ec1dba8d0ebe5d4f">panini::Scope::TCallback</a></div><div class="ttdeci">std::function&lt; void(Writer &amp;)&gt; TCallback</div><div class="ttdef"><b>Definition:</b> Scope.hpp:71</div></div>
+<div class="ttc" id="aclasspanini_1_1_scope_html_a8a4423f6d0c3ef1ede27379c6f1c84b3"><div class="ttname"><a href="classpanini_1_1_scope.html#a8a4423f6d0c3ef1ede27379c6f1c84b3">panini::Scope::Scope</a></div><div class="ttdeci">Scope(const std::string &amp;name, TCallback &amp;&amp;callback, BraceBreakingStyle breakingStyle=BraceBreakingStyle::Inherit)</div><div class="ttdef"><b>Definition:</b> Scope.hpp:105</div></div>
+<div class="ttc" id="aclasspanini_1_1_scope_html_aa9beefcd10c290adbc3bc7164c8806c3"><div class="ttname"><a href="classpanini_1_1_scope.html#aa9beefcd10c290adbc3bc7164c8806c3">panini::Scope::Visit</a></div><div class="ttdeci">void Visit(Writer &amp;writer) final</div><div class="ttdef"><b>Definition:</b> Scope.hpp:135</div></div>
+<div class="ttc" id="aclasspanini_1_1_scope_html_ada6f621cce9bc29536596336e735eeb3"><div class="ttname"><a href="classpanini_1_1_scope.html#ada6f621cce9bc29536596336e735eeb3">panini::Scope::Scope</a></div><div class="ttdeci">Scope(const std::string &amp;name, TCallback &amp;&amp;callback, const ScopeOptions &amp;options)</div><div class="ttdef"><b>Definition:</b> Scope.hpp:125</div></div>
+<div class="ttc" id="aclasspanini_1_1_writer_html"><div class="ttname"><a href="classpanini_1_1_writer.html">panini::Writer</a></div><div class="ttdoc">Base class for writers.</div><div class="ttdef"><b>Definition:</b> Writer.hpp:44</div></div>
+<div class="ttc" id="agroup___globals_html_ga0e8bf718da5e3c164599e591f6b76f5c"><div class="ttname"><a href="group___globals.html#ga0e8bf718da5e3c164599e591f6b76f5c">panini::BraceBreakingStyle</a></div><div class="ttdeci">BraceBreakingStyle</div><div class="ttdoc">Brace breaking style to use when writing to output.</div><div class="ttdef"><b>Definition:</b> BraceBreakingStyle.hpp:33</div></div>
 <div class="ttc" id="agroup___globals_html_gga0e8bf718da5e3c164599e591f6b76f5ca7193518e6f5f0076ef05680742323f9c"><div class="ttname"><a href="group___globals.html#gga0e8bf718da5e3c164599e591f6b76f5ca7193518e6f5f0076ef05680742323f9c">panini::BraceBreakingStyle::Attach</a></div><div class="ttdeci">@ Attach</div><div class="ttdoc">Open brace on the same line.</div></div>
 <div class="ttc" id="agroup___globals_html_gga0e8bf718da5e3c164599e591f6b76f5cac49484faf79e2388b580e49444d6ac11"><div class="ttname"><a href="group___globals.html#gga0e8bf718da5e3c164599e591f6b76f5cac49484faf79e2388b580e49444d6ac11">panini::BraceBreakingStyle::Inherit</a></div><div class="ttdeci">@ Inherit</div><div class="ttdoc">Inherit setting from the config, not valid on WriterBase.</div></div>
-<div class="ttc" id="anamespacepanini_html"><div class="ttname"><a href="namespacepanini.html">panini</a></div><div class="ttdef"><b>Definition:</b> Braces.hpp:28</div></div>
+<div class="ttc" id="anamespacepanini_html"><div class="ttname"><a href="namespacepanini.html">panini</a></div><div class="ttdef"><b>Definition:</b> Braces.hpp:29</div></div>
+<div class="ttc" id="astructpanini_1_1_braces_options_html_a596f64f07eb490534b4234a4a53dc747"><div class="ttname"><a href="structpanini_1_1_braces_options.html#a596f64f07eb490534b4234a4a53dc747">panini::BracesOptions::breakingStyle</a></div><div class="ttdeci">BraceBreakingStyle breakingStyle</div><div class="ttdef"><b>Definition:</b> BracesOptions.hpp:44</div></div>
+<div class="ttc" id="astructpanini_1_1_scope_options_html"><div class="ttname"><a href="structpanini_1_1_scope_options.html">panini::ScopeOptions</a></div><div class="ttdoc">Options for the Braces command.</div><div class="ttdef"><b>Definition:</b> ScopeOptions.hpp:34</div></div>
+<div class="ttc" id="astructpanini_1_1_scope_options_html_a75d1baf5585c925b221c15e2c93f1618"><div class="ttname"><a href="structpanini_1_1_scope_options.html#a75d1baf5585c925b221c15e2c93f1618">panini::ScopeOptions::chunkAttachSpacing</a></div><div class="ttdeci">std::string chunkAttachSpacing</div><div class="ttdef"><b>Definition:</b> ScopeOptions.hpp:35</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

@@ -1,9 +1,9 @@
 var searchData=
 [
-  ['commalist_0',['CommaList',['../classpanini_1_1_comma_list.html#a8409d3feda54c453ac213c2f58e53ab0',1,'panini::CommaList::CommaList(TIterator begin, TIterator end, const CommaListOptions &amp;options={})'],['../classpanini_1_1_comma_list.html#a76377ca99649a69ae2d9ccc99b0a58ba',1,'panini::CommaList::CommaList(TIterator begin, TIterator end, const CommaListOptions &amp;options, std::function&lt; void(WriterBase &amp;, const TUnderlying &amp;, size_t)&gt; &amp;&amp;transform)']]],
-  ['commentblock_1',['CommentBlock',['../classpanini_1_1_comment_block.html#a30186e0cc4f5119c8f82076440497ef1',1,'panini::CommentBlock']]],
+  ['commalist_0',['CommaList',['../classpanini_1_1_comma_list.html#a8409d3feda54c453ac213c2f58e53ab0',1,'panini::CommaList::CommaList(TIterator begin, TIterator end, const CommaListOptions &amp;options={})'],['../classpanini_1_1_comma_list.html#ac512de00647fc210767b1e2407757591',1,'panini::CommaList::CommaList(TIterator begin, TIterator end, const CommaListOptions &amp;options, TTransform &amp;&amp;transform)']]],
+  ['commentblock_1',['CommentBlock',['../classpanini_1_1_comment_block.html#a032370f296fd3d5700ee4e5117f0c22f',1,'panini::CommentBlock']]],
   ['commentline_2',['CommentLine',['../classpanini_1_1_comment_line.html#a0efb77b15af783430c6fd07e0c6b516d',1,'panini::CommentLine::CommentLine(const std::string &amp;comment)'],['../classpanini_1_1_comment_line.html#a87f884fc847f532804edb87af1cca430',1,'panini::CommentLine::CommentLine(std::string &amp;&amp;comment) noexcept']]],
-  ['commit_3',['Commit',['../classpanini_1_1_writer_base.html#a3e699a4af7699bca800a2fbc2032c0d6',1,'panini::WriterBase']]],
+  ['commit_3',['Commit',['../classpanini_1_1_writer.html#a3952d153f8c7acd0e06e41febcc0f322',1,'panini::Writer']]],
   ['comparewriter_4',['CompareWriter',['../classpanini_1_1_compare_writer.html#ae1c7649f2744030894eda7d6dc6981db',1,'panini::CompareWriter::CompareWriter(const CompareWriterConfig &amp;config={})'],['../classpanini_1_1_compare_writer.html#a71287dd41f1f8266be545f760a528156',1,'panini::CompareWriter::CompareWriter(const std::filesystem::path &amp;filePath, const Config &amp;config=Config())']]],
-  ['consolewriter_5',['ConsoleWriter',['../classpanini_1_1_console_writer.html#aa723a35904cf23540857e0b1bf747838',1,'panini::ConsoleWriter']]]
+  ['consolewriter_5',['ConsoleWriter',['../classpanini_1_1_console_writer.html#aa723a35904cf23540857e0b1bf747838',1,'panini::ConsoleWriter::ConsoleWriter(const Config &amp;config=Config())'],['../classpanini_1_1_console_writer.html#a7c90d674a61b5c307b5d092c5ecf25db',1,'panini::ConsoleWriter::ConsoleWriter(std::ostream &amp;outputStream, const Config &amp;config=Config())']]]
 ];

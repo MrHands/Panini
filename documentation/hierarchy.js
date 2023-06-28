@@ -1,12 +1,16 @@
 var hierarchy =
 [
+    [ "panini::BracesOptions", "structpanini_1_1_braces_options.html", [
+      [ "panini::ScopeOptions", "structpanini_1_1_scope_options.html", null ]
+    ] ],
     [ "panini::DebugWriter::Colors", "structpanini_1_1_debug_writer_1_1_colors.html", null ],
     [ "panini::CommaListOptions", "structpanini_1_1_comma_list_options.html", null ],
-    [ "panini::CommandBase", "classpanini_1_1_command_base.html", [
+    [ "panini::Command", "classpanini_1_1_command.html", [
       [ "panini::Braces", "classpanini_1_1_braces.html", null ],
       [ "panini::CommaList< TIterator >", "classpanini_1_1_comma_list.html", null ],
       [ "panini::CommentBlock", "classpanini_1_1_comment_block.html", null ],
       [ "panini::CommentLine", "classpanini_1_1_comment_line.html", null ],
+      [ "panini::FeatureFlag", "classpanini_1_1_feature_flag.html", null ],
       [ "panini::Include", "classpanini_1_1_include.html", null ],
       [ "panini::IncludeBlock", "classpanini_1_1_include_block.html", null ],
       [ "panini::Label", "classpanini_1_1_label.html", null ],
@@ -22,7 +26,7 @@ var hierarchy =
     [ "panini::IndentPop", "structpanini_1_1_indent_pop.html", null ],
     [ "panini::IndentPush", "structpanini_1_1_indent_push.html", null ],
     [ "panini::NextLine", "structpanini_1_1_next_line.html", null ],
-    [ "panini::WriterBase", "classpanini_1_1_writer_base.html", [
+    [ "panini::Writer", "classpanini_1_1_writer.html", [
       [ "panini::CompareWriter", "classpanini_1_1_compare_writer.html", null ],
       [ "panini::ConsoleWriter", "classpanini_1_1_console_writer.html", null ],
       [ "panini::DebugWriter", "classpanini_1_1_debug_writer.html", null ],

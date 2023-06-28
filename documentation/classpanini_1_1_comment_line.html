@@ -25,7 +25,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Panini<span id="projectnumber">&#160;1.3.0</span>
+   <div id="projectname">Panini<span id="projectnumber">&#160;1.4.0</span>
    </div>
    <div id="projectbrief">Header-only library for generating C++, written in C++17</div>
   </td>
@@ -90,7 +90,7 @@ $(document).ready(function(){initNavTree('classpanini_1_1_comment_line.html','')
 </div><!--header-->
 <div class="contents">
 
-<p>Command for outputting a single-line comment.  
+<p><a class="el" href="classpanini_1_1_command.html" title="Base class for commands.">Command</a> for outputting a single-line comment.  
  <a href="classpanini_1_1_comment_line.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_comment_line_8hpp_source.html">CommentLine.hpp</a>&gt;</code></p>
@@ -100,7 +100,7 @@ Inheritance diagram for panini::CommentLine:</div>
  <div class="center">
   <img src="classpanini_1_1_comment_line.png" usemap="#panini::CommentLine_map" alt=""/>
   <map id="panini::CommentLine_map" name="panini::CommentLine_map">
-<area href="classpanini_1_1_command_base.html" title="Base class for commands." alt="panini::CommandBase" shape="rect" coords="0,0,135,24"/>
+<area href="classpanini_1_1_command.html" title="Base class for commands." alt="panini::Command" shape="rect" coords="0,0,127,24"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -110,14 +110,14 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a0efb77b15af783430c6fd07e0c6b516d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a87f884fc847f532804edb87af1cca430"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_comment_line.html#a87f884fc847f532804edb87af1cca430">CommentLine</a> (std::string &amp;&amp;comment) noexcept</td></tr>
 <tr class="separator:a87f884fc847f532804edb87af1cca430"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa6d6b9b34b556e7e345bcd4b2c54d19c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_comment_line.html#aa6d6b9b34b556e7e345bcd4b2c54d19c">Visit</a> (<a class="el" href="classpanini_1_1_writer_base.html">WriterBase</a> &amp;writer) final</td></tr>
-<tr class="separator:aa6d6b9b34b556e7e345bcd4b2c54d19c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_classpanini_1_1_command_base"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classpanini_1_1_command_base')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classpanini_1_1_command_base.html">panini::CommandBase</a></td></tr>
-<tr class="memitem:a140398d6b1c2df6c74881b8aaadfd550 inherit pub_methods_classpanini_1_1_command_base"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_command_base.html#a140398d6b1c2df6c74881b8aaadfd550">~CommandBase</a> ()=default</td></tr>
-<tr class="separator:a140398d6b1c2df6c74881b8aaadfd550 inherit pub_methods_classpanini_1_1_command_base"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9bf37db91e6615a8eb505ccbc7df1d69"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_comment_line.html#a9bf37db91e6615a8eb505ccbc7df1d69">Visit</a> (<a class="el" href="classpanini_1_1_writer.html">Writer</a> &amp;writer) final</td></tr>
+<tr class="separator:a9bf37db91e6615a8eb505ccbc7df1d69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classpanini_1_1_command"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classpanini_1_1_command')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classpanini_1_1_command.html">panini::Command</a></td></tr>
+<tr class="memitem:afd162c88f6ed9c2ec1a6b0057a9b4918 inherit pub_methods_classpanini_1_1_command"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_command.html#afd162c88f6ed9c2ec1a6b0057a9b4918">~Command</a> ()=default</td></tr>
+<tr class="separator:afd162c88f6ed9c2ec1a6b0057a9b4918 inherit pub_methods_classpanini_1_1_command"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >Command for outputting a single-line comment. </p>
+<div class="textblock"><p ><a class="el" href="classpanini_1_1_command.html" title="Base class for commands.">Command</a> for outputting a single-line comment. </p>
 <p >Comment lines start with "// " in the output. Empty lines will be output as well.</p>
 <p >Example:</p>
 <div class="fragment"><div class="line">writer &lt;&lt; <a class="code hl_function" href="classpanini_1_1_comment_line.html#a0efb77b15af783430c6fd07e0c6b516d">CommentLine</a>(<span class="stringliteral">&quot;I can&#39;t believe this was generated!&quot;</span>);</div>
@@ -180,8 +180,8 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="aa6d6b9b34b556e7e345bcd4b2c54d19c" name="aa6d6b9b34b556e7e345bcd4b2c54d19c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa6d6b9b34b556e7e345bcd4b2c54d19c">&#9670;&nbsp;</a></span>Visit()</h2>
+<a id="a9bf37db91e6615a8eb505ccbc7df1d69" name="a9bf37db91e6615a8eb505ccbc7df1d69"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9bf37db91e6615a8eb505ccbc7df1d69">&#9670;&nbsp;</a></span>Visit()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -192,7 +192,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">virtual void panini::CommentLine::Visit </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classpanini_1_1_writer_base.html">WriterBase</a> &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="classpanini_1_1_writer.html">Writer</a> &amp;&#160;</td>
           <td class="paramname"><em>writer</em></td><td>)</td>
           <td></td>
         </tr>
@@ -203,9 +203,9 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p >Accepts a <a class="el" href="classpanini_1_1_writer_base.html">WriterBase</a> to write chunks to the output. </p>
+<p >Accepts a <a class="el" href="namespacepanini.html#a66c34486f3625afb06a2f4fc23590594">WriterBase</a> to write chunks to the output. </p>
 
-<p>Implements <a class="el" href="classpanini_1_1_command_base.html#aa3d5043ec03ef76c1da53d445d4a9a1e">panini::CommandBase</a>.</p>
+<p>Implements <a class="el" href="classpanini_1_1_command.html#a9d93e499d11224c40ddb43c1c0e7109e">panini::Command</a>.</p>
 
 </div>
 </div>

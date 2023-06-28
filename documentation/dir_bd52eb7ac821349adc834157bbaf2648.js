@@ -1,12 +1,12 @@
 var dir_bd52eb7ac821349adc834157bbaf2648 =
 [
-    [ "CommaListOptions.hpp", "_comma_list_options_8hpp.html", [
-      [ "panini::CommaListOptions", "structpanini_1_1_comma_list_options.html", "structpanini_1_1_comma_list_options" ]
-    ] ],
+    [ "BraceBreakingStyle.hpp", "_brace_breaking_style_8hpp.html", "_brace_breaking_style_8hpp" ],
     [ "CompareWriterConfig.hpp", "_compare_writer_config_8hpp.html", [
       [ "panini::CompareWriterConfig", "structpanini_1_1_compare_writer_config.html", "structpanini_1_1_compare_writer_config" ]
     ] ],
-    [ "Config.hpp", "_config_8hpp.html", "_config_8hpp" ],
+    [ "Config.hpp", "_config_8hpp.html", [
+      [ "panini::Config", "structpanini_1_1_config.html", "structpanini_1_1_config" ]
+    ] ],
     [ "DebugWriterConfig.hpp", "_debug_writer_config_8hpp.html", [
       [ "panini::DebugWriterConfig", "structpanini_1_1_debug_writer_config.html", "structpanini_1_1_debug_writer_config" ]
     ] ],
@@ -18,5 +18,6 @@ var dir_bd52eb7ac821349adc834157bbaf2648 =
     ] ],
     [ "IncludeSet.hpp", "_include_set_8hpp.html", [
       [ "panini::IncludeSet", "classpanini_1_1_include_set.html", "classpanini_1_1_include_set" ]
-    ] ]
+    ] ],
+    [ "IncludeStyle.hpp", "_include_style_8hpp.html", "_include_style_8hpp" ]
 ];

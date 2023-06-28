@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['tunderlying_0',['TUnderlying',['../classpanini_1_1_comma_list.html#a3ed1960e25cd1de99b8d83e702f4af53',1,'panini::CommaList']]]
+  ['commandbase_0',['CommandBase',['../namespacepanini.html#a3bae42e312a3110bd9bbc0b6446bb60c',1,'panini']]]
 ];

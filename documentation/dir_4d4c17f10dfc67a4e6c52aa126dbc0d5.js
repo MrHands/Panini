@@ -6,14 +6,15 @@ var dir_4d4c17f10dfc67a4e6c52aa126dbc0d5 =
     [ "CommaList.hpp", "_comma_list_8hpp.html", [
       [ "panini::CommaList< TIterator >", "classpanini_1_1_comma_list.html", "classpanini_1_1_comma_list" ]
     ] ],
-    [ "CommandBase.hpp", "_command_base_8hpp.html", [
-      [ "panini::CommandBase", "classpanini_1_1_command_base.html", "classpanini_1_1_command_base" ]
-    ] ],
+    [ "Command.hpp", "_command_8hpp.html", "_command_8hpp" ],
     [ "CommentBlock.hpp", "_comment_block_8hpp.html", [
       [ "panini::CommentBlock", "classpanini_1_1_comment_block.html", "classpanini_1_1_comment_block" ]
     ] ],
     [ "CommentLine.hpp", "_comment_line_8hpp.html", [
       [ "panini::CommentLine", "classpanini_1_1_comment_line.html", "classpanini_1_1_comment_line" ]
+    ] ],
+    [ "FeatureFlag.hpp", "_feature_flag_8hpp.html", [
+      [ "panini::FeatureFlag", "classpanini_1_1_feature_flag.html", "classpanini_1_1_feature_flag" ]
     ] ],
     [ "Include.hpp", "_include_8hpp.html", [
       [ "panini::Include", "classpanini_1_1_include.html", "classpanini_1_1_include" ]

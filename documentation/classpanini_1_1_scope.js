@@ -1,6 +1,9 @@
 var classpanini_1_1_scope =
 [
-    [ "Scope", "classpanini_1_1_scope.html#a450f6204e469c448df3e6e5fbde8b3b2", null ],
-    [ "Scope", "classpanini_1_1_scope.html#ac731f452d4b711230194ba594621d36c", null ],
-    [ "Visit", "classpanini_1_1_scope.html#ad44c4fd0168cdfd266128ae3813763ab", null ]
+    [ "TCallback", "classpanini_1_1_scope.html#a7ce1ad35e795c9c1ec1dba8d0ebe5d4f", null ],
+    [ "Scope", "classpanini_1_1_scope.html#a0f685437c4b44583c830abc1a6a5a43f", null ],
+    [ "Scope", "classpanini_1_1_scope.html#a8a4423f6d0c3ef1ede27379c6f1c84b3", null ],
+    [ "Scope", "classpanini_1_1_scope.html#a02782f085464463ec8fe2aad10a6c2eb", null ],
+    [ "Scope", "classpanini_1_1_scope.html#ada6f621cce9bc29536596336e735eeb3", null ],
+    [ "Visit", "classpanini_1_1_scope.html#aa9beefcd10c290adbc3bc7164c8806c3", null ]
 ];

@@ -84,7 +84,7 @@ namespace panini
 		{
 		}
 
-		virtual void Visit(WriterBase& writer) final
+		virtual void Visit(Writer& writer) final
 		{
 			writer << IndentPop() << m_name << ":" << IndentPush();
 		}

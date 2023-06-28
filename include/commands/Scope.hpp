@@ -24,7 +24,7 @@
 #include "commands/Braces.hpp"
 #include "commands/CommandBase.hpp"
 #include "options/ScopeOptions.hpp"
-#include "writers/WriterBase.hpp"
+#include "writers/Writer.hpp"
 
 namespace panini
 {
@@ -68,7 +68,7 @@ namespace panini
 	{
 
 	public:
-		using TCallback = std::function<void(WriterBase&)>;
+		using TCallback = std::function<void(Writer&)>;
 
 		/*!
 			Create a Scope with a `name` and a `callback` that are moved into
@@ -132,7 +132,7 @@ namespace panini
 		{
 		}
 
-		inline void Visit(WriterBase& writer) final
+		inline void Visit(Writer& writer) final
 		{
 			const BraceBreakingStyle breakingStyle =
 				m_options.breakingStyle == BraceBreakingStyle::Inherit

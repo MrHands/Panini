@@ -29,6 +29,12 @@
 
 namespace panini
 {
+
+	class Writer;
+
+	//! \deprecated Prefer using \ref Writer instead.
+	using WriterBase = Writer;
+
 	/*!
 		\brief Base class for writers.
 
@@ -39,14 +45,14 @@ namespace panini
 		Writers commit their output to a target automatically when they are
 		destroyed.
 	*/
-	class WriterBase
+	class Writer
 	{
 
 	public:
 		/*!
 			Constructs a writer with an optional configuration instance.
 		*/
-		inline explicit WriterBase(const Config& config = Config{})
+		inline explicit Writer(const Config& config = Config{})
 			: m_config(config)
 		{
 			// reserve cached strings
@@ -70,7 +76,7 @@ namespace panini
 			}
 		}
 
-		virtual ~WriterBase() = default;
+		virtual ~Writer() = default;
 
 		/*!
 			Get a reference to the active Config for this writer.
@@ -120,7 +126,7 @@ namespace panini
 
 			\return Reference to itself to allow for chaining.
 		*/
-		inline WriterBase& operator << (const std::string& chunk)
+		inline Writer& operator << (const std::string& chunk)
 		{
 			if (m_state == State::NewLine)
 			{
@@ -162,7 +168,7 @@ namespace panini
 
 			\return Reference to itself to allow for chaining.
 		*/
-		inline WriterBase& operator << (const char* chunkString)
+		inline Writer& operator << (const char* chunkString)
 		{
 			return *this << std::string(chunkString);
 		}
@@ -174,7 +180,7 @@ namespace panini
 
 			\return Reference to itself to allow for chaining.
 		*/
-		inline WriterBase& operator << (const NextLine& command)
+		inline Writer& operator << (const NextLine& command)
 		{
 			(void)command;
 
@@ -202,7 +208,7 @@ namespace panini
 
 			\return Reference to itself to allow for chaining.
 		*/
-		inline WriterBase& operator << (const IndentPush& command)
+		inline Writer& operator << (const IndentPush& command)
 		{
 			(void)command;
 
@@ -226,7 +232,7 @@ namespace panini
 
 			\return Reference to itself to allow for chaining.
 		*/
-		inline WriterBase& operator << (const IndentPop& command)
+		inline Writer& operator << (const IndentPop& command)
 		{
 			(void)command;
 
@@ -263,7 +269,7 @@ namespace panini
 
 			\return Reference to itself to allow for chaining
 		*/
-		inline WriterBase& operator << (CommandBase&& command)
+		inline Writer& operator << (CommandBase&& command)
 		{
 			command.Visit(*this);
 

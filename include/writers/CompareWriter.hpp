@@ -22,7 +22,7 @@
 #pragma once
 
 #include "data/CompareWriterConfig.hpp"
-#include "writers/WriterBase.hpp"
+#include "writers/Writer.hpp"
 
 namespace panini
 {
@@ -38,7 +38,7 @@ namespace panini
 	*/
 
 	class CompareWriter
-		: public WriterBase
+		: public Writer
 	{
 
 	public:
@@ -64,7 +64,7 @@ namespace panini
 			\param config    Configuration instance.
 		*/
 		inline CompareWriter(const std::filesystem::path& filePath, const Config& config = Config())
-			: WriterBase(config)
+			: Writer(config)
 		{
 			m_compareConfig.filePath = filePath;
 

@@ -22,7 +22,7 @@
 #pragma once
 
 #include "data/FileWriterConfig.hpp"
-#include "writers/WriterBase.hpp"
+#include "writers/Writer.hpp"
 
 namespace panini
 {
@@ -35,7 +35,7 @@ namespace panini
 		The \ref Config instance is used to configure the output.
 	*/
 	class FileWriter
-		: public WriterBase
+		: public Writer
 	{
 
 	public:
@@ -61,7 +61,7 @@ namespace panini
 			\param config  Configuration instance.
 		*/
 		inline FileWriter(const std::filesystem::path& path, const Config& config = Config())
-			: WriterBase(config)
+			: Writer(config)
 		{
 			m_target.open(path.string(), std::ios::out | std::ios::binary);
 		}

@@ -21,7 +21,7 @@
 
 #pragma once
 
-#include "writers/WriterBase.hpp"
+#include "writers/Writer.hpp"
 
 namespace panini
 {
@@ -32,7 +32,7 @@ namespace panini
 		The \ref Config instance is used to configure the output.
 	*/
 	class StringWriter
-		: public WriterBase
+		: public Writer
 	{
 
 	public:
@@ -43,7 +43,7 @@ namespace panini
 			\param config  Configuration instance.
 		*/
 		inline StringWriter(std::string& target, const Config& config = Config())
-			: WriterBase(config)
+			: Writer(config)
 			, m_target(target)
 		{
 		}

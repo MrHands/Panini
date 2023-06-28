@@ -22,7 +22,7 @@
 #pragma once
 
 #include "commands/CommandBase.hpp"
-#include "writers/WriterBase.hpp"
+#include "writers/Writer.hpp"
 
 namespace panini
 {
@@ -71,12 +71,12 @@ namespace panini
 			\ref WriterBase. Chunks output inside the callback will be prefixed
 			with the C multi-line comment syntax.
 		*/
-		inline explicit CommentBlock(std::function<void(WriterBase&)>&& callback) noexcept
+		inline explicit CommentBlock(std::function<void(Writer&)>&& callback) noexcept
 			: m_callback(std::exchange(callback, {}))
 		{
 		}
 
-		inline virtual void Visit(WriterBase& writer) final
+		inline virtual void Visit(Writer& writer) final
 		{
 			writer << "/* ";
 			writer.SetIsInCommentBlock(true);
@@ -88,7 +88,7 @@ namespace panini
 		}
 
 	private:
-		std::function<void(WriterBase&)> m_callback;
+		std::function<void(Writer&)> m_callback;
 
 	};
 

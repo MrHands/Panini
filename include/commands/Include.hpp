@@ -23,7 +23,7 @@
 
 #include "commands/CommandBase.hpp"
 #include "data/IncludeEntry.hpp"
-#include "writers/WriterBase.hpp"
+#include "writers/Writer.hpp"
 
 namespace panini
 {
@@ -104,7 +104,7 @@ namespace panini
 		{
 		}
 
-		inline virtual void Visit(WriterBase& writer) final
+		inline virtual void Visit(Writer& writer) final
 		{
 			IncludeStyle includeStyle =
 				m_entry.style == IncludeStyle::Inherit

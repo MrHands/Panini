@@ -21,7 +21,7 @@
 
 #pragma once
 
-#include "writers/WriterBase.hpp"
+#include "writers/Writer.hpp"
 
 namespace panini
 {
@@ -34,7 +34,7 @@ namespace panini
 		stream by supplying it as the first argument to the constructor.
 	*/
 	class ConsoleWriter
-		: public WriterBase
+		: public Writer
 	{
 
 	public:
@@ -44,7 +44,7 @@ namespace panini
 			\param config  Configuration instance
 		*/
 		inline explicit ConsoleWriter(const Config& config = Config())
-			: WriterBase(config)
+			: Writer(config)
 			, m_outputStream(std::cout)
 		{
 		}
@@ -58,7 +58,7 @@ namespace panini
 		inline explicit ConsoleWriter(
 			std::ostream& outputStream,
 			const Config& config = Config())
-			: WriterBase(config)
+			: Writer(config)
 			, m_outputStream(outputStream)
 		{
 		}

@@ -34,7 +34,7 @@
 #endif
 
 #include "data/DebugWriterConfig.hpp"
-#include "writers/WriterBase.hpp"
+#include "writers/Writer.hpp"
 
 namespace panini
 {
@@ -53,7 +53,7 @@ namespace panini
 	*/
 
 	class DebugWriter
-		: public WriterBase
+		: public Writer
 	{
 
 	public:
@@ -80,7 +80,7 @@ namespace panini
 			Construct and configure the writer.
 		*/
 		inline explicit DebugWriter(const DebugWriterConfig& config = DebugWriterConfig{})
-			: WriterBase(config)
+			: Writer(config)
 			, m_debugConfig(config)
 		{
 		#ifdef _WINDOWS

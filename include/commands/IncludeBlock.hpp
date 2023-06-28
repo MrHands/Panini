@@ -24,7 +24,7 @@
 #include "commands/CommandBase.hpp"
 #include "commands/Include.hpp"
 #include "data/IncludeSet.hpp"
-#include "writers/WriterBase.hpp"
+#include "writers/Writer.hpp"
 
 namespace panini
 {
@@ -76,7 +76,7 @@ namespace panini
 		{
 		}
 
-		inline virtual void Visit(WriterBase& writer) final
+		inline virtual void Visit(Writer& writer) final
 		{
 			// sort includes and resolve "inherit" include style with the
 			// writer's include style

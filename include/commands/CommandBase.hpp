@@ -26,7 +26,7 @@
 namespace panini
 {
 
-	class WriterBase;
+	class Writer;
 
 	/*!
 		\brief Base class for commands.
@@ -48,7 +48,7 @@ namespace panini
 		/*!
 			Accepts a \ref WriterBase to write chunks to the output.
 		*/
-		virtual void Visit(WriterBase& writer) = 0;
+		virtual void Visit(Writer& writer) = 0;
 
 	};
 

@@ -22,7 +22,7 @@
 #pragma once
 
 #include "commands/CommandBase.hpp"
-#include "writers/WriterBase.hpp"
+#include "writers/Writer.hpp"
 
 namespace panini
 {
@@ -68,7 +68,7 @@ namespace panini
 		{
 		}
 
-		inline virtual void Visit(WriterBase& writer) final
+		inline virtual void Visit(Writer& writer) final
 		{
 			writer << "//";
 

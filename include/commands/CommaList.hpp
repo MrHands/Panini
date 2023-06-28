@@ -100,7 +100,7 @@ namespace panini
 			\param item       Value being processed.
 			\param listIndex  Index of the value in the list.
 		*/
-		using TTransform = std::function<void(WriterBase& writer, const TUnderlying& item, size_t listIndex)>;
+		using TTransform = std::function<void(Writer& writer, const TUnderlying& item, size_t listIndex)>;
 
 		/*!
 			\brief Default transform function for the command.
@@ -116,7 +116,7 @@ namespace panini
 			\param listIndex  Index of the value in the list.
 		*/
 		template <typename TItem>
-		static void DefaultTransform(WriterBase& writer, const TItem& item, size_t listIndex)
+		static void DefaultTransform(Writer& writer, const TItem& item, size_t listIndex)
 		{
 			(void)listIndex;
 
@@ -132,7 +132,7 @@ namespace panini
 			\param listIndex  Index of the value in the list.
 		*/
 		template <>
-		static void DefaultTransform(WriterBase& writer, const std::string& item, size_t listIndex)
+		static void DefaultTransform(Writer& writer, const std::string& item, size_t listIndex)
 		{
 			(void)listIndex;
 
@@ -177,7 +177,7 @@ namespace panini
 		{
 		}
 
-		inline virtual void Visit(WriterBase& writer) final
+		inline virtual void Visit(Writer& writer) final
 		{
 			size_t index = 0;
 			for (TIterator item = m_begin; item != m_end; ++item)

@@ -23,7 +23,7 @@
 
 #include "commands/CommandBase.hpp"
 #include "options/BracesOptions.hpp"
-#include "writers/WriterBase.hpp"
+#include "writers/Writer.hpp"
 
 namespace panini
 {
@@ -74,7 +74,7 @@ namespace panini
 	{
 
 	public:
-		using TCallback = std::function<void(WriterBase&)>;
+		using TCallback = std::function<void(Writer&)>;
 
 		/*!
 			Create a Braces command with a callback that is moved into the
@@ -113,7 +113,7 @@ namespace panini
 		{
 		}
 
-		inline void Visit(WriterBase& writer) final
+		inline void Visit(Writer& writer) final
 		{
 			const BraceBreakingStyle breakingStyle =
 				m_options.breakingStyle == BraceBreakingStyle::Inherit

@@ -28,13 +28,14 @@ namespace panini
 {
 
 	/*!
-		\brief Writes output to a path only when it differs.
+		\brief Writes output to a path only when the written bytes differ from
+		what was loaded on disk.
 
 		The CompareWriter stores the contents of the target path first. When
 		the new output differs from what was seen before, the output will be
 		committed to the path.
 
-		The \ref Config instance is used to configure the output.
+		The writer can be configured with \ref CompareWriterConfig.
 	*/
 
 	class CompareWriter
@@ -51,14 +52,16 @@ namespace panini
 			: CompareWriter(config.filePath, config)
 		{
 			m_compareConfig = config;
+
+			Initialize();
 		}
 
 		/*!
-			Construct and configure the writer.
+			\deprecated This constructor will be removed in the next major
+			release. Prefer using the constructor that takes
+			\ref CompareWriterConfig.
 
-			\deprecated This constructor will likely be removed in a future
-			version. Prefer initializing the writer with a
-			\ref CompareWriterConfig instance instead.
+			Construct and configure the writer.
 
 			\param filePath  File that will be compared against the output.
 			\param config    Configuration instance.
@@ -68,20 +71,7 @@ namespace panini
 		{
 			m_compareConfig.filePath = filePath;
 
-			// read the previous output, if available
-
-			std::ifstream stream(m_compareConfig.filePath.string(), std::ios::binary);
-			m_pathExists = stream.is_open();
-			if (m_pathExists)
-			{
-				stream.seekg(0, std::ios::end);
-				m_writtenPrevious.resize(static_cast<size_t>(stream.tellg()));
-				stream.seekg(0, std::ios::beg);
-				stream.read(&m_writtenPrevious[0], m_writtenPrevious.size());
-				stream.close();
-
-				m_writtenCurrent.reserve(m_writtenPrevious.size());
-			}
+			Initialize();
 		}
 
 		/*!
@@ -102,6 +92,24 @@ namespace panini
 		}
 
 	protected:
+		inline virtual void Initialize()
+		{
+			// read the previous output, if available
+
+			std::ifstream stream(m_compareConfig.filePath.string(), std::ios::binary);
+			m_pathExists = stream.is_open();
+			if (m_pathExists)
+			{
+				stream.seekg(0, std::ios::end);
+				m_writtenPrevious.resize(static_cast<size_t>(stream.tellg()));
+				stream.seekg(0, std::ios::beg);
+				stream.read(&m_writtenPrevious[0], m_writtenPrevious.size());
+				stream.close();
+
+				m_writtenCurrent.reserve(m_writtenPrevious.size());
+			}
+		}
+
 		inline virtual void Write(const std::string& chunk) override
 		{
 			m_writtenCurrent += chunk;

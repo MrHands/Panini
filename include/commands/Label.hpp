@@ -21,7 +21,7 @@
 
 #pragma once
 
-#include "commands/CommandBase.hpp"
+#include "commands/Command.hpp"
 
 namespace panini
 {
@@ -62,7 +62,7 @@ namespace panini
 		\sa Scope
 	*/
 	class Label
-		: public CommandBase
+		: public Command
 	{
 
 	public:

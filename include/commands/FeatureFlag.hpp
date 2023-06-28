@@ -21,13 +21,13 @@
 
 #pragma once
 
-#include "commands/CommandBase.hpp"
+#include "commands/Command.hpp"
 
 namespace panini
 {
 
 	class FeatureFlag
-		: public CommandBase
+		: public Command
 	{
 
 	public:

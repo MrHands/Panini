@@ -21,7 +21,7 @@
 
 #pragma once
 
-#include "commands/CommandBase.hpp"
+#include "commands/Command.hpp"
 #include "writers/Writer.hpp"
 
 namespace panini
@@ -46,7 +46,7 @@ namespace panini
 		\endcode
 	*/
 	class CommentLine
-		: public CommandBase
+		: public Command
 	{
 
 	public:

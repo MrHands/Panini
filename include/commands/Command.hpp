@@ -39,11 +39,11 @@ namespace panini
 
 		\sa WriterBase
 	*/
-	class CommandBase
+	class Command
 	{
 
 	public:
-		virtual ~CommandBase() = default;
+		virtual ~Command() = default;
 
 		/*!
 			Accepts a \ref WriterBase to write chunks to the output.
@@ -51,5 +51,8 @@ namespace panini
 		virtual void Visit(Writer& writer) = 0;
 
 	};
+
+	//! \deprecated Prefer using \ref Command instead
+	using CommandBase = Command;
 
 };

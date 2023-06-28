@@ -21,7 +21,7 @@
 
 #pragma once
 
-#include "commands/CommandBase.hpp"
+#include "commands/Command.hpp"
 #include "commands/Include.hpp"
 #include "data/IncludeSet.hpp"
 #include "writers/Writer.hpp"
@@ -54,7 +54,7 @@ namespace panini
 		\endcode
 	*/
 	class IncludeBlock
-		: public CommandBase
+		: public Command
 	{
 
 	public:

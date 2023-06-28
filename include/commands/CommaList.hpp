@@ -21,7 +21,7 @@
 
 #pragma once
 
-#include "commands/CommandBase.hpp"
+#include "commands/Command.hpp"
 #include "options/CommaListOptions.hpp"
 
 #include <type_traits>
@@ -78,7 +78,7 @@ namespace panini
 
 	template <class TIterator>
 	class CommaList
-		: public CommandBase
+		: public Command
 	{
 
 	public:

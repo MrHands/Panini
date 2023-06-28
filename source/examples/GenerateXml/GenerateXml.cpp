@@ -26,7 +26,7 @@
 // custom command for outputting xml element
 
 class XmlElement
-	: public panini::CommandBase
+	: public panini::Command
 {
 
 public:
@@ -77,6 +77,9 @@ int main(int argc, char** argv)
 
 	ConsoleWriter logger;
 
+	logger << "Generating MyStory.vcxproj..." << NextLine();
+	logger << NextLine();
+
 	// use windows-style newlines on the output
 
 	Config config;
@@ -85,9 +88,6 @@ int main(int argc, char** argv)
 
 	// the CompareWriter will compare the output against an existing file if the
 	// generated output was changed it will write it to the specified path
-
-	logger << "Generating MyStory.vcxproj..." << NextLine();
-	logger << NextLine();
 
 	CompareWriter writer("MyStory.vcxproj", config);
 

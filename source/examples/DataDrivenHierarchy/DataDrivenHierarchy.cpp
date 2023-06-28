@@ -92,7 +92,7 @@ std::vector<std::shared_ptr<IniSection>> g_IniSections;
 // adds a component to our generated game objects
 
 class AddComponentCommand
-	: public panini::CommandBase
+	: public panini::Command
 {
 
 public:
@@ -120,7 +120,7 @@ private:
 // generates a game object definition from an ini section
 
 class GameObjectCommand
-	: public panini::CommandBase
+	: public panini::Command
 {
 
 public:

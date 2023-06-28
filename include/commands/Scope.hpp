@@ -22,7 +22,7 @@
 #pragma once
 
 #include "commands/Braces.hpp"
-#include "commands/CommandBase.hpp"
+#include "commands/Command.hpp"
 #include "options/ScopeOptions.hpp"
 #include "writers/Writer.hpp"
 
@@ -64,7 +64,7 @@ namespace panini
 		\sa Braces
 	*/
 	class Scope
-		: public CommandBase
+		: public Command
 	{
 
 	public:

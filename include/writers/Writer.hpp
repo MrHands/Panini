@@ -21,7 +21,7 @@
 
 #pragma once
 
-#include "commands/CommandBase.hpp"
+#include "commands/Command.hpp"
 #include "commands/IndentPop.hpp"
 #include "commands/IndentPush.hpp"
 #include "commands/NextLine.hpp"
@@ -29,11 +29,6 @@
 
 namespace panini
 {
-
-	class Writer;
-
-	//! \deprecated Prefer using \ref Writer instead.
-	using WriterBase = Writer;
 
 	/*!
 		\brief Base class for writers.
@@ -269,7 +264,7 @@ namespace panini
 
 			\return Reference to itself to allow for chaining
 		*/
-		inline Writer& operator << (CommandBase&& command)
+		inline Writer& operator << (Command&& command)
 		{
 			command.Visit(*this);
 
@@ -364,5 +359,8 @@ namespace panini
 		std::string m_commentIndentCached;
 
 	};
+
+	//! \deprecated Prefer using \ref Writer instead.
+	using WriterBase = Writer;
 
 };

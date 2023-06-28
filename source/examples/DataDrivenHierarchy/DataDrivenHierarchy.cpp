@@ -134,9 +134,13 @@ public:
 		{
 			m_isPure = false;
 
-			auto parentFound = std::find_if(g_IniSections.begin(), g_IniSections.end(), [&inheritsSetting](const std::shared_ptr<IniSection>& it) {
-				return it->name == inheritsSetting->value;
-			});
+			auto parentFound = std::find_if(
+				g_IniSections.begin(),
+				g_IniSections.end(),
+				[&inheritsSetting](const std::shared_ptr<IniSection>& it) {
+					return it->name == inheritsSetting->value;
+				}
+			);
 			if (parentFound != g_IniSections.end())
 			{
 				auto parentCopy = (*parentFound)->settings;
@@ -230,8 +234,10 @@ private:
 
 int main(int argc, char** argv)
 {
-	(int)argc;
-	(int)argv;
+	// The command-line parameters are unused for this example.
+
+	(void)argc;
+	(void)argv;
 
 	using namespace panini;
 
@@ -243,10 +249,6 @@ int main(int argc, char** argv)
 
 	g_IniSections = std::move(result.value());
 
-	// The DebugWriter will output to the console and stop execution at the end
-	// of each line. This allows you to step through the code generation line-
-	// by-line in order to find out where it may go wrong.
-
 	for (auto section : g_IniSections)
 	{
 		GameObjectCommand gameObject(*section);
@@ -256,6 +258,10 @@ int main(int argc, char** argv)
 
 			continue;
 		}
+
+		// The DebugWriter will output to the console and stop execution at the
+		// end of each line. This allows you to step through the code generation
+		// line-by-line in order to find out where it may go wrong.
 
 		DebugWriter writer;
 		writer << std::move(gameObject);

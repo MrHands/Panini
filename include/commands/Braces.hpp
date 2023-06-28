@@ -77,8 +77,8 @@ namespace panini
 		using TCallback = std::function<void(Writer&)>;
 
 		/*!
-			\deprecated Prefer using the constructor that takes
-			\ref BracesOptions
+			\deprecated This constructor will be removed in the next major
+			release. Prefer using the constructor that takes \ref BracesOptions
 
 			Create a Braces command with a callback that is moved into the
 			instance.

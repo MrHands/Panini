@@ -71,8 +71,8 @@ namespace panini
 		using TCallback = std::function<void(Writer&)>;
 
 		/*!
-			\deprecated Prefer using the constructor that takes
-			\ref ScopeOptions
+			\deprecated This constructor will be removed in the next major
+			release. Prefer using the constructor that takes \ref ScopeOptions
 
 			Create a Scope with a `name` and a `callback` that are both moved
 			into the instance.

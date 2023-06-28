@@ -94,8 +94,8 @@ namespace panini
 		}
 
 		/*!
-			\deprecated Prefer using the constructor that takes
-			\ref ScopeOptions
+			\deprecated This constructor will be removed in the next major
+			release. Prefer using the constructor that takes \ref ScopeOptions
 
 			Create a Scope with a `name` that is copied and a `callback` that is
 			moved into the instance.

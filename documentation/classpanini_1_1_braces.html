@@ -125,19 +125,18 @@ Public Member Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p ><a class="el" href="classpanini_1_1_command.html" title="Base class for commands.">Command</a> for outputting opening and closing (curly) braces. </p>
 <p >This command tracks the current indentation level and takes the brace breaking style into account when outputting braces. You can change both the brace breaking style and the brace chunks it outputs with the <a class="el" href="structpanini_1_1_braces_options.html">BracesOptions</a> parameter.</p>
-<p >After outputting the opening brace, the <a class="el" href="classpanini_1_1_braces.html" title="Command for outputting opening and closing (curly) braces.">Braces</a> command calls a callback with the current <a class="el" href="namespacepanini.html#a66c34486f3625afb06a2f4fc23590594">WriterBase</a> instance as a parameter.</p>
+<p >After outputting the opening brace, the <a class="el" href="classpanini_1_1_braces.html" title="Command for outputting opening and closing (curly) braces.">Braces</a> command calls a callback with the current <a class="el" href="classpanini_1_1_writer.html">Writer</a> instance as a parameter.</p>
 <p >If you want to prefix the opening brace with a chunk, it may be beneficial to use a <a class="el" href="classpanini_1_1_scope.html">Scope</a> instead.</p>
 <dl class="section note"><dt>Note</dt><dd>The command will <em>not</em> output a space before the opening brace if the brace breaking style was set to <a class="el" href="group___globals.html#gga0e8bf718da5e3c164599e591f6b76f5ca7193518e6f5f0076ef05680742323f9c" title="Open brace on the same line.">BraceBreakingStyle::Attach</a></dd></dl>
 <p>Example:</p>
-<div class="fragment"><div class="line">writer &lt;&lt; <a class="code hl_function" href="classpanini_1_1_braces.html#abab30675778acc95c2765caaf50faf75">Braces</a>([](<a class="code hl_typedef" href="namespacepanini.html#a66c34486f3625afb06a2f4fc23590594">WriterBase</a>&amp; writer) {</div>
-<div class="line">    writer &lt;&lt; <span class="stringliteral">&quot;const char* passwords[] = &quot;</span> &lt;&lt; <a class="code hl_function" href="classpanini_1_1_braces.html#abab30675778acc95c2765caaf50faf75">Braces</a>([](<a class="code hl_typedef" href="namespacepanini.html#a66c34486f3625afb06a2f4fc23590594">WriterBase</a>&amp; writer) {</div>
+<div class="fragment"><div class="line">writer &lt;&lt; <a class="code hl_function" href="classpanini_1_1_braces.html#abab30675778acc95c2765caaf50faf75">Braces</a>([](Writer&amp; writer) {</div>
+<div class="line">    writer &lt;&lt; <span class="stringliteral">&quot;const char* passwords[] = &quot;</span> &lt;&lt; <a class="code hl_function" href="classpanini_1_1_braces.html#abab30675778acc95c2765caaf50faf75">Braces</a>([](Writer&amp; writer) {</div>
 <div class="line">        writer &lt;&lt; R<span class="stringliteral">&quot;(&quot;password&quot;,)&quot; &lt;&lt; NextLine();</span></div>
 <div class="line"><span class="stringliteral">        writer &lt;&lt; R</span><span class="stringliteral">&quot;(&quot;p4ssw0rd&quot;)&quot; &lt;&lt; NextLine();</span></div>
 <div class="line"><span class="stringliteral">    }, <a class="code hl_enumvalue" href="group___globals.html#gga0e8bf718da5e3c164599e591f6b76f5ca7193518e6f5f0076ef05680742323f9c">BraceBreakingStyle::Attach</a>) &lt;&lt; </span><span class="stringliteral">&quot;;&quot;</span> &lt;&lt; NextLine();</div>
 <div class="line">});</div>
 <div class="ttc" id="aclasspanini_1_1_braces_html_abab30675778acc95c2765caaf50faf75"><div class="ttname"><a href="classpanini_1_1_braces.html#abab30675778acc95c2765caaf50faf75">panini::Braces::Braces</a></div><div class="ttdeci">Braces(TCallback &amp;&amp;callback, BraceBreakingStyle breakingStyle=BraceBreakingStyle::Inherit)</div><div class="ttdef"><b>Definition:</b> Braces.hpp:90</div></div>
 <div class="ttc" id="agroup___globals_html_gga0e8bf718da5e3c164599e591f6b76f5ca7193518e6f5f0076ef05680742323f9c"><div class="ttname"><a href="group___globals.html#gga0e8bf718da5e3c164599e591f6b76f5ca7193518e6f5f0076ef05680742323f9c">panini::BraceBreakingStyle::Attach</a></div><div class="ttdeci">@ Attach</div><div class="ttdoc">Open brace on the same line.</div></div>
-<div class="ttc" id="anamespacepanini_html_a66c34486f3625afb06a2f4fc23590594"><div class="ttname"><a href="namespacepanini.html#a66c34486f3625afb06a2f4fc23590594">panini::WriterBase</a></div><div class="ttdeci">Writer WriterBase</div><div class="ttdef"><b>Definition:</b> Writer.hpp:364</div></div>
 </div><!-- fragment --><p >Output:</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">    <span class="keyword">const</span> <span class="keywordtype">char</span>* passwords[] = {</div>
@@ -196,7 +195,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p >Create a <a class="el" href="classpanini_1_1_braces.html" title="Command for outputting opening and closing (curly) braces.">Braces</a> command with a callback that is moved into the instance.</p>
-<p >The callback is called when the command is visited by a <a class="el" href="namespacepanini.html#a66c34486f3625afb06a2f4fc23590594">WriterBase</a>.</p>
+<p >The callback is called when the command is visited by a <a class="el" href="classpanini_1_1_writer.html">Writer</a>.</p>
 <p >Setting the <code>breakingStyle</code> parameter to <a class="el" href="group___globals.html#gga0e8bf718da5e3c164599e591f6b76f5cac49484faf79e2388b580e49444d6ac11">BraceBreakingStyle::Inherit</a> copies the brace breaking style from the writer, otherwise it will be overridden for this command only. </p>
 
 </div>
@@ -235,7 +234,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p >Create a <a class="el" href="classpanini_1_1_braces.html" title="Command for outputting opening and closing (curly) braces.">Braces</a> command a <code>callback</code> that is moved into the instance.</p>
-<p >The callback is called when the command is visited by a <a class="el" href="namespacepanini.html#a66c34486f3625afb06a2f4fc23590594">WriterBase</a>.</p>
+<p >The callback is called when the command is visited by a <a class="el" href="classpanini_1_1_writer.html">Writer</a>.</p>
 <p >Setting the <code>breakingStyle</code> parameter in the options to <a class="el" href="group___globals.html#gga0e8bf718da5e3c164599e591f6b76f5cac49484faf79e2388b580e49444d6ac11">BraceBreakingStyle::Inherit</a> copies the brace breaking style from the writer, otherwise it will be overridden for this command only. </p>
 
 </div>
@@ -264,7 +263,7 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p >Accepts a <a class="el" href="namespacepanini.html#a66c34486f3625afb06a2f4fc23590594">WriterBase</a> to write chunks to the output. </p>
+<p >Accepts a <a class="el" href="classpanini_1_1_writer.html">Writer</a> to write chunks to the output. </p>
 
 <p>Implements <a class="el" href="classpanini_1_1_command.html#a9d93e499d11224c40ddb43c1c0e7109e">panini::Command</a>.</p>
 

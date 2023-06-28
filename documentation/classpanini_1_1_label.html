@@ -121,14 +121,13 @@ Public Member Functions</h2></td></tr>
 <p >A label is a name and a ":" chunk. The command pops the indentation before writing the label and restores it afterwards.</p>
 <p >Labels are useful when you don't want to modify the current indentation level, e.g. when writing an access identifier for a class or a switch..case statement.</p>
 <p >Example:</p>
-<div class="fragment"><div class="line">writer &lt;&lt; Scope(<span class="stringliteral">&quot;class Vehicle&quot;</span>, [](<a class="code hl_typedef" href="namespacepanini.html#a66c34486f3625afb06a2f4fc23590594">WriterBase</a>&amp; writer) {</div>
+<div class="fragment"><div class="line">writer &lt;&lt; Scope(<span class="stringliteral">&quot;class Vehicle&quot;</span>, [](Writer&amp; writer) {</div>
 <div class="line">    writer &lt;&lt; <a class="code hl_function" href="classpanini_1_1_label.html#abda00fbd34d62f64aed69674e70b884b">Label</a>(<span class="stringliteral">&quot;public&quot;</span>) &lt;&lt; NextLine();</div>
 <div class="line">    writer &lt;&lt; <span class="stringliteral">&quot;Vehicle(const std::string&amp; maker);&quot;</span> &lt;&lt; NextLine();</div>
 <div class="line">    writer &lt;&lt; <a class="code hl_function" href="classpanini_1_1_label.html#abda00fbd34d62f64aed69674e70b884b">Label</a>(<span class="stringliteral">&quot;private&quot;</span>) &lt;&lt; NextLine();</div>
 <div class="line">    writer &lt;&lt; <span class="stringliteral">&quot;std::string m_maker;&quot;</span> &lt;&lt; NextLine();</div>
 <div class="line">}) &lt;&lt; <span class="stringliteral">&quot;;&quot;</span>;</div>
 <div class="ttc" id="aclasspanini_1_1_label_html_abda00fbd34d62f64aed69674e70b884b"><div class="ttname"><a href="classpanini_1_1_label.html#abda00fbd34d62f64aed69674e70b884b">panini::Label::Label</a></div><div class="ttdeci">Label(std::string &amp;&amp;name)</div><div class="ttdef"><b>Definition:</b> Label.hpp:73</div></div>
-<div class="ttc" id="anamespacepanini_html_a66c34486f3625afb06a2f4fc23590594"><div class="ttname"><a href="namespacepanini.html#a66c34486f3625afb06a2f4fc23590594">panini::WriterBase</a></div><div class="ttdeci">Writer WriterBase</div><div class="ttdef"><b>Definition:</b> Writer.hpp:364</div></div>
 </div><!-- fragment --><p >Output:</p>
 <div class="fragment"><div class="line"><span class="keyword">class </span>Vehicle</div>
 <div class="line">{</div>
@@ -217,7 +216,7 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p >Accepts a <a class="el" href="namespacepanini.html#a66c34486f3625afb06a2f4fc23590594">WriterBase</a> to write chunks to the output. </p>
+<p >Accepts a <a class="el" href="classpanini_1_1_writer.html">Writer</a> to write chunks to the output. </p>
 
 <p>Implements <a class="el" href="classpanini_1_1_command.html#a9d93e499d11224c40ddb43c1c0e7109e">panini::Command</a>.</p>
 

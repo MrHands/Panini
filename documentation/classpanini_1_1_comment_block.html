@@ -119,14 +119,13 @@ Public Member Functions</h2></td></tr>
 <p >A comment block starts with /&zwj;* and ends with *&zwj;/. Chunks output inside the callback are prefixed with " * " to produce multi-line comments.</p>
 <p >You can still use other commands inside the comment block, including indentation. Note that the command adds a new line automatically.</p>
 <p >Example:</p>
-<div class="fragment"><div class="line">writer &lt;&lt; <a class="code hl_function" href="classpanini_1_1_comment_block.html#a032370f296fd3d5700ee4e5117f0c22f">CommentBlock</a>([](<a class="code hl_typedef" href="namespacepanini.html#a66c34486f3625afb06a2f4fc23590594">WriterBase</a>&amp; writer) {</div>
+<div class="fragment"><div class="line">writer &lt;&lt; <a class="code hl_function" href="classpanini_1_1_comment_block.html#a032370f296fd3d5700ee4e5117f0c22f">CommentBlock</a>([](Writer&amp; writer) {</div>
 <div class="line">    writer &lt;&lt; <span class="stringliteral">&quot;EXAMPLE:&quot;</span> &lt;&lt; NextLine();</div>
 <div class="line">    writer &lt;&lt; NextLine();</div>
 <div class="line">    writer &lt;&lt; <span class="stringliteral">&quot;Writing beautiful multi-line comments is easy&quot;</span> &lt;&lt; NextLine();</div>
 <div class="line">    writer &lt;&lt; <span class="stringliteral">&quot;When you use a comment block command!&quot;</span>;</div>
 <div class="line">});</div>
 <div class="ttc" id="aclasspanini_1_1_comment_block_html_a032370f296fd3d5700ee4e5117f0c22f"><div class="ttname"><a href="classpanini_1_1_comment_block.html#a032370f296fd3d5700ee4e5117f0c22f">panini::CommentBlock::CommentBlock</a></div><div class="ttdeci">CommentBlock(std::function&lt; void(Writer &amp;)&gt; &amp;&amp;callback) noexcept</div><div class="ttdef"><b>Definition:</b> CommentBlock.hpp:74</div></div>
-<div class="ttc" id="anamespacepanini_html_a66c34486f3625afb06a2f4fc23590594"><div class="ttname"><a href="namespacepanini.html#a66c34486f3625afb06a2f4fc23590594">panini::WriterBase</a></div><div class="ttdeci">Writer WriterBase</div><div class="ttdef"><b>Definition:</b> Writer.hpp:364</div></div>
 </div><!-- fragment --><p >Output:</p>
 <div class="fragment"><div class="line"><span class="comment">/* EXAMPLE:</span></div>
 <div class="line"><span class="comment">  *</span></div>
@@ -158,7 +157,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p >Construct a <a class="el" href="classpanini_1_1_comment_block.html" title="Command for outputting comment blocks over multiple lines.">CommentBlock</a> with a callback that is moved into the instance.</p>
-<p >The callback is called when the command is visited by a <a class="el" href="namespacepanini.html#a66c34486f3625afb06a2f4fc23590594">WriterBase</a>. Chunks output inside the callback will be prefixed with the C multi-line comment syntax. </p>
+<p >The callback is called when the command is visited by a <a class="el" href="classpanini_1_1_writer.html">Writer</a>. Chunks output inside the callback will be prefixed with the C multi- line comment syntax. </p>
 
 </div>
 </div>
@@ -186,7 +185,7 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p >Accepts a <a class="el" href="namespacepanini.html#a66c34486f3625afb06a2f4fc23590594">WriterBase</a> to write chunks to the output. </p>
+<p >Accepts a <a class="el" href="classpanini_1_1_writer.html">Writer</a> to write chunks to the output. </p>
 
 <p>Implements <a class="el" href="classpanini_1_1_command.html#a9d93e499d11224c40ddb43c1c0e7109e">panini::Command</a>.</p>
 

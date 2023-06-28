@@ -46,8 +46,10 @@ namespace panini
 		\ref NextLine command. The writer will wait for user input to either
 		continue debugging or stop execution.
 
-		It will display line numbers before the output and highlight both
-		indentation and new lines in the output.
+		Line numbers are displayed before the output and special characters like
+		indentation and new lines are highlighted in the output.
+
+		Note that the DebugWriter only works correctly on Windows right now.
 
 		The \ref DebugWriterConfig instance is used to configure the output.
 	*/
@@ -78,8 +80,11 @@ namespace panini
 
 		/*!
 			Construct and configure the writer.
+
+			\param config  Configuration instance.
 		*/
-		inline explicit DebugWriter(const DebugWriterConfig& config = DebugWriterConfig{})
+		inline explicit DebugWriter(
+			const DebugWriterConfig& config = DebugWriterConfig{})
 			: Writer(config)
 			, m_debugConfig(config)
 		{

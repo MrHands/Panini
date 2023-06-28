@@ -41,7 +41,9 @@ namespace panini
 			\param target  String that output will be written to.
 			\param config  Configuration instance.
 		*/
-		inline StringWriter(std::string& target, const StringWriterConfig& config = StringWriterConfig())
+		inline StringWriter(
+			std::string& target,
+			const StringWriterConfig& config = StringWriterConfig())
 			: Writer(config)
 			, m_target(target)
 		{

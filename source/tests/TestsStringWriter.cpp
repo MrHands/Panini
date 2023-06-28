@@ -50,7 +50,7 @@ TEST(StringWriter, Config)
 {
 	using namespace panini;
 
-	Config c;
+	StringWriterConfig c;
 	c.braceBreakingStyle = BraceBreakingStyle::Whitesmiths;
 	c.includeStyle = IncludeStyle::SingleQuotes;
 	c.chunkIndent = "  ";
@@ -67,7 +67,7 @@ TEST(StringWriter, InheritIsNotAllowed)
 {
 	using namespace panini;
 
-	Config c;
+	StringWriterConfig c;
 	c.braceBreakingStyle = BraceBreakingStyle::Inherit;
 	c.includeStyle = IncludeStyle::Inherit;
 

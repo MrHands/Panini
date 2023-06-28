@@ -27,15 +27,11 @@ namespace panini
 {
 
 	/*!
-		\brief Configuration for the \ref FileWriter class.
+		\brief Configuration for the \ref StringWriter class.
 	*/
-	struct FileWriterConfig
+	struct StringWriterConfig
 		: public WriterConfig
 	{
-		/*!
-			Path to the target file.
-		*/
-		std::filesystem::path targetPath;
 	};
 
 };

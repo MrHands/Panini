@@ -21,6 +21,7 @@
 
 #pragma once
 
+#include "data/StringWriterConfig.hpp"
 #include "writers/Writer.hpp"
 
 namespace panini
@@ -28,8 +29,6 @@ namespace panini
 
 	/*!
 		\brief Writes output to a string.
-
-		The \ref Config instance is used to configure the output.
 	*/
 	class StringWriter
 		: public Writer
@@ -42,7 +41,7 @@ namespace panini
 			\param target  String that output will be written to.
 			\param config  Configuration instance.
 		*/
-		inline StringWriter(std::string& target, const WriterConfig& config = WriterConfig())
+		inline StringWriter(std::string& target, const StringWriterConfig& config = StringWriterConfig())
 			: Writer(config)
 			, m_target(target)
 		{

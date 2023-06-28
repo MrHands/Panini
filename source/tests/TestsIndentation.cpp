@@ -96,7 +96,7 @@ TEST(Indentation, Config)
 {
 	using namespace panini;
 
-	Config c;
+	StringWriterConfig c;
 	c.chunkIndent = "  ";
 	std::string t;
 	StringWriter w(t, c);

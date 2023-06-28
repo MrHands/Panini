@@ -216,7 +216,7 @@ TEST(Scope, InheritConfigAttach)
 {
 	using namespace panini;
 
-	Config c;
+	StringWriterConfig c;
 	c.braceBreakingStyle = BraceBreakingStyle::Attach;
 	std::string t;
 	StringWriter w(t, c);

@@ -54,7 +54,7 @@ TEST(NewLine, OnWindows)
 {
 	using namespace panini;
 
-	Config c;
+	StringWriterConfig c;
 	c.chunkNewLine = "\r\n";
 	std::string t;
 	StringWriter w(t, c);

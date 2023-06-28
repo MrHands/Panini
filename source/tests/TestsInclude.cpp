@@ -50,7 +50,7 @@ TEST(Include, DoubleQuotesConfig)
 {
 	using namespace panini;
 
-	Config c;
+	StringWriterConfig c;
 	c.includeStyle = panini::IncludeStyle::DoubleQuotes;
 
 	std::string t;
@@ -89,7 +89,7 @@ TEST(Include, SingleQuotesConfig)
 {
 	using namespace panini;
 
-	Config c;
+	StringWriterConfig c;
 	c.includeStyle = panini::IncludeStyle::SingleQuotes;
 
 	std::string t;
@@ -128,7 +128,7 @@ TEST(Include, AngularBracketsConfig)
 {
 	using namespace panini;
 
-	Config c;
+	StringWriterConfig c;
 	c.includeStyle = panini::IncludeStyle::AngularBrackets;
 
 	std::string t;

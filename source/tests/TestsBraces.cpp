@@ -252,7 +252,7 @@ TEST(Braces, InheritConfigAttach)
 {
 	using namespace panini;
 
-	Config c;
+	StringWriterConfig c;
 	c.braceBreakingStyle = BraceBreakingStyle::Attach;
 	std::string t;
 	StringWriter w(t, c);
@@ -288,7 +288,7 @@ TEST(Braces, InheritConfigAllman)
 {
 	using namespace panini;
 
-	Config c;
+	StringWriterConfig c;
 	c.braceBreakingStyle = BraceBreakingStyle::Allman;
 	std::string t;
 	StringWriter w(t, c);
@@ -329,7 +329,7 @@ TEST(Braces, InheritConfigWhitesmiths)
 {
 	using namespace panini;
 
-	Config c;
+	StringWriterConfig c;
 	c.braceBreakingStyle = BraceBreakingStyle::Whitesmiths;
 	std::string t;
 	StringWriter w(t, c);

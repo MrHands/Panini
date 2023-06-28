@@ -40,7 +40,7 @@ namespace panini
 		Example:
 
 		\code{.cpp}
-			writer << CommentBlock([](WriterBase& writer) {
+			writer << CommentBlock([](Writer& writer) {
 				writer << "EXAMPLE:" << NextLine();
 				writer << NextLine();
 				writer << "Writing beautiful multi-line comments is easy" << NextLine();
@@ -67,9 +67,9 @@ namespace panini
 			Construct a CommentBlock with a callback that is moved into the
 			instance.
 
-			The callback is called when the command is visited by a
-			\ref WriterBase. Chunks output inside the callback will be prefixed
-			with the C multi-line comment syntax.
+			The callback is called when the command is visited by a \ref Writer.
+			Chunks output inside the callback will be prefixed with the C multi-
+			line comment syntax.
 		*/
 		inline explicit CommentBlock(std::function<void(Writer&)>&& callback) noexcept
 			: m_callback(std::exchange(callback, {}))

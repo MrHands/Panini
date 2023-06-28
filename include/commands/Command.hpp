@@ -37,7 +37,7 @@ namespace panini
 		you strictly need. A good rule of thumb is that a command should never
 		end on a \ref NextLine command.
 
-		\sa WriterBase
+		\sa Writer
 	*/
 	class Command
 	{
@@ -46,7 +46,7 @@ namespace panini
 		virtual ~Command() = default;
 
 		/*!
-			Accepts a \ref WriterBase to write chunks to the output.
+			Accepts a \ref Writer to write chunks to the output.
 		*/
 		virtual void Visit(Writer& writer) = 0;
 

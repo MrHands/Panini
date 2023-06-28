@@ -29,7 +29,7 @@ TEST(FeatureFlag, Empty)
 	std::string s;
 	StringWriter w(s);
 
-	w << FeatureFlag(false, "", [](WriterBase&) {});
+	w << FeatureFlag(false, "", [](Writer&) {});
 
 	EXPECT_STREQ(R"()", s.c_str());
 }
@@ -41,7 +41,7 @@ TEST(FeatureFlag, ConditionTrue)
 	std::string s;
 	StringWriter w(s);
 
-	w << FeatureFlag(true, "should_push", [](WriterBase& writer) {
+	w << FeatureFlag(true, "should_push", [](Writer& writer) {
 		writer << "PushTheButton();" << NextLine();
 	});
 
@@ -57,7 +57,7 @@ TEST(FeatureFlag, ConditionFalse)
 	std::string s;
 	StringWriter w(s);
 
-	w << FeatureFlag(false, "use-wall-color", [](WriterBase& writer) {
+	w << FeatureFlag(false, "use-wall-color", [](Writer& writer) {
 		writer << "Paint(wall_color);";
 	});
 
@@ -71,9 +71,9 @@ TEST(FeatureFlag, ConditionTrueWithElse)
 	std::string s;
 	StringWriter w(s);
 
-	w << FeatureFlag(true, "enable_dating", [](WriterBase& writer) {
+	w << FeatureFlag(true, "enable_dating", [](Writer& writer) {
 		writer << "rock->Date();" << NextLine();
-	}, [](WriterBase& writer) {
+	}, [](Writer& writer) {
 		writer << "rock->Throw();" << NextLine();
 	});
 
@@ -89,9 +89,9 @@ TEST(FeatureFlag, ConditionFalseWithElse)
 	std::string s;
 	StringWriter w(s);
 
-	w << FeatureFlag(false, "paint-that-wall", [](WriterBase& writer) {
+	w << FeatureFlag(false, "paint-that-wall", [](Writer& writer) {
 		writer << "Paint(wall_color);";
-	}, [](WriterBase& writer) {
+	}, [](Writer& writer) {
 		writer << "PaintTheRoom();";
 	});
 

@@ -39,7 +39,7 @@ namespace panini
 			When this parameter is set to \ref BraceBreakingStyle::Inherit,
 			the brace breaking style is copied from the active writer.
 
-			\sa WriterBase::GetBraceBreakingStyle
+			\sa Writer::GetBraceBreakingStyle
 		*/
 		BraceBreakingStyle breakingStyle = BraceBreakingStyle::Inherit;
 

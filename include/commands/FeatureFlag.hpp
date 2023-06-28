@@ -31,7 +31,7 @@ namespace panini
 	{
 
 	public:
-		using TCallback = std::function<void(WriterBase&)>;
+		using TCallback = std::function<void(Writer&)>;
 
 		inline FeatureFlag(
 			bool condition,
@@ -55,7 +55,7 @@ namespace panini
 		{
 		}
 
-		inline void Visit(WriterBase& writer) override
+		inline void Visit(Writer& writer) override
 		{
 			if (m_condition)
 			{

@@ -29,7 +29,7 @@ TEST(CommentBlock, Regular)
 	std::string t;
 	StringWriter w(t);
 
-	w << CommentBlock([](WriterBase& w) {
+	w << CommentBlock([](Writer& w) {
 		w << "In the beginning there was only darkness." << NextLine();
 		w << "But then there was Disco.";
 	});
@@ -46,7 +46,7 @@ TEST(CommentBlock, Empty)
 	std::string t;
 	StringWriter w(t);
 
-	w << CommentBlock([](WriterBase& w) {
+	w << CommentBlock([](Writer& w) {
 		(void)w;
 	});
 
@@ -62,7 +62,7 @@ TEST(CommentBlock, Indentation)
 	StringWriter w(t);
 
 	w << IndentPush() << IndentPush();
-	w << CommentBlock([](WriterBase& w) {
+	w << CommentBlock([](Writer& w) {
 		w << "TODO:" << IndentPush() << NextLine();
 		w << "[ ] Buy trigger button" << NextLine();
 		w << "[ ] Restore order" << IndentPush() << NextLine();
@@ -87,7 +87,7 @@ TEST(CommentBlock, EmptyLines)
 	std::string t;
 	StringWriter w(t);
 
-	w << CommentBlock([](WriterBase& w) {
+	w << CommentBlock([](Writer& w) {
 		w << "First:" << NextLine();
 		w << NextLine();
 		w << "Third:";

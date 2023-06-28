@@ -34,7 +34,7 @@ int main(int argc, char** argv)
 
 	writer << NextLine();
 
-	writer << Scope("int main(int argc, char** argv)", [](WriterBase& writer)
+	writer << Scope("int main(int argc, char** argv)", [](Writer& writer)
 	{
 		writer << R"(std::cout << "Hello, World!" << std::endl;)" << NextLine();
 

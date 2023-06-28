@@ -39,7 +39,7 @@ namespace panini
 		Example:
 
 		\code{.cpp}
-			writer << Scope("class Vehicle", [](WriterBase& writer) {
+			writer << Scope("class Vehicle", [](Writer& writer) {
 				writer << Label("public") << NextLine();
 				writer << "Vehicle(const std::string& maker);" << NextLine();
 				writer << Label("private") << NextLine();

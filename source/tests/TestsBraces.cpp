@@ -29,7 +29,7 @@ TEST(Braces, BreakingStyleInheritEmpty)
 	std::string t;
 	StringWriter w(t);
 
-	w << Braces([](WriterBase&) {
+	w << Braces([](Writer&) {
 	});
 
 	EXPECT_STREQ(R"({
@@ -43,11 +43,11 @@ TEST(Braces, BreakingStyleInheritRegular)
 	std::string t;
 	StringWriter w(t);
 
-	w << Braces([](WriterBase& w) {
+	w << Braces([](Writer& w) {
 		w << "var i = 0;" << NextLine();
 		w << "doSomething(i);" << NextLine();
 		w << NextLine();
-		w << "next->Call([]()" << Braces([](WriterBase& w) {
+		w << "next->Call([]()" << Braces([](Writer& w) {
 			w << "// result" << NextLine();
 		}) << ");" << NextLine();
 	});
@@ -70,7 +70,7 @@ TEST(Braces, BreakingStyleAttachEmpty)
 	std::string t;
 	StringWriter w(t);
 
-	w << Braces([](WriterBase&) {
+	w << Braces([](Writer&) {
 	}, BraceBreakingStyle::Attach);
 
 	EXPECT_STREQ(R"({
@@ -84,7 +84,7 @@ TEST(Braces, BreakingStyleAttachRegular)
 	std::string t;
 	StringWriter w(t);
 
-	w << "std::sort(cards.begin(), cards.end(), [](const Card& left, const Card& right) " << Braces([](WriterBase& w) {
+	w << "std::sort(cards.begin(), cards.end(), [](const Card& left, const Card& right) " << Braces([](Writer& w) {
 		w << "return left.face < right.face;" << NextLine();
 	}, BraceBreakingStyle::Attach) << ");";
 
@@ -100,7 +100,7 @@ TEST(Braces, BreakingStyleAllmanEmpty)
 	std::string t;
 	StringWriter w(t);
 
-	w << Braces([](WriterBase& w) {
+	w << Braces([](Writer& w) {
 		(void)w;
 	}, BraceBreakingStyle::Allman);
 
@@ -115,7 +115,7 @@ TEST(Braces, BreakingStyleAllmanRegular)
 	std::string t;
 	StringWriter w(t);
 
-	w << "void reportPictures(int32_t spiderManCount)" << Braces([](WriterBase& w) {
+	w << "void reportPictures(int32_t spiderManCount)" << Braces([](Writer& w) {
 		w << "transferMoney(spiderManCount * 1000);" << NextLine();
 	}, BraceBreakingStyle::Allman);
 
@@ -132,7 +132,7 @@ TEST(Braces, BreakingStyleWhitesmithsEmpty)
 	std::string t;
 	StringWriter w(t);
 
-	w << Braces([](WriterBase&) {
+	w << Braces([](Writer&) {
 	}, BraceBreakingStyle::Whitesmiths);
 
 	EXPECT_STREQ(R"({
@@ -146,8 +146,8 @@ TEST(Braces, BreakingStyleWhitesmithsRegular)
 	std::string t;
 	StringWriter w(t);
 
-	w << "std::vector<Movie> getMoviesToWatch()" << Braces([](WriterBase& w) {
-		w << "return std::vector<Movie>(" << Braces([](WriterBase& w) {
+	w << "std::vector<Movie> getMoviesToWatch()" << Braces([](Writer& w) {
+		w << "return std::vector<Movie>(" << Braces([](Writer& w) {
 			w << R"({ "John Wick" }, { "John Wick 2" }, { "John Wick 3" }, { "John Wick 4" })" << NextLine();
 		}) << ");" << NextLine();
 	}, BraceBreakingStyle::Whitesmiths);
@@ -172,7 +172,7 @@ TEST(Braces, BracesOptionsInherit)
 	o.chunkBraceOpen = "<<";
 	o.chunkBraceClose = ">>";
 
-	w << Braces([](WriterBase& w) {
+	w << Braces([](Writer& w) {
 		w << "ruleTheWorld();" << NextLine();
 	}, o);
 
@@ -193,7 +193,7 @@ TEST(Braces, BracesOptionsAttach)
 	o.chunkBraceOpen = "(";
 	o.chunkBraceClose = ")";
 
-	w << "constructor" << Braces([](WriterBase& w) {
+	w << "constructor" << Braces([](Writer& w) {
 		w << "args" << NextLine();
 	}, o);
 
@@ -214,7 +214,7 @@ TEST(Braces, BracesOptionsAllman)
 	o.chunkBraceOpen = "<!--";
 	o.chunkBraceClose = "-->";
 
-	w << "XML string:" << Braces([](WriterBase& w) {
+	w << "XML string:" << Braces([](Writer& w) {
 		w << "stable" << NextLine();
 	}, o);
 
@@ -236,7 +236,7 @@ TEST(Braces, BracesOptionsWhitesmiths)
 	o.chunkBraceOpen = "1.";
 	o.chunkBraceClose = "2.";
 
-	w << "first of all" << Braces([](WriterBase& w) {
+	w << "first of all" << Braces([](Writer& w) {
 		w << "yes" << NextLine();
 		w << "but no" << NextLine();
 	}, o);
@@ -257,11 +257,11 @@ TEST(Braces, InheritConfigAttach)
 	std::string t;
 	StringWriter w(t, c);
 
-	w << "bool baz(int i) " << Braces([](WriterBase& w) {
-		w << "try " << Braces([](WriterBase& w) {
-			w << "do " << Braces([](WriterBase& w) {
-				w << "switch (i) " << Braces([](WriterBase& w) {
-					w << "case 1: " << Braces([](WriterBase& w) {
+	w << "bool baz(int i) " << Braces([](Writer& w) {
+		w << "try " << Braces([](Writer& w) {
+			w << "do " << Braces([](Writer& w) {
+				w << "switch (i) " << Braces([](Writer& w) {
+					w << "case 1: " << Braces([](Writer& w) {
 						w << "foobar();" << NextLine();
 						w << "break;" << NextLine();
 					}) << NextLine();
@@ -293,11 +293,11 @@ TEST(Braces, InheritConfigAllman)
 	std::string t;
 	StringWriter w(t, c);
 
-	w << "bool baz(int i)" << Braces([](WriterBase& w) {
-		w << "try" << Braces([](WriterBase& w) {
-			w << "do" << Braces([](WriterBase& w) {
-				w << "switch (i)" << Braces([](WriterBase& w) {
-					w << "case 1:" << Braces([](WriterBase& w) {
+	w << "bool baz(int i)" << Braces([](Writer& w) {
+		w << "try" << Braces([](Writer& w) {
+			w << "do" << Braces([](Writer& w) {
+				w << "switch (i)" << Braces([](Writer& w) {
+					w << "case 1:" << Braces([](Writer& w) {
 						w << "foobar();" << NextLine();
 						w << "break;" << NextLine();
 					}) << NextLine();
@@ -334,11 +334,11 @@ TEST(Braces, InheritConfigWhitesmiths)
 	std::string t;
 	StringWriter w(t, c);
 
-	w << "bool baz(int i)" << Braces([](WriterBase& w) {
-		w << "try" << Braces([](WriterBase& w) {
-			w << "do" << Braces([](WriterBase& w) {
-				w << "switch (i)" << Braces([](WriterBase& w) {
-					w << "case 1:" << Braces([](WriterBase& w) {
+	w << "bool baz(int i)" << Braces([](Writer& w) {
+		w << "try" << Braces([](Writer& w) {
+			w << "do" << Braces([](Writer& w) {
+				w << "switch (i)" << Braces([](Writer& w) {
+					w << "case 1:" << Braces([](Writer& w) {
 						w << "foobar();" << NextLine();
 						w << "break;" << NextLine();
 					}) << NextLine();

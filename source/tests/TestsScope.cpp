@@ -29,7 +29,7 @@ TEST(Scope, BreakingStyleInheritEmpty)
 	std::string t;
 	StringWriter w(t);
 
-	w << Scope("", [](WriterBase&) {
+	w << Scope("", [](Writer&) {
 	});
 
 	EXPECT_STREQ(R"({
@@ -43,7 +43,7 @@ TEST(Scope, BreakingStyleInheritRegular)
 	std::string t;
 	StringWriter w(t);
 
-	w << Scope("bool isUserAdmin(const char* username)", [](WriterBase& writer) {
+	w << Scope("bool isUserAdmin(const char* username)", [](Writer& writer) {
 		writer << "return true;" << NextLine();
 	});
 
@@ -60,7 +60,7 @@ TEST(Scope, BreakingStyleAttachEmpty)
 	std::string t;
 	StringWriter w(t);
 
-	w << Scope("", [](WriterBase&) {
+	w << Scope("", [](Writer&) {
 	}, BraceBreakingStyle::Attach);
 
 	EXPECT_STREQ(R"({
@@ -74,7 +74,7 @@ TEST(Scope, BreakingStyleAttachRegular)
 	std::string t;
 	StringWriter w(t);
 
-	w << Scope("namespace panini", [](WriterBase& writer) {
+	w << Scope("namespace panini", [](Writer& writer) {
 		writer << "struct Config;" << NextLine();
 	}, BraceBreakingStyle::Attach);
 
@@ -90,7 +90,7 @@ TEST(Scope, BreakingStyleAllmanEmpty)
 	std::string t;
 	StringWriter w(t);
 
-	w << Scope("", [](WriterBase&) {
+	w << Scope("", [](Writer&) {
 	}, BraceBreakingStyle::Allman);
 
 	EXPECT_STREQ(R"({
@@ -104,7 +104,7 @@ TEST(Scope, BreakingStyleAllmanRegular)
 	std::string t;
 	StringWriter w(t);
 
-	w << Scope("dipInAndOut()", [](WriterBase& writer) {
+	w << Scope("dipInAndOut()", [](Writer& writer) {
 		writer << "charge(EPremium);" << NextLine();
 	}, BraceBreakingStyle::Allman);
 
@@ -121,7 +121,7 @@ TEST(Scope, BreakingStyleWhitesmithsEmpty)
 	std::string t;
 	StringWriter w(t);
 
-	w << Scope("", [](WriterBase&) {
+	w << Scope("", [](Writer&) {
 	}, BraceBreakingStyle::Whitesmiths);
 
 	EXPECT_STREQ(R"({
@@ -135,7 +135,7 @@ TEST(Scope, BreakingStyleWhitesmithsRegular)
 	std::string t;
 	StringWriter w(t);
 
-	w << Scope("cooking()", [](WriterBase& writer) {
+	w << Scope("cooking()", [](Writer& writer) {
 		writer << "scale(with_ingredients);" << NextLine();
 	}, BraceBreakingStyle::Whitesmiths);
 
@@ -156,7 +156,7 @@ TEST(Scope, ScopeOptionsInherit)
 	o.chunkBraceOpen = "<<";
 	o.chunkBraceClose = ">>";
 
-	w << Scope("strawberry", [](WriterBase& w) {
+	w << Scope("strawberry", [](Writer& w) {
 		w << "franchises;" << NextLine();
 	}, o);
 
@@ -178,7 +178,7 @@ TEST(Scope, ScopeOptionsAttach)
 	o.chunkBraceOpen = "{{";
 	o.chunkBraceClose = "}}";
 
-	w << Scope("steak", [](WriterBase& w) {
+	w << Scope("steak", [](Writer& w) {
 		w << "laborCosts();" << NextLine();
 	}, o);
 
@@ -199,7 +199,7 @@ TEST(Scope, ScopeOptionsWhitesmiths)
 	o.chunkBraceOpen = "d";
 	o.chunkBraceClose = "b";
 
-	w << Scope("WhatAreYou", [](WriterBase& w) {
+	w << Scope("WhatAreYou", [](Writer& w) {
 		w << "LovingSandwich" << NextLine();
 	}, o);
 
@@ -218,8 +218,8 @@ TEST(Scope, InheritConfigAttach)
 	std::string t;
 	StringWriter w(t, c);
 
-	w << Scope("struct Public", [](WriterBase& writer) {
-		writer << Scope("Public()", [](WriterBase& writer) {
+	w << Scope("struct Public", [](Writer& writer) {
+		writer << Scope("Public()", [](Writer& writer) {
 			writer << "m_private = true;" << NextLine();
 		}) << NextLine();
 	});

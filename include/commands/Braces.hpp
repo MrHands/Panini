@@ -37,7 +37,7 @@ namespace panini
 		\ref BracesOptions parameter.
 
 		After outputting the opening brace, the Braces command calls a callback
-		with the current \ref WriterBase instance as a parameter.
+		with the current \ref Writer instance as a parameter.
 
 		If you want to prefix the opening brace with a chunk, it may be
 		beneficial to use a \ref Scope instead.
@@ -48,8 +48,8 @@ namespace panini
 		Example:
 
 		\code{.cpp}
-			writer << Braces([](WriterBase& writer) {
-				writer << "const char* passwords[] = " << Braces([](WriterBase& writer) {
+			writer << Braces([](Writer& writer) {
+				writer << "const char* passwords[] = " << Braces([](Writer& writer) {
 					writer << R"("password",)" << NextLine();
 					writer << R"("p4ssw0rd")" << NextLine();
 				}, BraceBreakingStyle::Attach) << ";" << NextLine();
@@ -81,7 +81,7 @@ namespace panini
 			instance.
 
 			The callback is called when the command is visited by a
-			\ref WriterBase.
+			\ref Writer.
 
 			Setting the `breakingStyle` parameter to \ref BraceBreakingStyle::Inherit
 			copies the brace breaking style from the writer, otherwise it will
@@ -100,7 +100,7 @@ namespace panini
 			instance.
 
 			The callback is called when the command is visited by a
-			\ref WriterBase.
+			\ref Writer.
 
 			Setting the `breakingStyle` parameter in the options to
 			\ref BraceBreakingStyle::Inherit copies the brace breaking style

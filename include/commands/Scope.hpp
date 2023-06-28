@@ -43,8 +43,8 @@ namespace panini
 		Example:
 
 		\code{.cpp}
-			writer << Scope("void SpaceShip::Fire()", [](WriterBase& writer) {
-				writer << Scope(R"(g_AudioManager->PlaySound("pewpew.wav", [this](Sound& sound))", [](WriterBase& writer) {
+			writer << Scope("void SpaceShip::Fire()", [](Writer& writer) {
+				writer << Scope(R"(g_AudioManager->PlaySound("pewpew.wav", [this](Sound& sound))", [](Writer& writer) {
 					writer << "FireMissile();" << NextLine();
 				}, BraceBreakingStyle::Attach);
 			});
@@ -75,7 +75,7 @@ namespace panini
 			the instance.
 
 			The callback is called when the command is visited by a
-			\ref WriterBase.
+			\ref Writer.
 			
 			Setting the `breakingStyle` parameter to \ref BraceBreakingStyle::Inherit
 			copies the brace breaking style from the writer, otherwise it will
@@ -96,7 +96,7 @@ namespace panini
 			moved into the instance.
 
 			The callback is called when the command is visited by a
-			\ref WriterBase.
+			\ref Writer.
 
 			Setting the `breakingStyle` parameter to \ref BraceBreakingStyle::Inherit
 			copies the brace breaking style from the writer, otherwise it will

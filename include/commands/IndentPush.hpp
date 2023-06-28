@@ -27,7 +27,7 @@ namespace panini
 	/*!
 		\brief Command for incrementing the indentation level on the writer.
 
-		\sa WriterBase
+		\sa Writer
 	*/
 	struct IndentPush
 	{

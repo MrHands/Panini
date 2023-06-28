@@ -381,7 +381,7 @@ TEST(CommaList, Transform)
 
 	CommaListOptions o;
 
-	w << CommaList(s.cbegin(), s.cend(), o, [](WriterBase& writer, const int32_t& it, size_t index) {
+	w << CommaList(s.cbegin(), s.cend(), o, [](Writer& writer, const int32_t& it, size_t index) {
 		(void)index;
 		writer << "[ " << std::to_string(100 + it) << " ]";
 	});
@@ -419,7 +419,7 @@ TEST(CommaList, TransformFirstItemOnly)
 	CommaListOptions o;
 	o.chunkEndSeparator = " + ";
 
-	w << CommaList(s.begin(), s.end(), o, [](WriterBase& writer, const float& it, size_t index) {
+	w << CommaList(s.begin(), s.end(), o, [](Writer& writer, const float& it, size_t index) {
 		if (index == 0) {
 			writer << "{" << std::to_string(it) << "}";
 
@@ -447,7 +447,7 @@ TEST(CommaList, TransformMap)
 
 	CommaListOptions o;
 
-	w << CommaList(s.begin(), s.end(), o, [](WriterBase& writer, const std::pair<std::string, std::string>& it, size_t index) {
+	w << CommaList(s.begin(), s.end(), o, [](Writer& writer, const std::pair<std::string, std::string>& it, size_t index) {
 		(void)index;
 		writer << it.first << ": " << it.second;
 	});
@@ -498,7 +498,7 @@ TEST(CommaList, PointersWithTransform)
 	CommaListOptions o;
 	o.addNewLines = true;
 
-	w << CommaList(sb, se, o, [](WriterBase& writer, const std::string& it, size_t index) {
+	w << CommaList(sb, se, o, [](Writer& writer, const std::string& it, size_t index) {
 		(void)index;
 		writer << it;
 	});
@@ -549,7 +549,7 @@ TEST(CommaList, CustomIteratorWithTransform)
 
 	CommaListOptions o;
 
-	w << CommaList(ib, ie, o, [](WriterBase& writer, const std::string& it, size_t index) {
+	w << CommaList(ib, ie, o, [](Writer& writer, const std::string& it, size_t index) {
 		(void)index;
 		writer << "[ " << it << " ]";
 	});
@@ -564,7 +564,7 @@ TEST(CommaList, Example)
 	std::string t;
 	StringWriter writer(t);
 
-	writer << Scope("enum Vehicles", [](WriterBase& writer) {
+	writer << Scope("enum Vehicles", [](Writer& writer) {
 		CommaListOptions options;
 		options.chunkEndSeparator = ",";
 		options.addNewLines = true;

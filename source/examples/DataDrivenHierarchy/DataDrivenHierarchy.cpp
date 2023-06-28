@@ -102,7 +102,7 @@ public:
 	{
 	}
 
-	virtual void Visit(panini::WriterBase& writer) final
+	virtual void Visit(panini::Writer& writer) final
 	{
 		using namespace panini;
 
@@ -154,14 +154,14 @@ public:
 		return m_isPure;
 	}
 
-	virtual void Visit(panini::WriterBase& writer) final
+	virtual void Visit(panini::Writer& writer) final
 	{
 		using namespace panini;
 
 		std::stringstream functionScope;
 		functionScope << "GameObject* Create" << m_section.name << "()";
 
-		writer << Scope(functionScope.str(), [this](WriterBase& writer) {
+		writer << Scope(functionScope.str(), [this](Writer& writer) {
 			writer << "GameObject* gameObject = new GameObject();" << NextLine();
 
 			// transform

@@ -31,7 +31,7 @@ namespace panini
 		\brief Global configuration applied to writers.
 
 		Configuration is applied to all commands when they are processed by
-		\ref WriterBase. Some commands can override these configuration
+		\ref Writer. Some commands can override these configuration
 		settings in their constructor.
 	*/
 	struct Config

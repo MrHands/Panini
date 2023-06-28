@@ -30,14 +30,14 @@ class XmlElement
 {
 
 public:
-	XmlElement(const std::string& name, const std::string& properties, std::function<void(panini::WriterBase&)>&& callback)
+	XmlElement(const std::string& name, const std::string& properties, std::function<void(panini::Writer&)>&& callback)
 		: m_name(name)
 		, m_properties(properties)
 		, m_callback(std::move(callback))
 	{
 	}
 
-	virtual void Visit(panini::WriterBase& writer)
+	virtual void Visit(panini::Writer& writer)
 	{
 		using namespace panini;
 
@@ -62,7 +62,7 @@ public:
 private:
 	std::string m_name;
 	std::string m_properties;
-	std::function<void(panini::WriterBase&)> m_callback;
+	std::function<void(panini::Writer&)> m_callback;
 
 };
 
@@ -95,21 +95,21 @@ int main(int argc, char** argv)
 	// directly without having to escape characters like quotation marks (")
 
 	writer << R"XML(<?xml version="1.0" encoding="utf-8"?>)XML" << NextLine();
-	writer << XmlElement("Project", R"XML(DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003")XML", [](WriterBase& writer) {
-		writer << XmlElement("ItemGroup", R"XML(Label="ProjectConfigurations")XML", [](WriterBase& writer) {
-			writer << XmlElement("ProjectConfiguration", R"XML(Include="Debug|x64")XML", [](WriterBase& writer) {
+	writer << XmlElement("Project", R"XML(DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003")XML", [](Writer& writer) {
+		writer << XmlElement("ItemGroup", R"XML(Label="ProjectConfigurations")XML", [](Writer& writer) {
+			writer << XmlElement("ProjectConfiguration", R"XML(Include="Debug|x64")XML", [](Writer& writer) {
 				writer << R"XML(<Configuration>Debug</Configuration>)XML" << NextLine();
 				writer << R"XML(<Platform>x64</Platform>)XML" << NextLine();
 			}) << NextLine();
 		}) << NextLine();
-		writer << XmlElement("PropertyGroup", R"XML(Label="Globals")XML", [](WriterBase& writer) {
+		writer << XmlElement("PropertyGroup", R"XML(Label="Globals")XML", [](Writer& writer) {
 			writer << R"XML(<VCProjectVersion>15.0</VCProjectVersion>)XML" << NextLine();
 			writer << R"XML(<WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>)XML" << NextLine();
 			writer << R"XML(<ProjectGuid>{C36AB1D3-74C7-4352-B2DB-C7728CFD2297}</ProjectGuid>)XML" << NextLine();
 			writer << R"XML(<InklecateDir>$(SolutionDir)dependencies\inklecate-1.0.0\</InklecateDir>)XML" << NextLine();
 			writer << R"XML(<NarrativeDir>$(SolutionDir)build\data\stories\</NarrativeDir>)XML" << NextLine();
 		}) << NextLine();
-		writer << XmlElement("CustomBuild", R"XML(Include="MyStory.ink")XML", [](WriterBase& writer) {
+		writer << XmlElement("CustomBuild", R"XML(Include="MyStory.ink")XML", [](Writer& writer) {
 			writer << R"XML(<Message>Building %(Filename).ink...</Message>)XML" << NextLine();
 			writer << R"XML(<AdditionalInputs>%(FullPath);$(InklecateDir)\inklecate.exe;%(AdditionalInputs)</AdditionalInputs>)XML" << NextLine();
 			writer << R"XML(<Outputs>$(NarrativeDir)%(Filename).json;%(Outputs)</Outputs>)XML" << NextLine();

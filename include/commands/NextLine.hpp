@@ -27,7 +27,7 @@ namespace panini
 	/*!
 		\brief Command for outtputing a new line chunk.
 
-		\sa WriterBase
+		\sa Writer
 	*/
 	struct NextLine
 	{

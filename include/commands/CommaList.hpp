@@ -55,7 +55,7 @@ namespace panini
 		\code{.cpp}
 			std::vector<std::string> myEnums{ "DUCK_CAR", "DUCK_PLANE", "DUCK_MARINE" };
 
-			writer << Scope("enum Vehicles", [](WriterBase& writer) {
+			writer << Scope("enum Vehicles", [](Writer& writer) {
 				CommaListOptions options;
 				options.chunkEndSeparator = ",";
 				options.addNewLines = true;
@@ -94,7 +94,7 @@ namespace panini
 
 		/*!
 			Function for transforming elements in the list to chunks for a \ref
-			WriterBase instance.
+			Writer instance.
 
 			\param writer     Active writer.
 			\param item       Value being processed.

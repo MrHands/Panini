@@ -31,7 +31,7 @@ namespace panini
 	*/
 	enum class IncludeStyle
 	{
-		Inherit,         //!< Inherit setting from the config, not valid on WriterBase
+		Inherit,         //!< Inherit setting from the config, not valid on \ref Writer
 		DoubleQuotes,    //!< Output double quotation marks ""
 		SingleQuotes,    //!< Output single quotation marks '' (not valid for C++)
 		AngularBrackets  //!< Output angular brackets <>

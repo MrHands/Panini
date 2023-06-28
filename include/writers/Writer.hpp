@@ -303,7 +303,7 @@ namespace panini
 		*/
 		inline bool Commit(bool force = false)
 		{
-			return (IsChanged() || force) && OnCommit(force);
+			return (force || IsChanged()) && OnCommit(force);
 		}
 
 	protected:

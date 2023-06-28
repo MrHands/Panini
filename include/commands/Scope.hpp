@@ -35,10 +35,10 @@ namespace panini
 		Scopes have a named chunk and use a \ref Braces command to add opening
 		and closing braces to the output.
 
-		Note that the command will automatically add a space between the name
+		Note that the command will automatically add a chunk between the name
 		and the opening brace if the brace breaking style was set to
-		\ref BraceBreakingStyle::Attach, either by the writer or as an override
-		for this command.
+		\ref BraceBreakingStyle::Attach by the writer or as an override for this
+		command. This chunk can be configured with \ref ScopeOptions.
 
 		Example:
 
@@ -71,11 +71,13 @@ namespace panini
 		using TCallback = std::function<void(Writer&)>;
 
 		/*!
-			Create a Scope with a `name` and a `callback` that are moved into
-			the instance.
+			\deprecated Prefer using the constructor that takes
+			\ref ScopeOptions
 
-			The callback is called when the command is visited by a
-			\ref Writer.
+			Create a Scope with a `name` and a `callback` that are both moved
+			into the instance.
+
+			The callback is called when the command is visited by a \ref Writer.
 			
 			Setting the `breakingStyle` parameter to \ref BraceBreakingStyle::Inherit
 			copies the brace breaking style from the writer, otherwise it will
@@ -92,6 +94,9 @@ namespace panini
 		}
 
 		/*!
+			\deprecated Prefer using the constructor that takes
+			\ref ScopeOptions
+
 			Create a Scope with a `name` that is copied and a `callback` that is
 			moved into the instance.
 
@@ -112,6 +117,11 @@ namespace panini
 			m_options.breakingStyle = breakingStyle;
 		}
 
+		/*!
+			Create a Scope with a `name` and a `callback` that are both moved
+			into the instance. `options` are used to configure the command
+			instance.
+		*/
 		inline Scope(
 			std::string&& name,
 			TCallback&& callback,
@@ -122,6 +132,11 @@ namespace panini
 		{
 		}
 
+		/*!
+			Create a Scope with a `name` that is copied and a `callback` that is
+			moved into the instance. `options` are used to configure the
+			command instance.
+		*/
 		inline Scope(
 			const std::string& name,
 			TCallback&& callback,

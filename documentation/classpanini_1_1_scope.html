@@ -129,14 +129,14 @@ Public Member Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p ><a class="el" href="classpanini_1_1_command.html" title="Base class for commands.">Command</a> for outputting a scope with braces. </p>
 <p >Scopes have a named chunk and use a <a class="el" href="classpanini_1_1_braces.html">Braces</a> command to add opening and closing braces to the output.</p>
-<p >Note that the command will automatically add a space between the name and the opening brace if the brace breaking style was set to <a class="el" href="group___globals.html#gga0e8bf718da5e3c164599e591f6b76f5ca7193518e6f5f0076ef05680742323f9c">BraceBreakingStyle::Attach</a>, either by the writer or as an override for this command.</p>
+<p >Note that the command will automatically add a chunk between the name and the opening brace if the brace breaking style was set to <a class="el" href="group___globals.html#gga0e8bf718da5e3c164599e591f6b76f5ca7193518e6f5f0076ef05680742323f9c">BraceBreakingStyle::Attach</a> by the writer or as an override for this command. This chunk can be configured with <a class="el" href="structpanini_1_1_scope_options.html">ScopeOptions</a>.</p>
 <p >Example:</p>
 <div class="fragment"><div class="line">writer &lt;&lt; <a class="code hl_function" href="classpanini_1_1_scope.html#a0f685437c4b44583c830abc1a6a5a43f">Scope</a>(<span class="stringliteral">&quot;void SpaceShip::Fire()&quot;</span>, [](Writer&amp; writer) {</div>
 <div class="line">    writer &lt;&lt; <a class="code hl_function" href="classpanini_1_1_scope.html#a0f685437c4b44583c830abc1a6a5a43f">Scope</a>(R<span class="stringliteral">&quot;(g_AudioManager-&gt;PlaySound(&quot;pewpew.wav&quot;, [this](Sound&amp; sound))&quot;, [](Writer&amp; writer) {</span></div>
 <div class="line"><span class="stringliteral">        writer &lt;&lt; </span><span class="stringliteral">&quot;FireMissile();&quot;</span> &lt;&lt; NextLine();</div>
 <div class="line">    }, <a class="code hl_enumvalue" href="group___globals.html#gga0e8bf718da5e3c164599e591f6b76f5ca7193518e6f5f0076ef05680742323f9c">BraceBreakingStyle::Attach</a>);</div>
 <div class="line">});</div>
-<div class="ttc" id="aclasspanini_1_1_scope_html_a0f685437c4b44583c830abc1a6a5a43f"><div class="ttname"><a href="classpanini_1_1_scope.html#a0f685437c4b44583c830abc1a6a5a43f">panini::Scope::Scope</a></div><div class="ttdeci">Scope(std::string &amp;&amp;name, TCallback &amp;&amp;callback, BraceBreakingStyle breakingStyle=BraceBreakingStyle::Inherit)</div><div class="ttdef"><b>Definition:</b> Scope.hpp:84</div></div>
+<div class="ttc" id="aclasspanini_1_1_scope_html_a0f685437c4b44583c830abc1a6a5a43f"><div class="ttname"><a href="classpanini_1_1_scope.html#a0f685437c4b44583c830abc1a6a5a43f">panini::Scope::Scope</a></div><div class="ttdeci">Scope(std::string &amp;&amp;name, TCallback &amp;&amp;callback, BraceBreakingStyle breakingStyle=BraceBreakingStyle::Inherit)</div><div class="ttdef"><b>Definition:</b> Scope.hpp:86</div></div>
 <div class="ttc" id="agroup___globals_html_gga0e8bf718da5e3c164599e591f6b76f5ca7193518e6f5f0076ef05680742323f9c"><div class="ttname"><a href="group___globals.html#gga0e8bf718da5e3c164599e591f6b76f5ca7193518e6f5f0076ef05680742323f9c">panini::BraceBreakingStyle::Attach</a></div><div class="ttdeci">@ Attach</div><div class="ttdoc">Open brace on the same line.</div></div>
 </div><!-- fragment --><p >Output:</p>
 <div class="fragment"><div class="line"><span class="keywordtype">void</span> SpaceShip::Fire()</div>
@@ -201,7 +201,8 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p >Create a <a class="el" href="classpanini_1_1_scope.html" title="Command for outputting a scope with braces.">Scope</a> with a <code>name</code> and a <code>callback</code> that are moved into the instance.</p>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000002">Deprecated:</a></b></dt><dd>Prefer using the constructor that takes <a class="el" href="structpanini_1_1_scope_options.html">ScopeOptions</a></dd></dl>
+<p >Create a <a class="el" href="classpanini_1_1_scope.html" title="Command for outputting a scope with braces.">Scope</a> with a <code>name</code> and a <code>callback</code> that are both moved into the instance.</p>
 <p >The callback is called when the command is visited by a <a class="el" href="classpanini_1_1_writer.html">Writer</a>.</p>
 <p >Setting the <code>breakingStyle</code> parameter to <a class="el" href="group___globals.html#gga0e8bf718da5e3c164599e591f6b76f5cac49484faf79e2388b580e49444d6ac11">BraceBreakingStyle::Inherit</a> copies the brace breaking style from the writer, otherwise it will be overridden for this command only. </p>
 
@@ -246,6 +247,7 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000003">Deprecated:</a></b></dt><dd>Prefer using the constructor that takes <a class="el" href="structpanini_1_1_scope_options.html">ScopeOptions</a></dd></dl>
 <p >Create a <a class="el" href="classpanini_1_1_scope.html" title="Command for outputting a scope with braces.">Scope</a> with a <code>name</code> that is copied and a <code>callback</code> that is moved into the instance.</p>
 <p >The callback is called when the command is visited by a <a class="el" href="classpanini_1_1_writer.html">Writer</a>.</p>
 <p >Setting the <code>breakingStyle</code> parameter to <a class="el" href="group___globals.html#gga0e8bf718da5e3c164599e591f6b76f5cac49484faf79e2388b580e49444d6ac11">BraceBreakingStyle::Inherit</a> copies the brace breaking style from the writer, otherwise it will be overridden for this command only. </p>
@@ -291,6 +293,7 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Create a <a class="el" href="classpanini_1_1_scope.html" title="Command for outputting a scope with braces.">Scope</a> with a <code>name</code> and a <code>callback</code> that are both moved into the instance. <code>options</code> are used to configure the command instance. </p>
 
 </div>
 </div>
@@ -333,6 +336,7 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Create a <a class="el" href="classpanini_1_1_scope.html" title="Command for outputting a scope with braces.">Scope</a> with a <code>name</code> that is copied and a <code>callback</code> that is moved into the instance. <code>options</code> are used to configure the command instance. </p>
 
 </div>
 </div>

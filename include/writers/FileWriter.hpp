@@ -29,10 +29,12 @@ namespace panini
 
 	/*!
 		\brief Writes output to a target file using a file stream.
-		
-		The file stream is closed automatically when the writer is destroyed.
 
-		The \ref Config instance is used to configure the output.
+		Unlike the \ref CompareWriter, the FileWriter will always write to the
+		target file regardless of whether the output has changed.
+		
+		The file stream is closed when the writer is committed, which happens
+		automatically when the writer is destroyed.
 	*/
 	class FileWriter
 		: public Writer
@@ -51,16 +53,18 @@ namespace panini
 		}
 
 		/*!
-			Construct and configure the writer.
+			\deprecated This constructor will be removed in the next major
+			release. Prefer using the constructor that takes
+			\ref FileWriterConig.
 
-			\deprecated This constructor will likely be removed in a future
-			version. Prefer initializing the writer with a
-			\ref FileWriterConfig instance instead.
+			Construct and configure the writer.
 
 			\param path    Path to the target file.
 			\param config  Configuration instance.
 		*/
-		inline FileWriter(const std::filesystem::path& path, const WriterConfig& config = WriterConfig())
+		inline FileWriter(
+			const std::filesystem::path& path,
+			const WriterConfig& config = WriterConfig())
 			: Writer(config)
 		{
 			m_target.open(path.string(), std::ios::out | std::ios::binary);

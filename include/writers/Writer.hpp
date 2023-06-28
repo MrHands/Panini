@@ -25,7 +25,7 @@
 #include "commands/IndentPop.hpp"
 #include "commands/IndentPush.hpp"
 #include "commands/NextLine.hpp"
-#include "data/Config.hpp"
+#include "data/WriterConfig.hpp"
 
 namespace panini
 {
@@ -47,7 +47,7 @@ namespace panini
 		/*!
 			Constructs a writer with an optional configuration instance.
 		*/
-		inline explicit Writer(const Config& config = Config{})
+		inline explicit Writer(const WriterConfig& config = WriterConfig{})
 			: m_config(config)
 		{
 			// reserve cached strings
@@ -60,13 +60,13 @@ namespace panini
 
 			if (m_config.braceBreakingStyle == BraceBreakingStyle::Inherit)
 			{
-				Config defaultConfig;
+				WriterConfig defaultConfig;
 				m_config.braceBreakingStyle = defaultConfig.braceBreakingStyle;
 			}
 
 			if (m_config.includeStyle == IncludeStyle::Inherit)
 			{
-				Config defaultConfig;
+				WriterConfig defaultConfig;
 				m_config.includeStyle = defaultConfig.includeStyle;
 			}
 		}
@@ -78,7 +78,7 @@ namespace panini
 
 			\return Config object.
 		*/
-		inline const Config& GetConfig() const
+		inline const WriterConfig& GetConfig() const
 		{
 			return m_config;
 		}
@@ -340,7 +340,7 @@ namespace panini
 		}
 
 	private:
-		Config m_config;
+		WriterConfig m_config;
 
 		size_t m_lineChunkCountWritten = 0;
 

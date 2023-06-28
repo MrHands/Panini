@@ -60,7 +60,7 @@ namespace panini
 			\param path    Path to the target file.
 			\param config  Configuration instance.
 		*/
-		inline FileWriter(const std::filesystem::path& path, const Config& config = Config())
+		inline FileWriter(const std::filesystem::path& path, const WriterConfig& config = WriterConfig())
 			: Writer(config)
 		{
 			m_target.open(path.string(), std::ios::out | std::ios::binary);

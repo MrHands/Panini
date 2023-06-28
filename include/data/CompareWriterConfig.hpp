@@ -21,7 +21,7 @@
 
 #pragma once
 
-#include "data/Config.hpp"
+#include "data/WriterConfig.hpp"
 
 namespace panini
 {
@@ -30,7 +30,7 @@ namespace panini
 		\brief Configuration for the \ref CompareWriter class.
 	*/
 	struct CompareWriterConfig
-		: public Config
+		: public WriterConfig
 	{
 		/*!
 			File that will be compared against the output.

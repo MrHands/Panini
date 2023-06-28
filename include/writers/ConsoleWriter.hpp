@@ -43,7 +43,7 @@ namespace panini
 
 			\param config  Configuration instance
 		*/
-		inline explicit ConsoleWriter(const Config& config = Config())
+		inline explicit ConsoleWriter(const WriterConfig& config = WriterConfig())
 			: Writer(config)
 			, m_outputStream(std::cout)
 		{
@@ -57,7 +57,7 @@ namespace panini
 		*/
 		inline explicit ConsoleWriter(
 			std::ostream& outputStream,
-			const Config& config = Config())
+			const WriterConfig& config = WriterConfig())
 			: Writer(config)
 			, m_outputStream(outputStream)
 		{

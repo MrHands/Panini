@@ -21,7 +21,7 @@
 
 #pragma once
 
-#include "data/Config.hpp"
+#include "data/WriterConfig.hpp"
 
 namespace panini
 {

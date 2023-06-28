@@ -21,7 +21,7 @@
 
 #pragma once
 
-#include "data/Config.hpp"
+#include "data/WriterConfig.hpp"
 
 namespace panini
 {
@@ -30,7 +30,7 @@ namespace panini
 		\brief Configuration for the \ref DebugWriter class.
 	*/
 	struct DebugWriterConfig
-		: public Config
+		: public WriterConfig
 	{
 		/*!
 			Minimum length of line numbers, padded with spaces.

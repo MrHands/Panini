@@ -34,7 +34,7 @@ namespace panini
 		\ref Writer. Some commands can override these configuration
 		settings in their constructor.
 	*/
-	struct Config
+	struct WriterConfig
 	{
 		/*!
 			The default brace breaking style to use for a writer.
@@ -56,5 +56,8 @@ namespace panini
 		*/
 		std::string chunkIndent = "\t";
 	};
+
+	//! \deprecated Prefer using \ref WriterConfig instead.
+	using Config = WriterConfig;
 
 };

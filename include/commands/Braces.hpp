@@ -1,7 +1,7 @@
 /*
 	MIT No Attribution
 
-	Copyright 2021-2022 Mr. Hands
+	Copyright 2021-2023 Mr. Hands
 
 	Permission is hereby granted, free of charge, to any person obtaining a copy
 	of this software and associated documentation files (the "Software"), to
@@ -40,10 +40,10 @@ namespace panini
 		with the current \ref Writer instance as a parameter.
 
 		If you want to prefix the opening brace with a chunk, it may be
-		beneficial to use a \ref Scope instead.
+		more convenient to use a \ref Scope instead.
 
-		\note The command will *not* output a space before the opening brace if
-		the brace breaking style was set to BraceBreakingStyle::Attach
+		\note The command will **not** output a space before the opening brace
+		if the brace breaking style was set to \ref BraceBreakingStyle::Attach.
 
 		Example:
 
@@ -77,6 +77,9 @@ namespace panini
 		using TCallback = std::function<void(Writer&)>;
 
 		/*!
+			\deprecated Prefer using the constructor that takes
+			\ref BracesOptions
+
 			Create a Braces command with a callback that is moved into the
 			instance.
 

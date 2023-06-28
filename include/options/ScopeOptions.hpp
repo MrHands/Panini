@@ -27,11 +27,15 @@ namespace panini
 {
 
 	/*!
-		\brief Options for the \ref Braces command.
+		\brief Options for the \ref Scope command.
 	*/
 	struct ScopeOptions
 		: public BracesOptions
 	{
+		/*!
+			Chunk inserted after the scope's name and before the opening brace
+			when the \ref breakingStyle is set to BraceBreakingStyle::Attach
+		*/
 		std::string chunkAttachSpacing = " ";
 	};
 

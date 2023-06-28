@@ -155,6 +155,7 @@ TEST(Scope, ScopeOptionsInherit)
 	ScopeOptions o;
 	o.chunkBraceOpen = "<<";
 	o.chunkBraceClose = ">>";
+	o.chunkAttachSpacing = "->";
 
 	w << Scope("strawberry", [](Writer& w) {
 		w << "franchises;" << NextLine();
@@ -177,12 +178,13 @@ TEST(Scope, ScopeOptionsAttach)
 	o.breakingStyle = BraceBreakingStyle::Attach;
 	o.chunkBraceOpen = "{{";
 	o.chunkBraceClose = "}}";
+	o.chunkAttachSpacing = "..";
 
 	w << Scope("steak", [](Writer& w) {
 		w << "laborCosts();" << NextLine();
 	}, o);
 
-	EXPECT_STREQ(R"(steak {{
+	EXPECT_STREQ(R"(steak..{{
 	laborCosts();
 }})", t.c_str());
 }
@@ -198,6 +200,7 @@ TEST(Scope, ScopeOptionsWhitesmiths)
 	o.breakingStyle = BraceBreakingStyle::Whitesmiths;
 	o.chunkBraceOpen = "d";
 	o.chunkBraceClose = "b";
+	o.chunkAttachSpacing = "<>";
 
 	w << Scope("WhatAreYou", [](Writer& w) {
 		w << "LovingSandwich" << NextLine();

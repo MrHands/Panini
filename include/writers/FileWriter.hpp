@@ -37,7 +37,7 @@ namespace panini
 		automatically when the writer is destroyed.
 	*/
 	class FileWriter
-		: public Writer
+		: public ConfiguredWriter<FileWriterConfig>
 	{
 
 	public:
@@ -64,8 +64,8 @@ namespace panini
 		*/
 		inline FileWriter(
 			const std::filesystem::path& path,
-			const WriterConfig& config = WriterConfig())
-			: Writer(config)
+			const FileWriterConfig& config = FileWriterConfig())
+			: ConfiguredWriter<FileWriterConfig>(config)
 		{
 			m_target.open(path.string(), std::ios::out | std::ios::binary);
 		}
@@ -73,7 +73,7 @@ namespace panini
 		/*!
 			Will call Commit() automatically when the writer is destroyed.
 		*/
-		inline virtual ~FileWriter() override
+		inline ~FileWriter() override
 		{
 			Commit();
 		}
@@ -81,7 +81,7 @@ namespace panini
 		/*!
 			Always close the stream when \ref Commit is called.
 		*/
-		inline virtual bool IsChanged() const override
+		inline bool IsChanged() const override
 		{
 			return m_target.is_open();
 		}
@@ -90,7 +90,7 @@ namespace panini
 		/*!
 			Writes the chunk to the file stream.
 		*/
-		inline virtual void Write(const std::string& chunk) override
+		inline void Write(const std::string& chunk) override
 		{
 			if (!m_target.is_open())
 			{
@@ -103,7 +103,7 @@ namespace panini
 		/*!
 			Close the file stream when the writer is committed.
 		*/
-		inline virtual bool OnCommit(bool force) override
+		inline bool OnCommit(bool force) override
 		{
 			(void)force;
 

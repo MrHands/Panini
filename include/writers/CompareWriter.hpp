@@ -1,7 +1,7 @@
 /*
 	MIT No Attribution
 
-	Copyright 2021-2022 Mr. Hands
+	Copyright 2021-2023 Mr. Hands
 
 	Permission is hereby granted, free of charge, to any person obtaining a copy
 	of this software and associated documentation files (the "Software"), to
@@ -39,7 +39,7 @@ namespace panini
 	*/
 
 	class CompareWriter
-		: public Writer
+		: public ConfiguredWriter<CompareWriterConfig>
 	{
 
 	public:
@@ -66,8 +66,8 @@ namespace panini
 			\param filePath  File that will be compared against the output.
 			\param config    Configuration instance.
 		*/
-		inline CompareWriter(const std::filesystem::path& filePath, const WriterConfig& config = WriterConfig())
-			: Writer(config)
+		inline CompareWriter(const std::filesystem::path& filePath, const CompareWriterConfig& config = CompareWriterConfig())
+			: ConfiguredWriter<CompareWriterConfig>(config)
 		{
 			m_compareConfig.filePath = filePath;
 
@@ -77,7 +77,7 @@ namespace panini
 		/*!
 			Will call Commit() automatically when the writer is destroyed.
 		*/
-		inline virtual ~CompareWriter() override
+		inline ~CompareWriter() override
 		{
 			Commit();
 		}
@@ -86,13 +86,13 @@ namespace panini
 			Check if the output was changed compared to what was read from disk
 			when the CompareWriter was created.
 		*/
-		inline virtual bool IsChanged() const override
+		inline bool IsChanged() const override
 		{
 			return m_writtenPrevious != m_writtenCurrent;
 		}
 
 	protected:
-		inline virtual void Initialize()
+		inline void Initialize()
 		{
 			// read the previous output, if available
 
@@ -110,12 +110,12 @@ namespace panini
 			}
 		}
 
-		inline virtual void Write(const std::string& chunk) override
+		inline void Write(const std::string& chunk) override
 		{
 			m_writtenCurrent += chunk;
 		}
 
-		inline virtual bool OnCommit(bool force = false) override
+		inline bool OnCommit(bool force = false) override
 		{
 			(void)force;
 

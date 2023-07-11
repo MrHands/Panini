@@ -1,7 +1,7 @@
 /*
 	MIT No Attribution
 
-	Copyright 2021-2022 Mr. Hands
+	Copyright 2021-2023 Mr. Hands
 
 	Permission is hereby granted, free of charge, to any person obtaining a copy
 	of this software and associated documentation files (the "Software"), to
@@ -31,7 +31,7 @@ namespace panini
 		\brief Writes output to a string.
 	*/
 	class StringWriter
-		: public Writer
+		: public ConfiguredWriter<StringWriterConfig>
 	{
 
 	public:
@@ -44,7 +44,7 @@ namespace panini
 		inline StringWriter(
 			std::string& target,
 			const StringWriterConfig& config = StringWriterConfig())
-			: Writer(config)
+			: ConfiguredWriter(config)
 			, m_target(target)
 		{
 		}
@@ -53,7 +53,7 @@ namespace panini
 		/*
 			Writes the chunk to the target string.
 		*/
-		inline virtual void Write(const std::string& chunk) override
+		inline void Write(const std::string& chunk) override
 		{
 			m_target += chunk;
 		}
@@ -61,7 +61,7 @@ namespace panini
 		/*!
 			Called when the writer is committed.
 		*/
-		inline virtual bool OnCommit(bool force) override
+		inline bool OnCommit(bool force) override
 		{
 			(void)force;
 

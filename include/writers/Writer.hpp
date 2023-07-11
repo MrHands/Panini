@@ -31,7 +31,7 @@ namespace panini
 {
 
 	/*!
-		\brief Base class for writers.
+		\brief Interface for all writers.
 
 		Writers take chunks and commands as input and process them to a target.
 		They are configured with a \ref Config instance that is passed to their
@@ -44,10 +44,155 @@ namespace panini
 	{
 
 	public:
+		virtual ~Writer() = default;
+
+		/*!
+			Get a reference to the active Config for this writer.
+
+			\return Config object.
+		*/
+		virtual const WriterConfig& GetConfig() const = 0;
+
+		/*!
+			Get the default brace breaking style.
+
+			\return Brace breaking style.
+		*/
+		virtual BraceBreakingStyle GetBraceBreakingStyle() const = 0;
+
+		/*!
+			Get the default include style.
+
+			\return Include style.
+		*/
+		virtual IncludeStyle GetIncludeStyle() const = 0;
+
+		/*!
+			Check whether the writer is on a new line and waiting for new
+			chunks.
+
+			\return True if the writer is on a new line
+		*/
+		virtual bool IsOnNewLine() const = 0;
+
+		/*!
+			Write an `std::string` chunk to the output.
+
+			Will add indentation if the writer is on a new line.
+
+			\return Reference to itself to allow for chaining.
+		*/
+		virtual Writer& operator << (const std::string& chunk) = 0;
+
+		/*!
+			Write a C-style string chunk to the output.
+
+			Will add indentation if the writer is on a new line.
+
+			\return Reference to itself to allow for chaining.
+		*/
+		virtual Writer& operator << (const char* chunkString) = 0;
+
+		/*!
+			Write a new line chunk to the output.
+
+			New line chunks can be configured with the \ref Config.
+
+			\return Reference to itself to allow for chaining.
+		*/
+		virtual Writer& operator << (const NextLine& command) = 0;
+
+		/*!
+			Increment the level of indentation.
+
+			Indentation is applied only when the writer is on a new line.
+
+			\return Reference to itself to allow for chaining.
+		*/
+		virtual Writer& operator << (const IndentPush& command) = 0;
+
+		/*!
+			Decrement the level of indentation.
+
+			Indentation is applied when the writer is on a new line. The level
+			of indentation cannot go negative.
+
+			\return Reference to itself to allow for chaining.
+		*/
+		virtual Writer& operator << (const IndentPop& command) = 0;
+
+		/*!
+			Visit a command.
+
+			\warning Commands are moved instead of copied!
+
+			Commands are used to output chunks and modify the writer's state.
+
+			\return Reference to itself to allow for chaining
+		*/
+		virtual Writer& operator << (Command&& command) = 0;
+
+		/*!
+			Set the writer to be inside a comment block, which will add " * "
+			after the indentation of a new line.
+		*/
+		virtual void SetIsInCommentBlock(bool value) = 0;
+
+		/*!
+			Check if the output was changed compared to what the implementation
+			has seen before.
+		*/
+		virtual bool IsChanged() const = 0;
+
+		/*!
+			Commits the generated output to the target of a writer if the
+			output was changed.
+
+			\param force Force writing the file even if the output was not
+			changed.
+
+			\return Returns true if the commit was successful.
+		*/
+		virtual bool Commit(bool force) = 0;
+
+	protected:
+		/*!
+			Writes chunks to the output.
+		*/
+		virtual void Write(const std::string& chunk) = 0;
+
+		/*!
+			Writes a new line chunk to the output.
+		*/
+		virtual void WriteNewLine() = 0;
+
+		/*!
+			Checks if the writer should commit its output to the target.
+		*/
+		virtual bool OnCommit(bool force = false) = 0;
+
+	};
+
+	/*!
+		\brief Base class for writers.
+
+		Writers take chunks and commands as input and process them to a target.
+		They are configured with a \ref Config instance that is passed to their
+		constructor.
+
+		Writers commit their output to a target automatically when they are
+		destroyed.
+	*/
+	template <typename TConfig>
+	class ConfiguredWriter
+		: public Writer
+	{
+
+	public:
 		/*!
 			Constructs a writer with an optional configuration instance.
 		*/
-		inline explicit Writer(const WriterConfig& config = WriterConfig{})
+		inline explicit ConfiguredWriter(const TConfig& config = TConfig{})
 			: m_config(config)
 		{
 			// reserve cached strings
@@ -60,7 +205,7 @@ namespace panini
 
 			if (m_config.braceBreakingStyle == BraceBreakingStyle::Inherit)
 			{
-				WriterConfig defaultConfig;
+				TConfig defaultConfig;
 				m_config.braceBreakingStyle = defaultConfig.braceBreakingStyle;
 			}
 
@@ -71,16 +216,16 @@ namespace panini
 			}
 		}
 
-		virtual ~Writer() = default;
+		virtual ~ConfiguredWriter() = default;
 
 		/*!
 			Get a reference to the active Config for this writer.
 
 			\return Config object.
 		*/
-		inline const WriterConfig& GetConfig() const
+		inline const WriterConfig& GetConfig() const override
 		{
-			return m_config;
+			return static_cast<const WriterConfig&>(m_config);
 		}
 
 		/*!
@@ -88,7 +233,7 @@ namespace panini
 
 			\return Brace breaking style.
 		*/
-		inline BraceBreakingStyle GetBraceBreakingStyle() const
+		inline BraceBreakingStyle GetBraceBreakingStyle() const override
 		{
 			return m_config.braceBreakingStyle;
 		}
@@ -98,7 +243,7 @@ namespace panini
 
 			\return Include style.
 		*/
-		inline IncludeStyle GetIncludeStyle() const
+		inline IncludeStyle GetIncludeStyle() const override
 		{
 			return m_config.includeStyle;
 		}
@@ -109,7 +254,7 @@ namespace panini
 
 			\return True if the writer is on a new line
 		*/
-		inline bool IsOnNewLine() const
+		inline bool IsOnNewLine() const override
 		{
 			return m_state == State::NewLine;
 		}
@@ -121,7 +266,7 @@ namespace panini
 
 			\return Reference to itself to allow for chaining.
 		*/
-		inline Writer& operator << (const std::string& chunk)
+		inline Writer& operator << (const std::string& chunk) override
 		{
 			if (m_state == State::NewLine)
 			{
@@ -163,7 +308,7 @@ namespace panini
 
 			\return Reference to itself to allow for chaining.
 		*/
-		inline Writer& operator << (const char* chunkString)
+		inline Writer& operator << (const char* chunkString) override
 		{
 			return *this << std::string(chunkString);
 		}
@@ -175,7 +320,7 @@ namespace panini
 
 			\return Reference to itself to allow for chaining.
 		*/
-		inline Writer& operator << (const NextLine& command)
+		inline Writer& operator << (const NextLine& command) override
 		{
 			(void)command;
 
@@ -203,7 +348,7 @@ namespace panini
 
 			\return Reference to itself to allow for chaining.
 		*/
-		inline Writer& operator << (const IndentPush& command)
+		inline Writer& operator << (const IndentPush& command) override
 		{
 			(void)command;
 
@@ -227,7 +372,7 @@ namespace panini
 
 			\return Reference to itself to allow for chaining.
 		*/
-		inline Writer& operator << (const IndentPop& command)
+		inline Writer& operator << (const IndentPop& command) override
 		{
 			(void)command;
 
@@ -264,7 +409,7 @@ namespace panini
 
 			\return Reference to itself to allow for chaining
 		*/
-		inline Writer& operator << (Command&& command)
+		inline Writer& operator << (Command&& command) override
 		{
 			command.Visit(*this);
 
@@ -275,7 +420,7 @@ namespace panini
 			Set the writer to be inside a comment block, which will add " * "
 			after the indentation of a new line.
 		*/
-		inline void SetIsInCommentBlock(bool value)
+		inline void SetIsInCommentBlock(bool value) override
 		{
 			m_isInCommentBlock = value;
 
@@ -287,7 +432,7 @@ namespace panini
 			Check if the output was changed compared to what the implementation
 			has seen before.
 		*/
-		inline virtual bool IsChanged() const
+		inline virtual bool IsChanged() const override
 		{
 			return false;
 		}
@@ -301,29 +446,19 @@ namespace panini
 
 			\return Returns true if the commit was successful.
 		*/
-		inline bool Commit(bool force = false)
+		inline bool Commit(bool force = false) override
 		{
 			return (force || IsChanged()) && OnCommit(force);
 		}
 
 	protected:
 		/*!
-			Writes chunks to the output.
-		*/
-		virtual void Write(const std::string& chunk) = 0;
-
-		/*!
 			Writes a new line chunk to the output.
 		*/
-		virtual void WriteNewLine()
+		void WriteNewLine() override
 		{
 			Write(m_config.chunkNewLine);
 		}
-
-		/*!
-			Checks if the writer should commit its output to the target.
-		*/
-		virtual bool OnCommit(bool force = false) = 0;
 
 	private:
 		/*!
@@ -340,7 +475,7 @@ namespace panini
 		}
 
 	private:
-		WriterConfig m_config;
+		TConfig m_config;
 
 		size_t m_lineChunkCountWritten = 0;
 
@@ -361,6 +496,6 @@ namespace panini
 	};
 
 	//! \deprecated Prefer using \ref Writer instead.
-	using WriterBase = Writer;
+	using WriterBase = ConfiguredWriter<WriterConfig>;
 
 };

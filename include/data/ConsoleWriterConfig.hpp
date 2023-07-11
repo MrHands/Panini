@@ -21,43 +21,17 @@
 
 #pragma once
 
-#include "data/BraceBreakingStyle.hpp"
-#include "data/IncludeStyle.hpp"
+#include "data/WriterConfig.hpp"
 
 namespace panini
 {
 
 	/*!
-		\brief Global configuration applied to writers.
-
-		Configuration is applied to all commands when they are processed by
-		\ref Writer. Some commands can override these configuration
-		settings in their constructor.
+		\brief Configuration for the \ref ConsoleWriter class.
 	*/
-	struct WriterConfig
+	struct ConsoleWriterConfig
+		: public WriterConfig
 	{
-		/*!
-			The default brace breaking style to use for a writer.
-		*/
-		BraceBreakingStyle braceBreakingStyle = BraceBreakingStyle::Allman;
-
-		/*!
-			The default include style to use for a writer.
-		*/
-		IncludeStyle includeStyle = IncludeStyle::DoubleQuotes;
-
-		/*!
-			Chunk to output to indicate the end of a line.
-		*/
-		std::string chunkNewLine = "\n";
-
-		/*!
-			Chunk to output when indenting.
-		*/
-		std::string chunkIndent = "\t";
 	};
-
-	//! \deprecated Prefer using \ref WriterConfig instead.
-	using Config = WriterConfig;
 
 };

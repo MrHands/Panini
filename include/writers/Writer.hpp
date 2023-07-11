@@ -495,6 +495,6 @@ namespace panini
 	};
 
 	//! \deprecated Prefer using \ref Writer instead.
-	using WriterBase = ConfiguredWriter<WriterConfig>;
+	using WriterBase = Writer;
 
 };

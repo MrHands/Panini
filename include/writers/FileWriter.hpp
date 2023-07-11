@@ -63,8 +63,8 @@ namespace panini
 		*/
 		inline FileWriter(
 			const std::filesystem::path& path,
-			const FileWriterConfig& config = FileWriterConfig())
-			: ConfiguredWriter(config)
+			const WriterConfig& config = WriterConfig())
+			: ConfiguredWriter(FileWriterConfig{ config })
 		{
 			m_config.targetPath = path;
 

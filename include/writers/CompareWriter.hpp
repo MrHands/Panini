@@ -63,8 +63,10 @@ namespace panini
 			\param filePath  File that will be compared against the output.
 			\param config    Configuration instance.
 		*/
-		inline CompareWriter(const std::filesystem::path& filePath, const CompareWriterConfig& config = CompareWriterConfig())
-			: ConfiguredWriter(config)
+		inline CompareWriter(
+			const std::filesystem::path& filePath,
+			const WriterConfig& config = WriterConfig())
+			: ConfiguredWriter(CompareWriterConfig{ config })
 		{
 			m_config.filePath = filePath;
 

@@ -85,7 +85,7 @@ namespace panini
 		*/
 		inline explicit DebugWriter(
 			const DebugWriterConfig& config = DebugWriterConfig{})
-			: ConfiguredWriter<DebugWriterConfig>(config)
+			: ConfiguredWriter(config)
 			, m_debugConfig(config)
 		{
 		#ifdef _WINDOWS

@@ -51,9 +51,6 @@ namespace panini
 		inline CompareWriter(const CompareWriterConfig& config = {})
 			: CompareWriter(config.filePath, config)
 		{
-			m_compareConfig = config;
-
-			Initialize();
 		}
 
 		/*!
@@ -67,11 +64,24 @@ namespace panini
 			\param config    Configuration instance.
 		*/
 		inline CompareWriter(const std::filesystem::path& filePath, const CompareWriterConfig& config = CompareWriterConfig())
-			: ConfiguredWriter<CompareWriterConfig>(config)
+			: ConfiguredWriter(config)
 		{
-			m_compareConfig.filePath = filePath;
+			m_config.filePath = filePath;
 
-			Initialize();
+			// read the previous output, if available
+
+			std::ifstream stream(m_config.filePath.string(), std::ios::binary);
+			m_pathExists = stream.is_open();
+			if (m_pathExists)
+			{
+				stream.seekg(0, std::ios::end);
+				m_writtenPrevious.resize(static_cast<size_t>(stream.tellg()));
+				stream.seekg(0, std::ios::beg);
+				stream.read(&m_writtenPrevious[0], m_writtenPrevious.size());
+				stream.close();
+
+				m_writtenCurrent.reserve(m_writtenPrevious.size());
+			}
 		}
 
 		/*!
@@ -92,24 +102,6 @@ namespace panini
 		}
 
 	protected:
-		inline void Initialize()
-		{
-			// read the previous output, if available
-
-			std::ifstream stream(m_compareConfig.filePath.string(), std::ios::binary);
-			m_pathExists = stream.is_open();
-			if (m_pathExists)
-			{
-				stream.seekg(0, std::ios::end);
-				m_writtenPrevious.resize(static_cast<size_t>(stream.tellg()));
-				stream.seekg(0, std::ios::beg);
-				stream.read(&m_writtenPrevious[0], m_writtenPrevious.size());
-				stream.close();
-
-				m_writtenCurrent.reserve(m_writtenPrevious.size());
-			}
-		}
-
 		inline void Write(const std::string& chunk) override
 		{
 			m_writtenCurrent += chunk;
@@ -119,7 +111,7 @@ namespace panini
 		{
 			(void)force;
 
-			std::ofstream stream(m_compareConfig.filePath.string(), std::ios::binary);
+			std::ofstream stream(m_config.filePath.string(), std::ios::binary);
 			if (!stream.is_open())
 			{
 				return false;
@@ -134,7 +126,6 @@ namespace panini
 		}
 
 	protected:
-		CompareWriterConfig m_compareConfig;
 		bool m_pathExists = false;
 		std::string m_writtenPrevious;
 		std::string m_writtenCurrent;

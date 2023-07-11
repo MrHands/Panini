@@ -31,7 +31,7 @@ namespace panini
 {
 
 	/*!
-		\brief Interface for all writers.
+		\brief Pure virtual interface for writers.
 
 		Writers take chunks and commands as input and process them to a target.
 		They are configured with a \ref Config instance that is passed to their
@@ -174,19 +174,17 @@ namespace panini
 	};
 
 	/*!
-		\brief Base class for writers.
+		\brief Base class implementation for writers.
 
-		Writers take chunks and commands as input and process them to a target.
-		They are configured with a \ref Config instance that is passed to their
-		constructor.
-
-		Writers commit their output to a target automatically when they are
-		destroyed.
+		When making your own writer, you should inherit from this class and
+		supply a config struct that inherits from /ref WriterConfig.
 	*/
 	template <typename TConfig>
 	class ConfiguredWriter
 		: public Writer
 	{
+
+		static_assert(std::is_base_of<WriterConfig, TConfig>::value, "TConfig must inherit from WriterConfig");
 
 	public:
 		/*!
@@ -460,6 +458,9 @@ namespace panini
 			Write(m_config.chunkNewLine);
 		}
 
+	protected:
+		TConfig m_config;
+
 	private:
 		/*!
 			Cache the indentation level to the target string.
@@ -475,8 +476,6 @@ namespace panini
 		}
 
 	private:
-		TConfig m_config;
-
 		size_t m_lineChunkCountWritten = 0;
 
 		int32_t m_lineIndentCount = 0;

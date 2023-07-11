@@ -49,7 +49,6 @@ namespace panini
 		inline FileWriter(const FileWriterConfig& config = {})
 			: FileWriter(config.targetPath, config)
 		{
-			m_fileConfig = config;
 		}
 
 		/*!
@@ -65,9 +64,11 @@ namespace panini
 		inline FileWriter(
 			const std::filesystem::path& path,
 			const FileWriterConfig& config = FileWriterConfig())
-			: ConfiguredWriter<FileWriterConfig>(config)
+			: ConfiguredWriter(config)
 		{
-			m_target.open(path.string(), std::ios::out | std::ios::binary);
+			m_config.targetPath = path;
+
+			m_target.open(m_config.targetPath.string(), std::ios::out | std::ios::binary);
 		}
 
 		/*!
@@ -114,7 +115,6 @@ namespace panini
 		}
 
 	protected:
-		FileWriterConfig m_fileConfig;
 		std::ofstream m_target;
 		std::string m_written;
 

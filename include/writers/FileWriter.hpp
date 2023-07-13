@@ -54,7 +54,7 @@ namespace panini
 		/*!
 			\deprecated This constructor will be removed in the next major
 			release. Prefer using the constructor that takes
-			\ref FileWriterConig.
+			\ref FileWriterConfig.
 
 			Construct and configure the writer.
 

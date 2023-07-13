@@ -12,6 +12,13 @@ foreach(path IN LISTS PANINI_DOXYGEN_SOURCES)
 	)
 endforeach()
 
+# add readme
+
+set(
+	PANINI_DOXYGEN_INPUT
+	"${PANINI_DOXYGEN_INPUT} \\\n\"${${PROJECT_NAME}_SOURCE_DIR}/README.md\""
+)
+
 configure_file(Doxyfile.in Doxyfile @ONLY)
 
 add_custom_target(

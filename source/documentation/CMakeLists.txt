@@ -30,4 +30,5 @@ add_custom_target(
 set_target_properties(
 	documentation
 	PROPERTIES FOLDER "Panini"
+	SOURCES ${${PROJECT_NAME}_SOURCE_DIR}/README.md
 )

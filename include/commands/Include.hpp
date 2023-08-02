@@ -104,7 +104,7 @@ namespace panini
 		{
 		}
 
-		inline virtual void Visit(Writer& writer) final
+		inline void Visit(Writer& writer) override
 		{
 			IncludeStyle includeStyle =
 				m_entry.style == IncludeStyle::Inherit

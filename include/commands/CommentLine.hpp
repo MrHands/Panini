@@ -68,7 +68,7 @@ namespace panini
 		{
 		}
 
-		inline virtual void Visit(Writer& writer) final
+		inline void Visit(Writer& writer) override
 		{
 			writer << "//";
 

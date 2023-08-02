@@ -177,7 +177,7 @@ namespace panini
 		{
 		}
 
-		inline virtual void Visit(Writer& writer) final
+		inline void Visit(Writer& writer) override
 		{
 			size_t index = 0;
 			for (TIterator item = m_begin; item != m_end; ++item)

@@ -76,7 +76,7 @@ namespace panini
 		{
 		}
 
-		inline virtual void Visit(Writer& writer) final
+		inline void Visit(Writer& writer) override
 		{
 			// sort includes and resolve "inherit" include style with the
 			// writer's include style

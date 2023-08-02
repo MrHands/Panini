@@ -147,7 +147,7 @@ namespace panini
 		{
 		}
 
-		inline void Visit(Writer& writer) final
+		inline void Visit(Writer& writer) override
 		{
 			const BraceBreakingStyle breakingStyle =
 				m_options.breakingStyle == BraceBreakingStyle::Inherit

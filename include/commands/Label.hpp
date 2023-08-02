@@ -71,7 +71,7 @@ namespace panini
 			instance.
 		*/
 		Label(std::string&& name)
-			: m_name(name)
+			: m_name(std::move(name))
 		{
 		}
 
@@ -84,7 +84,7 @@ namespace panini
 		{
 		}
 
-		virtual void Visit(Writer& writer) final
+		inline void Visit(Writer& writer) override
 		{
 			writer << IndentPop() << m_name << ":" << IndentPush();
 		}

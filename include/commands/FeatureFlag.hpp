@@ -47,7 +47,6 @@ namespace panini
 		Example:
 
 		\code{.cpp}
-			bool newDbAccess = true;
 			std::string query = R"(INSERT INTO Users (name) VALUES ('Little Bobby Tables'))";
 			writer << FeatureFlag(
 				newDbAccess,
@@ -61,12 +60,18 @@ namespace panini
 			);
 		\endcode
 
-		Output:
+		Output when the condition is true:
 
 		\code{.cpp}
 			// new-db-access
 			db->WriteQueryFast("INSERT INTO Users (name) VALUES ('Little Bobby Tables');");
 			// new-db-access
+		\endcode
+
+		Output when the condition is false:
+
+		\code{.cpp}
+			db->WriteQuery("INSERT INTO Users (name) VALUES ('Little Bobby Tables');");
 		\endcode
 	*/
 

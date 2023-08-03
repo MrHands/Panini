@@ -31,6 +31,12 @@ endif()
 set(PANINI_INCLUDE_BUILD_DIR "${PROJECT_SOURCE_DIR}/include")
 set(PANINI_INCLUDE_INSTALL_DIR "${CMAKE_INSTALL_INCLUDEDIR}")
 
+set(
+	PANINI_DOCS_DIR "${PROJECT_SOURCE_DIR}/documentation"
+	CACHE PATH
+	"Directory for generated Doxygen documentation output."
+)
+
 option(
 	PANINI_BUILD_EXAMPLES
 	"Build the tests in source/examples"

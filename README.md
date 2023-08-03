@@ -68,7 +68,7 @@ Panini does not do any string processing itself, but we can recommend the [fmt](
 | Writer        | Writes chunks to the output and processes commands              |
 | WriterConfig  | Output settings for the writer                                  |
 
-# Writing custom commands
+## Writing custom commands
 
 Commands range from the humble `NextLine`, which adds a new line chunk, to the more involved `Braces`, which adds opening and closing braces to the output based on the brace breaking style.
 

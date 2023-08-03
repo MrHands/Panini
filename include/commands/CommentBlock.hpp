@@ -30,6 +30,8 @@ namespace panini
 	/*!
 		\brief Command for outputting comment blocks over multiple lines.
 
+		\ingroup Commands
+
 		A comment block starts with /&zwj;* and ends with *&zwj;/. Chunks output
 		inside the callback are prefixed with " * " to produce multi-line
 		comments.
@@ -58,6 +60,7 @@ namespace panini
 			 *\/
 		\endcode
 	*/
+
 	class CommentBlock
 		: public Command
 	{
@@ -71,7 +74,8 @@ namespace panini
 			Chunks output inside the callback will be prefixed with the C multi-
 			line comment syntax.
 		*/
-		inline explicit CommentBlock(std::function<void(Writer&)>&& callback) noexcept
+		inline explicit CommentBlock(
+			std::function<void(Writer&)>&& callback) noexcept
 			: m_callback(std::exchange(callback, {}))
 		{
 		}

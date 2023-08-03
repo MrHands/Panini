@@ -31,6 +31,8 @@ namespace panini
 	/*!
 		\brief Command for outputting an include statement for C++.
 
+		\ingroup Commands
+
 		Include statements can be output by hand with relative ease, but this
 		command will help you standardize how they are written.
 
@@ -57,6 +59,7 @@ namespace panini
 			#include "game/Physics.h"
 		\endcode
 	*/
+
 	class Include
 		: public Command
 	{
@@ -66,7 +69,7 @@ namespace panini
 			Construct an Include command from an IncludeEntry that is copied
 			to the instance.
 		*/
-		inline Include(const IncludeEntry& entry)
+		inline explicit Include(const IncludeEntry& entry)
 			: m_entry(entry)
 		{
 		}
@@ -75,7 +78,7 @@ namespace panini
 			Construct an Include command from an IncludeEntry that is moved
 			into the instance.
 		*/
-		inline Include(IncludeEntry&& entry) noexcept
+		inline explicit Include(IncludeEntry&& entry) noexcept
 			: m_entry(std::exchange(entry, {}))
 		{
 		}
@@ -87,7 +90,9 @@ namespace panini
 			include style from the writer, otherwise it will be overridden for
 			this command only.
 		*/
-		inline Include(const std::filesystem::path& path, IncludeStyle style = IncludeStyle::Inherit)
+		inline explicit Include(
+			const std::filesystem::path& path,
+			IncludeStyle style = IncludeStyle::Inherit)
 			: m_entry(path, style)
 		{
 		}
@@ -99,7 +104,9 @@ namespace panini
 			include style from the writer, otherwise it will be overridden for
 			this command only.
 		*/
-		inline Include(std::filesystem::path&& path, IncludeStyle style = IncludeStyle::Inherit) noexcept
+		inline explicit Include(
+			std::filesystem::path&& path,
+			IncludeStyle style = IncludeStyle::Inherit) noexcept
 			: m_entry(path, style)
 		{
 		}

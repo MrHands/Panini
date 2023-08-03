@@ -29,6 +29,8 @@ namespace panini
 	/*!
 		\brief Command for outputting a label statement.
 
+		\ingroup Commands
+
 		A label is a name and a ":" chunk. The command pops the indentation
 		before writing the label and restores it afterwards.
 
@@ -61,26 +63,27 @@ namespace panini
 
 		\sa Scope
 	*/
+
 	class Label
 		: public Command
 	{
 
 	public:
 		/*!
-			Create a Label command with a `name` that is moved into the
+			Create a Label command with a `name` that is copied to the
 			instance.
 		*/
-		Label(std::string&& name)
-			: m_name(std::move(name))
+		inline explicit Label(const std::string& name)
+			: m_name(name)
 		{
 		}
 
 		/*!
-			Create a Label command with a `name` that is copied to the
+			Create a Label command with a `name` that is moved into the
 			instance.
 		*/
-		Label(const std::string& name)
-			: m_name(name)
+		inline explicit Label(std::string&& name) noexcept
+			: m_name(std::move(name))
 		{
 		}
 

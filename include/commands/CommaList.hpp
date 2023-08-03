@@ -33,6 +33,8 @@ namespace panini
 		\brief Command for outputting a list of items, comma-separated by
 		default.
 
+		\ingroup Commands
+
 		The CommaList command makes it easy to print a list of items that should
 		be separated after the first item, e.g. function parameters.
 
@@ -169,7 +171,7 @@ namespace panini
 			TIterator begin,
 			TIterator end,
 			const CommaListOptions& options,
-			TTransform&& transform)
+			TTransform&& transform) noexcept
 			: m_begin(begin)
 			, m_end(end)
 			, m_options(options)

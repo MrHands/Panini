@@ -30,6 +30,8 @@ namespace panini
 	/*!
 		\brief Command for outputting a single-line comment.
 
+		\ingroup Commands
+
 		Comment lines start with "// " in the output. Empty lines will be
 		output as well.
 
@@ -45,6 +47,7 @@ namespace panini
 			// I can't believe this was generated!
 		\endcode
 	*/
+
 	class CommentLine
 		: public Command
 	{
@@ -54,7 +57,7 @@ namespace panini
 			Construct a CommentLine with a comment that is copied to the
 			instance.
 		*/
-		inline CommentLine(const std::string& comment)
+		inline explicit CommentLine(const std::string& comment)
 			: m_comment(comment)
 		{
 		}
@@ -63,7 +66,7 @@ namespace panini
 			Construct a CommentLine with a comment that is moved into the
 			instance.
 		*/
-		inline CommentLine(std::string&& comment) noexcept
+		inline explicit CommentLine(std::string&& comment) noexcept
 			: m_comment(std::exchange(comment, {}))
 		{
 		}

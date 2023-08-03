@@ -27,8 +27,11 @@ namespace panini
 	/*!
 		\brief Command for decrementing the indentation level on the writer.
 
+		\ingroup Commands
+
 		\sa Writer
 	*/
+
 	struct IndentPop
 	{
 	};

@@ -32,6 +32,8 @@ namespace panini
 	/*!
 		\brief Command for outputting a block of include statements.
 
+		\ingroup Commands
+
 		Example:
 
 		\code{.cpp}
@@ -53,6 +55,7 @@ namespace panini
 			#include "game/Physics.h"
 		\endcode
 	*/
+
 	class IncludeBlock
 		: public Command
 	{
@@ -62,7 +65,7 @@ namespace panini
 			Construct an IncludeBlock command from an IncludeSet that is
 			copied to the instance.
 		*/
-		inline IncludeBlock(const IncludeSet& set)
+		inline explicit IncludeBlock(const IncludeSet& set)
 			: m_set(set)
 		{
 		}
@@ -71,7 +74,7 @@ namespace panini
 			Construct an IncludeBlock command from an IncludeSet that is
 			moved into the instance.
 		*/
-		inline IncludeBlock(IncludeSet&& set) noexcept
+		inline explicit IncludeBlock(IncludeSet&& set) noexcept
 			: m_set(std::exchange(set, {}))
 		{
 		}

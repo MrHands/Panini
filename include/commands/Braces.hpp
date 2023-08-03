@@ -31,6 +31,8 @@ namespace panini
 	/*!
 		\brief Command for outputting opening and closing (curly) braces.
 
+		\ingroup Commands
+
 		This command tracks the current indentation level and takes the brace
 		breaking style into account when outputting braces. You can change both
 		the brace breaking style and the brace chunks it outputs with the
@@ -69,6 +71,7 @@ namespace panini
 
 		\sa Scope
 	*/
+
 	class Braces
 		: public Command
 	{
@@ -90,9 +93,9 @@ namespace panini
 			copies the brace breaking style from the writer, otherwise it will
 			be overridden for this command only.
 		*/
-		inline Braces(
+		inline explicit Braces(
 			TCallback&& callback,
-			BraceBreakingStyle breakingStyle = BraceBreakingStyle::Inherit)
+			BraceBreakingStyle breakingStyle = BraceBreakingStyle::Inherit) noexcept
 			: m_callback(std::move(callback))
 		{
 			m_options.breakingStyle = breakingStyle;
@@ -110,13 +113,15 @@ namespace panini
 			from the writer, otherwise it will be overridden for this command
 			only.
 		*/
-		inline Braces(TCallback&& callback, const BracesOptions& options)
+		inline explicit Braces(
+			TCallback&& callback,
+			const BracesOptions& options) noexcept
 			: m_callback(std::move(callback))
 			, m_options(options)
 		{
 		}
 
-		inline void Visit(Writer& writer) final
+		inline void Visit(Writer& writer) override
 		{
 			const BraceBreakingStyle breakingStyle =
 				m_options.breakingStyle == BraceBreakingStyle::Inherit

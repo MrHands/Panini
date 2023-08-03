@@ -39,6 +39,7 @@ namespace panini
 
 		\sa Writer
 	*/
+
 	class Command
 	{
 

@@ -29,6 +29,8 @@ namespace panini
 	/*!
 		\brief Command for feature flags.
 
+		\ingroup Commands
+
 		When the condition is true, the "then" callback is used to output code
 		to the active writer. Otherwise, if the "else" callback is specified,
 		this callback is used instead.
@@ -67,14 +69,28 @@ namespace panini
 			// new-db-access
 		\endcode
 	*/
+
 	class FeatureFlag
 		: public Command
 	{
 
 	public:
-		using TCallback = std::function<void(Writer&)>;
+		/*!
+			Callback type used for conditions.
 
-		inline FeatureFlag(
+			\param writer     Active writer.
+		*/
+		using TCallback = std::function<void(Writer& writer)>;
+
+		/*!
+			Construct a FeatureFlag with a callback invoked when the condition
+			is true.
+
+			\param condition     Decide which callback to invoke
+			\param context       String added to comments for context
+			\param callbackThen  Invoked when condition is true
+		*/
+		inline explicit FeatureFlag(
 			bool condition,
 			const std::string& context,
 			TCallback&& callbackThen) noexcept
@@ -84,7 +100,16 @@ namespace panini
 		{
 		}
 
-		inline FeatureFlag(
+		/*!
+			Construct a FeatureFlag with a callback invoked when the condition
+			is true and one when the condition is false.
+
+			\param condition     Decide which callback to invoke
+			\param context       String added to comments for context
+			\param callbackThen  Invoked when condition is true
+			\param callbackElse  Invoked when condition is false
+		*/
+		inline explicit FeatureFlag(
 			bool condition,
 			const std::string& context,
 			TCallback&& callbackThen,

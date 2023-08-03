@@ -32,6 +32,8 @@ namespace panini
 	/*!
 		\brief Command for outputting a scope with braces.
 
+		\ingroup Commands
+
 		Scopes have a named chunk and use a \ref Braces command to add opening
 		and closing braces to the output.
 
@@ -63,12 +65,18 @@ namespace panini
 
 		\sa Braces
 	*/
+
 	class Scope
 		: public Command
 	{
 
 	public:
-		using TCallback = std::function<void(Writer&)>;
+		/*!
+			Callback type used for conditions.
+
+			\param writer     Active writer.
+		*/
+		using TCallback = std::function<void(Writer& writer)>;
 
 		/*!
 			\deprecated This constructor will be removed in the next major
@@ -83,10 +91,10 @@ namespace panini
 			copies the brace breaking style from the writer, otherwise it will
 			be overridden for this command only.
 		*/
-		inline Scope(
+		inline explicit Scope(
 			std::string&& name,
 			TCallback&& callback,
-			BraceBreakingStyle breakingStyle = BraceBreakingStyle::Inherit)
+			BraceBreakingStyle breakingStyle = BraceBreakingStyle::Inherit) noexcept
 			: m_name(name)
 			, m_callback(std::move(callback))
 		{
@@ -107,10 +115,10 @@ namespace panini
 			copies the brace breaking style from the writer, otherwise it will
 			be overridden for this command only.
 		*/
-		inline Scope(
+		inline explicit Scope(
 			const std::string& name,
 			TCallback&& callback,
-			BraceBreakingStyle breakingStyle = BraceBreakingStyle::Inherit)
+			BraceBreakingStyle breakingStyle = BraceBreakingStyle::Inherit) noexcept
 			: m_name(name)
 			, m_callback(std::move(callback))
 		{
@@ -122,10 +130,10 @@ namespace panini
 			into the instance. `options` are used to configure the command
 			instance.
 		*/
-		inline Scope(
+		inline explicit Scope(
 			std::string&& name,
 			TCallback&& callback,
-			const ScopeOptions& options)
+			const ScopeOptions& options) noexcept
 			: m_name(name)
 			, m_callback(std::move(callback))
 			, m_options(options)
@@ -137,10 +145,10 @@ namespace panini
 			moved into the instance. `options` are used to configure the
 			command instance.
 		*/
-		inline Scope(
+		inline explicit Scope(
 			const std::string& name,
 			TCallback&& callback,
-			const ScopeOptions& options)
+			const ScopeOptions& options) noexcept
 			: m_name(name)
 			, m_callback(std::move(callback))
 			, m_options(options)

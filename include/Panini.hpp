@@ -34,7 +34,12 @@
 // Global
 
 /*!
-	\defgroup Globals Global values
+	\defgroup Globals
+	\defgroup Commands
+	\defgroup CommandOptions
+	\defgroup Writers
+	\defgroup WriterConfiguration
+	\defgroup Data
 */
 
 #include "Version.hpp"

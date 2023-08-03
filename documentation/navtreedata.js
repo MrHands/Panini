@@ -25,6 +25,11 @@
 var NAVTREE =
 [
   [ "Panini", "index.html", [
+    [ "Example", "index.html#autotoc_md0", null ],
+    [ "Installation", "index.html#autotoc_md1", null ],
+    [ "Philosophy", "index.html#autotoc_md2", null ],
+    [ "Writing custom commands", "index.html#autotoc_md3", null ],
+    [ "Configuring writers", "index.html#autotoc_md4", null ],
     [ "Deprecated List", "deprecated.html", null ],
     [ "Modules", "modules.html", "modules" ],
     [ "Namespaces", "namespaces.html", [
@@ -60,7 +65,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_brace_breaking_style_8hpp.html",
-"classpanini_1_1_include_set.html#add28dee4e638a61f77f26da605e26b83"
+"classpanini_1_1_writer.html#aeaaa431afb185c70afef440084390bf8"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

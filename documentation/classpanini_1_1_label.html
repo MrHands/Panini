@@ -86,7 +86,7 @@ $(document).ready(function(){initNavTree('classpanini_1_1_label.html',''); initR
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="classpanini_1_1_label-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">panini::Label Class Reference</div></div>
+  <div class="headertitle"><div class="title">panini::Label Class Reference<div class="ingroups"><a class="el" href="group___commands.html">Commands</a></div></div></div>
 </div><!--header-->
 <div class="contents">
 
@@ -106,12 +106,12 @@ Inheritance diagram for panini::Label:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:abda00fbd34d62f64aed69674e70b884b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_label.html#abda00fbd34d62f64aed69674e70b884b">Label</a> (std::string &amp;&amp;name)</td></tr>
-<tr class="separator:abda00fbd34d62f64aed69674e70b884b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a26105ad9f070f7374d809f0ac45609c3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_label.html#a26105ad9f070f7374d809f0ac45609c3">Label</a> (const std::string &amp;name)</td></tr>
 <tr class="separator:a26105ad9f070f7374d809f0ac45609c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4c60b58693397e45a450ff6a1b434586"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_label.html#a4c60b58693397e45a450ff6a1b434586">Visit</a> (<a class="el" href="classpanini_1_1_writer.html">Writer</a> &amp;writer) final</td></tr>
-<tr class="separator:a4c60b58693397e45a450ff6a1b434586"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c7285a2db72f889e9a047b3fc2eaade"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_label.html#a8c7285a2db72f889e9a047b3fc2eaade">Label</a> (std::string &amp;&amp;name) noexcept</td></tr>
+<tr class="separator:a8c7285a2db72f889e9a047b3fc2eaade"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a388bf6410b4e51fc80738baa0aae31fa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_label.html#a388bf6410b4e51fc80738baa0aae31fa">Visit</a> (<a class="el" href="classpanini_1_1_writer.html">Writer</a> &amp;writer) override</td></tr>
+<tr class="separator:a388bf6410b4e51fc80738baa0aae31fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classpanini_1_1_command"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classpanini_1_1_command')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classpanini_1_1_command.html">panini::Command</a></td></tr>
 <tr class="memitem:afd162c88f6ed9c2ec1a6b0057a9b4918 inherit pub_methods_classpanini_1_1_command"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_command.html#afd162c88f6ed9c2ec1a6b0057a9b4918">~Command</a> ()=default</td></tr>
 <tr class="separator:afd162c88f6ed9c2ec1a6b0057a9b4918 inherit pub_methods_classpanini_1_1_command"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -122,12 +122,12 @@ Public Member Functions</h2></td></tr>
 <p >Labels are useful when you don't want to modify the current indentation level, e.g. when writing an access identifier for a class or a switch..case statement.</p>
 <p >Example:</p>
 <div class="fragment"><div class="line">writer &lt;&lt; Scope(<span class="stringliteral">&quot;class Vehicle&quot;</span>, [](Writer&amp; writer) {</div>
-<div class="line">    writer &lt;&lt; <a class="code hl_function" href="classpanini_1_1_label.html#abda00fbd34d62f64aed69674e70b884b">Label</a>(<span class="stringliteral">&quot;public&quot;</span>) &lt;&lt; NextLine();</div>
+<div class="line">    writer &lt;&lt; <a class="code hl_function" href="classpanini_1_1_label.html#a26105ad9f070f7374d809f0ac45609c3">Label</a>(<span class="stringliteral">&quot;public&quot;</span>) &lt;&lt; NextLine();</div>
 <div class="line">    writer &lt;&lt; <span class="stringliteral">&quot;Vehicle(const std::string&amp; maker);&quot;</span> &lt;&lt; NextLine();</div>
-<div class="line">    writer &lt;&lt; <a class="code hl_function" href="classpanini_1_1_label.html#abda00fbd34d62f64aed69674e70b884b">Label</a>(<span class="stringliteral">&quot;private&quot;</span>) &lt;&lt; NextLine();</div>
+<div class="line">    writer &lt;&lt; <a class="code hl_function" href="classpanini_1_1_label.html#a26105ad9f070f7374d809f0ac45609c3">Label</a>(<span class="stringliteral">&quot;private&quot;</span>) &lt;&lt; NextLine();</div>
 <div class="line">    writer &lt;&lt; <span class="stringliteral">&quot;std::string m_maker;&quot;</span> &lt;&lt; NextLine();</div>
 <div class="line">}) &lt;&lt; <span class="stringliteral">&quot;;&quot;</span>;</div>
-<div class="ttc" id="aclasspanini_1_1_label_html_abda00fbd34d62f64aed69674e70b884b"><div class="ttname"><a href="classpanini_1_1_label.html#abda00fbd34d62f64aed69674e70b884b">panini::Label::Label</a></div><div class="ttdeci">Label(std::string &amp;&amp;name)</div><div class="ttdef"><b>Definition:</b> Label.hpp:73</div></div>
+<div class="ttc" id="aclasspanini_1_1_label_html_a26105ad9f070f7374d809f0ac45609c3"><div class="ttname"><a href="classpanini_1_1_label.html#a26105ad9f070f7374d809f0ac45609c3">panini::Label::Label</a></div><div class="ttdeci">Label(const std::string &amp;name)</div><div class="ttdef"><b>Definition:</b> Label.hpp:76</div></div>
 </div><!-- fragment --><p >Output:</p>
 <div class="fragment"><div class="line"><span class="keyword">class </span>Vehicle</div>
 <div class="line">{</div>
@@ -138,35 +138,8 @@ Public Member Functions</h2></td></tr>
 <div class="line">};</div>
 </div><!-- fragment --><dl class="section see"><dt>See also</dt><dd><a class="el" href="classpanini_1_1_scope.html" title="Command for outputting a scope with braces.">Scope</a> </dd></dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="abda00fbd34d62f64aed69674e70b884b" name="abda00fbd34d62f64aed69674e70b884b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abda00fbd34d62f64aed69674e70b884b">&#9670;&nbsp;</a></span>Label() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">panini::Label::Label </td>
-          <td>(</td>
-          <td class="paramtype">std::string &amp;&amp;&#160;</td>
-          <td class="paramname"><em>name</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p >Create a <a class="el" href="classpanini_1_1_label.html" title="Command for outputting a label statement.">Label</a> command with a <code>name</code> that is moved into the instance. </p>
-
-</div>
-</div>
 <a id="a26105ad9f070f7374d809f0ac45609c3" name="a26105ad9f070f7374d809f0ac45609c3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a26105ad9f070f7374d809f0ac45609c3">&#9670;&nbsp;</a></span>Label() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a26105ad9f070f7374d809f0ac45609c3">&#9670;&nbsp;</a></span>Label() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -184,7 +157,7 @@ Public Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -192,9 +165,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<h2 class="groupheader">Member Function Documentation</h2>
-<a id="a4c60b58693397e45a450ff6a1b434586" name="a4c60b58693397e45a450ff6a1b434586"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4c60b58693397e45a450ff6a1b434586">&#9670;&nbsp;</a></span>Visit()</h2>
+<a id="a8c7285a2db72f889e9a047b3fc2eaade" name="a8c7285a2db72f889e9a047b3fc2eaade"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c7285a2db72f889e9a047b3fc2eaade">&#9670;&nbsp;</a></span>Label() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -203,7 +175,35 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual void panini::Label::Visit </td>
+          <td class="memname">panini::Label::Label </td>
+          <td>(</td>
+          <td class="paramtype">std::string &amp;&amp;&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Create a <a class="el" href="classpanini_1_1_label.html" title="Command for outputting a label statement.">Label</a> command with a <code>name</code> that is moved into the instance. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a388bf6410b4e51fc80738baa0aae31fa" name="a388bf6410b4e51fc80738baa0aae31fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a388bf6410b4e51fc80738baa0aae31fa">&#9670;&nbsp;</a></span>Visit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void panini::Label::Visit </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classpanini_1_1_writer.html">Writer</a> &amp;&#160;</td>
           <td class="paramname"><em>writer</em></td><td>)</td>
@@ -212,7 +212,7 @@ Public Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">final</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">

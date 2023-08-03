@@ -5,6 +5,6 @@ var searchData=
   ['chunkbraceclose_2',['chunkBraceClose',['../structpanini_1_1_braces_options.html#a3b5a39b526c62d183f0916387f8a266b',1,'panini::BracesOptions']]],
   ['chunkbraceopen_3',['chunkBraceOpen',['../structpanini_1_1_braces_options.html#a0a257a7a04d608e4b4b9e79c7cd8698d',1,'panini::BracesOptions']]],
   ['chunkendseparator_4',['chunkEndSeparator',['../structpanini_1_1_comma_list_options.html#af257706c774aefbffbca3ff5a68476e0',1,'panini::CommaListOptions']]],
-  ['chunkindent_5',['chunkIndent',['../structpanini_1_1_config.html#acbe90039abf26d60e8c22924d97001f9',1,'panini::Config']]],
-  ['chunknewline_6',['chunkNewLine',['../structpanini_1_1_config.html#a74cfd8461ea8f5a046f4a29c290ab103',1,'panini::Config']]]
+  ['chunkindent_5',['chunkIndent',['../structpanini_1_1_writer_config.html#aee18763c2a4c7f421048cd771c823387',1,'panini::WriterConfig']]],
+  ['chunknewline_6',['chunkNewLine',['../structpanini_1_1_writer_config.html#adf1aada0b53c005cbd4432c84a82401f',1,'panini::WriterConfig']]]
 ];

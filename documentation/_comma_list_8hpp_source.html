@@ -89,7 +89,7 @@ $(document).ready(function(){initNavTree('_comma_list_8hpp_source.html',''); ini
 <a href="_comma_list_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">    MIT No Attribution</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"></span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">    Copyright 2021-2022 Mr. Hands</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">    Copyright 2021-2023 Mr. Hands</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"></span> </div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment">    Permission is hereby granted, free of charge, to any person obtaining a copy</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment">    of this software and associated documentation files (the &quot;Software&quot;), to</span></div>
@@ -117,121 +117,121 @@ $(document).ready(function(){initNavTree('_comma_list_8hpp_source.html',''); ini
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacepanini.html">panini</a></div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>{</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <span class="keyword">template</span> &lt;<span class="keyword">class</span> TIterator&gt;</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="classpanini_1_1_comma_list.html">   80</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classpanini_1_1_comma_list.html">CommaList</a></div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        : <span class="keyword">public</span> <a class="code hl_class" href="classpanini_1_1_command.html">Command</a></div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    {</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno"><a class="line" href="classpanini_1_1_comma_list.html#a3ed1960e25cd1de99b8d83e702f4af53">   89</a></span>        <span class="keyword">using</span> <a class="code hl_typedef" href="classpanini_1_1_comma_list.html#a3ed1960e25cd1de99b8d83e702f4af53">TUnderlying</a> = <span class="keyword">typename</span> std::conditional&lt;</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>            std::is_pointer_v&lt;TIterator&gt;,</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>            std::remove_pointer_t&lt;TIterator&gt;,</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>            <span class="keyword">typename</span> std::iterator_traits&lt;TIterator&gt;::value_type</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        &gt;::type;</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno"><a class="line" href="classpanini_1_1_comma_list.html#a27f21f2ed6ef063de4ef8db7f34ff451">  103</a></span>        <span class="keyword">using</span> <a class="code hl_typedef" href="classpanini_1_1_comma_list.html#a27f21f2ed6ef063de4ef8db7f34ff451">TTransform</a> = std::function&lt;void(<a class="code hl_class" href="classpanini_1_1_writer.html">Writer</a>&amp; writer, <span class="keyword">const</span> <a class="code hl_typedef" href="classpanini_1_1_comma_list.html#a3ed1960e25cd1de99b8d83e702f4af53">TUnderlying</a>&amp; item, <span class="keywordtype">size_t</span> listIndex)&gt;;</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> TItem&gt;</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno"><a class="line" href="classpanini_1_1_comma_list.html#abf008dff7593cf1ee1777cd5dd0f0901">  119</a></span>        <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classpanini_1_1_comma_list.html#abf008dff7593cf1ee1777cd5dd0f0901">DefaultTransform</a>(<a class="code hl_class" href="classpanini_1_1_writer.html">Writer</a>&amp; writer, <span class="keyword">const</span> TItem&amp; item, <span class="keywordtype">size_t</span> listIndex)</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>        {</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>            (void)listIndex;</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span> </div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>            writer &lt;&lt; std::to_string(item);</div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        }</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>        <span class="keyword">template</span> &lt;&gt;</div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno"><a class="line" href="classpanini_1_1_comma_list.html#a5258d4c438061c93caba11c23f1cdec9">  135</a></span>        <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classpanini_1_1_comma_list.html#a5258d4c438061c93caba11c23f1cdec9">DefaultTransform</a>(<a class="code hl_class" href="classpanini_1_1_writer.html">Writer</a>&amp; writer, <span class="keyword">const</span> std::string&amp; item, <span class="keywordtype">size_t</span> listIndex)</div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>        {</div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>            (void)listIndex;</div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span> </div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>            writer &lt;&lt; item;</div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>        }</div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span> </div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno"><a class="line" href="classpanini_1_1_comma_list.html#a8409d3feda54c453ac213c2f58e53ab0">  149</a></span>        <span class="keyword">inline</span> <span class="keyword">explicit</span> <a class="code hl_function" href="classpanini_1_1_comma_list.html#a8409d3feda54c453ac213c2f58e53ab0">CommaList</a>(</div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>            TIterator begin,</div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>            TIterator end,</div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>            <span class="keyword">const</span> <a class="code hl_struct" href="structpanini_1_1_comma_list_options.html">CommaListOptions</a>&amp; options = {})</div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>            : m_begin(begin)</div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>            , m_end(end)</div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>            , m_options(options)</div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>            , m_transform(DefaultTransform&lt;TUnderlying&gt;)</div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>        {</div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>        }</div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span> </div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno"><a class="line" href="classpanini_1_1_comma_list.html#ac512de00647fc210767b1e2407757591">  168</a></span>        <span class="keyword">inline</span> <span class="keyword">explicit</span> <a class="code hl_function" href="classpanini_1_1_comma_list.html#ac512de00647fc210767b1e2407757591">CommaList</a>(</div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>            TIterator begin,</div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>            TIterator end,</div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>            <span class="keyword">const</span> <a class="code hl_struct" href="structpanini_1_1_comma_list_options.html">CommaListOptions</a>&amp; options,</div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>            <a class="code hl_typedef" href="classpanini_1_1_comma_list.html#a27f21f2ed6ef063de4ef8db7f34ff451">TTransform</a>&amp;&amp; transform)</div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>            : m_begin(begin)</div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>            , m_end(end)</div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>            , m_options(options)</div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>            , m_transform(std::move(transform))</div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>        {</div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>        }</div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span> </div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno"><a class="line" href="classpanini_1_1_comma_list.html#a5a596ceae47957f81c0bf0e26d35999f">  180</a></span>        <span class="keyword">inline</span> <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classpanini_1_1_comma_list.html#a5a596ceae47957f81c0bf0e26d35999f">Visit</a>(<a class="code hl_class" href="classpanini_1_1_writer.html">Writer</a>&amp; writer) <span class="keyword">final</span></div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>        {</div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>            <span class="keywordtype">size_t</span> index = 0;</div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>            <span class="keywordflow">for</span> (TIterator item = m_begin; item != m_end; ++item)</div>
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>            {</div>
-<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>                <span class="keywordflow">if</span> (index &gt; 0)</div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>                {</div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>                    writer &lt;&lt; m_options.<a class="code hl_variable" href="structpanini_1_1_comma_list_options.html#af257706c774aefbffbca3ff5a68476e0">chunkEndSeparator</a>;</div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span> </div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>                    <span class="keywordflow">if</span> (m_options.<a class="code hl_variable" href="structpanini_1_1_comma_list_options.html#acc13b57eeb160dd75a6416d0ecf49e02">addNewLines</a>)</div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>                    {</div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>                        writer &lt;&lt; <a class="code hl_struct" href="structpanini_1_1_next_line.html">NextLine</a>();</div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>                    }</div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>                }</div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span> </div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>                <span class="keywordflow">if</span> (index &gt; 0 ||</div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>                    !m_options.<a class="code hl_variable" href="structpanini_1_1_comma_list_options.html#a445373ff36d28afbaaae1a15231b6505">skipFirstItemBeginSeparator</a>)</div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>                {</div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>                    writer &lt;&lt; m_options.<a class="code hl_variable" href="structpanini_1_1_comma_list_options.html#a1e72ad2710d12f55cf6f409fbe7cc71a">chunkBeginSeparator</a>;</div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>                }</div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span> </div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>                m_transform(writer, *item, index);</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <span class="keyword">template</span> &lt;<span class="keyword">class</span> TIterator&gt;</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno"><a class="line" href="classpanini_1_1_comma_list.html">   82</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classpanini_1_1_comma_list.html">CommaList</a></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        : <span class="keyword">public</span> <a class="code hl_class" href="classpanini_1_1_command.html">Command</a></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    {</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno"><a class="line" href="classpanini_1_1_comma_list.html#a3ed1960e25cd1de99b8d83e702f4af53">   91</a></span>        <span class="keyword">using</span> <a class="code hl_typedef" href="classpanini_1_1_comma_list.html#a3ed1960e25cd1de99b8d83e702f4af53">TUnderlying</a> = <span class="keyword">typename</span> std::conditional&lt;</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>            std::is_pointer_v&lt;TIterator&gt;,</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>            std::remove_pointer_t&lt;TIterator&gt;,</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>            <span class="keyword">typename</span> std::iterator_traits&lt;TIterator&gt;::value_type</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        &gt;::type;</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno"><a class="line" href="classpanini_1_1_comma_list.html#a27f21f2ed6ef063de4ef8db7f34ff451">  105</a></span>        <span class="keyword">using</span> <a class="code hl_typedef" href="classpanini_1_1_comma_list.html#a27f21f2ed6ef063de4ef8db7f34ff451">TTransform</a> = std::function&lt;void(<a class="code hl_class" href="classpanini_1_1_writer.html">Writer</a>&amp; writer, <span class="keyword">const</span> <a class="code hl_typedef" href="classpanini_1_1_comma_list.html#a3ed1960e25cd1de99b8d83e702f4af53">TUnderlying</a>&amp; item, <span class="keywordtype">size_t</span> listIndex)&gt;;</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> TItem&gt;</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno"><a class="line" href="classpanini_1_1_comma_list.html#abf008dff7593cf1ee1777cd5dd0f0901">  121</a></span>        <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classpanini_1_1_comma_list.html#abf008dff7593cf1ee1777cd5dd0f0901">DefaultTransform</a>(<a class="code hl_class" href="classpanini_1_1_writer.html">Writer</a>&amp; writer, <span class="keyword">const</span> TItem&amp; item, <span class="keywordtype">size_t</span> listIndex)</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        {</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>            (void)listIndex;</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span> </div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>            writer &lt;&lt; std::to_string(item);</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>        }</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span> </div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>        <span class="keyword">template</span> &lt;&gt;</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno"><a class="line" href="classpanini_1_1_comma_list.html#a5258d4c438061c93caba11c23f1cdec9">  137</a></span>        <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classpanini_1_1_comma_list.html#a5258d4c438061c93caba11c23f1cdec9">DefaultTransform</a>(<a class="code hl_class" href="classpanini_1_1_writer.html">Writer</a>&amp; writer, <span class="keyword">const</span> std::string&amp; item, <span class="keywordtype">size_t</span> listIndex)</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>        {</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>            (void)listIndex;</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span> </div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>            writer &lt;&lt; item;</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>        }</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span> </div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno"><a class="line" href="classpanini_1_1_comma_list.html#a8409d3feda54c453ac213c2f58e53ab0">  151</a></span>        <span class="keyword">inline</span> <span class="keyword">explicit</span> <a class="code hl_function" href="classpanini_1_1_comma_list.html#a8409d3feda54c453ac213c2f58e53ab0">CommaList</a>(</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>            TIterator begin,</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>            TIterator end,</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>            <span class="keyword">const</span> <a class="code hl_struct" href="structpanini_1_1_comma_list_options.html">CommaListOptions</a>&amp; options = {})</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>            : m_begin(begin)</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>            , m_end(end)</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>            , m_options(options)</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>            , m_transform(DefaultTransform&lt;TUnderlying&gt;)</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>        {</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>        }</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span> </div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno"><a class="line" href="classpanini_1_1_comma_list.html#a093c2af0226a38fca015c78d363e93bd">  170</a></span>        <span class="keyword">inline</span> <span class="keyword">explicit</span> <a class="code hl_function" href="classpanini_1_1_comma_list.html#a093c2af0226a38fca015c78d363e93bd">CommaList</a>(</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>            TIterator begin,</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>            TIterator end,</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>            <span class="keyword">const</span> <a class="code hl_struct" href="structpanini_1_1_comma_list_options.html">CommaListOptions</a>&amp; options,</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>            <a class="code hl_typedef" href="classpanini_1_1_comma_list.html#a27f21f2ed6ef063de4ef8db7f34ff451">TTransform</a>&amp;&amp; transform) noexcept</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>            : m_begin(begin)</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>            , m_end(end)</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>            , m_options(options)</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>            , m_transform(std::move(transform))</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>        {</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>        }</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span> </div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno"><a class="line" href="classpanini_1_1_comma_list.html#abfa4ae99162c3360674c4d9850cabf11">  182</a></span>        <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classpanini_1_1_comma_list.html#abfa4ae99162c3360674c4d9850cabf11">Visit</a>(<a class="code hl_class" href="classpanini_1_1_writer.html">Writer</a>&amp; writer)<span class="keyword"> override</span></div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span><span class="keyword">        </span>{</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>            <span class="keywordtype">size_t</span> index = 0;</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>            <span class="keywordflow">for</span> (TIterator item = m_begin; item != m_end; ++item)</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>            {</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>                <span class="keywordflow">if</span> (index &gt; 0)</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>                {</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>                    writer &lt;&lt; m_options.<a class="code hl_variable" href="structpanini_1_1_comma_list_options.html#af257706c774aefbffbca3ff5a68476e0">chunkEndSeparator</a>;</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span> </div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>                    <span class="keywordflow">if</span> (m_options.<a class="code hl_variable" href="structpanini_1_1_comma_list_options.html#acc13b57eeb160dd75a6416d0ecf49e02">addNewLines</a>)</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>                    {</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>                        writer &lt;&lt; <a class="code hl_struct" href="structpanini_1_1_next_line.html">NextLine</a>();</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>                    }</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>                }</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span> </div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>                <span class="keywordflow">if</span> (index &gt; 0 ||</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>                    !m_options.<a class="code hl_variable" href="structpanini_1_1_comma_list_options.html#a445373ff36d28afbaaae1a15231b6505">skipFirstItemBeginSeparator</a>)</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>                {</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>                    writer &lt;&lt; m_options.<a class="code hl_variable" href="structpanini_1_1_comma_list_options.html#a1e72ad2710d12f55cf6f409fbe7cc71a">chunkBeginSeparator</a>;</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>                }</div>
 <div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span> </div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>                index++;</div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>            }</div>
-<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span> </div>
-<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>            <span class="keywordflow">if</span> (index &gt; 0 &amp;&amp;</div>
-<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>                !m_options.<a class="code hl_variable" href="structpanini_1_1_comma_list_options.html#ae94ba8e983dcc39aeca02ea8bee125da">skipLastItemEndSeparator</a>)</div>
-<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>            {</div>
-<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>                writer &lt;&lt; m_options.<a class="code hl_variable" href="structpanini_1_1_comma_list_options.html#af257706c774aefbffbca3ff5a68476e0">chunkEndSeparator</a>;</div>
-<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>            }</div>
-<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>        }</div>
-<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span> </div>
-<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>    <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>        TIterator m_begin;</div>
-<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>        TIterator m_end;</div>
-<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>        <a class="code hl_struct" href="structpanini_1_1_comma_list_options.html">CommaListOptions</a> m_options;</div>
-<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>        <a class="code hl_typedef" href="classpanini_1_1_comma_list.html#a27f21f2ed6ef063de4ef8db7f34ff451">TTransform</a> m_transform;</div>
-<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span> </div>
-<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>    };</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>                m_transform(writer, *item, index);</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span> </div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>                index++;</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>            }</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span> </div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>            <span class="keywordflow">if</span> (index &gt; 0 &amp;&amp;</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>                !m_options.<a class="code hl_variable" href="structpanini_1_1_comma_list_options.html#ae94ba8e983dcc39aeca02ea8bee125da">skipLastItemEndSeparator</a>)</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>            {</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>                writer &lt;&lt; m_options.<a class="code hl_variable" href="structpanini_1_1_comma_list_options.html#af257706c774aefbffbca3ff5a68476e0">chunkEndSeparator</a>;</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>            }</div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>        }</div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span> </div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>        TIterator m_begin;</div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>        TIterator m_end;</div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>        <a class="code hl_struct" href="structpanini_1_1_comma_list_options.html">CommaListOptions</a> m_options;</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>        <a class="code hl_typedef" href="classpanini_1_1_comma_list.html#a27f21f2ed6ef063de4ef8db7f34ff451">TTransform</a> m_transform;</div>
 <div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span> </div>
-<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>};</div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>    };</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span> </div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>};</div>
 <div class="ttc" id="a_comma_list_options_8hpp_html"><div class="ttname"><a href="_comma_list_options_8hpp.html">CommaListOptions.hpp</a></div></div>
 <div class="ttc" id="a_command_8hpp_html"><div class="ttname"><a href="_command_8hpp.html">Command.hpp</a></div></div>
-<div class="ttc" id="aclasspanini_1_1_comma_list_html"><div class="ttname"><a href="classpanini_1_1_comma_list.html">panini::CommaList</a></div><div class="ttdoc">Command for outputting a list of items, comma-separated by default.</div><div class="ttdef"><b>Definition:</b> CommaList.hpp:82</div></div>
-<div class="ttc" id="aclasspanini_1_1_comma_list_html_a27f21f2ed6ef063de4ef8db7f34ff451"><div class="ttname"><a href="classpanini_1_1_comma_list.html#a27f21f2ed6ef063de4ef8db7f34ff451">panini::CommaList::TTransform</a></div><div class="ttdeci">std::function&lt; void(Writer &amp;writer, const TUnderlying &amp;item, size_t listIndex)&gt; TTransform</div><div class="ttdef"><b>Definition:</b> CommaList.hpp:103</div></div>
-<div class="ttc" id="aclasspanini_1_1_comma_list_html_a3ed1960e25cd1de99b8d83e702f4af53"><div class="ttname"><a href="classpanini_1_1_comma_list.html#a3ed1960e25cd1de99b8d83e702f4af53">panini::CommaList::TUnderlying</a></div><div class="ttdeci">typename std::conditional&lt; std::is_pointer_v&lt; TIterator &gt;, std::remove_pointer_t&lt; TIterator &gt;, typename std::iterator_traits&lt; TIterator &gt;::value_type &gt;::type TUnderlying</div><div class="ttdef"><b>Definition:</b> CommaList.hpp:93</div></div>
-<div class="ttc" id="aclasspanini_1_1_comma_list_html_a5258d4c438061c93caba11c23f1cdec9"><div class="ttname"><a href="classpanini_1_1_comma_list.html#a5258d4c438061c93caba11c23f1cdec9">panini::CommaList::DefaultTransform</a></div><div class="ttdeci">static void DefaultTransform(Writer &amp;writer, const std::string &amp;item, size_t listIndex)</div><div class="ttdef"><b>Definition:</b> CommaList.hpp:135</div></div>
-<div class="ttc" id="aclasspanini_1_1_comma_list_html_a5a596ceae47957f81c0bf0e26d35999f"><div class="ttname"><a href="classpanini_1_1_comma_list.html#a5a596ceae47957f81c0bf0e26d35999f">panini::CommaList::Visit</a></div><div class="ttdeci">virtual void Visit(Writer &amp;writer) final</div><div class="ttdef"><b>Definition:</b> CommaList.hpp:180</div></div>
-<div class="ttc" id="aclasspanini_1_1_comma_list_html_a8409d3feda54c453ac213c2f58e53ab0"><div class="ttname"><a href="classpanini_1_1_comma_list.html#a8409d3feda54c453ac213c2f58e53ab0">panini::CommaList::CommaList</a></div><div class="ttdeci">CommaList(TIterator begin, TIterator end, const CommaListOptions &amp;options={})</div><div class="ttdef"><b>Definition:</b> CommaList.hpp:149</div></div>
-<div class="ttc" id="aclasspanini_1_1_comma_list_html_abf008dff7593cf1ee1777cd5dd0f0901"><div class="ttname"><a href="classpanini_1_1_comma_list.html#abf008dff7593cf1ee1777cd5dd0f0901">panini::CommaList::DefaultTransform</a></div><div class="ttdeci">static void DefaultTransform(Writer &amp;writer, const TItem &amp;item, size_t listIndex)</div><div class="ttdoc">Default transform function for the command.</div><div class="ttdef"><b>Definition:</b> CommaList.hpp:119</div></div>
-<div class="ttc" id="aclasspanini_1_1_comma_list_html_ac512de00647fc210767b1e2407757591"><div class="ttname"><a href="classpanini_1_1_comma_list.html#ac512de00647fc210767b1e2407757591">panini::CommaList::CommaList</a></div><div class="ttdeci">CommaList(TIterator begin, TIterator end, const CommaListOptions &amp;options, TTransform &amp;&amp;transform)</div><div class="ttdef"><b>Definition:</b> CommaList.hpp:168</div></div>
-<div class="ttc" id="aclasspanini_1_1_command_html"><div class="ttname"><a href="classpanini_1_1_command.html">panini::Command</a></div><div class="ttdoc">Base class for commands.</div><div class="ttdef"><b>Definition:</b> Command.hpp:43</div></div>
-<div class="ttc" id="aclasspanini_1_1_writer_html"><div class="ttname"><a href="classpanini_1_1_writer.html">panini::Writer</a></div><div class="ttdoc">Base class for writers.</div><div class="ttdef"><b>Definition:</b> Writer.hpp:44</div></div>
+<div class="ttc" id="aclasspanini_1_1_comma_list_html"><div class="ttname"><a href="classpanini_1_1_comma_list.html">panini::CommaList</a></div><div class="ttdoc">Command for outputting a list of items, comma-separated by default.</div><div class="ttdef"><b>Definition:</b> CommaList.hpp:84</div></div>
+<div class="ttc" id="aclasspanini_1_1_comma_list_html_a093c2af0226a38fca015c78d363e93bd"><div class="ttname"><a href="classpanini_1_1_comma_list.html#a093c2af0226a38fca015c78d363e93bd">panini::CommaList::CommaList</a></div><div class="ttdeci">CommaList(TIterator begin, TIterator end, const CommaListOptions &amp;options, TTransform &amp;&amp;transform) noexcept</div><div class="ttdef"><b>Definition:</b> CommaList.hpp:170</div></div>
+<div class="ttc" id="aclasspanini_1_1_comma_list_html_a27f21f2ed6ef063de4ef8db7f34ff451"><div class="ttname"><a href="classpanini_1_1_comma_list.html#a27f21f2ed6ef063de4ef8db7f34ff451">panini::CommaList::TTransform</a></div><div class="ttdeci">std::function&lt; void(Writer &amp;writer, const TUnderlying &amp;item, size_t listIndex)&gt; TTransform</div><div class="ttdef"><b>Definition:</b> CommaList.hpp:105</div></div>
+<div class="ttc" id="aclasspanini_1_1_comma_list_html_a3ed1960e25cd1de99b8d83e702f4af53"><div class="ttname"><a href="classpanini_1_1_comma_list.html#a3ed1960e25cd1de99b8d83e702f4af53">panini::CommaList::TUnderlying</a></div><div class="ttdeci">typename std::conditional&lt; std::is_pointer_v&lt; TIterator &gt;, std::remove_pointer_t&lt; TIterator &gt;, typename std::iterator_traits&lt; TIterator &gt;::value_type &gt;::type TUnderlying</div><div class="ttdef"><b>Definition:</b> CommaList.hpp:95</div></div>
+<div class="ttc" id="aclasspanini_1_1_comma_list_html_a5258d4c438061c93caba11c23f1cdec9"><div class="ttname"><a href="classpanini_1_1_comma_list.html#a5258d4c438061c93caba11c23f1cdec9">panini::CommaList::DefaultTransform</a></div><div class="ttdeci">static void DefaultTransform(Writer &amp;writer, const std::string &amp;item, size_t listIndex)</div><div class="ttdef"><b>Definition:</b> CommaList.hpp:137</div></div>
+<div class="ttc" id="aclasspanini_1_1_comma_list_html_a8409d3feda54c453ac213c2f58e53ab0"><div class="ttname"><a href="classpanini_1_1_comma_list.html#a8409d3feda54c453ac213c2f58e53ab0">panini::CommaList::CommaList</a></div><div class="ttdeci">CommaList(TIterator begin, TIterator end, const CommaListOptions &amp;options={})</div><div class="ttdef"><b>Definition:</b> CommaList.hpp:151</div></div>
+<div class="ttc" id="aclasspanini_1_1_comma_list_html_abf008dff7593cf1ee1777cd5dd0f0901"><div class="ttname"><a href="classpanini_1_1_comma_list.html#abf008dff7593cf1ee1777cd5dd0f0901">panini::CommaList::DefaultTransform</a></div><div class="ttdeci">static void DefaultTransform(Writer &amp;writer, const TItem &amp;item, size_t listIndex)</div><div class="ttdoc">Default transform function for the command.</div><div class="ttdef"><b>Definition:</b> CommaList.hpp:121</div></div>
+<div class="ttc" id="aclasspanini_1_1_comma_list_html_abfa4ae99162c3360674c4d9850cabf11"><div class="ttname"><a href="classpanini_1_1_comma_list.html#abfa4ae99162c3360674c4d9850cabf11">panini::CommaList::Visit</a></div><div class="ttdeci">void Visit(Writer &amp;writer) override</div><div class="ttdef"><b>Definition:</b> CommaList.hpp:182</div></div>
+<div class="ttc" id="aclasspanini_1_1_command_html"><div class="ttname"><a href="classpanini_1_1_command.html">panini::Command</a></div><div class="ttdoc">Base class for commands.</div><div class="ttdef"><b>Definition:</b> Command.hpp:44</div></div>
+<div class="ttc" id="aclasspanini_1_1_writer_html"><div class="ttname"><a href="classpanini_1_1_writer.html">panini::Writer</a></div><div class="ttdoc">Pure virtual interface for writers.</div><div class="ttdef"><b>Definition:</b> Writer.hpp:44</div></div>
 <div class="ttc" id="anamespacepanini_html"><div class="ttname"><a href="namespacepanini.html">panini</a></div><div class="ttdef"><b>Definition:</b> Braces.hpp:29</div></div>
-<div class="ttc" id="astructpanini_1_1_comma_list_options_html"><div class="ttname"><a href="structpanini_1_1_comma_list_options.html">panini::CommaListOptions</a></div><div class="ttdoc">Options for the CommaList command.</div><div class="ttdef"><b>Definition:</b> CommaListOptions.hpp:33</div></div>
-<div class="ttc" id="astructpanini_1_1_comma_list_options_html_a1e72ad2710d12f55cf6f409fbe7cc71a"><div class="ttname"><a href="structpanini_1_1_comma_list_options.html#a1e72ad2710d12f55cf6f409fbe7cc71a">panini::CommaListOptions::chunkBeginSeparator</a></div><div class="ttdeci">std::string chunkBeginSeparator</div><div class="ttdef"><b>Definition:</b> CommaListOptions.hpp:40</div></div>
-<div class="ttc" id="astructpanini_1_1_comma_list_options_html_a445373ff36d28afbaaae1a15231b6505"><div class="ttname"><a href="structpanini_1_1_comma_list_options.html#a445373ff36d28afbaaae1a15231b6505">panini::CommaListOptions::skipFirstItemBeginSeparator</a></div><div class="ttdeci">bool skipFirstItemBeginSeparator</div><div class="ttdef"><b>Definition:</b> CommaListOptions.hpp:58</div></div>
-<div class="ttc" id="astructpanini_1_1_comma_list_options_html_acc13b57eeb160dd75a6416d0ecf49e02"><div class="ttname"><a href="structpanini_1_1_comma_list_options.html#acc13b57eeb160dd75a6416d0ecf49e02">panini::CommaListOptions::addNewLines</a></div><div class="ttdeci">bool addNewLines</div><div class="ttdef"><b>Definition:</b> CommaListOptions.hpp:53</div></div>
-<div class="ttc" id="astructpanini_1_1_comma_list_options_html_ae94ba8e983dcc39aeca02ea8bee125da"><div class="ttname"><a href="structpanini_1_1_comma_list_options.html#ae94ba8e983dcc39aeca02ea8bee125da">panini::CommaListOptions::skipLastItemEndSeparator</a></div><div class="ttdeci">bool skipLastItemEndSeparator</div><div class="ttdef"><b>Definition:</b> CommaListOptions.hpp:63</div></div>
-<div class="ttc" id="astructpanini_1_1_comma_list_options_html_af257706c774aefbffbca3ff5a68476e0"><div class="ttname"><a href="structpanini_1_1_comma_list_options.html#af257706c774aefbffbca3ff5a68476e0">panini::CommaListOptions::chunkEndSeparator</a></div><div class="ttdeci">std::string chunkEndSeparator</div><div class="ttdef"><b>Definition:</b> CommaListOptions.hpp:48</div></div>
-<div class="ttc" id="astructpanini_1_1_next_line_html"><div class="ttname"><a href="structpanini_1_1_next_line.html">panini::NextLine</a></div><div class="ttdoc">Command for outtputing a new line chunk.</div><div class="ttdef"><b>Definition:</b> NextLine.hpp:33</div></div>
+<div class="ttc" id="astructpanini_1_1_comma_list_options_html"><div class="ttname"><a href="structpanini_1_1_comma_list_options.html">panini::CommaListOptions</a></div><div class="ttdoc">Options for the CommaList command.</div><div class="ttdef"><b>Definition:</b> CommaListOptions.hpp:36</div></div>
+<div class="ttc" id="astructpanini_1_1_comma_list_options_html_a1e72ad2710d12f55cf6f409fbe7cc71a"><div class="ttname"><a href="structpanini_1_1_comma_list_options.html#a1e72ad2710d12f55cf6f409fbe7cc71a">panini::CommaListOptions::chunkBeginSeparator</a></div><div class="ttdeci">std::string chunkBeginSeparator</div><div class="ttdef"><b>Definition:</b> CommaListOptions.hpp:43</div></div>
+<div class="ttc" id="astructpanini_1_1_comma_list_options_html_a445373ff36d28afbaaae1a15231b6505"><div class="ttname"><a href="structpanini_1_1_comma_list_options.html#a445373ff36d28afbaaae1a15231b6505">panini::CommaListOptions::skipFirstItemBeginSeparator</a></div><div class="ttdeci">bool skipFirstItemBeginSeparator</div><div class="ttdef"><b>Definition:</b> CommaListOptions.hpp:61</div></div>
+<div class="ttc" id="astructpanini_1_1_comma_list_options_html_acc13b57eeb160dd75a6416d0ecf49e02"><div class="ttname"><a href="structpanini_1_1_comma_list_options.html#acc13b57eeb160dd75a6416d0ecf49e02">panini::CommaListOptions::addNewLines</a></div><div class="ttdeci">bool addNewLines</div><div class="ttdef"><b>Definition:</b> CommaListOptions.hpp:56</div></div>
+<div class="ttc" id="astructpanini_1_1_comma_list_options_html_ae94ba8e983dcc39aeca02ea8bee125da"><div class="ttname"><a href="structpanini_1_1_comma_list_options.html#ae94ba8e983dcc39aeca02ea8bee125da">panini::CommaListOptions::skipLastItemEndSeparator</a></div><div class="ttdeci">bool skipLastItemEndSeparator</div><div class="ttdef"><b>Definition:</b> CommaListOptions.hpp:66</div></div>
+<div class="ttc" id="astructpanini_1_1_comma_list_options_html_af257706c774aefbffbca3ff5a68476e0"><div class="ttname"><a href="structpanini_1_1_comma_list_options.html#af257706c774aefbffbca3ff5a68476e0">panini::CommaListOptions::chunkEndSeparator</a></div><div class="ttdeci">std::string chunkEndSeparator</div><div class="ttdef"><b>Definition:</b> CommaListOptions.hpp:51</div></div>
+<div class="ttc" id="astructpanini_1_1_next_line_html"><div class="ttname"><a href="structpanini_1_1_next_line.html">panini::NextLine</a></div><div class="ttdoc">Command for outtputing a new line chunk.</div><div class="ttdef"><b>Definition:</b> NextLine.hpp:36</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

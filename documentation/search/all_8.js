@@ -8,7 +8,7 @@ var searchData=
   ['includeentry_2ehpp_5',['IncludeEntry.hpp',['../_include_entry_8hpp.html',1,'']]],
   ['includeset_6',['IncludeSet',['../classpanini_1_1_include_set.html#a8c96f8a1f17147161c72a14b6099fe69',1,'panini::IncludeSet::IncludeSet()=default'],['../classpanini_1_1_include_set.html#add28dee4e638a61f77f26da605e26b83',1,'panini::IncludeSet::IncludeSet(std::initializer_list&lt; IncludeEntry &gt; entries)'],['../classpanini_1_1_include_set.html#a02c2f61bcbf20eb61c24a110b0bcacb2',1,'panini::IncludeSet::IncludeSet(std::initializer_list&lt; std::filesystem::path &gt; paths, IncludeStyle style)'],['../classpanini_1_1_include_set.html',1,'panini::IncludeSet']]],
   ['includeset_2ehpp_7',['IncludeSet.hpp',['../_include_set_8hpp.html',1,'']]],
-  ['includestyle_8',['includeStyle',['../structpanini_1_1_config.html#a8e63eb10a8df10c7d9e936c27de1c330',1,'panini::Config']]],
+  ['includestyle_8',['includeStyle',['../structpanini_1_1_writer_config.html#a2fc4a088e3d2d03fc10113f60771f6d2',1,'panini::WriterConfig']]],
   ['includestyle_9',['IncludeStyle',['../group___globals.html#ga27a306a905c9b4ceccb79f449c97a80d',1,'panini']]],
   ['includestyle_2ehpp_10',['IncludeStyle.hpp',['../_include_style_8hpp.html',1,'']]],
   ['indentpop_11',['IndentPop',['../structpanini_1_1_indent_pop.html',1,'panini']]],
@@ -16,6 +16,6 @@ var searchData=
   ['indentpush_13',['IndentPush',['../structpanini_1_1_indent_push.html',1,'panini']]],
   ['indentpush_2ehpp_14',['IndentPush.hpp',['../_indent_push_8hpp.html',1,'']]],
   ['inherit_15',['Inherit',['../group___globals.html#gga0e8bf718da5e3c164599e591f6b76f5cac49484faf79e2388b580e49444d6ac11',1,'panini::Inherit()'],['../group___globals.html#gga27a306a905c9b4ceccb79f449c97a80dac49484faf79e2388b580e49444d6ac11',1,'panini::Inherit()']]],
-  ['ischanged_16',['IsChanged',['../classpanini_1_1_compare_writer.html#a0dbef621790c6792c390f53489c75f62',1,'panini::CompareWriter::IsChanged()'],['../classpanini_1_1_debug_writer.html#a15b65e2d83598d052d26c5906cb4b45a',1,'panini::DebugWriter::IsChanged()'],['../classpanini_1_1_file_writer.html#a3a11000a65ad121aaa060ec571ed206e',1,'panini::FileWriter::IsChanged()'],['../classpanini_1_1_writer.html#afc7db80246f0e4f78196a599314dfa0e',1,'panini::Writer::IsChanged() const']]],
-  ['isonnewline_17',['IsOnNewLine',['../classpanini_1_1_writer.html#afda6de44e1a875b5bb08fb90f868a19e',1,'panini::Writer']]]
+  ['ischanged_16',['IsChanged',['../classpanini_1_1_compare_writer.html#a72757e801e2b979e41d15e57f169ee45',1,'panini::CompareWriter::IsChanged()'],['../classpanini_1_1_debug_writer.html#a15b65e2d83598d052d26c5906cb4b45a',1,'panini::DebugWriter::IsChanged()'],['../classpanini_1_1_file_writer.html#a1b457dea966611e520f32184b367534f',1,'panini::FileWriter::IsChanged()'],['../classpanini_1_1_writer.html#afa5639cbe67031ee111d10d975ed4838',1,'panini::Writer::IsChanged()'],['../classpanini_1_1_configured_writer.html#a09fbc89897992de64c5ebb7485ad7339',1,'panini::ConfiguredWriter::IsChanged()']]],
+  ['isonnewline_17',['IsOnNewLine',['../classpanini_1_1_writer.html#a2a114f6b33089136cb8a6e2a2ed12423',1,'panini::Writer::IsOnNewLine()'],['../classpanini_1_1_configured_writer.html#aa9aef0aeded9086c3e91b0c0e8da0a9a',1,'panini::ConfiguredWriter::IsOnNewLine()']]]
 ];

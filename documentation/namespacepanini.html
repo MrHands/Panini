@@ -115,16 +115,19 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classpanini_1_1_command.html" title="Base class for commands.">Command</a> for outputting a single-line comment.  <a href="classpanini_1_1_comment_line.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_compare_writer.html">CompareWriter</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes output to a path only when it differs.  <a href="classpanini_1_1_compare_writer.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes output to a path only when the written bytes differ from what was loaded on disk.  <a href="classpanini_1_1_compare_writer.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpanini_1_1_compare_writer_config.html">CompareWriterConfig</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configuration for the <a class="el" href="classpanini_1_1_compare_writer.html">CompareWriter</a> class.  <a href="structpanini_1_1_compare_writer_config.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpanini_1_1_config.html">Config</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Global configuration applied to writers.  <a href="structpanini_1_1_config.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_configured_writer.html">ConfiguredWriter</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Base class implementation for writers.  <a href="classpanini_1_1_configured_writer.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_console_writer.html">ConsoleWriter</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes output to the console.  <a href="classpanini_1_1_console_writer.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpanini_1_1_console_writer_config.html">ConsoleWriterConfig</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configuration for the <a class="el" href="classpanini_1_1_console_writer.html">ConsoleWriter</a> class.  <a href="structpanini_1_1_console_writer_config.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_debug_writer.html">DebugWriter</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes output to the console line-by-line.  <a href="classpanini_1_1_debug_writer.html#details">More...</a><br /></td></tr>
@@ -133,6 +136,7 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configuration for the <a class="el" href="classpanini_1_1_debug_writer.html">DebugWriter</a> class.  <a href="structpanini_1_1_debug_writer_config.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_feature_flag.html">FeatureFlag</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classpanini_1_1_command.html" title="Base class for commands.">Command</a> for feature flags.  <a href="classpanini_1_1_feature_flag.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_file_writer.html">FileWriter</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes output to a target file using a file stream.  <a href="classpanini_1_1_file_writer.html#details">More...</a><br /></td></tr>
@@ -173,14 +177,22 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_string_writer.html">StringWriter</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes output to a string.  <a href="classpanini_1_1_string_writer.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpanini_1_1_string_writer_config.html">StringWriterConfig</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configuration for the <a class="el" href="classpanini_1_1_string_writer.html">StringWriter</a> class.  <a href="structpanini_1_1_string_writer_config.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpanini_1_1_writer.html">Writer</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Base class for writers.  <a href="classpanini_1_1_writer.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pure virtual interface for writers.  <a href="classpanini_1_1_writer.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpanini_1_1_writer_config.html">WriterConfig</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Global configuration applied to writers.  <a href="structpanini_1_1_writer_config.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:a3bae42e312a3110bd9bbc0b6446bb60c"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepanini.html#a3bae42e312a3110bd9bbc0b6446bb60c">CommandBase</a> = <a class="el" href="classpanini_1_1_command.html">Command</a></td></tr>
 <tr class="separator:a3bae42e312a3110bd9bbc0b6446bb60c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a222e8bde6a5c441104e046a9a4df9c1b"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepanini.html#a222e8bde6a5c441104e046a9a4df9c1b">Config</a> = <a class="el" href="structpanini_1_1_writer_config.html">WriterConfig</a></td></tr>
+<tr class="separator:a222e8bde6a5c441104e046a9a4df9c1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a66c34486f3625afb06a2f4fc23590594"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepanini.html#a66c34486f3625afb06a2f4fc23590594">WriterBase</a> = <a class="el" href="classpanini_1_1_writer.html">Writer</a></td></tr>
 <tr class="separator:a66c34486f3625afb06a2f4fc23590594"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -217,6 +229,21 @@ Enumerations</h2></td></tr>
 
 </div>
 </div>
+<a id="a222e8bde6a5c441104e046a9a4df9c1b" name="a222e8bde6a5c441104e046a9a4df9c1b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a222e8bde6a5c441104e046a9a4df9c1b">&#9670;&nbsp;</a></span>Config</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="namespacepanini.html#a222e8bde6a5c441104e046a9a4df9c1b">panini::Config</a> = typedef <a class="el" href="structpanini_1_1_writer_config.html">WriterConfig</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000005">Deprecated:</a></b></dt><dd>Prefer using <a class="el" href="structpanini_1_1_writer_config.html">WriterConfig</a> instead. </dd></dl>
+
+</div>
+</div>
 <a id="a66c34486f3625afb06a2f4fc23590594" name="a66c34486f3625afb06a2f4fc23590594"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a66c34486f3625afb06a2f4fc23590594">&#9670;&nbsp;</a></span>WriterBase</h2>
 
@@ -228,7 +255,7 @@ Enumerations</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000007">Deprecated:</a></b></dt><dd>Prefer using <a class="el" href="classpanini_1_1_writer.html">Writer</a> instead. </dd></dl>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000008">Deprecated:</a></b></dt><dd>Prefer using <a class="el" href="classpanini_1_1_writer.html">Writer</a> instead. </dd></dl>
 
 </div>
 </div>

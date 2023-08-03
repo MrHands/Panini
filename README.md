@@ -68,13 +68,13 @@ Panini does not do any string processing itself, but we can recommend the [fmt](
 | Writer        | Writes chunks to the output and processes commands              |
 | WriterConfig  | Output settings for the writer                                  |
 
-## Writing custom commands
+# Writing custom commands
 
 Commands range from the humble `NextLine`, which adds a new line chunk, to the more involved `Braces`, which adds opening and closing braces to the output based on the brace breaking style.
 
 Create your own commands by inheriting from the `panini::Command` class and implementing its pure virtual methods. No other registration is required. Because output cannot be undone after it is written, we **strongly advise** not to end your commands with a `NextLine()` instruction.
 
-## Configuring writers
+# Configuring writers
 
 Code generation is always started by declaring an instance of `panini::ConfiguredWriter` and optionally giving it a `panini::WriterConfig` specific to that writer. Panini includes several common writer implementations out of the box. The configuration instance allows you to change the indentation style (tabs or spaces), new line style (Unix or Windows), where opening and closing braces are placed, and other properties that may be specific to your writer. 
 

@@ -8,6 +8,12 @@ var searchData=
   ['commentline_5',['CommentLine',['../classpanini_1_1_comment_line.html',1,'panini']]],
   ['comparewriter_6',['CompareWriter',['../classpanini_1_1_compare_writer.html',1,'panini']]],
   ['comparewriterconfig_7',['CompareWriterConfig',['../structpanini_1_1_compare_writer_config.html',1,'panini']]],
-  ['config_8',['Config',['../structpanini_1_1_config.html',1,'panini']]],
-  ['consolewriter_9',['ConsoleWriter',['../classpanini_1_1_console_writer.html',1,'panini']]]
+  ['configuredwriter_8',['ConfiguredWriter',['../classpanini_1_1_configured_writer.html',1,'panini']]],
+  ['configuredwriter_3c_20comparewriterconfig_20_3e_9',['ConfiguredWriter&lt; CompareWriterConfig &gt;',['../classpanini_1_1_configured_writer.html',1,'panini']]],
+  ['configuredwriter_3c_20consolewriterconfig_20_3e_10',['ConfiguredWriter&lt; ConsoleWriterConfig &gt;',['../classpanini_1_1_configured_writer.html',1,'panini']]],
+  ['configuredwriter_3c_20debugwriterconfig_20_3e_11',['ConfiguredWriter&lt; DebugWriterConfig &gt;',['../classpanini_1_1_configured_writer.html',1,'panini']]],
+  ['configuredwriter_3c_20filewriterconfig_20_3e_12',['ConfiguredWriter&lt; FileWriterConfig &gt;',['../classpanini_1_1_configured_writer.html',1,'panini']]],
+  ['configuredwriter_3c_20stringwriterconfig_20_3e_13',['ConfiguredWriter&lt; StringWriterConfig &gt;',['../classpanini_1_1_configured_writer.html',1,'panini']]],
+  ['consolewriter_14',['ConsoleWriter',['../classpanini_1_1_console_writer.html',1,'panini']]],
+  ['consolewriterconfig_15',['ConsoleWriterConfig',['../structpanini_1_1_console_writer_config.html',1,'panini']]]
 ];

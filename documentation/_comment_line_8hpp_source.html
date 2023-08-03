@@ -89,7 +89,7 @@ $(document).ready(function(){initNavTree('_comment_line_8hpp_source.html',''); i
 <a href="_comment_line_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">    MIT No Attribution</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"></span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">    Copyright 2021-2022 Mr. Hands</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">    Copyright 2021-2023 Mr. Hands</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"></span> </div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment">    Permission is hereby granted, free of charge, to any person obtaining a copy</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment">    of this software and associated documentation files (the &quot;Software&quot;), to</span></div>
@@ -115,45 +115,45 @@ $(document).ready(function(){initNavTree('_comment_line_8hpp_source.html',''); i
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacepanini.html">panini</a></div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>{</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="classpanini_1_1_comment_line.html">   48</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classpanini_1_1_comment_line.html">CommentLine</a></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        : <span class="keyword">public</span> <a class="code hl_class" href="classpanini_1_1_command.html">Command</a></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    {</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="classpanini_1_1_comment_line.html#a0efb77b15af783430c6fd07e0c6b516d">   57</a></span>        <span class="keyword">inline</span> <a class="code hl_function" href="classpanini_1_1_comment_line.html#a0efb77b15af783430c6fd07e0c6b516d">CommentLine</a>(<span class="keyword">const</span> std::string&amp; comment)</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>            : m_comment(comment)</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        {</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        }</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="classpanini_1_1_comment_line.html#a87f884fc847f532804edb87af1cca430">   66</a></span>        <span class="keyword">inline</span> <a class="code hl_function" href="classpanini_1_1_comment_line.html#a87f884fc847f532804edb87af1cca430">CommentLine</a>(std::string&amp;&amp; comment) noexcept</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>            : m_comment(std::exchange(comment, {}))</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        {</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        }</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="classpanini_1_1_comment_line.html#a9bf37db91e6615a8eb505ccbc7df1d69">   71</a></span>        <span class="keyword">inline</span> <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classpanini_1_1_comment_line.html#a9bf37db91e6615a8eb505ccbc7df1d69">Visit</a>(<a class="code hl_class" href="classpanini_1_1_writer.html">Writer</a>&amp; writer) <span class="keyword">final</span></div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        {</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>            writer &lt;&lt; <span class="stringliteral">&quot;//&quot;</span>;</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>            <span class="keywordflow">if</span> (!m_comment.empty())</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>            {</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>                writer &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; m_comment;</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>            }</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        }</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        std::string m_comment;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="classpanini_1_1_comment_line.html">   51</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classpanini_1_1_comment_line.html">CommentLine</a></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        : <span class="keyword">public</span> <a class="code hl_class" href="classpanini_1_1_command.html">Command</a></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    {</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="classpanini_1_1_comment_line.html#a0efb77b15af783430c6fd07e0c6b516d">   60</a></span>        <span class="keyword">inline</span> <span class="keyword">explicit</span> <a class="code hl_function" href="classpanini_1_1_comment_line.html#a0efb77b15af783430c6fd07e0c6b516d">CommentLine</a>(<span class="keyword">const</span> std::string&amp; comment)</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>            : m_comment(comment)</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        {</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        }</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="classpanini_1_1_comment_line.html#a87f884fc847f532804edb87af1cca430">   69</a></span>        <span class="keyword">inline</span> <span class="keyword">explicit</span> <a class="code hl_function" href="classpanini_1_1_comment_line.html#a87f884fc847f532804edb87af1cca430">CommentLine</a>(std::string&amp;&amp; comment) noexcept</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>            : m_comment(std::exchange(comment, {}))</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        {</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        }</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="classpanini_1_1_comment_line.html#aedc5e71d31c1c621f71b14c21e6d16b3">   74</a></span>        <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classpanini_1_1_comment_line.html#aedc5e71d31c1c621f71b14c21e6d16b3">Visit</a>(<a class="code hl_class" href="classpanini_1_1_writer.html">Writer</a>&amp; writer)<span class="keyword"> override</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="keyword">        </span>{</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>            writer &lt;&lt; <span class="stringliteral">&quot;//&quot;</span>;</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>            <span class="keywordflow">if</span> (!m_comment.empty())</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>            {</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>                writer &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; m_comment;</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>            }</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        }</div>
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    };</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>};</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        std::string m_comment;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    };</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>};</div>
 <div class="ttc" id="a_command_8hpp_html"><div class="ttname"><a href="_command_8hpp.html">Command.hpp</a></div></div>
 <div class="ttc" id="a_writer_8hpp_html"><div class="ttname"><a href="_writer_8hpp.html">Writer.hpp</a></div></div>
-<div class="ttc" id="aclasspanini_1_1_command_html"><div class="ttname"><a href="classpanini_1_1_command.html">panini::Command</a></div><div class="ttdoc">Base class for commands.</div><div class="ttdef"><b>Definition:</b> Command.hpp:43</div></div>
-<div class="ttc" id="aclasspanini_1_1_comment_line_html"><div class="ttname"><a href="classpanini_1_1_comment_line.html">panini::CommentLine</a></div><div class="ttdoc">Command for outputting a single-line comment.</div><div class="ttdef"><b>Definition:</b> CommentLine.hpp:50</div></div>
-<div class="ttc" id="aclasspanini_1_1_comment_line_html_a0efb77b15af783430c6fd07e0c6b516d"><div class="ttname"><a href="classpanini_1_1_comment_line.html#a0efb77b15af783430c6fd07e0c6b516d">panini::CommentLine::CommentLine</a></div><div class="ttdeci">CommentLine(const std::string &amp;comment)</div><div class="ttdef"><b>Definition:</b> CommentLine.hpp:57</div></div>
-<div class="ttc" id="aclasspanini_1_1_comment_line_html_a87f884fc847f532804edb87af1cca430"><div class="ttname"><a href="classpanini_1_1_comment_line.html#a87f884fc847f532804edb87af1cca430">panini::CommentLine::CommentLine</a></div><div class="ttdeci">CommentLine(std::string &amp;&amp;comment) noexcept</div><div class="ttdef"><b>Definition:</b> CommentLine.hpp:66</div></div>
-<div class="ttc" id="aclasspanini_1_1_comment_line_html_a9bf37db91e6615a8eb505ccbc7df1d69"><div class="ttname"><a href="classpanini_1_1_comment_line.html#a9bf37db91e6615a8eb505ccbc7df1d69">panini::CommentLine::Visit</a></div><div class="ttdeci">virtual void Visit(Writer &amp;writer) final</div><div class="ttdef"><b>Definition:</b> CommentLine.hpp:71</div></div>
-<div class="ttc" id="aclasspanini_1_1_writer_html"><div class="ttname"><a href="classpanini_1_1_writer.html">panini::Writer</a></div><div class="ttdoc">Base class for writers.</div><div class="ttdef"><b>Definition:</b> Writer.hpp:44</div></div>
+<div class="ttc" id="aclasspanini_1_1_command_html"><div class="ttname"><a href="classpanini_1_1_command.html">panini::Command</a></div><div class="ttdoc">Base class for commands.</div><div class="ttdef"><b>Definition:</b> Command.hpp:44</div></div>
+<div class="ttc" id="aclasspanini_1_1_comment_line_html"><div class="ttname"><a href="classpanini_1_1_comment_line.html">panini::CommentLine</a></div><div class="ttdoc">Command for outputting a single-line comment.</div><div class="ttdef"><b>Definition:</b> CommentLine.hpp:53</div></div>
+<div class="ttc" id="aclasspanini_1_1_comment_line_html_a0efb77b15af783430c6fd07e0c6b516d"><div class="ttname"><a href="classpanini_1_1_comment_line.html#a0efb77b15af783430c6fd07e0c6b516d">panini::CommentLine::CommentLine</a></div><div class="ttdeci">CommentLine(const std::string &amp;comment)</div><div class="ttdef"><b>Definition:</b> CommentLine.hpp:60</div></div>
+<div class="ttc" id="aclasspanini_1_1_comment_line_html_a87f884fc847f532804edb87af1cca430"><div class="ttname"><a href="classpanini_1_1_comment_line.html#a87f884fc847f532804edb87af1cca430">panini::CommentLine::CommentLine</a></div><div class="ttdeci">CommentLine(std::string &amp;&amp;comment) noexcept</div><div class="ttdef"><b>Definition:</b> CommentLine.hpp:69</div></div>
+<div class="ttc" id="aclasspanini_1_1_comment_line_html_aedc5e71d31c1c621f71b14c21e6d16b3"><div class="ttname"><a href="classpanini_1_1_comment_line.html#aedc5e71d31c1c621f71b14c21e6d16b3">panini::CommentLine::Visit</a></div><div class="ttdeci">void Visit(Writer &amp;writer) override</div><div class="ttdef"><b>Definition:</b> CommentLine.hpp:74</div></div>
+<div class="ttc" id="aclasspanini_1_1_writer_html"><div class="ttname"><a href="classpanini_1_1_writer.html">panini::Writer</a></div><div class="ttdoc">Pure virtual interface for writers.</div><div class="ttdef"><b>Definition:</b> Writer.hpp:44</div></div>
 <div class="ttc" id="anamespacepanini_html"><div class="ttname"><a href="namespacepanini.html">panini</a></div><div class="ttdef"><b>Definition:</b> Braces.hpp:29</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

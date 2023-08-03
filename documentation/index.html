@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Panini: Main Page</title>
+<title>Panini: Panini</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -82,10 +82,83 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 </iframe>
 </div>
 
-<div class="header">
-  <div class="headertitle"><div class="title">Panini Documentation</div></div>
+<div><div class="header">
+  <div class="headertitle"><div class="title">Panini </div></div>
 </div><!--header-->
 <div class="contents">
+<div class="textblock"><p ><a class="anchor" id="md_README"></a> Panini is a header-only library for generating C++ code written in C++17.</p>
+<p >Panini uses a write-only approach to code generation, which means output is only ever appended and never rolled back. This makes Panini very fast in run-time execution because it does not need to track many state variables. The library automatically handles whitespace in your generated code with commands for adding a new line and pushing and popping the indentation level.</p>
+<p >Unlike most code generation solutions for C++, Panini does not use a scripting language, as its "scripts" are written in C++. This allows you to create very small executables for code generation that you can step through with a debugger while your code is being output. You can also easily integrate Panini with your existing C++ code and use the same tools for retrieving and processing data as the rest of your codebase.</p>
+<p >While Panini is best suited for generating C++, it can be used to generate code for any language, including JavaScript, TypeScript, XML, or even Python. Panini uses the C++ Standard Template Library (STL) and has no other dependencies.</p>
+<p >Panini is validated with 100+ unit and integration tests.</p>
+<h1><a class="anchor" id="autotoc_md0"></a>
+Example</h1>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="_panini_8hpp.html">Panini.hpp</a>&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>** argv)</div>
+<div class="line">{</div>
+<div class="line">    <span class="keyword">using namespace </span><a class="code hl_namespace" href="namespacepanini.html">panini</a>;</div>
+<div class="line"> </div>
+<div class="line">    ConsoleWriter writer;</div>
+<div class="line"> </div>
+<div class="line">    writer &lt;&lt; Include(<span class="stringliteral">&quot;iostream&quot;</span>, IncludeStyle::AngularBrackets) &lt;&lt; NextLine();</div>
+<div class="line"> </div>
+<div class="line">    writer &lt;&lt; NextLine();</div>
+<div class="line"> </div>
+<div class="line">    writer &lt;&lt; Scope(<span class="stringliteral">&quot;int main(int argc, char** argv)&quot;</span>, [](<a class="code hl_typedef" href="namespacepanini.html#a66c34486f3625afb06a2f4fc23590594">WriterBase</a>&amp; writer)</div>
+<div class="line">    {</div>
+<div class="line">        writer &lt;&lt; R<span class="stringliteral">&quot;(std::cout &lt;&lt; &quot;Hello, World!&quot; &lt;&lt; std::endl;)&quot; &lt;&lt; NextLine();</span></div>
+<div class="line"><span class="stringliteral"></span> </div>
+<div class="line"><span class="stringliteral">        writer &lt;&lt; NextLine();</span></div>
+<div class="line"><span class="stringliteral"></span> </div>
+<div class="line"><span class="stringliteral">        writer &lt;&lt; </span><span class="stringliteral">&quot;return 0;&quot;</span> &lt;&lt; NextLine();</div>
+<div class="line">    }) &lt;&lt; NextLine();</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+<div class="ttc" id="a_panini_8hpp_html"><div class="ttname"><a href="_panini_8hpp.html">Panini.hpp</a></div></div>
+<div class="ttc" id="anamespacepanini_html"><div class="ttname"><a href="namespacepanini.html">panini</a></div><div class="ttdef"><b>Definition:</b> Braces.hpp:29</div></div>
+<div class="ttc" id="anamespacepanini_html_a66c34486f3625afb06a2f4fc23590594"><div class="ttname"><a href="namespacepanini.html#a66c34486f3625afb06a2f4fc23590594">panini::WriterBase</a></div><div class="ttdeci">Writer WriterBase</div><div class="ttdef"><b>Definition:</b> Writer.hpp:504</div></div>
+</div><!-- fragment --><p >Which will output the following to the console:</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>** argv)</div>
+<div class="line">{</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;Hello, World!&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md1"></a>
+Installation</h1>
+<p >Panini comes with a <code>CMakeLists.txt</code> configuration file. Although you should refer to the <a href="https://cmake.org/">CMake documentation</a> for your specific configuration, as an example, you can use the following command to generate a solution for Visual Studio 2017 in the <code>build</code> directory: </p><pre class="fragment">cmake -G "Visual Studio 15 2017 Win64" -S . -B build
+</pre> <h1><a class="anchor" id="autotoc_md2"></a>
+Philosophy</h1>
+<p >Panini is designed to output code with as little processing as possible on the input. The library is designed to be <em>write-only</em>, which means you cannot undo already written output. This allows for very fast execution because there is only minimal state to track while running the program.</p>
+<p >Panini does not do any string processing itself, but we can recommend the <a href="https://github.com/fmtlib/fmt">fmt</a> library.</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Type   </th><th class="markdownTableHeadNone">Description    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Chunk   </td><td class="markdownTableBodyNone">Strings of characters after input processing    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Command   </td><td class="markdownTableBodyNone">Modifies the state of chunks and adds them to the active writer    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Writer   </td><td class="markdownTableBodyNone">Writes chunks to the output and processes commands    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">WriterConfig   </td><td class="markdownTableBodyNone">Output settings for the writer   </td></tr>
+</table>
+<h1><a class="anchor" id="autotoc_md3"></a>
+Writing custom commands</h1>
+<p >Commands range from the humble <code>NextLine</code>, which adds a new line chunk, to the more involved <code>Braces</code>, which adds opening and closing braces to the output based on the brace breaking style.</p>
+<p >Create your own commands by inheriting from the <code><a class="el" href="classpanini_1_1_command.html" title="Base class for commands.">panini::Command</a></code> class and implementing its pure virtual methods. No other registration is required. Because output cannot be undone after it is written, we <b>strongly advise</b> not to end your commands with a <code>NextLine()</code> instruction.</p>
+<h1><a class="anchor" id="autotoc_md4"></a>
+Configuring writers</h1>
+<p >Code generation is always started by declaring an instance of <code><a class="el" href="classpanini_1_1_configured_writer.html" title="Base class implementation for writers.">panini::ConfiguredWriter</a></code> and optionally giving it a <code><a class="el" href="structpanini_1_1_writer_config.html" title="Global configuration applied to writers.">panini::WriterConfig</a></code> specific to that writer. Panini includes several common writer implementations out of the box. The configuration instance allows you to change the indentation style (tabs or spaces), new line style (Unix or Windows), where opening and closing braces are placed, and other properties that may be specific to your writer.</p>
+<div class="fragment"><div class="line">FileWriterConfig config;</div>
+<div class="line">config.indentChunk = <span class="stringliteral">&quot;  &quot;</span>;</div>
+<div class="line">FileWriter writer(<span class="stringliteral">&quot;taxes.csv&quot;</span>, config);</div>
+</div><!-- fragment --><p >Create your own writer by inheriting from <code><a class="el" href="classpanini_1_1_configured_writer.html" title="Base class implementation for writers.">panini::ConfiguredWriter</a></code> and implementing its pure virtual methods. No other registration is required. If your writer has custom properties that should be configured, create a new struct that inherits from <code><a class="el" href="structpanini_1_1_writer_config.html" title="Global configuration applied to writers.">panini::WriterConfig</a></code>. See <code><a class="el" href="structpanini_1_1_file_writer_config.html" title="Configuration for the FileWriter class.">panini::FileWriterConfig</a></code> for an example. </p>
+</div></div><!-- PageDoc -->
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

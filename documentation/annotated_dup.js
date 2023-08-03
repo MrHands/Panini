@@ -10,8 +10,9 @@ var annotated_dup =
       [ "CommentLine", "classpanini_1_1_comment_line.html", "classpanini_1_1_comment_line" ],
       [ "CompareWriter", "classpanini_1_1_compare_writer.html", "classpanini_1_1_compare_writer" ],
       [ "CompareWriterConfig", "structpanini_1_1_compare_writer_config.html", "structpanini_1_1_compare_writer_config" ],
-      [ "Config", "structpanini_1_1_config.html", "structpanini_1_1_config" ],
+      [ "ConfiguredWriter", "classpanini_1_1_configured_writer.html", "classpanini_1_1_configured_writer" ],
       [ "ConsoleWriter", "classpanini_1_1_console_writer.html", "classpanini_1_1_console_writer" ],
+      [ "ConsoleWriterConfig", "structpanini_1_1_console_writer_config.html", null ],
       [ "DebugWriter", "classpanini_1_1_debug_writer.html", "classpanini_1_1_debug_writer" ],
       [ "DebugWriterConfig", "structpanini_1_1_debug_writer_config.html", "structpanini_1_1_debug_writer_config" ],
       [ "FeatureFlag", "classpanini_1_1_feature_flag.html", "classpanini_1_1_feature_flag" ],
@@ -28,6 +29,8 @@ var annotated_dup =
       [ "Scope", "classpanini_1_1_scope.html", "classpanini_1_1_scope" ],
       [ "ScopeOptions", "structpanini_1_1_scope_options.html", "structpanini_1_1_scope_options" ],
       [ "StringWriter", "classpanini_1_1_string_writer.html", "classpanini_1_1_string_writer" ],
-      [ "Writer", "classpanini_1_1_writer.html", "classpanini_1_1_writer" ]
+      [ "StringWriterConfig", "structpanini_1_1_string_writer_config.html", null ],
+      [ "Writer", "classpanini_1_1_writer.html", "classpanini_1_1_writer" ],
+      [ "WriterConfig", "structpanini_1_1_writer_config.html", "structpanini_1_1_writer_config" ]
     ] ]
 ];

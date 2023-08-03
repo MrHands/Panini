@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['getbracebreakingstyle_0',['GetBraceBreakingStyle',['../classpanini_1_1_writer.html#a2ccf644d6480c6ea2fc8838643c4bd3e',1,'panini::Writer']]],
-  ['getconfig_1',['GetConfig',['../classpanini_1_1_writer.html#af15c7c318a6f1a01f1cf27fd80880c13',1,'panini::Writer']]],
+  ['getbracebreakingstyle_0',['GetBraceBreakingStyle',['../classpanini_1_1_writer.html#aeaaa431afb185c70afef440084390bf8',1,'panini::Writer::GetBraceBreakingStyle()'],['../classpanini_1_1_configured_writer.html#a66496b0a673d18dc198d73433ec0eb31',1,'panini::ConfiguredWriter::GetBraceBreakingStyle()']]],
+  ['getconfig_1',['GetConfig',['../classpanini_1_1_writer.html#ab696792838d5863fc01c82c14f856391',1,'panini::Writer::GetConfig()'],['../classpanini_1_1_configured_writer.html#a90e1c1f9945750585d4600c83526737c',1,'panini::ConfiguredWriter::GetConfig()']]],
   ['getentries_2',['GetEntries',['../classpanini_1_1_include_set.html#ae01adfe6497073f676bd956d0d106d48',1,'panini::IncludeSet']]],
-  ['getincludestyle_3',['GetIncludeStyle',['../classpanini_1_1_writer.html#a64d4a794113c7b744904e14a4bed6d44',1,'panini::Writer']]]
+  ['getincludestyle_3',['GetIncludeStyle',['../classpanini_1_1_writer.html#ac44c0b7b8c9af867c48f9f377732d2c0',1,'panini::Writer::GetIncludeStyle()'],['../classpanini_1_1_configured_writer.html#a07fced0736d4edcf70d8f7cfe026c90d',1,'panini::ConfiguredWriter::GetIncludeStyle()']]]
 ];

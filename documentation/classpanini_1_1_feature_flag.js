@@ -1,7 +1,7 @@
 var classpanini_1_1_feature_flag =
 [
-    [ "TCallback", "classpanini_1_1_feature_flag.html#a7a0e7dc458cd188601897e360c4b4c8c", null ],
-    [ "FeatureFlag", "classpanini_1_1_feature_flag.html#ac652108c76450befd8a00bf548f07cd2", null ],
-    [ "FeatureFlag", "classpanini_1_1_feature_flag.html#a4050e003abdd312b1b8a6b0c1c662454", null ],
+    [ "TCallback", "classpanini_1_1_feature_flag.html#a5e4562e6b807f923055cb1c1bbdc2388", null ],
+    [ "FeatureFlag", "classpanini_1_1_feature_flag.html#af9bb464158580eae4b51a0616c7119e2", null ],
+    [ "FeatureFlag", "classpanini_1_1_feature_flag.html#a7df8dbfdad9beaeb87d93eebcd4798db", null ],
     [ "Visit", "classpanini_1_1_feature_flag.html#a24712739c1ddc410dcd24b9d8fcb6a5a", null ]
 ];

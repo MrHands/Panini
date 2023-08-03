@@ -1,10 +1,12 @@
 Panini is a header-only library for generating C++ code written in C++17.
 
-Panini allows you to write small executables for code-generation that you can step through with a debugger while your code is being output. Because the code generation is itself written in C++, you can call the same functions and use the same tools as the rest of your codebase.
+Panini uses a write-only approach to code generation, which means output is only ever appended and never rolled back. This makes Panini very fast in run-time execution because it does not need to track many state variables. The library automatically handles whitespace in your generated code with commands for adding a new line and pushing and popping the indentation level.
 
-The library takes a write-only approach to code generation, which means output is only ever appended to, and never rolled back. This means Panini can be very fast because the only state it has to keep track of is whether a new line was just started.
+Unlike most code generation solutions for C++, Panini does not use a scripting language, as its "scripts" are written in C++. This allows you to create very small executables for code generation that you can step through with a debugger while your code is being output. You can also easily integrate Panini with your existing C++ code and use the same tools for retrieving and processing data as the rest of your codebase.
 
-While Panini is best suited for generating C++, you can use it to generate code for any programming language, including JavaScript, TypeScript, XML, or even Python. The library uses the C++ Standard Template Library (STL) and has no other dependencies.
+While Panini is best suited for generating C++, it can be used to generate code for any language, including JavaScript, TypeScript, XML, or even Python. Panini uses the C++ Standard Template Library (STL) and has no other dependencies.
+
+Panini is validated with 100+ unit and integration tests.
 
 # Example
 
@@ -55,37 +57,31 @@ Panini comes with a `CMakeLists.txt` configuration file. Although you should ref
 
 # Philosophy
 
-Panini is designed to output code with as little processing as possible on the input. The library is designed to be _write-forward only_, which means you cannot undo output that was already written. This allows for very fast execution because there is only minimal state to keep track of while running through the program.
+Panini is designed to output code with as little processing as possible on the input. The library is designed to be _write-only_, which means you cannot undo already written output. This allows for very fast execution because there is only minimal state to track while running the program.
 
-| Type    | Description                                         |
-| ------- | --------------------------------------------------- |
-| Chunk   | Strings of characters after input processing        |
-| Command | Modifies the state of and adds chunks to the writer |
-| Writer  | Writes chunks to the output and processes commands  |
-| Config  | Global configuration for the writer                 |
+Panini does not do any string processing itself, but we can recommend the [fmt](https://github.com/fmtlib/fmt) library.
 
-## Chunks
+| Type          | Description                                                     |
+| ------------- | --------------------------------------------------------------- |
+| Chunk         | Strings of characters after input processing                    |
+| Command       | Modifies the state of chunks and adds them to the active writer |
+| Writer        | Writes chunks to the output and processes commands              |
+| WriterConfig  | Output settings for the writer                                  |
 
-Panini does not do any string processing itself but we can recommend the [fmt](https://github.com/fmtlib/fmt) library for doing so.
+# Writing custom commands
 
-## Commands
+Commands range from the humble `NextLine`, which adds a new line chunk, to the more involved `Braces`, which adds opening and closing braces to the output based on the brace breaking style.
 
-Commands can range from the humble `NextLine`, which adds a new line chunk, to the more involved `Braces`, which adds opening and closing braces to the output based on the brace breaking style.
+Create your own commands by inheriting from the `panini::Command` class and implementing its pure virtual methods. No other registration is required. Because output cannot be undone after it is written, we **strongly advise** not to end your commands with a `NextLine()` instruction.
 
-You can create a custom command by inheriting from `panini::CommandBase` and implementing the `Visit` method.
+## Configuring writers
 
-## Writers
-
-You always start your code generation by declaring a `Writer` and optionally giving it a `Config`. Panini comes with several writer implementations by default.
+Code generation is always started by declaring an instance of `panini::ConfiguredWriter` and optionally giving it a `panini::WriterConfig` specific to that writer. Panini includes several common writer implementations out of the box. The configuration instance allows you to change the indentation style (tabs or spaces), new line style (Unix or Windows), where opening and closing braces are placed, and other properties that may be specific to your writer. 
 
 ```cpp
-Config config;
+FileWriterConfig config;
 config.indentChunk = "  ";
 FileWriter writer("taxes.csv", config);
 ```
 
-You can create a custom writer by inheriting from `panini::WriterBase` and implementing the `Write` method.
-
-## Configuration
-
-Config allows you to change the indentation style (tabs or spaces), new line style (Unix or Windows), and brace breaking style for the writer.
+Create your own writer by inheriting from `panini::ConfiguredWriter` and implementing its pure virtual methods. No other registration is required. If your writer has custom properties that should be configured, create a new struct that inherits from `panini::WriterConfig`. See `panini::FileWriterConfig` for an example.

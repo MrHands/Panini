@@ -50,6 +50,20 @@ PushTheButton();
 // should_push)", s.c_str());
 }
 
+TEST(FeatureFlag, ConditionTrueNoContext)
+{
+	using namespace panini;
+
+	std::string s;
+	StringWriter w(s);
+
+	w << FeatureFlag(true, "", [](Writer& writer) {
+		writer << "DanceAwayTheNight();";
+	});
+
+	EXPECT_STREQ(R"(DanceAwayTheNight();)", s.c_str());
+}
+
 TEST(FeatureFlag, ConditionFalse)
 {
 	using namespace panini;

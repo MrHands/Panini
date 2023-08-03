@@ -26,6 +26,47 @@
 namespace panini
 {
 
+	/*!
+		\brief Command for feature flags.
+
+		When the condition is true, the "then" callback is used to output code
+		to the active writer. Otherwise, if the "else" callback is specified,
+		this callback is used instead.
+
+		If the condition was true, the output is wrapped in single-line comments
+		to make the generated code stand out more. These comments are omitted if
+		the `context` parameter is left blank.
+
+		Feature flags are useful when you are working on generated code that
+		depends on the context. For example, you have developed a new way to
+		access the main database, but want to roll out this change in controlled
+		stages instead of simultaneously.
+
+		Example:
+
+		\code{.cpp}
+			bool newDbAccess = true;
+			std::string query = R"(INSERT INTO Users (name) VALUES ('Little Bobby Tables'))";
+			writer << FeatureFlag(
+				newDbAccess,
+				"new-db-access",
+				[&query](Writer& writer) {
+					writer << "db->WriteQueryFast(\"" << query << ";\");" << NextLine();
+				},
+				[&query](Writer& writer) {
+					writer << "db->WriteQuery(\"" << query << ";\");" << NextLine();
+				}
+			);
+		\endcode
+
+		Output:
+
+		\code{.cpp}
+			// new-db-access
+			db->WriteQueryFast("INSERT INTO Users (name) VALUES ('Little Bobby Tables');");
+			// new-db-access
+		\endcode
+	*/
 	class FeatureFlag
 		: public Command
 	{
@@ -35,21 +76,21 @@ namespace panini
 
 		inline FeatureFlag(
 			bool condition,
-			const std::string& comment,
-			TCallback&& callbackThen)
+			const std::string& context,
+			TCallback&& callbackThen) noexcept
 			: m_condition(condition)
-			, m_comment(comment)
+			, m_context(context)
 			, m_callbackThen(std::move(callbackThen))
 		{
 		}
 
 		inline FeatureFlag(
 			bool condition,
-			const std::string& comment,
+			const std::string& context,
 			TCallback&& callbackThen,
-			TCallback&& callbackElse)
+			TCallback&& callbackElse) noexcept
 			: m_condition(condition)
-			, m_comment(comment)
+			, m_context(context)
 			, m_callbackThen(std::move(callbackThen))
 			, m_callbackElse(std::move(callbackElse))
 		{
@@ -59,11 +100,17 @@ namespace panini
 		{
 			if (m_condition)
 			{
-				writer << CommentLine(m_comment) << NextLine();
+				if (!m_context.empty())
+				{
+					writer << CommentLine(m_context) << NextLine();
+				}
 
 				m_callbackThen(writer);
-
-				writer << CommentLine(m_comment);
+				
+				if (!m_context.empty())
+				{
+					writer << CommentLine(m_context);
+				}
 			}
 			else if (
 				m_callbackElse)
@@ -74,7 +121,7 @@ namespace panini
 
 	private:
 		bool m_condition = false;
-		std::string m_comment;
+		std::string m_context;
 		TCallback m_callbackThen;
 		TCallback m_callbackElse;
 

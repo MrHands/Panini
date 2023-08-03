@@ -42,6 +42,8 @@ namespace panini
 	/*!
 		\brief Writes output to the console line-by-line.
 
+		\ingroup Writers
+
 		The DebugWriter will halt execution every time it receives a
 		\ref NextLine command. The writer will wait for user input to either
 		continue debugging or stop execution.
@@ -51,7 +53,7 @@ namespace panini
 
 		Note that the DebugWriter only works correctly on Windows right now.
 
-		The \ref DebugWriterConfig instance is used to configure the output.
+		\sa DebugWriterConfig
 	*/
 
 	class DebugWriter

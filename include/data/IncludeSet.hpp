@@ -31,6 +31,8 @@ namespace panini
 	/*!
 		\brief Collection of unique file system paths.
 
+		\ingroup Data
+
 		Paths can be sorted by priority, which is based on their IncludeStyle
 		and how many forward slashes (/) it contains. This causes paths that
 		end in a filename to be sorted _after_ paths with folders, even when
@@ -39,6 +41,7 @@ namespace panini
 		\note Duplicate paths are not allowed in the collection, unless they
 		differ in IncludeStyle.
 	*/
+
 	class IncludeSet
 	{
 

@@ -28,7 +28,10 @@ namespace panini
 
 	/*!
 		\brief Options for the \ref Scope command.
+
+		\ingroup CommandOptions
 	*/
+
 	struct ScopeOptions
 		: public BracesOptions
 	{

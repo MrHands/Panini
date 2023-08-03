@@ -28,15 +28,22 @@ namespace panini
 
 	/*!
 		\brief Data for includes.
+
+		\ingroup Data
 	*/
+
 	struct IncludeEntry
 	{
 		inline IncludeEntry() = default;
 
 		/*!
-			Construct an IncludeEntry from a path, an IncludeStyle, and a priority.
+			Construct an IncludeEntry from a path, an IncludeStyle, and a
+			priority.
 		*/
-		inline IncludeEntry(const std::filesystem::path& _path, IncludeStyle _style = IncludeStyle::AngularBrackets, int32_t _priority = 0)
+		inline IncludeEntry(
+			const std::filesystem::path& _path,
+			IncludeStyle _style = IncludeStyle::AngularBrackets,
+			int32_t _priority = 0)
 			: path(_path)
 			, style(_style)
 			, priority(_priority)
@@ -44,10 +51,14 @@ namespace panini
 		}
 
 		/*!
-			Construct an IncludeEntry from a path, an IncludeStyle, and a priority.
+			Construct an IncludeEntry from a path, an IncludeStyle, and a
+			priority. The path is moved into the instance.
 		*/
-		inline IncludeEntry(std::filesystem::path&& _path, IncludeStyle _style = IncludeStyle::AngularBrackets, int32_t _priority = 0) noexcept
-			: path(std::exchange(_path, {}))
+		inline IncludeEntry(
+			std::filesystem::path&& _path,
+			IncludeStyle _style = IncludeStyle::AngularBrackets,
+			int32_t _priority = 0) noexcept
+			: path(std::move(_path))
 			, style(_style)
 			, priority(_priority)
 		{

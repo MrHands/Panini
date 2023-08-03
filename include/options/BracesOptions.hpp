@@ -30,7 +30,10 @@ namespace panini
 
 	/*!
 		\brief Options for the \ref Braces command.
+
+		\ingroup CommandOptions
 	*/
+
 	struct BracesOptions
 	{
 		/*!
@@ -38,8 +41,6 @@ namespace panini
 
 			When this parameter is set to \ref BraceBreakingStyle::Inherit,
 			the brace breaking style is copied from the active writer.
-
-			\sa Writer::GetBraceBreakingStyle
 		*/
 		BraceBreakingStyle breakingStyle = BraceBreakingStyle::Inherit;
 

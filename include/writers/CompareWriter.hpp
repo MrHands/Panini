@@ -31,11 +31,13 @@ namespace panini
 		\brief Writes output to a path only when the written bytes differ from
 		what was loaded on disk.
 
+		\ingroup Writers
+
 		The CompareWriter stores the contents of the target path first. When
 		the new output differs from what was seen before, the output will be
 		committed to the path.
 
-		The writer can be configured with \ref CompareWriterConfig.
+		\sa CompareWriterConfig
 	*/
 
 	class CompareWriter
@@ -48,7 +50,7 @@ namespace panini
 
 			\param config    Configuration instance.
 		*/
-		inline CompareWriter(const CompareWriterConfig& config = {})
+		inline explicit CompareWriter(const CompareWriterConfig& config = {})
 			: CompareWriter(config.filePath, config)
 		{
 		}
@@ -63,7 +65,7 @@ namespace panini
 			\param filePath  File that will be compared against the output.
 			\param config    Configuration instance.
 		*/
-		inline CompareWriter(
+		inline explicit CompareWriter(
 			const std::filesystem::path& filePath,
 			const WriterConfig& config = WriterConfig())
 			: ConfiguredWriter(CompareWriterConfig{ config })

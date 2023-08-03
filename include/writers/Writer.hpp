@@ -177,7 +177,7 @@ namespace panini
 		\brief Base class implementation for writers.
 
 		When making your own writer, you should inherit from this class and
-		supply a config struct that inherits from /ref WriterConfig.
+		supply a config struct that inherits from \ref WriterConfig.
 	*/
 	template <typename TConfig>
 	class ConfiguredWriter
@@ -217,9 +217,9 @@ namespace panini
 		virtual ~ConfiguredWriter() = default;
 
 		/*!
-			Get a reference to the active Config for this writer.
+			Get a reference to the active WriterConfig for this writer.
 
-			\return Config object.
+			\return Configuration instance.
 		*/
 		inline const WriterConfig& GetConfig() const override
 		{
@@ -228,6 +228,9 @@ namespace panini
 
 		/*!
 			Get the default brace breaking style.
+
+			\deprecated Will be removed in the next major release in favor of
+			GetConfig()
 
 			\return Brace breaking style.
 		*/
@@ -238,6 +241,9 @@ namespace panini
 
 		/*!
 			Get the default include style.
+
+			\deprecated Will be removed in the next major release in favor of
+			GetConfig()
 
 			\return Include style.
 		*/

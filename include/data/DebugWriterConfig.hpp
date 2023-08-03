@@ -28,7 +28,10 @@ namespace panini
 
 	/*!
 		\brief Configuration for the \ref DebugWriter class.
+
+		\ingroup WriterConfiguration
 	*/
+
 	struct DebugWriterConfig
 		: public WriterConfig
 	{

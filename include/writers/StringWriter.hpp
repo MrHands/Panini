@@ -29,7 +29,12 @@ namespace panini
 
 	/*!
 		\brief Writes output to a string.
+
+		\ingroup Writers
+
+		\sa StringWriterConfig
 	*/
+
 	class StringWriter
 		: public ConfiguredWriter<StringWriterConfig>
 	{
@@ -41,7 +46,7 @@ namespace panini
 			\param target  String that output will be written to.
 			\param config  Configuration instance.
 		*/
-		inline StringWriter(
+		inline explicit StringWriter(
 			std::string& target,
 			const StringWriterConfig& config = StringWriterConfig())
 			: ConfiguredWriter(config)

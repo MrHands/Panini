@@ -30,10 +30,15 @@ namespace panini
 	/*!
 		\brief Writes output to the console.
 
+		\ingroup Writers
+
 		The ConsoleWriter will write to `std::cout` by default, which is the
 		default output stream for console programs. You can write to a different
 		stream by supplying it as the first argument to the constructor.
+
+		\sa ConsoleWriterConfig
 	*/
+
 	class ConsoleWriter
 		: public ConfiguredWriter<ConsoleWriterConfig>
 	{
@@ -44,7 +49,8 @@ namespace panini
 
 			\param config  Configuration instance
 		*/
-		inline explicit ConsoleWriter(const ConsoleWriterConfig& config = ConsoleWriterConfig())
+		inline explicit ConsoleWriter(
+			const ConsoleWriterConfig& config = ConsoleWriterConfig())
 			: ConsoleWriter(std::cout, config)
 		{
 		}

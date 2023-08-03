@@ -34,6 +34,7 @@ namespace panini
 		\ref Writer. Some commands can override these configuration
 		settings in their constructor.
 	*/
+
 	struct WriterConfig
 	{
 		/*!

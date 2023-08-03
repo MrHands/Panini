@@ -25,10 +25,11 @@ namespace panini
 {
 
 	/*!
-		\enum BraceBreakingStyle
 		\brief Brace breaking style to use when writing to output.
+
 		\ingroup Globals
 	*/
+
 	enum class BraceBreakingStyle
 	{
 		Inherit,      //!< Inherit setting from the config, not valid on \ref Writer

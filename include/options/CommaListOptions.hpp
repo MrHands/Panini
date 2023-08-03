@@ -28,7 +28,10 @@ namespace panini
 
 	/*!
 		\brief Options for the \ref CommaList command.
+
+		\ingroup CommandOptions
 	*/
+
 	struct CommaListOptions
 	{
 		/*!

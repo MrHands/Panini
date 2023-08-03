@@ -28,7 +28,10 @@ namespace panini
 
 	/*!
 		\brief Configuration for the \ref CompareWriter class.
+
+		\ingroup WriterConfiguration
 	*/
+
 	struct CompareWriterConfig
 		: public WriterConfig
 	{

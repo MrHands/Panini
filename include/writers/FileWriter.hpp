@@ -30,12 +30,17 @@ namespace panini
 	/*!
 		\brief Writes output to a target file using a file stream.
 
+		\ingroup Writers
+
 		Unlike the \ref CompareWriter, the FileWriter will always write to the
 		target file regardless of whether the output has changed.
 		
 		The file stream is closed when the writer is committed, which happens
 		automatically when the writer is destroyed.
+
+		\sa FileWriterConfig
 	*/
+
 	class FileWriter
 		: public ConfiguredWriter<FileWriterConfig>
 	{

@@ -28,7 +28,10 @@ namespace panini
 
 	/*!
 		\brief Configuration for the \ref StringWriter class.
+
+		\ingroup WriterConfiguration
 	*/
+
 	struct StringWriterConfig
 		: public WriterConfig
 	{

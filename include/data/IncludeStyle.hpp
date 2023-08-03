@@ -26,9 +26,12 @@ namespace panini
 
 	/*!
 		\enum IncludeStyle
+
 		\brief Include style to use when writing to output.
+
 		\ingroup Globals
 	*/
+
 	enum class IncludeStyle
 	{
 		Inherit,         //!< Inherit setting from the config, not valid on \ref Writer

@@ -1,4 +1,6 @@
-<img src="https://github.com/MrHands/Panini/blob/main/PaniniLogo.png" width="256" height="256">
+<p align="center">
+  <img src="https://github.com/MrHands/Panini/blob/main/PaniniLogo.png" width="256" height="256" style="display: block; margin: 0 auto;" />
+</p>
 
 Panini is a header-only library for generating C++ code written in C++17. The library uses a write-only approach to code generation, which means output is only ever appended and never rolled back. Panini is very fast in run-time execution because it does not need to track many state variables.
 
